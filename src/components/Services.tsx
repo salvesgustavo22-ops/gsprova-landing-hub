@@ -1,10 +1,11 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckIcon, StarIcon } from "lucide-react";
 import { trackPlanClick } from "@/lib/analytics";
 
-interface Service {
+interface ServiceDetail {
   id: string;
   title: string;
   description: string;
@@ -13,13 +14,12 @@ interface Service {
   features: string[];
   badge?: string;
   popular?: boolean;
-  category: 'math' | 'essay';
 }
 
-const services: Service[] = [
+const mathServices: ServiceDetail[] = [
   {
     id: 'math-single',
-    title: 'Matemática - Aula Avulsa',
+    title: 'Aula Avulsa',
     description: 'Aula individual focada nas suas dificuldades específicas',
     price: 'R$ 70',
     features: [
@@ -27,12 +27,11 @@ const services: Service[] = [
       'Material de apoio incluso',
       'Exercícios direcionados',
       'Online ou presencial (SP)'
-    ],
-    category: 'math'
+    ]
   },
   {
     id: 'math-package',
-    title: 'Matemática - Pacote 4 Aulas',
+    title: 'Pacote 4 Aulas',
     description: 'Plano completo com acompanhamento contínuo',
     price: 'R$ 250',
     originalPrice: 'R$ 280',
@@ -43,12 +42,14 @@ const services: Service[] = [
       'Lista de exercícios exclusiva',
       'Suporte via WhatsApp',
       'Simulados práticos'
-    ],
-    category: 'math'
-  },
+    ]
+  }
+];
+
+const essayServices: ServiceDetail[] = [
   {
     id: 'essay-single',
-    title: 'Redação - Correção Avulsa',
+    title: 'Correção Avulsa',
     description: 'Correção detalhada com feedback personalizado',
     price: 'R$ 70',
     features: [
@@ -56,12 +57,11 @@ const services: Service[] = [
       'Feedback escrito detalhado',
       'Dicas de melhoria',
       'Nota estimada ENEM'
-    ],
-    category: 'essay'
+    ]
   },
   {
     id: 'essay-package',
-    title: 'Redação - Pacote Completo',
+    title: 'Pacote Completo',
     description: 'Plano premium com acompanhamento total',
     price: 'R$ 350',
     originalPrice: 'R$ 420',
@@ -73,17 +73,22 @@ const services: Service[] = [
       'Banco de temas atualizados',
       'Correção em 24h',
       'Acompanhamento até o ENEM'
-    ],
-    category: 'essay'
+    ]
   }
 ];
 
 export const Services = () => {
-  const handlePlanClick = (service: Service) => {
-    trackPlanClick(service.title);
+  const [activeService, setActiveService] = useState<'math' | 'essay' | null>(null);
+
+  const handlePlanClick = (service: ServiceDetail, category: string) => {
+    trackPlanClick(`${category} - ${service.title}`);
     
-    const message = encodeURIComponent(`Oi, tenho interesse no plano "${service.title}" por ${service.price}. Vim pelo site GS Aprova.`);
+    const message = encodeURIComponent(`Oi, tenho interesse no plano "${category} - ${service.title}" por ${service.price}. Vim pelo site GS Aprova.`);
     window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+  };
+
+  const handleServiceClick = (service: 'math' | 'essay') => {
+    setActiveService(activeService === service ? null : service);
   };
 
   return (
@@ -91,111 +96,122 @@ export const Services = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Cardápio de Serviços
+            Nossos Serviços
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Escolha o plano ideal para sua preparação. Aulas de Matemática e correções de Redação com metodologia comprovada.
+            Clique em cada área para ver as modalidades disponíveis com preços e detalhes.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {services.map((service) => (
-            <Card 
-              key={service.id} 
-              className={`card-service relative ${service.popular ? 'ring-2 ring-primary' : ''}`}
-            >
-              {service.badge && (
-                <Badge 
-                  className={`absolute -top-3 left-1/2 -translate-x-1/2 ${
-                    service.popular ? 'bg-primary text-primary-foreground' : 'badge-success'
-                  }`}
-                >
-                  {service.badge}
-                </Badge>
-              )}
-              
-              <CardHeader className="text-center pb-4">
-                <div className="mb-2">
-                  <div className={`w-12 h-12 mx-auto rounded-full flex items-center justify-center ${
-                    service.category === 'math' ? 'bg-primary/10' : 'bg-success/10'
-                  }`}>
-                    {service.category === 'math' ? '📊' : '✍️'}
-                  </div>
+        {/* Service Selection Bands */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div 
+            onClick={() => handleServiceClick('math')}
+            className={`cursor-pointer card-service hover:scale-105 transition-all ${
+              activeService === 'math' ? 'ring-2 ring-primary bg-primary/5' : ''
+            }`}
+          >
+            <Card className="border-none bg-transparent">
+              <CardContent className="p-8 text-center">
+                <div className="text-6xl mb-4">📊</div>
+                <h3 className="text-2xl font-bold mb-2 text-foreground">
+                  Aula e Reforço de Matemática
+                </h3>
+                <p className="text-muted-foreground">
+                  Matemática descomplicada para ENEM e vestibulares
+                </p>
+                <div className="mt-4 text-primary font-semibold">
+                  Clique para ver modalidades
                 </div>
-                
-                <CardTitle className="text-xl">{service.title}</CardTitle>
-                <CardDescription>{service.description}</CardDescription>
-                
-                <div className="mt-4">
-                  <div className="flex items-center justify-center gap-2">
-                    {service.originalPrice && (
-                      <span className="text-sm text-muted-foreground line-through">
-                        {service.originalPrice}
-                      </span>
-                    )}
-                    <span className="text-3xl font-bold text-primary">
-                      {service.price}
-                    </span>
-                  </div>
-                </div>
-              </CardHeader>
-
-              <CardContent className="space-y-4">
-                <ul className="space-y-2">
-                  {service.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-2 text-sm">
-                      <CheckIcon className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Button 
-                  onClick={() => handlePlanClick(service)}
-                  className={`w-full ${
-                    service.popular 
-                      ? 'btn-hero' 
-                      : 'bg-primary hover:bg-primary-hover text-primary-foreground'
-                  }`}
-                >
-                  Quero este plano
-                  {service.popular && <StarIcon className="w-4 h-4 ml-2" />}
-                </Button>
               </CardContent>
             </Card>
-          ))}
-        </div>
+          </div>
 
-        {/* Comparison Table */}
-        <div className="bg-background rounded-xl p-6 shadow-lg">
-          <h3 className="text-xl font-semibold mb-6 text-center">Comparação Rápida</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left py-3">Serviço</th>
-                  <th className="text-center py-3">Avulso</th>
-                  <th className="text-center py-3">Pacote</th>
-                  <th className="text-center py-3">Economia</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="py-3 font-medium">Matemática</td>
-                  <td className="text-center py-3">R$ 70/aula</td>
-                  <td className="text-center py-3 text-success font-semibold">R$ 62,50/aula</td>
-                  <td className="text-center py-3 text-success">R$ 30</td>
-                </tr>
-                <tr>
-                  <td className="py-3 font-medium">Redação</td>
-                  <td className="text-center py-3">R$ 70/correção</td>
-                  <td className="text-center py-3 text-success font-semibold">R$ 50/correção</td>
-                  <td className="text-center py-3 text-success">R$ 70</td>
-                </tr>
-              </tbody>
-            </table>
+          <div 
+            onClick={() => handleServiceClick('essay')}
+            className={`cursor-pointer card-service hover:scale-105 transition-all ${
+              activeService === 'essay' ? 'ring-2 ring-primary bg-primary/5' : ''
+            }`}
+          >
+            <Card className="border-none bg-transparent">
+              <CardContent className="p-8 text-center">
+                <div className="text-6xl mb-4">✍️</div>
+                <h3 className="text-2xl font-bold mb-2 text-foreground">
+                  Redação
+                </h3>
+                <p className="text-muted-foreground">
+                  Correção detalhada para nota 900+ no ENEM
+                </p>
+                <div className="mt-4 text-primary font-semibold">
+                  Clique para ver modalidades
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
+
+        {/* Service Details */}
+        {activeService && (
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            {(activeService === 'math' ? mathServices : essayServices).map((service) => (
+              <Card 
+                key={service.id} 
+                className={`card-service relative ${service.popular ? 'ring-2 ring-success' : ''}`}
+              >
+                {service.badge && (
+                  <Badge 
+                    className={`absolute -top-3 left-1/2 -translate-x-1/2 ${
+                      service.popular ? 'bg-success text-success-foreground' : 'badge-success'
+                    }`}
+                  >
+                    {service.badge}
+                  </Badge>
+                )}
+                
+                <CardHeader className="text-center pb-4">
+                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  <CardDescription>{service.description}</CardDescription>
+                  
+                  <div className="mt-4">
+                    <div className="flex items-center justify-center gap-2">
+                      {service.originalPrice && (
+                        <span className="text-sm text-muted-foreground line-through">
+                          {service.originalPrice}
+                        </span>
+                      )}
+                      <span className="text-3xl font-bold text-primary">
+                        {service.price}
+                      </span>
+                    </div>
+                  </div>
+                </CardHeader>
+
+                <CardContent className="space-y-4">
+                  <ul className="space-y-2">
+                    {service.features.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-2 text-sm">
+                        <CheckIcon className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Button 
+                    onClick={() => handlePlanClick(service, activeService === 'math' ? 'Matemática' : 'Redação')}
+                    className={`w-full ${
+                      service.popular 
+                        ? 'btn-hero' 
+                        : 'bg-primary hover:bg-primary-hover text-primary-foreground'
+                    }`}
+                  >
+                    Quero este
+                    {service.popular && <StarIcon className="w-4 h-4 ml-2" />}
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
