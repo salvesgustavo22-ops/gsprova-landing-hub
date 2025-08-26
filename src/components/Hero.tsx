@@ -49,29 +49,25 @@ export const Hero = () => {
     trackWhatsAppClick('Hero CTA', currentVariant.id);
     
     const message = encodeURIComponent("Oi, quero saber mais sobre aulas de Matemática/Redação. Vim pelo site GS Aprova.");
-    window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-background via-primary/5 to-success/5">
+    <section className="relative overflow-hidden bg-primary text-white">
       <div className="container mx-auto px-4 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="space-y-6">
-            <Badge className="badge-success w-fit">
-              {currentVariant.badge}
-            </Badge>
-            
+          <div className="space-y-6">            
             <div className="space-y-4">
-              <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-primary to-success bg-clip-text text-transparent">
-                  GS Aprova
-                </span>
+              <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-white">
+                GS Aprova
                 <br />
-                {currentVariant.headline.split(': ')[1]}
+                <span className="text-accent">
+                  {currentVariant.headline.split(': ')[1]}
+                </span>
               </h1>
               
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
+              <p className="text-lg text-white/80 leading-relaxed max-w-lg">
                 {currentVariant.subheadline}
               </p>
             </div>
@@ -84,13 +80,13 @@ export const Hero = () => {
                 {currentVariant.cta}
               </Button>
               
-              <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+              <div className="flex items-center space-x-4 text-sm text-white/70">
                 <div className="flex items-center space-x-1">
-                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span>Online ou Presencial</span>
                 </div>
                 <div className="flex items-center space-x-1">
-                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span>Pagamento Fácil</span>
                 </div>
               </div>
@@ -110,16 +106,16 @@ export const Hero = () => {
             
             {/* Floating Stats */}
             <div className="absolute -bottom-6 left-6 right-6 grid grid-cols-3 gap-4">
-              <div className="bg-background/90 backdrop-blur-sm rounded-lg p-4 text-center shadow-lg">
+              <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 text-center shadow-lg">
                 <div className="text-2xl font-bold text-primary">900+</div>
                 <div className="text-xs text-muted-foreground">Nota Redação</div>
               </div>
-              <div className="bg-background/90 backdrop-blur-sm rounded-lg p-4 text-center shadow-lg">
-                <div className="text-2xl font-bold text-success">R$ 70</div>
+              <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 text-center shadow-lg">
+                <div className="text-2xl font-bold text-accent">R$ 70</div>
                 <div className="text-xs text-muted-foreground">A partir de</div>
               </div>
-              <div className="bg-background/90 backdrop-blur-sm rounded-lg p-4 text-center shadow-lg">
-                <div className="text-2xl font-bold text-accent">Hoje</div>
+              <div className="bg-white/95 backdrop-blur-sm rounded-xl p-4 text-center shadow-lg">
+                <div className="text-2xl font-bold text-primary">Hoje</div>
                 <div className="text-xs text-muted-foreground">Começa</div>
               </div>
             </div>

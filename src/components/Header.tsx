@@ -46,7 +46,7 @@ export const Header = () => {
     trackWhatsAppClick('Header WhatsApp CTA', 'header');
     
     const message = encodeURIComponent("Oi, quero saber mais sobre aulas de Matemática/Redação. Vim pelo site GS Aprova.");
-    window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
   };
 
   const nextSlide = () => {

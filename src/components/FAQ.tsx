@@ -7,45 +7,37 @@ import {
 
 const faqs = [
   {
-    question: "Como funcionam as aulas online?",
-    answer: "As aulas são realizadas via Google Meet ou Zoom com compartilhamento de tela, quadro digital e material interativo. Você recebe o link com antecedência e pode gravar a aula para revisar depois."
+    question: "As aulas são online ou presenciais?",
+    answer: "Oferecemos tanto aulas online quanto presenciais (região de São Paulo). Você pode escolher a modalidade que melhor se adapta à sua rotina e necessidades."
   },
   {
-    question: "Quanto tempo demora para receber a correção da redação?",
-    answer: "As correções são entregues em até 24 horas úteis com feedback detalhado, nota estimada e sugestões específicas de melhoria baseadas nos critérios do ENEM."
+    question: "Como funciona a correção de redação?",
+    answer: "Você envia sua redação por WhatsApp ou email, e em até 48h você recebe a correção detalhada com nota, feedback específico por competência e dicas de melhoria personalizadas."
   },
   {
-    question: "Posso cancelar ou reagendar uma aula?",
-    answer: "Sim! Você pode cancelar ou reagendar com até 2 horas de antecedência pelo WhatsApp. Oferecemos total flexibilidade para se adaptar à sua rotina de estudos."
+    question: "Quanto tempo demora para receber a correção?",
+    answer: "A correção da redação é entregue em até 48 horas. Para aulas, podemos agendar para o mesmo dia ou próximo dia útil."
   },
   {
-    question: "Quais formas de pagamento vocês aceitam?",
-    answer: "Aceitamos PIX (com desconto), cartão de crédito via Mercado Pago e transferência bancária. O pagamento é feito apenas após a confirmação da aula ou serviço."
+    question: "O pagamento é seguro?",
+    answer: "Sim! Aceitamos Pix (com desconto), cartão de crédito e débito. Todos os pagamentos são processados com segurança."
   },
   {
-    question: "O material de estudo está incluso?",
-    answer: "Sim! Todo material necessário está incluso: listas de exercícios, resumos teóricos, temas de redação atualizados e simulados. Você não precisa comprar nada adicional."
-  },
-  {
-    question: "Vocês atendem outros vestibulares além do ENEM?",
-    answer: "Sim! Atendemos FUVEST, UNICAMP, UNESP e outros vestibulares. Nossa metodologia se adapta às especificidades de cada prova e instituição."
-  },
-  {
-    question: "Existe desconto para pacotes maiores?",
-    answer: "Sim! Os pacotes oferecem melhor custo-benefício. Também oferecemos descontos especiais para pagamento à vista no PIX e para estudantes que indicam amigos."
+    question: "Posso experimentar uma aula antes de fechar pacote?",
+    answer: "Sim! Oferecemos aula experimental por R$ 70. Você pode conhecer nossa metodologia antes de escolher um pacote."
   }
 ];
 
 export const FAQ = () => {
   return (
-    <section className="py-16 lg:py-24">
+    <section className="py-16 lg:py-24 bg-muted">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-primary">
             Perguntas Frequentes
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Tire suas dúvidas sobre nossos serviços e metodologia
+            Tire suas dúvidas sobre nossos serviços
           </p>
         </div>
 
@@ -68,14 +60,12 @@ export const FAQ = () => {
           </Accordion>
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
-            Ainda tem dúvidas? Fale conosco!
-          </p>
+        <div className="bg-white rounded-xl p-6 text-center mt-12">
+          <p className="text-lg mb-4 text-primary">Ainda tem dúvidas?</p>
           <button 
             onClick={() => {
               const message = encodeURIComponent("Oi! Tenho algumas dúvidas sobre os serviços. Vim pelo site GS Aprova.");
-              window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+              window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
             }}
             className="btn-hero inline-flex items-center gap-2"
           >

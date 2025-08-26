@@ -1,10 +1,8 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { Challenges } from "@/components/Challenges";
 import { Services } from "@/components/Services";
-import { Testimonials } from "@/components/Testimonials";
+import { HowItWorks } from "@/components/HowItWorks";
 import { FAQ } from "@/components/FAQ";
-import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { useEffect } from "react";
@@ -65,11 +63,9 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <Challenges />
         <Services />
-        <Testimonials />
+        <HowItWorks />
         <FAQ />
-        <ContactForm />
       </main>
       <Footer />
       <StickyWhatsApp />

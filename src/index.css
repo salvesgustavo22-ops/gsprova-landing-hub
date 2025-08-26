@@ -15,13 +15,13 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Primary - Professional Blue for Trust & Education */
-    --primary: 218 89% 51%;
-    --primary-foreground: 0 0% 98%;
-    --primary-hover: 218 89% 45%;
+    /* Primary - GS Aprova Blue #0d2b7e */
+    --primary: 221 81% 28%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 221 81% 24%;
 
     /* Secondary - Clean Neutral */
-    --secondary: 210 40% 96.1%;
+    --secondary: 0 0% 97%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     /* Success - Achievement Green */
@@ -29,13 +29,13 @@
     --success-foreground: 0 0% 98%;
     --success-light: 142 76% 94%;
 
-    /* Accent - Action Orange */
-    --accent: 24 95% 53%;
-    --accent-foreground: 0 0% 98%;
-    --accent-hover: 24 95% 47%;
+    /* Accent - GS Aprova Yellow #ffd34d */
+    --accent: 47 100% 65%;
+    --accent-foreground: 221 81% 28%;
+    --accent-hover: 47 100% 60%;
 
-    /* Muted */
-    --muted: 210 40% 96.1%;
+    /* Muted - Light Gray #f7f7f7 */
+    --muted: 0 0% 97%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --destructive: 0 84.2% 60.2%;
@@ -131,7 +131,13 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 700;
   }
 
   html {
@@ -142,10 +148,12 @@
 @layer components {
   /* Hero Button Variant */
   .btn-hero {
-    @apply bg-gradient-to-r from-accent to-accent-hover text-accent-foreground;
-    @apply px-8 py-4 rounded-lg font-semibold text-lg;
+    @apply bg-accent text-accent-foreground hover:bg-accent-hover;
+    @apply px-8 py-4 rounded-xl font-semibold text-lg uppercase;
     @apply shadow-[var(--shadow-cta)] hover:shadow-lg;
     @apply transform hover:scale-105 transition-[var(--transition-bounce)];
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
   }
 
   /* Card Enhancements */

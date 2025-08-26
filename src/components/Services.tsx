@@ -84,7 +84,7 @@ export const Services = () => {
     trackPlanClick(`${category} - ${service.title}`);
     
     const message = encodeURIComponent(`Oi, tenho interesse no plano "${category} - ${service.title}" por ${service.price}. Vim pelo site GS Aprova.`);
-    window.open(`https://wa.me/5511999999999?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
   };
 
   const handleServiceClick = (service: 'math' | 'essay') => {
@@ -92,10 +92,10 @@ export const Services = () => {
   };
 
   return (
-    <section id="servicos" className="py-16 lg:py-24 bg-muted/30">
+    <section id="servicos" className="py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-primary">
             Nossos Serviços
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -107,46 +107,38 @@ export const Services = () => {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           <div 
             onClick={() => handleServiceClick('math')}
-            className={`cursor-pointer card-service hover:scale-105 transition-all ${
-              activeService === 'math' ? 'ring-2 ring-primary bg-primary/5' : ''
+            className={`cursor-pointer bg-muted rounded-xl p-8 text-center hover:bg-accent/10 hover:scale-105 transition-all ${
+              activeService === 'math' ? 'ring-2 ring-accent bg-accent/10' : ''
             }`}
           >
-            <Card className="border-none bg-transparent">
-              <CardContent className="p-8 text-center">
-                <div className="text-6xl mb-4">📊</div>
-                <h3 className="text-2xl font-bold mb-2 text-foreground">
-                  Aula e Reforço de Matemática
-                </h3>
-                <p className="text-muted-foreground">
-                  Matemática descomplicada para ENEM e vestibulares
-                </p>
-                <div className="mt-4 text-primary font-semibold">
-                  Clique para ver modalidades
-                </div>
-              </CardContent>
-            </Card>
+            <div className="text-6xl mb-4">🧮</div>
+            <h3 className="text-2xl font-bold mb-2 text-primary">
+              Aula e Reforço de Matemática
+            </h3>
+            <p className="text-muted-foreground">
+              Matemática descomplicada para ENEM e vestibulares
+            </p>
+            <div className="mt-4 text-accent font-semibold">
+              Clique para ver modalidades
+            </div>
           </div>
 
           <div 
             onClick={() => handleServiceClick('essay')}
-            className={`cursor-pointer card-service hover:scale-105 transition-all ${
-              activeService === 'essay' ? 'ring-2 ring-primary bg-primary/5' : ''
+            className={`cursor-pointer bg-muted rounded-xl p-8 text-center hover:bg-accent/10 hover:scale-105 transition-all ${
+              activeService === 'essay' ? 'ring-2 ring-accent bg-accent/10' : ''
             }`}
           >
-            <Card className="border-none bg-transparent">
-              <CardContent className="p-8 text-center">
-                <div className="text-6xl mb-4">✍️</div>
-                <h3 className="text-2xl font-bold mb-2 text-foreground">
-                  Redação
-                </h3>
-                <p className="text-muted-foreground">
-                  Correção detalhada para nota 900+ no ENEM
-                </p>
-                <div className="mt-4 text-primary font-semibold">
-                  Clique para ver modalidades
-                </div>
-              </CardContent>
-            </Card>
+            <div className="text-6xl mb-4">📝</div>
+            <h3 className="text-2xl font-bold mb-2 text-primary">
+              Redação
+            </h3>
+            <p className="text-muted-foreground">
+              Correção detalhada para nota 900+ no ENEM
+            </p>
+            <div className="mt-4 text-accent font-semibold">
+              Clique para ver modalidades
+            </div>
           </div>
         </div>
 
@@ -156,12 +148,12 @@ export const Services = () => {
             {(activeService === 'math' ? mathServices : essayServices).map((service) => (
               <Card 
                 key={service.id} 
-                className={`card-service relative ${service.popular ? 'ring-2 ring-success' : ''}`}
+                className={`bg-white border-2 rounded-xl p-6 relative ${service.popular ? 'border-accent' : 'border-gray-200'}`}
               >
                 {service.badge && (
                   <Badge 
                     className={`absolute -top-3 left-1/2 -translate-x-1/2 ${
-                      service.popular ? 'bg-success text-success-foreground' : 'badge-success'
+                      service.popular ? 'bg-accent text-accent-foreground' : 'bg-primary text-white'
                     }`}
                   >
                     {service.badge}
@@ -169,8 +161,8 @@ export const Services = () => {
                 )}
                 
                 <CardHeader className="text-center pb-4">
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                  <CardDescription>{service.description}</CardDescription>
+                  <CardTitle className="text-xl text-primary">{service.title}</CardTitle>
+                  <CardDescription className="text-muted-foreground">{service.description}</CardDescription>
                   
                   <div className="mt-4">
                     <div className="flex items-center justify-center gap-2">
@@ -179,7 +171,7 @@ export const Services = () => {
                           {service.originalPrice}
                         </span>
                       )}
-                      <span className="text-3xl font-bold text-primary">
+                      <span className="text-3xl font-bold text-accent">
                         {service.price}
                       </span>
                     </div>
@@ -201,7 +193,7 @@ export const Services = () => {
                     className={`w-full ${
                       service.popular 
                         ? 'btn-hero' 
-                        : 'bg-primary hover:bg-primary-hover text-primary-foreground'
+                        : 'bg-primary hover:bg-primary-hover text-white'
                     }`}
                   >
                     Quero este
