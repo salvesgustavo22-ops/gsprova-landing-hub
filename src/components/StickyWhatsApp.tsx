@@ -53,18 +53,19 @@ export const StickyWhatsApp = () => {
             </p>
             <Button 
               onClick={handleWhatsAppClick}
-              className="w-full bg-success-foreground text-success hover:bg-success-foreground/90"
+              className="w-full bg-success-foreground text-success hover:bg-success-foreground/90 text-sm"
             >
-              Iniciar conversa
+              Fale conosco
             </Button>
           </div>
         </div>
       ) : (
         <button
           onClick={toggleMinimize}
-          className="w-14 h-14 bg-success text-success-foreground rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform animate-pulse"
+          className="bg-success text-success-foreground rounded-full shadow-lg flex items-center gap-2 px-3 py-2 hover:scale-105 transition-transform animate-pulse text-sm"
         >
-          <MessageCircleIcon className="w-6 h-6" />
+          <MessageCircleIcon className="w-4 h-4" />
+          <span className="text-xs font-medium">Fale conosco</span>
         </button>
       )}
     </div>

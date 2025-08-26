@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { trackWhatsAppClick } from "@/lib/analytics";
+import gsAprovaLogo from "@/assets/gs-aprova-logo.png";
 
 interface ServiceCarousel {
   title: string;
@@ -58,12 +59,14 @@ export const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <header className="bg-background border-b border-border/50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-primary to-success rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">GS</span>
-          </div>
+        <div className="flex items-center space-x-3">
+          <img 
+            src={gsAprovaLogo} 
+            alt="GS Aprova Logo" 
+            className="w-12 h-12"
+          />
           <div>
             <h1 className="text-xl font-bold text-foreground">GS Aprova</h1>
             <p className="text-xs text-muted-foreground">ENEM & Vestibulares</p>
@@ -71,10 +74,10 @@ export const Header = () => {
         </div>
         
         <Button 
-          onClick={handleWhatsAppClick}
+          onClick={() => window.location.href = '/contato'}
           className="btn-hero hidden sm:flex"
         >
-          Falar no WhatsApp
+          Solicitar Contato
         </Button>
       </div>
 
