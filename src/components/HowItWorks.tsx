@@ -4,18 +4,23 @@ import { Button } from "@/components/ui/button";
 const steps = [
   {
     icon: UserPlus,
-    title: "1. Faça sua inscrição",
-    description: "Entre em contato pelo WhatsApp e conte seus objetivos de estudo"
+    title: "1. Fale conosco",
+    description: "Entre em contato para solicitar o tipo de serviço desejado, nos contando um pouco mais da sua necessidade"
   },
   {
     icon: Route, 
-    title: "2. Receba sua trilha personalizada",
-    description: "Criamos um plano de estudos focado nas suas necessidades específicas"
+    title: "2. Diagnóstico",
+    description: "Nossa equipe entrará em contato para entender melhor a necessidade para montar um plano personalizado para seu serviço"
   },
   {
     icon: TrendingUp,
-    title: "3. Estude com foco e melhore seus resultados",
-    description: "Siga sua trilha e veja sua evolução com nosso acompanhamento"
+    title: "3. Aceite",
+    description: "Nossa equipe enviará uma proposta a ser aprovada"
+  },
+  {
+    icon: UserPlus,
+    title: "4. Hora de aprender",
+    description: "Vamos embarcar juntos no seu processo de aprendizado"
   }
 ];
 
@@ -32,7 +37,7 @@ export const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {steps.map((step, index) => (
             <div key={index} className="text-center group">
               <div className="relative mb-6">
@@ -71,7 +76,7 @@ export const HowItWorks = () => {
               const message = encodeURIComponent("Oi, quero minha trilha agora! Vim pelo site GS Aprova.");
               window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
             }}
-            className="btn-hero text-lg px-8 py-6"
+            className="bg-accent hover:bg-accent/90 text-primary font-bold text-lg px-8 py-6 shadow-lg"
           >
             Quero minha trilha agora
           </Button>

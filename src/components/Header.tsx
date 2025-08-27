@@ -35,27 +35,34 @@ const services: ServiceCarousel[] = [
 
 export const Header = () => {
   return (
-    <header className="bg-primary shadow-lg">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-3">
-          <img 
-            src={gsAprovaLogo} 
-            alt="GS Aprova Logo" 
-            className="w-12 h-12"
-          />
-          <div>
-            <h1 className="text-xl font-bold text-white">GS Aprova</h1>
-            <p className="text-xs text-white/70">ENEM & Vestibulares</p>
-          </div>
-        </div>
-        
-        <Button 
-          onClick={() => window.location.href = '/contato'}
-          className="bg-accent hover:bg-accent/90 text-primary font-bold px-6 py-2 hidden sm:flex shadow-lg"
-        >
-          Estudo conosco
-        </Button>
+    <>
+      {/* Top Banner */}
+      <div className="bg-primary text-white py-2 text-center text-sm">
+        <span className="font-medium">🎯 Prepare-se para o ENEM 2025 com quem entende do assunto!</span>
       </div>
-    </header>
+      
+      <header className="bg-white shadow-lg border-b border-primary/10">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <img 
+              src={gsAprovaLogo} 
+              alt="GS Aprova Logo" 
+              className="w-12 h-12"
+            />
+            <div>
+              <h1 className="text-xl font-bold text-primary">GS Aprova</h1>
+              <p className="text-xs text-primary/70">ENEM & Vestibulares</p>
+            </div>
+          </div>
+          
+          <Button 
+            onClick={() => window.location.href = '/contato'}
+            className="bg-accent hover:bg-accent/90 text-primary font-bold px-6 py-2 shadow-lg"
+          >
+            Estudo conosco
+          </Button>
+        </div>
+      </header>
+    </>
   );
 };
