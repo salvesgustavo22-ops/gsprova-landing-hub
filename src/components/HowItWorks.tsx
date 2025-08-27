@@ -1,21 +1,21 @@
-import { MessageCircleIcon, SearchIcon, BookOpenIcon } from "lucide-react";
+import { UserPlus, Route, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const steps = [
   {
-    icon: MessageCircleIcon,
-    title: "1. Fale no WhatsApp",
-    description: "Entre em contato conosco pelo WhatsApp e conte suas necessidades específicas"
+    icon: UserPlus,
+    title: "1. Faça sua inscrição",
+    description: "Entre em contato pelo WhatsApp e conte seus objetivos de estudo"
   },
   {
-    icon: SearchIcon, 
-    title: "2. Diagnóstico Rápido",
-    description: "Fazemos uma avaliação rápida para entender suas dificuldades e objetivos"
+    icon: Route, 
+    title: "2. Receba sua trilha personalizada",
+    description: "Criamos um plano de estudos focado nas suas necessidades específicas"
   },
   {
-    icon: BookOpenIcon,
-    title: "3. Aula/Correção Hoje",
-    description: "Começamos imediatamente com aulas personalizadas ou correções detalhadas"
+    icon: TrendingUp,
+    title: "3. Estude com foco e melhore seus resultados",
+    description: "Siga sua trilha e veja sua evolução com nosso acompanhamento"
   }
 ];
 
@@ -67,10 +67,13 @@ export const HowItWorks = () => {
           </div>
           
           <Button 
-            onClick={() => window.location.href = '/contato'}
+            onClick={() => {
+              const message = encodeURIComponent("Oi, quero minha trilha agora! Vim pelo site GS Aprova.");
+              window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+            }}
             className="btn-hero text-lg px-8 py-6"
           >
-            Começar minha preparação hoje
+            Quero minha trilha agora
           </Button>
         </div>
       </div>

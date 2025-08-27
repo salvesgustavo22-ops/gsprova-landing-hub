@@ -12,43 +12,17 @@ interface HeroVariant {
   badge: string;
 }
 
-const variants: HeroVariant[] = [
-  {
-    id: "nota-900",
-    headline: "Nota 900+: leve sua redação para outro nível",
-    subheadline: "Suba sua redação da nota 700 para 900+ com feedback prático e metodologia comprovada",
-    cta: "Falar no WhatsApp agora",
-    badge: "Foco em Excelência"
-  },
-  {
-    id: "reta-final", 
-    headline: "Reta Final: acelere sua preparação para o ENEM",
-    subheadline: "Aprenda só o que cai e acelere seu desempenho na reta final com método objetivo",
-    cta: "Começar minha preparação hoje",
-    badge: "Urgência & Performance"
-  },
-  {
-    id: "agiliza",
-    headline: "Agiliza: Aprender pode ser simples e direto", 
-    subheadline: "Entenda fácil, sem enrolação. Estudo direto ao ponto com preços acessíveis",
-    cta: "Tirar minha dúvida já",
-    badge: "Simples & Acessível"
-  }
-];
+const heroData = {
+  headline: "Estude certo para o ENEM e Fuvest: foco no que realmente garante pontos",
+  subheadline: "Nada de estudar tudo e se perder. Com o GS Aprova você tem Matemática prática, correção de redação detalhada e uma trilha de estudo personalizada.",
+  cta: "Quero começar agora"
+};
 
 export const Hero = () => {
-  const [currentVariant, setCurrentVariant] = useState<HeroVariant>(variants[0]);
-
-  useEffect(() => {
-    // Simple A/B test logic - can be enhanced with proper testing tools
-    const variantIndex = Math.floor(Math.random() * variants.length);
-    setCurrentVariant(variants[variantIndex]);
-  }, []);
-
   const handleCTAClick = () => {
-    trackWhatsAppClick('Hero CTA', currentVariant.id);
+    trackWhatsAppClick('Hero CTA', 'new_version');
     
-    const message = encodeURIComponent("Oi, quero saber mais sobre aulas de Matemática/Redação. Vim pelo site GS Aprova.");
+    const message = encodeURIComponent("Oi, quero começar agora meus estudos. Vim pelo site GS Aprova.");
     window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
   };
 
@@ -69,22 +43,20 @@ export const Hero = () => {
             
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-white">
-                <span className="text-accent">
-                  {currentVariant.headline.split(': ')[1]}
-                </span>
+                {heroData.headline}
               </h1>
               
-              <p className="text-lg text-white/80 leading-relaxed max-w-lg">
-                {currentVariant.subheadline}
+              <p className="text-lg text-white/90 leading-relaxed max-w-lg">
+                {heroData.subheadline}
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                onClick={() => window.location.href = '/contato'}
-                className="btn-hero text-lg px-8 py-6"
+                onClick={handleCTAClick}
+                className="btn-hero text-lg px-10 py-6 text-primary bg-accent hover:bg-accent/90 font-bold"
               >
-                Começar minha preparação hoje
+                {heroData.cta}
               </Button>
               
               <div className="flex items-center space-x-4 text-sm text-white/70">

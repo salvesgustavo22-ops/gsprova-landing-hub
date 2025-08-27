@@ -1,6 +1,9 @@
 import { Hero } from "@/components/Hero";
+import { Benefits } from "@/components/Benefits";
+import { SocialProof } from "@/components/SocialProof";
 import { Services } from "@/components/Services";
 import { HowItWorks } from "@/components/HowItWorks";
+import { FinalCTA } from "@/components/FinalCTA";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
@@ -61,8 +64,11 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <main>
         <Hero />
+        <Benefits />
+        <SocialProof />
         <Services />
         <HowItWorks />
+        <FinalCTA />
         <FAQ />
       </main>
       <Footer />
