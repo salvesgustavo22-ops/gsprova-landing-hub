@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { trackWhatsAppClick } from "@/lib/analytics";
 import heroImage from "@/assets/hero-student-18yo.jpg";
-import gsAprovaLogo from "@/assets/gs-aprova-logo.png";
+import gsAprovaLogo from "@/assets/gs-aprova-new-logo.png";
 
 interface HeroVariant {
   id: string;
@@ -55,23 +55,21 @@ export const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-primary text-white">
-      {/* Logo at top */}
-      <div className="absolute top-6 left-6 z-10">
-        <img 
-          src={gsAprovaLogo} 
-          alt="GS Aprova Logo" 
-          className="w-16 h-16"
-        />
-      </div>
-      
       <div className="container mx-auto px-4 py-20 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="space-y-6">            
+          <div className="space-y-6">
+            {/* Logo positioned at the left top */}
+            <div className="mb-6">
+              <img 
+                src={gsAprovaLogo} 
+                alt="GS Aprova Logo" 
+                className="w-24 h-auto object-contain"
+              />
+            </div>
+            
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-white">
-                GS Aprova
-                <br />
                 <span className="text-accent">
                   {currentVariant.headline.split(': ')[1]}
                 </span>
