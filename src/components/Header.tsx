@@ -61,12 +61,21 @@ export const Header = () => {
             </div>
           </div>
           
-          <Button 
-            onClick={() => window.location.href = '/contato'}
-            className="bg-accent hover:bg-accent/90 text-primary font-bold px-6 py-2 shadow-lg"
-          >
-            Estudo conosco
-          </Button>
+          <div className="flex items-center space-x-3">
+            <Button 
+              onClick={() => window.location.href = '/contato'}
+              className="bg-accent hover:bg-accent/90 text-primary font-bold px-4 py-2 shadow-lg"
+            >
+              Estudo conosco
+            </Button>
+            <Button 
+              variant="outline"
+              onClick={() => window.location.href = '/auth'}
+              className="text-primary border-primary hover:bg-primary/5 px-4 py-2"
+            >
+              Admin
+            </Button>
+          </div>
         </div>
       </header>
     </>
