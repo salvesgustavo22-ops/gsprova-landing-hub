@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { trackWhatsAppClick } from "@/lib/analytics";
 import heroImage from "@/assets/hero-student-18yo.jpg";
-import gsAprovaLogo from "@/assets/gs-aprova-new-logo.png";
 
 interface HeroVariant {
   id: string;
@@ -30,7 +29,7 @@ const variants: HeroVariant[] = [
   },
   {
     id: "agiliza",
-    headline: "Agiliza: aprender pode ser simples e direto", 
+    headline: "Agiliza: Aprender pode ser simples e direto", 
     subheadline: "Entenda fácil, sem enrolação. Estudo direto ao ponto com preços acessíveis",
     cta: "Tirar minha dúvida já",
     badge: "Simples & Acessível"
@@ -60,11 +59,11 @@ export const Hero = () => {
           {/* Content */}
           <div className="space-y-6">
             {/* Logo positioned at the left top */}
-            <div className="mb-6">
+            <div className="mb-6 relative z-10">
               <img 
-                src={gsAprovaLogo} 
+                src="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png" 
                 alt="GS Aprova Logo" 
-                className="w-24 h-auto object-contain"
+                className="w-32 h-auto object-contain drop-shadow-lg"
               />
             </div>
             
