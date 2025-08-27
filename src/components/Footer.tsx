@@ -45,9 +45,9 @@ export const Footer = () => {
                 <MessageCircle className="w-4 h-4" />
                 (11) 97496-9036
               </a>
-              <a href="https://instagram.com/gsaprova" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
+              <a href="https://instagram.com/gsaprovamr" className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm">
                 <Instagram className="w-4 h-4" />
-                @gsaprova
+                @gsaprovamr
               </a>
             </div>
           </div>
