@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SecurityIndicators } from "@/components/SecurityIndicators";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { trackWhatsAppClick, trackPageSection, trackSecurityIndicatorView } from "@/lib/analytics";
 import heroImage from "@/assets/hero-student-18yo.jpg";
 
 interface HeroVariant {
@@ -62,7 +62,10 @@ export const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                onClick={() => window.location.href = '/contato'}
+                onClick={() => {
+                  trackWhatsAppClick('hero_main_cta', 'contato');
+                  window.location.href = '/contato';
+                }}
                 className="btn-hero text-lg px-10 py-6 text-primary bg-accent hover:bg-accent/90 font-bold shadow-lg"
               >
                 {heroData.cta}

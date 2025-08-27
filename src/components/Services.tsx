@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckIcon, StarIcon } from "lucide-react";
-import { trackPlanClick } from "@/lib/analytics";
+import { trackPlanClick, trackServiceSelection, trackPageSection } from "@/lib/analytics";
 
 interface ServiceDetail {
   id: string;
@@ -83,11 +83,25 @@ export const Services = () => {
   const [activeService, setActiveService] = useState<'math' | 'essay' | 'study-path' | 'complete'>('math');
 
   const handlePlanClick = (service: ServiceDetail, category: string) => {
+    // Track plan selection
+    trackPlanClick(service.title, service.price, category);
+    
     const message = encodeURIComponent(`Oi, tenho interesse no plano "${category} - ${service.title}" por ${service.price}. Vim pelo site GS Aprova.`);
     window.open(`https://wa.me/+5511974969036?text=${message}`, '_blank');
   };
 
   const handleServiceClick = (service: 'math' | 'essay' | 'study-path' | 'complete') => {
+    // Track service selection
+    const serviceNames = {
+      'math': 'Matemática',
+      'essay': 'Redação', 
+      'study-path': 'Trilhas de Estudo',
+      'complete': 'Experiência Completa'
+    };
+    
+    trackServiceSelection(serviceNames[service], service);
+    trackPageSection('services', 'service_change');
+    
     setActiveService(service);
   };
 

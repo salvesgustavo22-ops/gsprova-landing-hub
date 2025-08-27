@@ -16,7 +16,7 @@ export const StickyWhatsApp = () => {
   }, []);
 
   const handleWhatsAppClick = () => {
-    trackWhatsAppClick('Sticky WhatsApp CTA', 'sticky');
+    trackWhatsAppClick('sticky_whatsapp', 'geral');
     
     const message = encodeURIComponent("Oi, quero saber mais sobre aulas de Matemática/Redação. Vim pelo site GS Aprova.");
     window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');

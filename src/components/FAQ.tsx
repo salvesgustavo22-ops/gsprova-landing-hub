@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { trackFAQInteraction, trackWhatsAppClick } from "@/lib/analytics";
 
 const faqs = [
   {
@@ -57,7 +58,10 @@ export const FAQ = () => {
                 value={`item-${index}`}
                 className="card-service border-0"
               >
-                <AccordionTrigger className="text-left font-semibold hover:no-underline hover:text-primary px-6 py-4">
+                <AccordionTrigger 
+                  className="text-left font-semibold hover:no-underline hover:text-primary px-6 py-4"
+                  onClick={() => trackFAQInteraction(faq.question, 'open')}
+                >
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed px-6 pb-6">
@@ -78,6 +82,7 @@ export const FAQ = () => {
           </p>
           <button 
             onClick={() => {
+              trackWhatsAppClick('faq_support_cta');
               const message = encodeURIComponent("Oi! Tenho algumas dúvidas sobre os serviços. Vim pelo site GS Aprova.");
               window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
             }}

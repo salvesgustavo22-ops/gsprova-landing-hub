@@ -1,5 +1,6 @@
 import { UserPlus, Route, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackWhatsAppClick, trackPageSection } from "@/lib/analytics";
 
 const steps = [
   {
@@ -83,6 +84,7 @@ export const HowItWorks = () => {
           
           <Button 
             onClick={() => {
+              trackWhatsAppClick('how_it_works_cta', 'trilha');
               const message = encodeURIComponent("Oi, quero minha trilha agora! Vim pelo site GS Aprova.");
               window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
             }}

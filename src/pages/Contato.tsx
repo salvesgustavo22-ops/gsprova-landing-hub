@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { MessageCircleIcon, ArrowLeft, CheckCircle } from "lucide-react";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { trackWhatsAppClick, trackFormStart, trackFormSubmit, trackConversion } from "@/lib/analytics";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -29,7 +29,16 @@ const Contato = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const { toast } = useToast();
+
+  // Track form start on first interaction
+  const handleFirstInteraction = () => {
+    if (!hasInteracted) {
+      trackFormStart('contact_page_form');
+      setHasInteracted(true);
+    }
+  };
 
   const formatPhone = (value: string) => {
     const numbers = value.replace(/\D/g, '');
@@ -76,8 +85,9 @@ const Contato = () => {
 
       setIsSubmitted(true);
       
-      // Track conversion
-      trackWhatsAppClick('Form Submit Success', 'contact-page');
+      // Track successful form submission and conversion
+      trackFormSubmit('contact_page_form', formData.service_interest);
+      trackConversion('contact_form_submission');
       
     } catch (error) {
       console.error('Error:', error);
@@ -92,7 +102,7 @@ const Contato = () => {
   };
 
   const handleWhatsAppClick = () => {
-    trackWhatsAppClick('Contact Form WhatsApp', 'contact-form');
+    trackWhatsAppClick('contact_success_cta');
     const message = encodeURIComponent("Oi, acabei de enviar uma solicitação pelo formulário do site. Gostaria de falar sobre minha necessidade.");
     window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
   };
@@ -177,7 +187,10 @@ const Contato = () => {
                   id="name"
                   type="text"
                   value={formData.name}
-                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                  onChange={(e) => {
+                    handleFirstInteraction();
+                    setFormData(prev => ({ ...prev, name: e.target.value }));
+                  }}
                   required
                   placeholder="Digite seu nome"
                   className="h-12 text-base"

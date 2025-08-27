@@ -8,10 +8,16 @@ import { FinalCTA } from "@/components/FinalCTA";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
+import { ScrollTracker } from "@/components/ScrollTracker";
 import { useEffect } from "react";
+import { initializeGA4 } from "@/lib/analytics";
 
 const Index = () => {
   useEffect(() => {
+    // Initialize Google Analytics 4
+    // Replace 'G-XXXXXXXXXX' with your actual GA4 measurement ID
+    initializeGA4('G-XXXXXXXXXX');
+    
     // Update page title and meta description for SEO
     document.title = "GS Aprova | Aulas de Matemática e Correção de Redação para ENEM e Fuvest";
     
@@ -63,6 +69,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <ScrollTracker />
       <main>
         <Hero />
         <Benefits />
