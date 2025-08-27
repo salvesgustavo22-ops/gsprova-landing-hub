@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { trackWhatsAppClick } from "@/lib/analytics";
 import heroImage from "@/assets/hero-student-new.jpg";
+import gsAprovaLogo from "@/assets/gs-aprova-logo.png";
 
 interface HeroVariant {
   id: string;
@@ -54,7 +55,16 @@ export const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-primary text-white">
-      <div className="container mx-auto px-4 py-16 lg:py-24">
+      {/* Logo at top */}
+      <div className="absolute top-6 left-6 z-10">
+        <img 
+          src={gsAprovaLogo} 
+          alt="GS Aprova Logo" 
+          className="w-16 h-16"
+        />
+      </div>
+      
+      <div className="container mx-auto px-4 py-20 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-6">            
