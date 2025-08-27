@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contact_submissions: {
+        Row: {
+          accepts_whatsapp: boolean | null
+          created_at: string
+          form_type: string
+          id: string
+          message: string | null
+          name: string
+          phone: string
+          service_interest: string
+          updated_at: string
+        }
+        Insert: {
+          accepts_whatsapp?: boolean | null
+          created_at?: string
+          form_type: string
+          id?: string
+          message?: string | null
+          name: string
+          phone: string
+          service_interest: string
+          updated_at?: string
+        }
+        Update: {
+          accepts_whatsapp?: boolean | null
+          created_at?: string
+          form_type?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string
+          service_interest?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
