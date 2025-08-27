@@ -47,7 +47,7 @@ const metrics = [
 
 export const SocialProof = () => {
   return (
-    <section className="py-16 lg:py-20 bg-accent/10">
+    <section className="py-16 lg:py-20 bg-muted">
       <div className="container mx-auto px-4">
         {/* Metrics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 max-w-4xl mx-auto">

@@ -7,49 +7,49 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 219 27% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 219 27% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 219 27% 15%;
 
-    /* Primary - GS Aprova Blue matching logo */
-    --primary: 218 67% 33%;
+    /* Primary - Azul Vibrante (Confiança/Foco) #2563EB */
+    --primary: 217 81% 54%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 221 81% 24%;
+    --primary-hover: 262 81% 58%;
 
-    /* Secondary - Clean Neutral */
-    --secondary: 0 0% 97%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Laranja Intenso (Ação/Conversão) #F97316 */
+    --secondary: 24 95% 53%;
+    --secondary-foreground: 0 0% 100%;
 
     /* Success - Achievement Green */
     --success: 142 76% 36%;
     --success-foreground: 0 0% 98%;
     --success-light: 142 76% 94%;
 
-    /* Accent - GS Aprova Yellow #ffd34d */
-    --accent: 47 100% 65%;
-    --accent-foreground: 221 81% 28%;
-    --accent-hover: 47 100% 60%;
+    /* Accent - Amarelo Solar (Urgência/Ênfase) #FACC15 */
+    --accent: 47 96% 54%;
+    --accent-foreground: 219 27% 15%;
+    --accent-hover: 47 96% 50%;
 
-    /* Muted - Light Gray #f7f7f7 */
-    --muted: 0 0% 97%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - Cinza Claro #F3F4F6 */
+    --muted: 220 14% 96%;
+    --muted-foreground: 219 27% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 218 89% 51%;
+    --border: 220 14% 91%;
+    --input: 220 14% 91%;
+    --ring: 217 81% 54%;
 
     /* Design System Extensions */
-    --gradient-hero: linear-gradient(135deg, hsl(218 89% 51%), hsl(142 76% 36%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 98%));
-    --shadow-card: 0 4px 12px -4px hsl(218 89% 51% / 0.1);
-    --shadow-card-hover: 0 8px 24px -8px hsl(218 89% 51% / 0.15);
+    --gradient-hero: linear-gradient(135deg, hsl(217 81% 54%), hsl(24 95% 53%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 14% 98%));
+    --shadow-card: 0 4px 12px -4px hsl(217 81% 54% / 0.1);
+    --shadow-card-hover: 0 8px 24px -8px hsl(217 81% 54% / 0.15);
     --shadow-cta: 0 4px 16px -4px hsl(24 95% 53% / 0.3);
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -146,9 +146,9 @@
 }
 
 @layer components {
-  /* Hero Button Variant */
+  /* Hero Button Variant - CTA Principal Laranja */
   .btn-hero {
-    @apply bg-accent text-accent-foreground hover:bg-accent-hover;
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90;
     @apply px-8 py-4 rounded-xl font-semibold text-lg uppercase;
     @apply shadow-[var(--shadow-cta)] hover:shadow-lg;
     @apply transform hover:scale-105 transition-[var(--transition-bounce)];

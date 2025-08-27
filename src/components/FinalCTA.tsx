@@ -39,7 +39,7 @@ export const FinalCTA = () => {
           <div className="space-y-4">
             <Button 
               onClick={handleCTAClick}
-              className="btn-hero text-xl px-12 py-8 bg-accent hover:bg-accent/90 text-primary font-bold shadow-2xl hover:shadow-accent/25 transform hover:scale-105 transition-all duration-300"
+              className="btn-hero text-xl px-12 py-8"
             >
               Começar hoje mesmo
             </Button>
