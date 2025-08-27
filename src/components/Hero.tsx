@@ -85,6 +85,7 @@ export const Hero = () => {
                 src={heroImage} 
                 alt="Estudante brasileiro preparando-se para ENEM com confiança"
                 className="w-full h-[400px] lg:h-[500px] object-cover"
+                fetchPriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
