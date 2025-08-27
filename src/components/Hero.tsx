@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { trackWhatsAppClick } from "@/lib/analytics";
-import heroImage from "@/assets/hero-student-new.jpg";
+import heroImage from "@/assets/hero-student-18yo.jpg";
 import gsAprovaLogo from "@/assets/gs-aprova-logo.png";
 
 interface HeroVariant {
