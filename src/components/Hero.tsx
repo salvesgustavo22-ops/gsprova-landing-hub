@@ -53,7 +53,7 @@ export const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                onClick={handleCTAClick}
+                onClick={() => window.location.href = '/contato'}
                 className="btn-hero text-lg px-10 py-6 text-primary bg-accent hover:bg-accent/90 font-bold"
               >
                 {heroData.cta}
