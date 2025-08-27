@@ -20,11 +20,19 @@ const faqs = [
   },
   {
     question: "O pagamento é seguro?",
-    answer: "Sim! Aceitamos Pix (com desconto), cartão de crédito e débito. Todos os pagamentos são processados com segurança."
+    answer: "Sim! Aceitamos Pix (com desconto), cartão de crédito e débito. Todos os pagamentos são processados com segurança através de certificação SSL e seguimos rigorosamente a LGPD para proteção dos seus dados."
+  },
+  {
+    question: "Meus dados pessoais ficam seguros?",
+    answer: "Absolutamente! Seguimos a Lei Geral de Proteção de Dados (LGPD). Seus dados são criptografados, nunca compartilhados com terceiros e usados apenas para prestação dos nossos serviços educacionais."
   },
   {
     question: "Posso experimentar uma aula antes de fechar pacote?",
     answer: "Sim! Oferecemos aula experimental por R$ 70. Você pode conhecer nossa metodologia antes de escolher um pacote."
+  },
+  {
+    question: "Vocês oferecem garantia?",
+    answer: "Sim! Oferecemos garantia de satisfação de 7 dias. Se não ficar satisfeito com nossos serviços, devolvemos 100% do valor investido, sem perguntas."
   }
 ];
 
@@ -60,8 +68,14 @@ export const FAQ = () => {
           </Accordion>
         </div>
 
-        <div className="bg-white rounded-xl p-6 text-center mt-12">
-          <p className="text-lg mb-4 text-primary">Ainda tem dúvidas?</p>
+        <div className="bg-white rounded-xl p-6 text-center mt-12 border border-success/20">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span>🛡️</span>
+            <p className="text-lg font-semibold text-primary">Ainda tem dúvidas?</p>
+          </div>
+          <p className="text-sm text-muted-foreground mb-4">
+            Atendimento seguro e confidencial via WhatsApp
+          </p>
           <button 
             onClick={() => {
               const message = encodeURIComponent("Oi! Tenho algumas dúvidas sobre os serviços. Vim pelo site GS Aprova.");

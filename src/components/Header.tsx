@@ -38,7 +38,13 @@ export const Header = () => {
     <>
       {/* Top Banner */}
       <div className="bg-primary text-white py-2 text-center text-sm">
-        <span className="font-medium">🎯 Prepare-se para o ENEM 2025 com quem entende do assunto!</span>
+        <div className="flex items-center justify-center gap-4">
+          <span className="font-medium">🎯 Prepare-se para o ENEM 2025 com quem entende do assunto!</span>
+          <div className="hidden sm:flex items-center gap-2 text-xs">
+            <span>🔒</span>
+            <span>Site Seguro</span>
+          </div>
+        </div>
       </div>
       
       <header className="bg-white shadow-lg border-b border-primary/10">

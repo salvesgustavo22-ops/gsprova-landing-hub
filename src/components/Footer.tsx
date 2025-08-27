@@ -55,6 +55,42 @@ export const Footer = () => {
 
         <Separator className="my-8" />
         
+        {/* Security Section */}
+        <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
+          <div>
+            <h4 className="font-semibold mb-3 text-white">Segurança e Confiança</h4>
+            <div className="flex flex-wrap gap-4 text-sm">
+              <div className="flex items-center gap-2 text-white/80">
+                <span>🔒</span>
+                <span>SSL Certificado</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/80">
+                <span>🛡️</span>
+                <span>LGPD Compliant</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/80">
+                <span>💳</span>
+                <span>Pagamentos Seguros</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/80">
+                <span>📋</span>
+                <span>Garantia de 7 dias</span>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h4 className="font-semibold mb-3 text-white">Formas de Pagamento</h4>
+            <div className="flex flex-wrap gap-2 text-sm text-white/80">
+              <span className="bg-white/10 px-3 py-1 rounded-full">PIX (com desconto)</span>
+              <span className="bg-white/10 px-3 py-1 rounded-full">Cartão até 6x</span>
+              <span className="bg-white/10 px-3 py-1 rounded-full">Débito</span>
+            </div>
+          </div>
+        </div>
+        
+        <Separator className="my-8" />
+        
         <div className="text-center text-sm text-white/70">
           © 2025 GS Aprova. Todos os direitos reservados.
         </div>

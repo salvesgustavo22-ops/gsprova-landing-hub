@@ -64,12 +64,22 @@ export const HowItWorks = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-4 bg-success-light border border-success/20 rounded-lg px-6 py-4 mb-8">
-            <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
-            <span className="text-success font-medium">
-              Atendimento rápido • Método testado • Resultados comprovados
-            </span>
-          </div>
+            <div className="inline-flex items-center gap-4 bg-success/10 border border-success/20 rounded-lg px-6 py-4 mb-8">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
+                <span className="text-success font-medium">Pagamentos Seguros</span>
+              </div>
+              <div className="text-muted-foreground">•</div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-success rounded-full"></div>
+                <span className="text-success font-medium">Método Testado</span>
+              </div>
+              <div className="text-muted-foreground">•</div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-success rounded-full"></div>
+                <span className="text-success font-medium">Resultados Comprovados</span>
+              </div>
+            </div>
           
           <Button 
             onClick={() => {

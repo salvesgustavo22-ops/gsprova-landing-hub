@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { SecurityIndicators } from "@/components/SecurityIndicators";
 import { trackWhatsAppClick } from "@/lib/analytics";
 import heroImage from "@/assets/hero-student-18yo.jpg";
 
@@ -66,17 +67,11 @@ export const Hero = () => {
               >
                 {heroData.cta}
               </Button>
-              
-              <div className="flex items-center space-x-4 text-sm text-white/70">
-                <div className="flex items-center space-x-1">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span>Online ou Presencial</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span>Pagamento Fácil</span>
-                </div>
-              </div>
+            </div>
+            
+            {/* Security Indicators */}
+            <div className="mt-6">
+              <SecurityIndicators />
             </div>
           </div>
 
