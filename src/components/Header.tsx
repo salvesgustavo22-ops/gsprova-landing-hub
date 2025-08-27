@@ -35,7 +35,7 @@ const services: ServiceCarousel[] = [
 
 export const Header = () => {
   return (
-    <header className="bg-background border-b border-border/50">
+    <header className="bg-primary shadow-lg">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <img 
@@ -44,16 +44,16 @@ export const Header = () => {
             className="w-12 h-12"
           />
           <div>
-            <h1 className="text-xl font-bold text-foreground">GS Aprova</h1>
-            <p className="text-xs text-muted-foreground">ENEM & Vestibulares</p>
+            <h1 className="text-xl font-bold text-white">GS Aprova</h1>
+            <p className="text-xs text-white/70">ENEM & Vestibulares</p>
           </div>
         </div>
         
         <Button 
           onClick={() => window.location.href = '/contato'}
-          className="btn-hero hidden sm:flex"
+          className="bg-accent hover:bg-accent/90 text-primary font-bold px-6 py-2 hidden sm:flex shadow-lg"
         >
-          Solicitar Contato
+          Estudo conosco
         </Button>
       </div>
     </header>

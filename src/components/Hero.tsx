@@ -27,8 +27,16 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-primary text-white">
-      <div className="container mx-auto px-4 py-20 lg:py-28">
+    <section className="relative overflow-hidden text-white">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url('/lovable-uploads/3e196025-f642-4155-ba69-da7ca6ee1d2c.png')` }}
+      />
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-primary/20"></div>
+      
+      <div className="relative z-10 container mx-auto px-4 py-20 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-6">
@@ -54,7 +62,7 @@ export const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 onClick={() => window.location.href = '/contato'}
-                className="btn-hero text-lg px-10 py-6 text-primary bg-accent hover:bg-accent/90 font-bold"
+                className="btn-hero text-lg px-10 py-6 text-primary bg-accent hover:bg-accent/90 font-bold shadow-lg"
               >
                 {heroData.cta}
               </Button>

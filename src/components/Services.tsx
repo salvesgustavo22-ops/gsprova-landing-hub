@@ -22,7 +22,7 @@ const mathServices: ServiceDetail[] = [
     title: "Aula Avulsa",
     description: "Aula personalizada de Matemática focada nas suas dificuldades específicas",
     price: "R$ 70",
-    features: ["1 aula de 50min", "Exercícios personalizados", "Material didático", "Suporte pós-aula"]
+    features: ["1 aula de 50min", "Exercícios personalizados", "Material didático", "Suporte pós-aula", "Até 6x no cartão"]
   },
   {
     id: "pacote-4-aulas-math", 
@@ -30,7 +30,7 @@ const mathServices: ServiceDetail[] = [
     description: "Pacote econômico com 4 aulas de Matemática e acompanhamento completo",
     price: "R$ 250",
     originalPrice: "R$ 280",
-    features: ["4 aulas de 50min cada", "Plano de estudos", "Exercícios exclusivos", "Relatório de progresso", "Suporte contínuo"],
+    features: ["4 aulas de 50min cada", "Plano de estudos", "Exercícios exclusivos", "Relatório de progresso", "Suporte contínuo", "Até 6x no cartão"],
     badge: "Mais Popular",
     popular: true
   }
@@ -42,7 +42,7 @@ const essayServices: ServiceDetail[] = [
     title: "Correção Avulsa",
     description: "Correção detalhada da sua redação com feedback personalizado",
     price: "R$ 70",
-    features: ["Correção detalhada", "Feedback personalizado", "Nota estimada", "Dicas de melhoria", "Entrega em 48h"]
+    features: ["Correção detalhada", "Feedback personalizado", "Nota estimada", "Dicas de melhoria", "Entrega em 48h", "Até 6x no cartão"]
   },
   {
     id: "pacote-completo-essay",
@@ -50,7 +50,7 @@ const essayServices: ServiceDetail[] = [
     description: "Pacote com correções ilimitadas e acompanhamento mensal",
     price: "R$ 250",
     originalPrice: "R$ 350",
-    features: ["Correções ilimitadas/mês", "Acompanhamento semanal", "Banco de temas", "Videoaulas exclusivas", "Mentoria personalizada"],
+    features: ["Correções ilimitadas/mês", "Acompanhamento semanal", "Banco de temas", "Videoaulas exclusivas", "Mentoria personalizada", "Até 6x no cartão"],
     badge: "Melhor Custo-Benefício",
     popular: true
   }
@@ -62,19 +62,32 @@ const studyPathServices: ServiceDetail[] = [
     title: "Trilha Personalizada",
     description: "Criamos trilhas com conteúdos e exercícios baseados em uma avaliação das suas necessidades, além de oferecer mentoria",
     price: "R$ 350",
-    features: ["Avaliação diagnóstica", "Trilha personalizada", "Exercícios direcionados", "Mentoria semanal", "Acompanhamento mensal"]
+    features: ["Avaliação diagnóstica", "Trilha personalizada", "Exercícios direcionados", "Mentoria semanal", "Acompanhamento mensal", "Até 6x no cartão"]
+  }
+];
+
+const completeServices: ServiceDetail[] = [
+  {
+    id: "experiencia-completa",
+    title: "Experiência Completa",
+    description: "Pacote completo com aulas de Matemática, correção de redação e trilha de aprendizado personalizada",
+    price: "R$ 720",
+    originalPrice: "R$ 920",
+    features: ["4 aulas de Matemática", "Correções ilimitadas de redação", "Trilha personalizada", "Mentoria semanal", "Suporte contínuo", "Até 6x no cartão"],
+    badge: "Melhor Oferta",
+    popular: true
   }
 ];
 
 export const Services = () => {
-  const [activeService, setActiveService] = useState<'math' | 'essay' | 'study-path'>('math');
+  const [activeService, setActiveService] = useState<'math' | 'essay' | 'study-path' | 'complete'>('math');
 
   const handlePlanClick = (service: ServiceDetail, category: string) => {
     const message = encodeURIComponent(`Oi, tenho interesse no plano "${category} - ${service.title}" por ${service.price}. Vim pelo site GS Aprova.`);
     window.open(`https://wa.me/+5511974969036?text=${message}`, '_blank');
   };
 
-  const handleServiceClick = (service: 'math' | 'essay' | 'study-path') => {
+  const handleServiceClick = (service: 'math' | 'essay' | 'study-path' | 'complete') => {
     setActiveService(service);
   };
 
@@ -86,6 +99,8 @@ export const Services = () => {
         return essayServices;
       case 'study-path':
         return studyPathServices;
+      case 'complete':
+        return completeServices;
       default:
         return mathServices;
     }
@@ -106,7 +121,7 @@ export const Services = () => {
         </div>
 
         {/* Service Selection Bands */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12 max-w-6xl mx-auto">
           <button
             onClick={() => handleServiceClick('math')}
             className={`p-6 rounded-xl border-2 transition-all duration-300 ${
@@ -115,7 +130,12 @@ export const Services = () => {
                 : 'border-primary/30 hover:border-primary/50 bg-white text-primary'
             }`}
           >
-            <div className="text-4xl mb-2">📊</div>
+            <div className="text-primary mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 3v18h18"/>
+                <path d="m19 9-5 5-4-4-3 3"/>
+              </svg>
+            </div>
             <h3 className="text-xl font-semibold">Matemática</h3>
             <p className="text-sm opacity-80">Aulas personalizadas</p>
           </button>
@@ -128,7 +148,11 @@ export const Services = () => {
                 : 'border-primary/30 hover:border-primary/50 bg-white text-primary'
             }`}
           >
-            <div className="text-4xl mb-2">✍️</div>
+            <div className="text-primary mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+              </svg>
+            </div>
             <h3 className="text-xl font-semibold">Redação</h3>
             <p className="text-sm opacity-80">Correções detalhadas</p>
           </button>
@@ -141,9 +165,32 @@ export const Services = () => {
                 : 'border-primary/30 hover:border-primary/50 bg-white text-primary'
             }`}
           >
-            <div className="text-4xl mb-2">🎯</div>
+            <div className="text-primary mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
             <h3 className="text-xl font-semibold">Trilhas de Estudo</h3>
             <p className="text-sm opacity-80">Estudo personalizado</p>
+          </button>
+
+          <button
+            onClick={() => handleServiceClick('complete')}
+            className={`p-6 rounded-xl border-2 transition-all duration-300 ${
+              activeService === 'complete'
+                ? 'border-primary bg-primary text-white'
+                : 'border-primary/30 hover:border-primary/50 bg-white text-primary'
+            }`}
+          >
+            <div className="text-primary mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 12l2 2 4-4"/>
+                <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h9zm0 0v7c0 .552-.448 1-1 1H10c-.552 0-1-.448-1-1v-7"/>
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold">Experiência Completa</h3>
+            <p className="text-sm opacity-80">Tudo incluído</p>
           </button>
         </div>
 
@@ -179,6 +226,9 @@ export const Services = () => {
                         {service.price}
                       </span>
                     </div>
+                    {(service.features.some(f => f.includes('6x no cartão')) || service.id === 'experiencia-completa') && (
+                      <p className="text-sm text-accent font-medium">Até 6x no cartão</p>
+                    )}
                   </div>
 
                   <ul className="space-y-2">
@@ -191,7 +241,12 @@ export const Services = () => {
                   </ul>
 
                   <Button
-                    onClick={() => handlePlanClick(service, activeService === 'math' ? 'Matemática' : activeService === 'essay' ? 'Redação' : 'Trilhas de Estudo')}
+                    onClick={() => handlePlanClick(service, 
+                      activeService === 'math' ? 'Matemática' : 
+                      activeService === 'essay' ? 'Redação' : 
+                      activeService === 'study-path' ? 'Trilhas de Estudo' : 
+                      'Experiência Completa'
+                    )}
                     className="w-full bg-accent hover:bg-accent-hover text-primary font-semibold py-3 px-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
                   >
                     Quero este
