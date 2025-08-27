@@ -9,6 +9,30 @@
     <meta name="author" content="GS Aprova" />
     <link rel="canonical" href="https://gsaprova.com.br" />
 
+    <!-- Resource hints for performance optimization -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    
+    <!-- Critical CSS - Inline above-the-fold styles -->
+    <style>
+      body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
+      .min-h-screen { min-height: 100vh; }
+      .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+      .grid { display: grid; gap: 1rem; }
+      .flex { display: flex; }
+      .relative { position: relative; }
+      .text-primary { color: #2563EB; }
+      .bg-primary { background-color: #2563EB; }
+      .font-bold { font-weight: 700; }
+      .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+      @media (min-width: 1024px) {
+        .lg\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .lg\\:py-28 { padding-top: 7rem; padding-bottom: 7rem; }
+      }
+    </style>
+
     <meta property="og:title" content="GS Aprova | Aulas de Matemática e Correção de Redação para ENEM e Fuvest" />
     <meta property="og:description" content="Aulas práticas de Matemática e correções detalhadas de Redação para ENEM e Fuvest. Estude online ou presencial e aumente sua nota. Fale agora pelo WhatsApp." />
     <meta property="og:type" content="website" />

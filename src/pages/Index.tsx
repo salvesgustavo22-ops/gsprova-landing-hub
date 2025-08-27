@@ -11,13 +11,30 @@ import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { ScrollTracker } from "@/components/ScrollTracker";
 import { useEffect } from "react";
 import { initializeGA4 } from "@/lib/analytics";
+import { deferExecution } from "@/utils/performance";
 import heroImage from "@/assets/hero-student-18yo.jpg";
 
 const Index = () => {
   useEffect(() => {
-    // Initialize Google Analytics 4
-    // Replace 'G-XXXXXXXXXX' with your actual GA4 measurement ID
-    initializeGA4('G-XXXXXXXXXX');
+    // Defer non-critical initializations
+    deferExecution(() => {
+      // Initialize Google Analytics 4
+      initializeGA4('G-XXXXXXXXXX');
+    }, 100);
+    
+    // Add resource hints to improve loading performance
+    const addResourceHint = (rel: string, href: string, as?: string) => {
+      const link = document.createElement('link');
+      link.rel = rel;
+      link.href = href;
+      if (as) link.as = as;
+      document.head.appendChild(link);
+      return link;
+    };
+
+    // Preconnect to external domains to reduce DNS lookup time
+    addResourceHint('dns-prefetch', 'https://www.googletagmanager.com');
+    addResourceHint('preconnect', 'https://www.googletagmanager.com', undefined);
     
     // Preload hero image for LCP optimization
     const heroImageLink = document.createElement('link');
@@ -26,6 +43,9 @@ const Index = () => {
     heroImageLink.href = heroImage;
     heroImageLink.fetchPriority = 'high';
     document.head.appendChild(heroImageLink);
+    
+    // Remove duplicate critical CSS (already inlined in HTML)
+    // Critical styles are now in index.html for better performance
     
     // Update page title and meta description for SEO
     document.title = "GS Aprova | Aulas de Matemática e Correção de Redação para ENEM e Fuvest";
