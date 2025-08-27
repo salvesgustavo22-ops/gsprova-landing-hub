@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/analytics";
 
 interface FormData {
   name: string;
@@ -22,41 +24,74 @@ export const ContactForm = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [lastSubmission, setLastSubmission] = useState<number>(0);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Rate limiting: prevent submissions within 30 seconds
+    const now = Date.now();
+    if (now - lastSubmission < 30000) {
+      toast({
+        title: "Aguarde um momento",
+        description: "Aguarde 30 segundos antes de enviar outra solicitação.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Basic validation
+    if (!formData.name.trim() || !formData.whatsapp.trim() || !formData.service) {
+      toast({
+        title: "Campos obrigatórios",
+        description: "Por favor, preencha todos os campos obrigatórios.",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // In a real app, you would send this to your backend
-      console.log('Form submitted:', formData);
-      
+      // Save to database
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert({
+          name: formData.name.trim(),
+          phone: formData.whatsapp.trim(),
+          service_interest: formData.service,
+          message: formData.message.trim() || null,
+          form_type: 'homepage_contact',
+          accepts_whatsapp: true
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      // Track successful submission
+      trackEvent('lead_submit', {
+        form_type: 'homepage_contact',
+        service_interest: formData.service
+      });
+
       toast({
         title: "Solicitação enviada!",
         description: "Entraremos em contato via WhatsApp em breve.",
       });
 
-      // Reset form
+      // Reset form and update rate limiting
       setFormData({
         name: '',
         whatsapp: '',
         service: '',
         message: ''
       });
-
-      // Track the lead submission
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'lead_submit', {
-          event_category: 'conversion',
-          service_interest: formData.service
-        });
-      }
+      setLastSubmission(now);
 
     } catch (error) {
+      console.error('Error submitting form:', error);
       toast({
         title: "Erro ao enviar",
         description: "Tente novamente ou entre em contato pelo WhatsApp.",
