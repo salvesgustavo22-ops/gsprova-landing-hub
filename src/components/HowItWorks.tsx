@@ -1,4 +1,5 @@
 import { MessageCircleIcon, SearchIcon, BookOpenIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const steps = [
   {
@@ -58,12 +59,19 @@ export const HowItWorks = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-4 bg-success-light border border-success/20 rounded-lg px-6 py-4">
+          <div className="inline-flex items-center gap-4 bg-success-light border border-success/20 rounded-lg px-6 py-4 mb-8">
             <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
             <span className="text-success font-medium">
               Atendimento rápido • Método testado • Resultados comprovados
             </span>
           </div>
+          
+          <Button 
+            onClick={() => window.location.href = '/contato'}
+            className="btn-hero text-lg px-8 py-6"
+          >
+            Começar minha preparação hoje
+          </Button>
         </div>
       </div>
     </section>

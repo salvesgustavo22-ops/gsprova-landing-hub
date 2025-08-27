@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { trackWhatsAppClick } from "@/lib/analytics";
-import heroImage from "@/assets/hero-student.jpg";
+import heroImage from "@/assets/hero-student-new.jpg";
 
 interface HeroVariant {
   id: string;
@@ -74,10 +74,10 @@ export const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                onClick={handleCTAClick}
+                onClick={() => window.location.href = '/contato'}
                 className="btn-hero text-lg px-8 py-6"
               >
-                {currentVariant.cta}
+                Começar minha preparação hoje
               </Button>
               
               <div className="flex items-center space-x-4 text-sm text-white/70">
