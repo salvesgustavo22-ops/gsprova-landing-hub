@@ -7,21 +7,31 @@ export const ScrollTracker = () => {
     let scrollPercentages: Set<number> = new Set();
     let ticking = false;
     let cachedScrollHeight = 0;
+    let resizeTimeout: number;
 
-    // Cache scroll height and update on resize
+    // Optimized scroll height calculation with batched reads
     const updateScrollHeight = () => {
-      cachedScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      // Use requestAnimationFrame to batch layout reads and avoid forced reflows
+      requestAnimationFrame(() => {
+        cachedScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      });
     };
 
-    // Throttled scroll handler using requestAnimationFrame
+    // Debounced and optimized scroll handler
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
+          // Batch all layout reads together
           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
           
-          // Use cached scroll height to avoid forced reflow
+          // Only update scroll height if not cached, and defer it
           if (cachedScrollHeight === 0) {
-            updateScrollHeight();
+            // Defer the height calculation to prevent forced reflow during scroll
+            requestAnimationFrame(() => {
+              cachedScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            });
+            ticking = false;
+            return;
           }
           
           const scrollPercent = cachedScrollHeight > 0 
@@ -43,9 +53,12 @@ export const ScrollTracker = () => {
       }
     };
 
+    // Debounced resize handler to prevent excessive recalculations
     const handleResize = () => {
-      // Update cached scroll height on resize
-      updateScrollHeight();
+      clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(() => {
+        updateScrollHeight();
+      }, 150);
     };
 
     const handleBeforeUnload = () => {
