@@ -1,10 +1,12 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
+import { ThematicSections } from "@/components/ThematicSections";
 import { Benefits } from "@/components/Benefits";
 import { SocialProof } from "@/components/SocialProof";
 import { Services } from "@/components/Services";
 import { TrustAndSecurity } from "@/components/TrustAndSecurity";
 import { HowItWorks } from "@/components/HowItWorks";
+import { TrustSection } from "@/components/TrustSection";
 import { FinalCTA } from "@/components/FinalCTA";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
@@ -103,10 +105,12 @@ const Index = () => {
       <ScrollTracker />
       <main>
         <Hero />
+        <ThematicSections />
         <Benefits />
         <SocialProof />
         <Services />
         <HowItWorks />
+        <TrustSection />
         <FinalCTA />
         <FAQ />
       </main>

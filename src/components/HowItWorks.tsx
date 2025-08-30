@@ -84,12 +84,12 @@ export const HowItWorks = () => {
           
             <button 
               onClick={() => {
-                trackWhatsAppClick('how_it_works_cta', 'trilha');
-                window.location.href = '/lead-servicos?service=trilha-personalizada';
+                trackWhatsAppClick('how_it_works_cta', 'whatsapp_direct');
+                window.open('https://wa.me/5511974969036', '_blank');
               }}
               className="btn-hero bg-accent hover:bg-accent/90 text-primary text-lg px-8 py-6"
             >
-              Quero minha trilha agora
+              Falar com a equipe agora
             </button>
           </div>
         </div>
