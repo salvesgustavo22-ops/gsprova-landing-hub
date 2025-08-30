@@ -43,17 +43,14 @@ export const Hero = () => {
           <div className="space-y-4 sm:space-y-6 text-center lg:text-left">
             {/* Logo positioned at the top */}
             <div className="mb-4 sm:mb-6 flex justify-center lg:justify-start">
-              <picture>
-                <source srcSet="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.webp" type="image/webp" />
-                <img 
-                  src="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png" 
-                  alt="GS Aprova - Aulas de Matemática e Redação para ENEM e Fuvest" 
-                  className="w-24 sm:w-32 h-auto object-contain drop-shadow-lg"
-                  width="128"
-                  height="64"
-                  loading="eager"
-                />
-              </picture>
+              <img 
+                src="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png" 
+                alt="GS Aprova - Aulas de Matemática e Redação para ENEM e Fuvest" 
+                className="w-24 sm:w-32 h-auto object-contain drop-shadow-lg"
+                width="128"
+                height="64"
+                loading="eager"
+              />
             </div>
             
             <div className="space-y-3 sm:space-y-4">
@@ -87,19 +84,16 @@ export const Hero = () => {
           {/* Hero Image */}
           <div className="relative order-first lg:order-last">
             <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl mx-4 sm:mx-0">
-              <picture>
-                <source srcSet="/assets/hero-student-18yo.webp" type="image/webp" />
-                <img 
-                  src={heroImage} 
-                  alt="Estudante jovem de 18 anos estudando para ENEM e vestibulares com material de matemática e redação"
-                  className="w-full h-[280px] sm:h-[350px] lg:h-[400px] xl:h-[500px] object-cover"
-                  fetchPriority="high"
-                  sizes="(max-width: 640px) 90vw, (max-width: 1023px) 80vw, 45vw"
-                  width="889"
-                  height="500"
-                  loading="eager"
-                />
-              </picture>
+              <img 
+                src={heroImage} 
+                alt="Estudante jovem de 18 anos estudando para ENEM e vestibulares com material de matemática e redação"
+                className="w-full h-[280px] sm:h-[350px] lg:h-[400px] xl:h-[500px] object-cover"
+                fetchPriority="high"
+                sizes="(max-width: 640px) 90vw, (max-width: 1023px) 80vw, 45vw"
+                width="889"
+                height="500"
+                loading="eager"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
             
