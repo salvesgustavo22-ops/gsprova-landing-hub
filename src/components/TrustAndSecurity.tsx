@@ -3,32 +3,26 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const trustFeatures = [
   {
-    icon: Shield,
     title: "Pagamentos Seguros",
     description: "SSL 256-bits e certificação PCI DSS para máxima proteção"
   },
   {
-    icon: Lock,
     title: "Dados Protegidos",
     description: "Seus dados pessoais são criptografados e nunca compartilhados"
   },
   {
-    icon: Award,
-    title: "Satisfação Garantida",
-    description: "7 dias para solicitar reembolso se não ficar satisfeito"
+    title: "Teste Nossos Serviços",
+    description: "Agende uma aula-pocket gratuitamente e conheça nossa metodologia"
   },
   {
-    icon: CheckCircle,
     title: "Professores Verificados",
     description: "Todos nossos profissionais são certificados e aprovados"
   },
   {
-    icon: Clock,
-    title: "Suporte 24/7",
+    title: "Contato Rápido e Objetivo",
     description: "Atendimento rápido via WhatsApp em horário comercial"
   },
   {
-    icon: Users,
     title: "+500 Aprovados",
     description: "Centenas de estudantes já conquistaram suas vagas"
   }
@@ -75,9 +69,6 @@ export const TrustAndSecurity = () => {
           {trustFeatures.map((feature, index) => (
             <Card key={index} className="bg-white border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                  <feature.icon className="w-8 h-8 text-primary" />
-                </div>
                 <h3 className="text-xl font-semibold mb-2 text-primary">
                   {feature.title}
                 </h3>
@@ -115,18 +106,23 @@ export const TrustAndSecurity = () => {
           </div>
         </div>
 
-        {/* Guarantee Box */}
+        {/* Call to Action Box */}
         <div className="mt-12 bg-gradient-to-r from-primary to-primary/80 rounded-xl p-8 text-center text-white">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-6">
-            <Award className="w-10 h-10" />
-          </div>
           <h3 className="text-2xl font-bold mb-4">
-            Garantia de 7 Dias
+            Teste nossos serviços!
           </h3>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Se você não ficar satisfeito com nossos serviços nos primeiros 7 dias, 
-            devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracias.
+          <p className="text-lg text-white/90 max-w-2xl mx-auto mb-6">
+            Agende uma aula-pocket gratuitamente e conheça nossa metodologia de ensino personalizada.
           </p>
+          <button 
+            onClick={() => {
+              const message = encodeURIComponent("Oi, quero agendar uma aula-pocket gratuita! Vim pelo site GS Aprova.");
+              window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+            }}
+            className="bg-accent hover:bg-accent/90 text-primary font-bold text-lg px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
+          >
+            Quero aula-pocket gratuita
+          </button>
         </div>
       </div>
     </section>
