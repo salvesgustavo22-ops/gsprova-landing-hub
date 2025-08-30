@@ -220,7 +220,7 @@ export const Services = () => {
             <div key={service.id} className="relative">
               {service.badge && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                  <span className="bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
+                  <span className="bg-primary text-white px-3 py-1 rounded-full text-xs sm:text-sm font-semibold shadow-lg whitespace-nowrap">
                     {service.badge}
                   </span>
                 </div>
