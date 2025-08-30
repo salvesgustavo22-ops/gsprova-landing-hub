@@ -104,7 +104,6 @@ const Index = () => {
         <Benefits />
         <SocialProof />
         <Services />
-        <TrustAndSecurity />
         <HowItWorks />
         <FinalCTA />
         <FAQ />

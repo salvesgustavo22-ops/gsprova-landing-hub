@@ -29,11 +29,7 @@ const faqs = [
   },
   {
     question: "Posso experimentar uma aula antes de fechar pacote?",
-    answer: "Sim! Oferecemos aula experimental por R$ 70. Você pode conhecer nossa metodologia antes de escolher um pacote."
-  },
-  {
-    question: "Vocês oferecem garantia?",
-    answer: "Sim! Oferecemos garantia de satisfação de 7 dias. Se não ficar satisfeito com nossos serviços, devolvemos 100% do valor investido, sem perguntas."
+    answer: "Sim! Agende uma aula-pocket gratuitamente e conheça nossa metodologia de ensino personalizada antes de escolher um pacote."
   }
 ];
 

@@ -11,21 +11,6 @@ export const FinalCTA = () => {
     <section className="py-16 lg:py-20 bg-gradient-to-br from-primary to-primary/90 text-white">
       <div className="container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto">
-          {/* Urgency Icons */}
-          <div className="flex justify-center items-center gap-8 mb-8">
-            <div className="flex items-center gap-2">
-              <Clock className="w-6 h-6 text-accent" />
-              <span className="text-sm font-medium">Provas chegando</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Target className="w-6 h-6 text-accent" />
-              <span className="text-sm font-medium">Foco certeiro</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Trophy className="w-6 h-6 text-accent" />
-              <span className="text-sm font-medium">Resultados garantidos</span>
-            </div>
-          </div>
 
           <h2 className="text-3xl lg:text-5xl font-bold mb-6 leading-tight">
             As provas estão chegando.<br />
@@ -37,15 +22,15 @@ export const FinalCTA = () => {
           </p>
 
           <div className="space-y-4">
-            <Button 
+            <button 
               onClick={handleCTAClick}
-              className="btn-hero text-xl px-12 py-8"
+              className="bg-accent hover:bg-accent/90 text-primary font-bold text-xl px-12 py-8 rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
             >
               Começar hoje mesmo
-            </Button>
+            </button>
             
             <p className="text-sm text-white/70">
-              ⚡ Resposta em até 2 horas • 💯 Metodologia comprovada • 🎯 Foco no que importa
+              ⚡ Contato rápido e objetivo • 💯 Metodologia comprovada • 🎯 Foco no que importa
             </p>
           </div>
         </div>
