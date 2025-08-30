@@ -74,11 +74,6 @@ export const Hero = () => {
                 {heroData.cta}
               </Button>
             </div>
-            
-            {/* Security Indicators - Hidden on mobile, shown on larger screens */}
-            <div className="mt-4 sm:mt-6 hidden sm:block">
-              <SecurityIndicators />
-            </div>
           </div>
 
           {/* Hero Image */}
@@ -113,11 +108,6 @@ export const Hero = () => {
               </div>
             </div>
           </div>
-        </div>
-        
-        {/* Security Indicators for mobile - at bottom */}
-        <div className="absolute bottom-4 left-4 right-4 sm:hidden">
-          <SecurityIndicators />
         </div>
       </div>
     </section>

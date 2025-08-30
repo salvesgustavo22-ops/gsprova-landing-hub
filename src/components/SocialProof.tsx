@@ -47,8 +47,36 @@ const metrics = [
 
 export const SocialProof = () => {
   return (
-    <section className="py-16 lg:py-20 bg-muted">
-      <div className="container mx-auto px-4">
+    <>
+      {/* Security Indicators Section */}
+      <section className="py-8 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center">
+            <div className="flex items-center justify-center gap-6 py-4 bg-white/90 backdrop-blur-sm rounded-lg border border-muted shadow-sm max-w-lg">
+              <div className="flex items-center gap-2 text-primary">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span className="text-sm font-medium">SSL Seguro</span>
+              </div>
+              <div className="w-px h-4 bg-muted"></div>
+              <div className="flex items-center gap-2 text-primary">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-sm font-medium">LGPD Compliant</span>
+              </div>
+              <div className="w-px h-4 bg-muted"></div>
+              <div className="flex items-center gap-2 text-primary">
+                <span className="text-sm font-medium">💳 Pagamento Seguro</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-20 bg-muted">
+        <div className="container mx-auto px-4">
         {/* Metrics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 max-w-4xl mx-auto">
           {metrics.map((metric, index) => (
@@ -101,7 +129,8 @@ export const SocialProof = () => {
             </Card>
           ))}
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 };
