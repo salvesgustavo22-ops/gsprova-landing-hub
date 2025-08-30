@@ -43,11 +43,17 @@ export const Hero = () => {
           <div className="space-y-6">
             {/* Logo positioned at the left top */}
             <div className="mb-6 relative z-10">
-              <img 
-                src="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png" 
-                alt="GS Aprova Logo" 
-                className="w-32 h-auto object-contain drop-shadow-lg"
-              />
+              <picture>
+                <source srcSet="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.webp" type="image/webp" />
+                <img 
+                  src="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png" 
+                  alt="GS Aprova - Aulas de Matemática e Redação para ENEM e Fuvest" 
+                  className="w-32 h-auto object-contain drop-shadow-lg"
+                  width="128"
+                  height="64"
+                  loading="eager"
+                />
+              </picture>
             </div>
             
             <div className="space-y-4">
@@ -81,15 +87,19 @@ export const Hero = () => {
           {/* Hero Image */}
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src={heroImage} 
-                alt="Estudante brasileiro preparando-se para ENEM com confiança"
-                className="w-full h-[400px] lg:h-[500px] object-cover"
-                fetchPriority="high"
-                sizes="(max-width: 1023px) 100vw, 50vw"
-                width="889"
-                height="500"
-              />
+              <picture>
+                <source srcSet="/assets/hero-student-18yo.webp" type="image/webp" />
+                <img 
+                  src={heroImage} 
+                  alt="Estudante jovem de 18 anos estudando para ENEM e vestibulares com material de matemática e redação"
+                  className="w-full h-[400px] lg:h-[500px] object-cover"
+                  fetchPriority="high"
+                  sizes="(max-width: 1023px) 100vw, 50vw"
+                  width="889"
+                  height="500"
+                  loading="eager"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
             

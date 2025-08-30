@@ -3,23 +3,33 @@ import { Benefits } from "@/components/Benefits";
 import { SocialProof } from "@/components/SocialProof";
 import { Services } from "@/components/Services";
 import { TrustAndSecurity } from "@/components/TrustAndSecurity";
-import { HowItWorks } from "@/components/HowItWorks";
 import { FinalCTA } from "@/components/FinalCTA";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { ScrollTracker } from "@/components/ScrollTracker";
+import { SuspendedHowItWorks } from "@/components/LazyComponents";
 import { useEffect } from "react";
 import { initializeGA4 } from "@/lib/analytics";
 import { deferExecution } from "@/utils/performance";
+import { initWebVitals, trackPerformanceMilestone } from "@/utils/webVitals";
 import heroImage from "@/assets/hero-student-18yo.jpg";
 
 const Index = () => {
   useEffect(() => {
+    // Track page load start
+    const pageLoadStart = performance.now();
+    
     // Defer non-critical initializations
     deferExecution(() => {
       // Initialize Google Analytics 4
-      initializeGA4('G-XXXXXXXXXX');
+      initializeGA4('G-KCQG5DDZGG');
+      
+      // Initialize Web Vitals monitoring
+      initWebVitals();
+      
+      // Track page load completion
+      trackPerformanceMilestone('page_loaded', performance.now() - pageLoadStart);
     }, 100);
     
     // Add resource hints to improve loading performance
@@ -105,7 +115,7 @@ const Index = () => {
         <SocialProof />
         <Services />
         <TrustAndSecurity />
-        <HowItWorks />
+        <SuspendedHowItWorks />
         <FinalCTA />
         <FAQ />
       </main>

@@ -120,9 +120,67 @@
       }
     </style>
     
-    <!-- Preload and defer main CSS -->
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/assets/hero-student-18yo.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png" as="image">
+    
+    <!-- Google Fonts with display=swap for performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"></noscript>
+    
+    <!-- Defer main CSS -->
     <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
+    
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "As aulas são online ou presenciais?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oferecemos tanto aulas online quanto presenciais (região de São Paulo). Você pode escolher a modalidade que melhor se adapta à sua rotina e necessidades."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como funciona a correção de redação?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Você envia sua redação por WhatsApp ou email, e em até 48h você recebe a correção detalhada com nota, feedback específico por competência e dicas de melhoria personalizadas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo demora para receber a correção?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A correção da redação é entregue em até 48 horas. Para aulas, podemos agendar para o mesmo dia ou próximo dia útil."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O pagamento é seguro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! Aceitamos Pix (com desconto), cartão de crédito e débito. Todos os pagamentos são processados com segurança através de certificação SSL e seguimos rigorosamente a LGPD para proteção dos seus dados."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Meus dados pessoais ficam seguros?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutamente! Seguimos a Lei Geral de Proteção de Dados (LGPD). Seus dados são criptografados, nunca compartilhados com terceiros e usados apenas para prestação dos nossos serviços educacionais."
+          }
+        }
+      ]
+    }
+    </script>
 
     <meta property="og:title" content="GS Aprova | Aulas de Matemática e Correção de Redação para ENEM e Fuvest" />
     <meta property="og:description" content="Aulas práticas de Matemática e correções detalhadas de Redação para ENEM e Fuvest. Estude online ou presencial e aumente sua nota. Fale agora pelo WhatsApp." />
@@ -150,6 +208,6 @@
 
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="/src/main.tsx" defer></script>
   </body>
 </html>
