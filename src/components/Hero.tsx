@@ -14,9 +14,13 @@ interface HeroVariant {
 }
 
 const heroData = {
-  headline: "Estude certo para o ENEM e Fuvest: foco no que realmente garante pontos",
-  subheadline: "Nada de estudar tudo e se perder. Com o GS Aprova você tem Matemática prática, correção de redação detalhada e uma trilha de estudo personalizada.",
-  cta: "Quero começar agora"
+  headline: "Matemática + Redação para ENEM 2025 e Fuvest 2025",
+  subheadline: "Aulas online, correção de redação personalizada e trilha de estudos focada no que mais cai. Simulados e suporte direto no WhatsApp.",
+  bullets: [
+    { icon: "🎯", text: "Foco no que dá ponto" },
+    { icon: "✍️", text: "Correção linha a linha" },
+    { icon: "📊", text: "Trilha com metas semanais" }
+  ]
 };
 
 export const Hero = () => {
@@ -61,17 +65,48 @@ export const Hero = () => {
               <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-lg mx-auto lg:mx-0 px-2 sm:px-0">
                 {heroData.subheadline}
               </p>
+              
+              {/* Bullets */}
+              <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 py-4">
+                {heroData.bullets.map((bullet, index) => (
+                  <div key={index} className="flex items-center gap-2 text-white/90">
+                    <span className="text-lg">{bullet.icon}</span>
+                    <span className="text-sm sm:text-base font-medium">{bullet.text}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="flex flex-col items-center lg:items-start gap-4 pt-2 sm:pt-4">
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 sm:gap-4 pt-2 sm:pt-4">
               <Button 
                 onClick={() => {
-                  trackWhatsAppClick('hero_main_cta', 'contato');
-                  window.location.href = '/contato';
+                  trackWhatsAppClick('hero_main_cta', 'whatsapp_direct');
+                  const message = encodeURIComponent("Oi, quero começar agora meus estudos para ENEM/Fuvest 2025. Vim pelo site GS Aprova.");
+                  window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
                 }}
-                className="w-full sm:w-auto btn-hero text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-6 text-primary bg-accent hover:bg-accent/90 font-bold shadow-lg rounded-xl"
+                className="w-full sm:w-auto btn-hero text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 text-white bg-primary hover:bg-primary/90 font-bold shadow-lg rounded-xl"
               >
-                {heroData.cta}
+                Começar agora no WhatsApp
+              </Button>
+              
+              <Button 
+                onClick={() => {
+                  trackWhatsAppClick('hero_secondary_cta', 'lead_servicos');
+                  window.location.href = '/lead-servicos';
+                }}
+                className="w-full sm:w-auto btn-hero text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 text-primary bg-accent hover:bg-accent/90 font-bold shadow-lg rounded-xl"
+              >
+                Quero escolher meu serviço
+              </Button>
+              
+              <Button 
+                onClick={() => {
+                  trackWhatsAppClick('hero_tertiary_cta', 'lead_checklist');
+                  window.location.href = '/lead-checklist';
+                }}
+                className="w-full sm:w-auto btn-hero text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 text-white bg-muted-foreground hover:bg-muted-foreground/90 font-bold shadow-lg rounded-xl"
+              >
+                Baixar checklist ENEM 2025
               </Button>
             </div>
           </div>

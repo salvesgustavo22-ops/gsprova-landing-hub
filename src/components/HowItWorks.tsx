@@ -85,8 +85,7 @@ export const HowItWorks = () => {
             <button 
               onClick={() => {
                 trackWhatsAppClick('how_it_works_cta', 'trilha');
-                const message = encodeURIComponent("Oi, quero minha trilha agora! Vim pelo site GS Aprova.");
-                window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+                window.location.href = '/lead-servicos?service=trilha-personalizada';
               }}
               className="btn-hero bg-accent hover:bg-accent/90 text-primary text-lg px-8 py-6"
             >

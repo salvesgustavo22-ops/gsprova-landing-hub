@@ -1,3 +1,4 @@
+import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { Benefits } from "@/components/Benefits";
 import { SocialProof } from "@/components/SocialProof";
@@ -48,11 +49,11 @@ const Index = () => {
     // Critical styles are now in index.html for better performance
     
     // Update page title and meta description for SEO
-    document.title = "GS Aprova | Aulas de Matemática e Correção de Redação para ENEM e Fuvest";
+    document.title = "ENEM 2025 e Fuvest 2025: Aulas de Matemática Online e Correção de Redação | GS Aprova";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Aulas práticas de Matemática e correções detalhadas de Redação para ENEM e Fuvest. Estude online ou presencial e aumente sua nota. Fale agora pelo WhatsApp.');
+      metaDescription.setAttribute('content', 'Prepare-se para o ENEM 2025 e Fuvest 2025 com aulas de matemática online, correção de redação personalizada e trilha de estudos. Simulados, dicas práticas e suporte direto no WhatsApp.');
     }
 
     // Add structured data for SEO
@@ -98,6 +99,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
       <ScrollTracker />
       <main>
         <Hero />

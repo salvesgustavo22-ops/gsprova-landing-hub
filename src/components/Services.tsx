@@ -258,16 +258,19 @@ export const Services = () => {
                     ))}
                   </ul>
 
-                  <button
-                    onClick={() => handlePlanClick(service, 
-                      activeService === 'math' ? 'Matemática' : 
-                      activeService === 'essay' ? 'Redação' : 
-                      activeService === 'study-path' ? 'Trilhas de Estudo' : 
-                      'Experiência Completa'
-                    )}
-                    className="btn-hero w-full bg-accent hover:bg-accent-hover text-primary py-3 px-6"
-                  >
-                    Quero este
+                   <button
+                     onClick={() => handlePlanClick(service, 
+                       activeService === 'math' ? 'Matemática' : 
+                       activeService === 'essay' ? 'Redação' : 
+                       activeService === 'study-path' ? 'Trilhas de Estudo' : 
+                       'Experiência Completa'
+                     )}
+                     className="btn-hero w-full bg-accent hover:bg-accent-hover text-primary py-3 px-6"
+                   >
+                     {activeService === 'math' ? 'Quero aulas de matemática' :
+                      activeService === 'essay' ? 'Enviar minha redação' :
+                      activeService === 'study-path' ? 'Montar minha trilha' :
+                      'Quero o plano completo'}
                   </button>
                 </div>
               </div>
