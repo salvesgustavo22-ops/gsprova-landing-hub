@@ -64,34 +64,35 @@ export const HowItWorks = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-4 bg-success/10 border border-success/20 rounded-lg px-6 py-4 mb-8">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
-                <span className="text-success font-medium">Pagamentos Seguros</span>
+        {/* Redesigned Success Box */}
+        <div className="mt-16 max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-success to-success/90 rounded-xl p-8 text-center text-white shadow-xl">
+            <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
+              <div className="flex items-center gap-3 bg-white/20 rounded-full px-4 py-2">
+                <div className="w-3 h-3 bg-white rounded-full"></div>
+                <span className="text-white font-medium text-sm">Pagamentos Seguros</span>
               </div>
-              <div className="text-muted-foreground">•</div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-success rounded-full"></div>
-                <span className="text-success font-medium">Método Testado</span>
+              <div className="flex items-center gap-3 bg-white/20 rounded-full px-4 py-2">
+                <div className="w-3 h-3 bg-white rounded-full"></div>
+                <span className="text-white font-medium text-sm">Método Testado</span>
               </div>
-              <div className="text-muted-foreground">•</div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-success rounded-full"></div>
-                <span className="text-success font-medium">Resultados Comprovados</span>
+              <div className="flex items-center gap-3 bg-white/20 rounded-full px-4 py-2">
+                <div className="w-3 h-3 bg-white rounded-full"></div>
+                <span className="text-white font-medium text-sm">Resultados Comprovados</span>
               </div>
             </div>
           
-          <Button 
-            onClick={() => {
-              trackWhatsAppClick('how_it_works_cta', 'trilha');
-              const message = encodeURIComponent("Oi, quero minha trilha agora! Vim pelo site GS Aprova.");
-              window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
-            }}
-            className="bg-accent hover:bg-accent/90 text-primary font-bold text-lg px-8 py-6 shadow-lg"
-          >
-            Quero minha trilha agora
-          </Button>
+            <button 
+              onClick={() => {
+                trackWhatsAppClick('how_it_works_cta', 'trilha');
+                const message = encodeURIComponent("Oi, quero minha trilha agora! Vim pelo site GS Aprova.");
+                window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+              }}
+              className="btn-hero bg-accent hover:bg-accent/90 text-primary text-lg px-8 py-6"
+            >
+              Quero minha trilha agora
+            </button>
+          </div>
         </div>
       </div>
     </section>

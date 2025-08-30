@@ -258,17 +258,17 @@ export const Services = () => {
                     ))}
                   </ul>
 
-                  <Button
+                  <button
                     onClick={() => handlePlanClick(service, 
                       activeService === 'math' ? 'Matemática' : 
                       activeService === 'essay' ? 'Redação' : 
                       activeService === 'study-path' ? 'Trilhas de Estudo' : 
                       'Experiência Completa'
                     )}
-                    className="w-full bg-accent hover:bg-accent-hover text-primary font-semibold py-3 px-6 rounded-xl shadow-lg transform hover:scale-105 transition-all duration-300"
+                    className="btn-hero w-full bg-accent hover:bg-accent-hover text-primary py-3 px-6"
                   >
                     Quero este
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>
