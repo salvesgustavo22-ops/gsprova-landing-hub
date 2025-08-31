@@ -80,43 +80,9 @@ export const Hero = () => {
             {heroData.headline}
           </h1>
           
-          <p className="text-lg sm:text-xl lg:text-2xl text-white/95 leading-relaxed max-w-4xl mx-auto px-2 sm:px-0 font-medium mb-8">
+          <p className="text-lg sm:text-xl lg:text-2xl text-white/95 leading-relaxed max-w-4xl mx-auto px-2 sm:px-0 font-medium">
             {heroData.subheadline}
           </p>
-
-          {/* Enhanced CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-            <Button 
-              onClick={() => {
-                trackWhatsAppClick('hero_main_cta', 'whatsapp_direct');
-                const message = encodeURIComponent("Oi, quero começar agora meus estudos para ENEM/Fuvest 2025. Vim pelo site GS Aprova.");
-                window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
-              }}
-              className="w-full sm:w-auto btn-hero text-lg px-10 py-6 font-bold"
-            >
-              Começar agora no WhatsApp
-            </Button>
-            
-            <Button 
-              onClick={() => {
-                trackWhatsAppClick('hero_secondary_cta', 'lead_servicos');
-                window.location.href = '/lead-servicos';
-              }}
-              className="w-full sm:w-auto btn-hero-secondary text-lg px-10 py-6 font-bold"
-            >
-              Quero escolher meu serviço
-            </Button>
-            
-            <Button 
-              onClick={() => {
-                trackWhatsAppClick('hero_tertiary_cta', 'lead_checklist');
-                window.location.href = '/lead-checklist';
-              }}
-              className="w-full sm:w-auto btn-hero-outline text-lg px-10 py-6 font-bold"
-            >
-              Baixar checklist ENEM 2025
-            </Button>
-          </div>
         </div>
 
         {/* Hero Carousel - Centered */}
@@ -169,6 +135,40 @@ export const Hero = () => {
               <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Hoje</div>
               <div className="text-xs sm:text-sm text-muted-foreground font-medium">Começa</div>
             </div>
+          </div>
+          
+          {/* Enhanced CTA Buttons - After Carousel */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-8">
+            <Button 
+              onClick={() => {
+                trackWhatsAppClick('hero_main_cta', 'whatsapp_direct');
+                const message = encodeURIComponent("Oi, quero começar agora meus estudos para ENEM/Fuvest 2025. Vim pelo site GS Aprova.");
+                window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+              }}
+              className="w-full sm:w-auto btn-hero text-lg px-10 py-6 font-bold"
+            >
+              Começar agora no WhatsApp
+            </Button>
+            
+            <Button 
+              onClick={() => {
+                trackWhatsAppClick('hero_secondary_cta', 'lead_servicos');
+                window.location.href = '/lead-servicos';
+              }}
+              className="w-full sm:w-auto btn-hero-secondary text-lg px-10 py-6 font-bold"
+            >
+              Quero escolher meu serviço
+            </Button>
+            
+            <Button 
+              onClick={() => {
+                trackWhatsAppClick('hero_tertiary_cta', 'lead_checklist');
+                window.location.href = '/lead-checklist';
+              }}
+              className="w-full sm:w-auto btn-hero-outline text-lg px-10 py-6 font-bold"
+            >
+              Baixar checklist ENEM 2025
+            </Button>
           </div>
         </div>
       </div>
