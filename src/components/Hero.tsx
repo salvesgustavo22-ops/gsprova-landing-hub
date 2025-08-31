@@ -4,7 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { SecurityIndicators } from "@/components/SecurityIndicators";
 import { trackWhatsAppClick, trackPageSection, trackSecurityIndicatorView } from "@/lib/analytics";
 import { Calculator, BookOpen, Target, Zap, TrendingUp, Award } from 'lucide-react';
-import heroImage from "@/assets/hero-student-18yo.jpg";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import studentWoman from "/lovable-uploads/7cea088c-1e84-4b15-86ab-6a6c2aa3d4ed.png";
+import studentMan from "/lovable-uploads/18015f32-572d-4cad-9ba0-16d5315e7060.png";
+import studentsGroup from "/lovable-uploads/280cddf7-6e06-4b0d-8568-923aca47f9f4.png";
 import heroBgImage from "@/assets/hero-modern-bg.jpg";
 
 interface HeroVariant {
@@ -18,10 +21,22 @@ interface HeroVariant {
 const heroData = {
   headline: "Matemática + Redação para ENEM 2025 e Fuvest 2025",
   subheadline: "Aulas online, correção de redação personalizada e trilha de estudos focada no que mais cai. Simulados e suporte direto no WhatsApp.",
-  bullets: [
-    { icon: "🎯", text: "Foco no que dá ponto" },
-    { icon: "✍️", text: "Correção linha a linha" },
-    { icon: "📊", text: "Trilha com metas semanais" }
+  slides: [
+    {
+      image: studentWoman,
+      title: "Foco no que dá ponto",
+      description: "Estratégias direcionadas para maximizar\nsua pontuação nos vestibulares"
+    },
+    {
+      image: studentMan,
+      title: "Correção linha a linha",
+      description: "Feedback detalhado e personalizado\npara aperfeiçoar sua redação"
+    },
+    {
+      image: studentsGroup,
+      title: "Trilha com metas semanais",
+      description: "Planejamento estruturado com objetivos\nclaros para seu sucesso"
+    }
   ]
 };
 
@@ -82,18 +97,6 @@ export const Hero = () => {
               <p className="text-lg sm:text-xl lg:text-2xl text-white/95 leading-relaxed max-w-2xl mx-auto lg:mx-0 px-2 sm:px-0 font-medium">
                 {heroData.subheadline}
               </p>
-              
-              {/* Enhanced Bullets - Distinct from buttons */}
-              <div className="flex flex-col space-y-4 text-left max-w-xl mx-auto lg:mx-0">
-                {heroData.bullets.map((bullet, index) => (
-                  <div key={index} className="convenience-box flex items-center space-x-4">
-                    <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-white/20 to-white/30 rounded-full flex items-center justify-center border border-white/20">
-                      <span className="text-white text-sm">{bullet.icon}</span>
-                    </div>
-                    <span className="text-white/95 font-medium text-base">{bullet.text}</span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Enhanced CTA Buttons */}
@@ -131,24 +134,44 @@ export const Hero = () => {
             </div>
           </div>
 
-          {/* Enhanced Hero Image with Modern Effects */}
+          {/* Hero Carousel */}
           <div className="relative order-first lg:order-last">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl mx-4 sm:mx-0 border border-white/20">
-              <img 
-                src={heroImage} 
-                alt="Estudante jovem de 18 anos estudando para ENEM e vestibulares com material de matemática e redação"
-                className="w-full h-[320px] sm:h-[400px] lg:h-[450px] xl:h-[550px] object-cover"
-                fetchPriority="high"
-                sizes="(max-width: 640px) 90vw, (max-width: 1023px) 80vw, 45vw"
-                width="889"
-                height="550"
-                loading="eager"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
-            </div>
+            <Carousel className="w-full mx-4 sm:mx-0">
+              <CarouselContent>
+                {heroData.slides.map((slide, index) => (
+                  <CarouselItem key={index}>
+                    <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+                      <img 
+                        src={slide.image} 
+                        alt={`${slide.title} - Estudantes preparando-se para ENEM e vestibulares`}
+                        className="w-full h-[320px] sm:h-[400px] lg:h-[450px] xl:h-[550px] object-cover"
+                        fetchPriority={index === 0 ? "high" : "low"}
+                        sizes="(max-width: 640px) 90vw, (max-width: 1023px) 80vw, 45vw"
+                        width="889"
+                        height="550"
+                        loading={index === 0 ? "eager" : "lazy"}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                      
+                      {/* Text Overlay */}
+                      <div className="absolute bottom-6 left-6 text-white max-w-md">
+                        <h3 className="text-2xl sm:text-3xl font-bold mb-3 leading-tight">
+                          {slide.title}
+                        </h3>
+                        <p className="text-white/90 text-base sm:text-lg leading-relaxed whitespace-pre-line font-light">
+                          {slide.description}
+                        </p>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20" />
+              <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20" />
+            </Carousel>
             
-            {/* Enhanced Floating Stats */}
-            <div className="absolute -bottom-6 sm:-bottom-8 left-2 sm:left-6 right-2 sm:right-6 grid grid-cols-3 gap-3 sm:gap-6">
+            {/* Enhanced Floating Stats - Below Carousel */}
+            <div className="mt-6 sm:mt-8 grid grid-cols-3 gap-3 sm:gap-6">
               <div className="bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-6 text-center shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
                 <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">900+</div>
                 <div className="text-xs sm:text-sm text-muted-foreground font-medium">Nota Redação</div>
