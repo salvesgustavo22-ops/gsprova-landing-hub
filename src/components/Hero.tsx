@@ -19,7 +19,7 @@ interface HeroVariant {
 }
 
 const heroData = {
-  headline: "Matemática + Redação para ENEM 2025 e Fuvest 2025",
+  headline: "Matemática e Redação para Vestibulares, Concursos e Reforço Escolar",
   subheadline: "Aulas online, correção de redação personalizada e trilha de estudos focada no que mais cai. Simulados e suporte direto no WhatsApp.",
   slides: [
     {
