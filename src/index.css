@@ -209,40 +209,36 @@
 
   /* Hero Button Variants */
   .btn-hero {
-    @apply text-white;
+    @apply text-white bg-transparent;
     @apply px-8 py-4 rounded-xl text-lg;
-    @apply shadow-[var(--shadow-hero)] hover:shadow-2xl;
+    @apply shadow-lg hover:shadow-xl;
     @apply transform hover:scale-105 transition-all duration-300;
-    @apply border-0 backdrop-blur-sm;
+    @apply hover:bg-white hover:text-gray-900;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700; /* Montserrat Bold */
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 3px solid white;
   }
 
   .btn-hero-secondary {
-    @apply text-white;
+    @apply text-white bg-transparent;
     @apply px-8 py-4 rounded-xl text-lg;
     @apply shadow-lg hover:shadow-xl transition-all duration-300;
     @apply transform hover:scale-105;
+    @apply hover:bg-white hover:text-gray-900;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700; /* Montserrat Bold */
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid white;
   }
 
   .btn-hero-outline {
-    @apply text-white hover:bg-white/20;
+    @apply text-white bg-transparent;
     @apply px-8 py-4 rounded-xl text-lg;
     @apply shadow-lg hover:shadow-xl transition-all duration-300;
     @apply transform hover:scale-105;
+    @apply hover:bg-white hover:text-gray-900;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700; /* Montserrat Bold */
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    border: 3px solid white;
   }
 
   /* Modern Button Variants for sections */
