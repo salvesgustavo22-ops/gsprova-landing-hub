@@ -54,14 +54,15 @@ export default function LeadChecklist() {
 
       // Save to Supabase
       const { error } = await supabase
-        .from('contact_submissions')
+        .from('leads')
         .insert({
           name: formData.name.trim(),
+          email: formData.email.trim(),
           phone: formData.whatsapp.trim(),
-          service_interest: 'checklist_enem_2025',
-          message: `E-mail: ${formData.email.trim()}`,
-          form_type: 'checklist_lead',
-          accepts_whatsapp: true
+          lead_type: 'checklist',
+          service_selected: 'checklist_enem_2025',
+          message: 'Solicitação de download do checklist ENEM 2025',
+          source: 'checklist_page'
         });
 
       if (error) {

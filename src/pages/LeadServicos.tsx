@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { Calculator, PenTool, Route, Layers, CheckCircle } from "lucide-react";
 import { trackFormStart, trackFormSubmit, trackServiceSelection } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export default function LeadServicos() {
   const [formData, setFormData] = useState({
@@ -97,8 +98,22 @@ export default function LeadServicos() {
         return;
       }
 
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Save to Supabase
+      const { error } = await supabase
+        .from('leads')
+        .insert({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.whatsapp.trim(),
+          lead_type: 'service_interest',
+          service_selected: formData.service,
+          message: 'Interesse em contratar serviços educacionais',
+          source: 'servicos_page'
+        });
+
+      if (error) {
+        throw error;
+      }
       
       trackFormSubmit('lead_servicos', formData.service);
       
