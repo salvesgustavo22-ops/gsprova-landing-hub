@@ -73,117 +73,101 @@ export const Hero = () => {
         <TrendingUp size={38} />
       </div>
       
-      <div className="hero-content container mx-auto px-4 py-8 sm:py-12 lg:py-28 min-h-screen flex items-center">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Content */}
-          <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
-            {/* Logo positioned at the top */}
-            <div className="mb-6 sm:mb-8 flex justify-center lg:justify-start">
-              <img 
-                src="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png" 
-                alt="GS Aprova - Aulas de Matemática e Redação para ENEM e Fuvest" 
-                className="w-28 sm:w-36 h-auto object-contain drop-shadow-2xl"
-                width="144"
-                height="72"
-                loading="eager"
-              />
-            </div>
-            
-            <div className="space-y-6 sm:space-y-8">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white px-2 sm:px-0 tracking-tight">
-                {heroData.headline}
-              </h1>
-              
-              <p className="text-lg sm:text-xl lg:text-2xl text-white/95 leading-relaxed max-w-2xl mx-auto lg:mx-0 px-2 sm:px-0 font-medium">
-                {heroData.subheadline}
-              </p>
-            </div>
+      <div className="hero-content container mx-auto px-4 py-8 sm:py-12 lg:py-28 min-h-screen flex flex-col justify-center">
+        {/* Header Content - Before Carousel */}
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white px-2 sm:px-0 tracking-tight mb-6">
+            {heroData.headline}
+          </h1>
+          
+          <p className="text-lg sm:text-xl lg:text-2xl text-white/95 leading-relaxed max-w-4xl mx-auto px-2 sm:px-0 font-medium mb-8">
+            {heroData.subheadline}
+          </p>
 
-            {/* Enhanced CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 sm:gap-6 pt-4 sm:pt-6">
-              <Button 
-                onClick={() => {
-                  trackWhatsAppClick('hero_main_cta', 'whatsapp_direct');
-                  const message = encodeURIComponent("Oi, quero começar agora meus estudos para ENEM/Fuvest 2025. Vim pelo site GS Aprova.");
-                  window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
-                }}
-                className="w-full sm:w-auto btn-hero text-lg px-10 py-6 font-bold"
-              >
-                Começar agora no WhatsApp
-              </Button>
-              
-              <Button 
-                onClick={() => {
-                  trackWhatsAppClick('hero_secondary_cta', 'lead_servicos');
-                  window.location.href = '/lead-servicos';
-                }}
-                className="w-full sm:w-auto btn-hero-secondary text-lg px-10 py-6 font-bold"
-              >
-                Quero escolher meu serviço
-              </Button>
-              
-              <Button 
-                onClick={() => {
-                  trackWhatsAppClick('hero_tertiary_cta', 'lead_checklist');
-                  window.location.href = '/lead-checklist';
-                }}
-                className="w-full sm:w-auto btn-hero-outline text-lg px-10 py-6 font-bold"
-              >
-                Baixar checklist ENEM 2025
-              </Button>
-            </div>
+          {/* Enhanced CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+            <Button 
+              onClick={() => {
+                trackWhatsAppClick('hero_main_cta', 'whatsapp_direct');
+                const message = encodeURIComponent("Oi, quero começar agora meus estudos para ENEM/Fuvest 2025. Vim pelo site GS Aprova.");
+                window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+              }}
+              className="w-full sm:w-auto btn-hero text-lg px-10 py-6 font-bold"
+            >
+              Começar agora no WhatsApp
+            </Button>
+            
+            <Button 
+              onClick={() => {
+                trackWhatsAppClick('hero_secondary_cta', 'lead_servicos');
+                window.location.href = '/lead-servicos';
+              }}
+              className="w-full sm:w-auto btn-hero-secondary text-lg px-10 py-6 font-bold"
+            >
+              Quero escolher meu serviço
+            </Button>
+            
+            <Button 
+              onClick={() => {
+                trackWhatsAppClick('hero_tertiary_cta', 'lead_checklist');
+                window.location.href = '/lead-checklist';
+              }}
+              className="w-full sm:w-auto btn-hero-outline text-lg px-10 py-6 font-bold"
+            >
+              Baixar checklist ENEM 2025
+            </Button>
           </div>
+        </div>
 
-          {/* Hero Carousel */}
-          <div className="relative order-first lg:order-last">
-            <Carousel className="w-full mx-4 sm:mx-0">
-              <CarouselContent>
-                {heroData.slides.map((slide, index) => (
-                  <CarouselItem key={index}>
-                    <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20">
-                      <img 
-                        src={slide.image} 
-                        alt={`${slide.title} - Estudantes preparando-se para ENEM e vestibulares`}
-                        className="w-full h-[320px] sm:h-[400px] lg:h-[450px] xl:h-[550px] object-cover"
-                        fetchPriority={index === 0 ? "high" : "low"}
-                        sizes="(max-width: 640px) 90vw, (max-width: 1023px) 80vw, 45vw"
-                        width="889"
-                        height="550"
-                        loading={index === 0 ? "eager" : "lazy"}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-                      
-                      {/* Text Overlay */}
-                      <div className="absolute bottom-6 left-6 text-white max-w-md">
-                        <h3 className="text-2xl sm:text-3xl font-bold mb-3 leading-tight">
-                          {slide.title}
-                        </h3>
-                        <p className="text-white/90 text-base sm:text-lg leading-relaxed whitespace-pre-line font-light">
-                          {slide.description}
-                        </p>
-                      </div>
+        {/* Hero Carousel - Centered */}
+        <div className="max-w-4xl mx-auto">
+          <Carousel className="w-full">
+            <CarouselContent>
+              {heroData.slides.map((slide, index) => (
+                <CarouselItem key={index}>
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+                    <img 
+                      src={slide.image} 
+                      alt={`${slide.title} - Estudantes preparando-se para ENEM e vestibulares`}
+                      className="w-full h-[320px] sm:h-[400px] lg:h-[500px] xl:h-[600px] object-cover"
+                      fetchPriority={index === 0 ? "high" : "low"}
+                      sizes="(max-width: 640px) 90vw, (max-width: 1023px) 80vw, 80vw"
+                      width="889"
+                      height="600"
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                    
+                    {/* Text Overlay */}
+                    <div className="absolute bottom-6 left-6 text-white max-w-md">
+                      <h3 className="text-2xl sm:text-3xl font-bold mb-3 leading-tight">
+                        {slide.title}
+                      </h3>
+                      <p className="text-white/90 text-base sm:text-lg leading-relaxed whitespace-pre-line font-light">
+                        {slide.description}
+                      </p>
                     </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20" />
-              <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20" />
-            </Carousel>
-            
-            {/* Enhanced Floating Stats - Below Carousel */}
-            <div className="mt-6 sm:mt-8 grid grid-cols-3 gap-3 sm:gap-6">
-              <div className="bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-6 text-center shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
-                <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">900+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground font-medium">Nota Redação</div>
-              </div>
-              <div className="bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-6 text-center shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
-                <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">R$ 70</div>
-                <div className="text-xs sm:text-sm text-muted-foreground font-medium">A partir de</div>
-              </div>
-              <div className="bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-6 text-center shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
-                <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Hoje</div>
-                <div className="text-xs sm:text-sm text-muted-foreground font-medium">Começa</div>
-              </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20" />
+            <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white/10 border-white/20 text-white hover:bg-white/20" />
+          </Carousel>
+          
+          {/* Enhanced Floating Stats - Below Carousel */}
+          <div className="mt-6 sm:mt-8 grid grid-cols-3 gap-3 sm:gap-6">
+            <div className="bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-6 text-center shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
+              <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">900+</div>
+              <div className="text-xs sm:text-sm text-muted-foreground font-medium">Nota Redação</div>
+            </div>
+            <div className="bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-6 text-center shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
+              <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">R$ 70</div>
+              <div className="text-xs sm:text-sm text-muted-foreground font-medium">A partir de</div>
+            </div>
+            <div className="bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-6 text-center shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
+              <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Hoje</div>
+              <div className="text-xs sm:text-sm text-muted-foreground font-medium">Começa</div>
             </div>
           </div>
         </div>
