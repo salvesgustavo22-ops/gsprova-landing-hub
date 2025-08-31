@@ -23,8 +23,8 @@ export const Navigation = () => {
     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          {/* Logo and Title */}
+          <Link to="/" className="flex items-center space-x-3">
             <img 
               src="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png" 
               alt="GS Aprova" 
@@ -32,6 +32,9 @@ export const Navigation = () => {
               width="64"
               height="32"
             />
+            <span className="text-foreground font-bold text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
+              Curso GS Aprova
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -49,16 +52,32 @@ export const Navigation = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+          <div className="flex items-center space-x-4">
+            {/* Desktop CTA Button */}
+            <div className="hidden lg:block">
+              <button
+                onClick={() => {
+                  const message = encodeURIComponent("Oi, quero me inscrever no GS Aprova. Vim pelo site.");
+                  window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+                }}
+                className="bg-background border border-muted-foreground/40 text-foreground hover:bg-muted px-4 py-2 rounded-lg font-semibold transition-colors"
+                style={{fontFamily: 'Montserrat, sans-serif', fontWeight: '600'}}
+              >
+                Inscreva-se
+              </button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="lg:hidden"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

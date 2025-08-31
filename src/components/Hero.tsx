@@ -83,14 +83,14 @@ export const Hero = () => {
                 {heroData.subheadline}
               </p>
               
-              {/* Enhanced Bullets */}
+              {/* Enhanced Bullets - Distinct from buttons */}
               <div className="flex flex-col space-y-4 text-left max-w-xl mx-auto lg:mx-0">
                 {heroData.bullets.map((bullet, index) => (
-                  <div key={index} className="flex items-center space-x-4 bg-white/10 backdrop-blur-md rounded-lg p-4 hover:bg-white/20 transition-all duration-300">
-                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-xl">
-                      <span className="text-white text-lg">{bullet.icon}</span>
+                  <div key={index} className="convenience-box flex items-center space-x-4">
+                    <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-white/20 to-white/30 rounded-full flex items-center justify-center border border-white/20">
+                      <span className="text-white text-sm">{bullet.icon}</span>
                     </div>
-                    <span className="text-white font-semibold text-lg">{bullet.text}</span>
+                    <span className="text-white/95 font-medium text-base">{bullet.text}</span>
                   </div>
                 ))}
               </div>

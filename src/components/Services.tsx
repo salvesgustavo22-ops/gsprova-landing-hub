@@ -123,13 +123,13 @@ export const Services = () => {
   const currentServices = getCurrentServices();
 
   return (
-    <section id="servicos" className="py-16 lg:py-24 bg-accent">
-      <div className="container mx-auto px-4">
+    <section id="servicos" className="section-modern py-16 lg:py-24">
+      <div className="section-content container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-primary">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
             Nossos Serviços
           </h2>
-          <p className="text-lg text-primary/80 max-w-2xl mx-auto">
+          <p className="text-lg text-white/85 max-w-2xl mx-auto font-light">
             Escolha o serviço ideal para sua preparação e comece hoje mesmo
           </p>
         </div>
@@ -265,7 +265,7 @@ export const Services = () => {
                        activeService === 'study-path' ? 'Trilhas de Estudo' : 
                        'Experiência Completa'
                      )}
-                     className="btn-hero w-full bg-accent hover:bg-accent-hover text-primary py-3 px-6"
+                     className="btn-modern w-full py-3 px-6"
                    >
                      {activeService === 'math' ? 'Quero aulas de matemática' :
                       activeService === 'essay' ? 'Enviar minha redação' :

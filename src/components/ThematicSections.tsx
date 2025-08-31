@@ -36,13 +36,13 @@ const thematicSections = [
 
 export const ThematicSections = () => {
   return (
-    <section className="py-16 lg:py-24 bg-muted/50">
-      <div className="container mx-auto px-4">
+    <section className="section-modern py-16 lg:py-24">
+      <div className="section-content container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-primary">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
             Preparação Específica para Cada Vestibular
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-white/90 max-w-3xl mx-auto font-light">
             Estratégias personalizadas para ENEM 2025 e Fuvest 2025. Conteúdo focado no que realmente importa para sua aprovação.
           </p>
         </div>
@@ -84,12 +84,9 @@ export const ThematicSections = () => {
 
                 {/* CTA Button */}
                 <Link to={section.link}>
-                  <Button 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group-hover:scale-105 transition-transform duration-300"
-                    size="lg"
-                  >
+                  <button className="btn-modern w-full group-hover:scale-105 transition-transform duration-300">
                     {section.buttonText}
-                  </Button>
+                  </button>
                 </Link>
               </CardContent>
             </Card>
@@ -98,13 +95,13 @@ export const ThematicSections = () => {
 
         {/* Additional CTA */}
         <div className="text-center mt-12">
-          <p className="text-muted-foreground mb-4">
+          <p className="text-white/80 mb-4 font-light">
             Não sabe qual vestibular focar? Vamos te ajudar a escolher a melhor estratégia.
           </p>
           <Link to="/lead-servicos">
-            <Button variant="outline" size="lg" className="px-8">
+            <button className="btn-modern px-8">
               Falar com nossa equipe
-            </Button>
+            </button>
           </Link>
         </div>
       </div>

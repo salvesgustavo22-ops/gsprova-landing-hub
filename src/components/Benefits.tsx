@@ -20,8 +20,8 @@ const benefits = [
 
 export const Benefits = () => {
   return (
-    <section className="py-16 lg:py-20 bg-muted">
-      <div className="container mx-auto px-4">
+    <section className="section-modern py-16 lg:py-20">
+      <div className="section-content container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {benefits.map((benefit, index) => (
             <div key={index} className="text-center group">
@@ -29,11 +29,11 @@ export const Benefits = () => {
                 <benefit.icon className="w-8 h-8 text-white" />
               </div>
               
-              <h3 className="text-xl font-bold mb-3 text-primary">
+              <h3 className="text-xl font-bold mb-3 text-white">
                 {benefit.title}
               </h3>
               
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-white/85 leading-relaxed font-light">
                 {benefit.description}
               </p>
             </div>

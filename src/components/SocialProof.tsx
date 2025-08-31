@@ -49,25 +49,25 @@ export const SocialProof = () => {
   return (
     <>
       {/* Security Indicators Section */}
-      <section className="py-8 bg-background">
-        <div className="container mx-auto px-4">
+      <section className="py-8 section-modern">
+        <div className="section-content container mx-auto px-4">
           <div className="flex justify-center">
-            <div className="flex items-center justify-center gap-6 py-4 bg-white/90 backdrop-blur-sm rounded-lg border border-muted shadow-sm max-w-lg">
-              <div className="flex items-center gap-2 text-primary">
+            <div className="flex items-center justify-center gap-6 py-4 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 shadow-lg max-w-lg">
+              <div className="flex items-center gap-2 text-white">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
                 <span className="text-sm font-medium">SSL Seguro</span>
               </div>
-              <div className="w-px h-4 bg-muted"></div>
-              <div className="flex items-center gap-2 text-primary">
+              <div className="w-px h-4 bg-white/30"></div>
+              <div className="flex items-center gap-2 text-white">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span className="text-sm font-medium">LGPD Compliant</span>
               </div>
-              <div className="w-px h-4 bg-muted"></div>
-              <div className="flex items-center gap-2 text-primary">
+              <div className="w-px h-4 bg-white/30"></div>
+              <div className="flex items-center gap-2 text-white">
                 <span className="text-sm font-medium">💳 Pagamento Seguro</span>
               </div>
             </div>
@@ -75,17 +75,17 @@ export const SocialProof = () => {
         </div>
       </section>
 
-      <section className="py-16 lg:py-20 bg-muted">
-        <div className="container mx-auto px-4">
+      <section className="section-modern py-16 lg:py-20">
+        <div className="section-content container mx-auto px-4">
         {/* Metrics */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 max-w-4xl mx-auto">
           {metrics.map((metric, index) => (
-            <div key={index} className="text-center bg-white rounded-xl p-6 shadow-sm">
-              <metric.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-              <div className="text-2xl font-bold text-primary mb-1">
+            <div key={index} className="text-center bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6 shadow-lg">
+              <metric.icon className="w-8 h-8 text-white mx-auto mb-3" />
+              <div className="text-2xl font-bold text-white mb-1">
                 {metric.value}
               </div>
-              <div className="text-sm text-muted-foreground">
+              <div className="text-sm text-white/80 font-light">
                 {metric.label}
               </div>
             </div>
@@ -94,10 +94,10 @@ export const SocialProof = () => {
 
         {/* Title */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-primary">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
             O que nossos alunos dizem
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-white/85 max-w-2xl mx-auto font-light">
             Resultados reais de quem já transformou seus estudos conosco
           </p>
         </div>
@@ -105,7 +105,7 @@ export const SocialProof = () => {
         {/* Testimonials */}
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card key={index} className="bg-white/10 backdrop-blur-md border border-white/20 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <CardContent className="p-6">
                 <div className="flex mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -113,15 +113,15 @@ export const SocialProof = () => {
                   ))}
                 </div>
                 
-                <blockquote className="text-muted-foreground mb-4 leading-relaxed">
+                <blockquote className="text-white/85 mb-4 leading-relaxed font-light">
                   "{testimonial.content}"
                 </blockquote>
                 
                 <div>
-                  <div className="font-semibold text-primary">
+                  <div className="font-semibold text-white">
                     {testimonial.name}
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-white/70 font-light">
                     {testimonial.grade}
                   </div>
                 </div>
