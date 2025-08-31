@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import { CheckCircle, Download, Star, Clock } from "lucide-react";
 import { trackFormStart, trackFormSubmit } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export default function LeadChecklist() {
   const [formData, setFormData] = useState({
@@ -51,8 +52,21 @@ export default function LeadChecklist() {
         return;
       }
 
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Save to Supabase
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert({
+          name: formData.name.trim(),
+          phone: formData.whatsapp.trim(),
+          service_interest: 'checklist_enem_2025',
+          message: `E-mail: ${formData.email.trim()}`,
+          form_type: 'checklist_lead',
+          accepts_whatsapp: true
+        });
+
+      if (error) {
+        throw error;
+      }
       
       trackFormSubmit('checklist_enem_2025', 'checklist_download');
       
@@ -60,6 +74,7 @@ export default function LeadChecklist() {
       window.location.href = '/obrigado-checklist';
       
     } catch (error) {
+      console.error('Error submitting form:', error);
       toast({
         title: "Erro no envio",
         description: "Tente novamente em alguns instantes.",
