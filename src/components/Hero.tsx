@@ -3,7 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { SecurityIndicators } from "@/components/SecurityIndicators";
 import { trackWhatsAppClick, trackPageSection, trackSecurityIndicatorView } from "@/lib/analytics";
+import { Calculator, BookOpen, Target, Zap, TrendingUp, Award } from 'lucide-react';
 import heroImage from "@/assets/hero-student-18yo.jpg";
+import heroBgImage from "@/assets/hero-modern-bg.jpg";
 
 interface HeroVariant {
   id: string;
@@ -32,59 +34,77 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden text-white">
-      {/* Background Image */}
+    <section className="hero-modern relative">
+      {/* Modern Background with Overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('/lovable-uploads/3e196025-f642-4155-ba69-da7ca6ee1d2c.png')` }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+        style={{ backgroundImage: `url(${heroBgImage})` }}
       />
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-primary/20"></div>
       
-      <div className="relative z-10 container mx-auto px-4 py-8 sm:py-12 lg:py-28 min-h-screen flex items-center">
+      {/* Floating Elements */}
+      <div className="floating-element top-20 left-10 text-white/30 hidden lg:block">
+        <Calculator size={40} />
+      </div>
+      <div className="floating-element top-32 right-16 text-white/30 hidden lg:block" style={{animationDelay: '1s'}}>
+        <BookOpen size={35} />
+      </div>
+      <div className="floating-element bottom-40 left-20 text-white/30 hidden lg:block" style={{animationDelay: '2s'}}>
+        <Target size={30} />
+      </div>
+      <div className="floating-element top-48 right-32 text-white/30 hidden lg:block" style={{animationDelay: '3s'}}>
+        <Zap size={45} />
+      </div>
+      <div className="floating-element bottom-32 right-10 text-white/30 hidden lg:block" style={{animationDelay: '4s'}}>
+        <TrendingUp size={38} />
+      </div>
+      
+      <div className="hero-content container mx-auto px-4 py-8 sm:py-12 lg:py-28 min-h-screen flex items-center">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Content */}
-          <div className="space-y-4 sm:space-y-6 text-center lg:text-left">
+          <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
             {/* Logo positioned at the top */}
-            <div className="mb-4 sm:mb-6 flex justify-center lg:justify-start">
+            <div className="mb-6 sm:mb-8 flex justify-center lg:justify-start">
               <img 
                 src="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png" 
                 alt="GS Aprova - Aulas de Matemática e Redação para ENEM e Fuvest" 
-                className="w-24 sm:w-32 h-auto object-contain drop-shadow-lg"
-                width="128"
-                height="64"
+                className="w-28 sm:w-36 h-auto object-contain drop-shadow-2xl"
+                width="144"
+                height="72"
                 loading="eager"
               />
             </div>
             
-            <div className="space-y-3 sm:space-y-4">
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight text-white px-2 sm:px-0">
+            <div className="space-y-6 sm:space-y-8">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white px-2 sm:px-0 tracking-tight">
                 {heroData.headline}
               </h1>
               
-              <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-lg mx-auto lg:mx-0 px-2 sm:px-0">
+              <p className="text-lg sm:text-xl lg:text-2xl text-white/95 leading-relaxed max-w-2xl mx-auto lg:mx-0 px-2 sm:px-0 font-medium">
                 {heroData.subheadline}
               </p>
               
-              {/* Bullets */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 py-4">
+              {/* Enhanced Bullets */}
+              <div className="flex flex-col space-y-4 text-left max-w-xl mx-auto lg:mx-0">
                 {heroData.bullets.map((bullet, index) => (
-                  <div key={index} className="flex items-center gap-2 text-white/90">
-                    <span className="text-lg">{bullet.icon}</span>
-                    <span className="text-sm sm:text-base font-medium">{bullet.text}</span>
+                  <div key={index} className="flex items-center space-x-4 bg-white/10 backdrop-blur-md rounded-lg p-4 hover:bg-white/20 transition-all duration-300">
+                    <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-xl">
+                      <span className="text-white text-lg">{bullet.icon}</span>
+                    </div>
+                    <span className="text-white font-semibold text-lg">{bullet.text}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 sm:gap-4 pt-2 sm:pt-4">
+            {/* Enhanced CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 sm:gap-6 pt-4 sm:pt-6">
               <Button 
                 onClick={() => {
                   trackWhatsAppClick('hero_main_cta', 'whatsapp_direct');
                   const message = encodeURIComponent("Oi, quero começar agora meus estudos para ENEM/Fuvest 2025. Vim pelo site GS Aprova.");
                   window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
                 }}
-                className="w-full sm:w-auto btn-hero text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 text-white bg-primary hover:bg-primary/90 font-bold shadow-lg rounded-xl"
+                className="w-full sm:w-auto btn-hero text-lg px-10 py-6 font-bold"
               >
                 Começar agora no WhatsApp
               </Button>
@@ -94,7 +114,7 @@ export const Hero = () => {
                   trackWhatsAppClick('hero_secondary_cta', 'lead_servicos');
                   window.location.href = '/lead-servicos';
                 }}
-                className="w-full sm:w-auto btn-hero text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 text-primary bg-accent hover:bg-accent/90 font-bold shadow-lg rounded-xl"
+                className="w-full sm:w-auto btn-hero-secondary text-lg px-10 py-6 font-bold"
               >
                 Quero escolher meu serviço
               </Button>
@@ -104,42 +124,42 @@ export const Hero = () => {
                   trackWhatsAppClick('hero_tertiary_cta', 'lead_checklist');
                   window.location.href = '/lead-checklist';
                 }}
-                className="w-full sm:w-auto btn-hero text-sm sm:text-base px-6 sm:px-8 py-4 sm:py-5 text-white bg-muted-foreground hover:bg-muted-foreground/90 font-bold shadow-lg rounded-xl"
+                className="w-full sm:w-auto btn-hero-outline text-lg px-10 py-6 font-bold"
               >
                 Baixar checklist ENEM 2025
               </Button>
             </div>
           </div>
 
-          {/* Hero Image */}
+          {/* Enhanced Hero Image with Modern Effects */}
           <div className="relative order-first lg:order-last">
-            <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl mx-4 sm:mx-0">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl mx-4 sm:mx-0 border border-white/20">
               <img 
                 src={heroImage} 
                 alt="Estudante jovem de 18 anos estudando para ENEM e vestibulares com material de matemática e redação"
-                className="w-full h-[280px] sm:h-[350px] lg:h-[400px] xl:h-[500px] object-cover"
+                className="w-full h-[320px] sm:h-[400px] lg:h-[450px] xl:h-[550px] object-cover"
                 fetchPriority="high"
                 sizes="(max-width: 640px) 90vw, (max-width: 1023px) 80vw, 45vw"
                 width="889"
-                height="500"
+                height="550"
                 loading="eager"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
             </div>
             
-            {/* Floating Stats - Responsive */}
-            <div className="absolute -bottom-4 sm:-bottom-6 left-2 sm:left-6 right-2 sm:right-6 grid grid-cols-3 gap-2 sm:gap-4">
-              <div className="bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-4 text-center shadow-lg">
-                <div className="text-lg sm:text-2xl font-bold text-primary">900+</div>
-                <div className="text-xs text-muted-foreground">Nota Redação</div>
+            {/* Enhanced Floating Stats */}
+            <div className="absolute -bottom-6 sm:-bottom-8 left-2 sm:left-6 right-2 sm:right-6 grid grid-cols-3 gap-3 sm:gap-6">
+              <div className="bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-6 text-center shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
+                <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">900+</div>
+                <div className="text-xs sm:text-sm text-muted-foreground font-medium">Nota Redação</div>
               </div>
-              <div className="bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-4 text-center shadow-lg">
-                <div className="text-lg sm:text-2xl font-bold text-accent">R$ 70</div>
-                <div className="text-xs text-muted-foreground">A partir de</div>
+              <div className="bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-6 text-center shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
+                <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">R$ 70</div>
+                <div className="text-xs sm:text-sm text-muted-foreground font-medium">A partir de</div>
               </div>
-              <div className="bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl p-2 sm:p-4 text-center shadow-lg">
-                <div className="text-lg sm:text-2xl font-bold text-primary">Hoje</div>
-                <div className="text-xs text-muted-foreground">Começa</div>
+              <div className="bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-6 text-center shadow-2xl border border-white/20 transform hover:scale-105 transition-all duration-300">
+                <div className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Hoje</div>
+                <div className="text-xs sm:text-sm text-muted-foreground font-medium">Começa</div>
               </div>
             </div>
           </div>
