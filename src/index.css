@@ -209,35 +209,38 @@
 
   /* Hero Button Variants */
   .btn-hero {
-    @apply text-white bg-transparent;
+    @apply text-white;
     @apply px-8 py-4 rounded-xl text-lg;
     @apply shadow-lg hover:shadow-xl;
     @apply transform hover:scale-105 transition-all duration-300;
     @apply hover:bg-white hover:text-gray-900;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700; /* Montserrat Bold */
+    background: transparent !important;
     border: 3px solid white;
   }
 
   .btn-hero-secondary {
-    @apply text-white bg-transparent;
+    @apply text-white;
     @apply px-8 py-4 rounded-xl text-lg;
     @apply shadow-lg hover:shadow-xl transition-all duration-300;
     @apply transform hover:scale-105;
     @apply hover:bg-white hover:text-gray-900;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700; /* Montserrat Bold */
+    background: transparent !important;
     border: 3px solid white;
   }
 
   .btn-hero-outline {
-    @apply text-white bg-transparent;
+    @apply text-white;
     @apply px-8 py-4 rounded-xl text-lg;
     @apply shadow-lg hover:shadow-xl transition-all duration-300;
     @apply transform hover:scale-105;
     @apply hover:bg-white hover:text-gray-900;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700; /* Montserrat Bold */
+    background: transparent !important;
     border: 3px solid white;
   }
 
