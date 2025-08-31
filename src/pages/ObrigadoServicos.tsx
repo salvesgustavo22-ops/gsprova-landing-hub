@@ -124,148 +124,81 @@ export default function ObrigadoServicos() {
   const Icon = service.icon;
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      
-      <main className="py-16 lg:py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            
-            {/* Success Message */}
-            <div className="text-center mb-12">
-              <div className="bg-green-100 dark:bg-green-900/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="text-green-600 dark:text-green-400" size={40} />
-              </div>
+    <div className="min-h-screen section-modern">
+      <div className="section-content">
+        <Navigation />
+        
+        <main className="py-16 lg:py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
               
-              <h1 className="text-3xl lg:text-4xl font-bold mb-4">
-                Perfeito! Recebemos seu interesse
-              </h1>
-              
-              <p className="text-lg text-muted-foreground mb-8">
-                Aqui estão todos os detalhes sobre o <strong>{service.name}</strong> que você escolheu.
-              </p>
-            </div>
-
-            {/* Service Details */}
-            <Card className="mb-12 border-2 border-primary/20">
-              <CardHeader className="text-center">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <Icon className="text-primary" size={36} />
-                  <CardTitle className="text-2xl">{service.name}</CardTitle>
+              {/* Success Message */}
+              <div className="text-center mb-12">
+                <div className="bg-accent/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle className="text-accent" size={40} />
                 </div>
-                <p className="text-muted-foreground text-lg">
-                  {service.description}
+                
+                <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
+                  Perfeito! Recebemos seu interesse
+                </h1>
+                
+                <p className="text-lg text-white/85 mb-8 font-light">
+                  Aqui estão todos os detalhes sobre o <strong>{service.name}</strong> que você escolheu.
                 </p>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  
-                  {/* Features */}
-                  <div>
-                    <h3 className="text-xl font-semibold mb-4">O que está incluído:</h3>
-                    <ul className="space-y-3">
-                      {service.features.map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <CheckCircle className="mr-3 mt-0.5 text-primary flex-shrink-0" size={18} />
-                          <span className="text-muted-foreground">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              </div>
 
-                  {/* Pricing and CTA */}
-                  <div>
-                    <div className="bg-primary/10 p-6 rounded-lg text-center">
-                      <h3 className="text-xl font-semibold mb-2">Investimento</h3>
-                      <p className="text-3xl font-bold text-primary mb-4">{service.price}</p>
-                      <p className="text-sm text-muted-foreground mb-6">
-                        Condições especiais disponíveis. Fale conosco!
-                      </p>
-                      
-                      <Button
-                        onClick={handleWhatsAppClick}
-                        className="btn-hero bg-primary hover:bg-primary/90 text-white py-4 px-8 w-full"
-                      >
-                        <MessageCircle className="mr-2" size={20} />
-                        {service.nextStep}
-                      </Button>
-                    </div>
+              {/* Service Details */}
+              <div className="card-navy mb-12 border-2 border-accent/30 p-8 rounded-xl">
+                <div className="text-center mb-8">
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <Icon className="text-accent" size={36} />
+                    <h2 className="text-2xl text-white font-bold">{service.name}</h2>
                   </div>
+                  <p className="text-white/80 text-lg font-light">
+                    {service.description}
+                  </p>
                 </div>
-              </CardContent>
-            </Card>
-
-            {/* Next Steps */}
-            <Card className="mb-12">
-              <CardHeader>
-                <CardTitle className="text-center">Como funciona o próximo passo?</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="text-center">
-                    <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-primary font-bold">1</span>
-                    </div>
-                    <h4 className="font-semibold mb-2">Fale conosco</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Clique no botão acima para conversar via WhatsApp
-                    </p>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-primary font-bold">2</span>
-                    </div>
-                    <h4 className="font-semibold mb-2">Tire suas dúvidas</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Nossa equipe vai esclarecer todos os detalhes
-                    </p>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-primary font-bold">3</span>
-                    </div>
-                    <h4 className="font-semibold mb-2">Comece hoje</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Inicie sua preparação direcionada imediatamente
-                    </p>
-                  </div>
+                
+                <div className="text-center">
+                  <Button
+                    onClick={handleWhatsAppClick}
+                    className="btn-yellow py-6 px-8 text-lg"
+                  >
+                    <MessageCircle className="mr-2" size={20} />
+                    {service.nextStep}
+                  </Button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
 
-            {/* Final CTA */}
-            <Card className="bg-gradient-to-br from-primary to-primary/90 text-white">
-              <CardContent className="text-center py-12">
-                <h2 className="text-2xl lg:text-3xl font-bold mb-4">
+              {/* Final CTA */}
+              <div className="card-navy p-12 rounded-xl text-center">
+                <h2 className="text-2xl lg:text-3xl font-bold mb-4 text-white">
                   Pronto para começar?
                 </h2>
                 
-                <p className="text-white/90 mb-6 text-lg">
+                <p className="text-white/85 mb-6 text-lg font-light">
                   Nossa equipe está online agora e pronta para tirar todas as suas dúvidas sobre o {service.name}.
                 </p>
 
                 <Button
                   onClick={handleWhatsAppClick}
-                  className="btn-hero bg-accent hover:bg-accent/90 text-primary py-6 px-10 text-lg"
+                  className="btn-yellow py-6 px-10 text-lg"
                 >
                   <MessageCircle className="mr-2" size={20} />
                   Falar Agora no WhatsApp
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
                 
-                <p className="text-white/70 text-sm mt-4">
+                <p className="text-white/70 text-sm mt-4 font-light">
                   ⚡ Resposta imediata • 💬 Atendimento personalizado • 🎯 Orientação gratuita
                 </p>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+        </div>
+      </div>
   );
 }

@@ -140,11 +140,11 @@ export const Services = () => {
             onClick={() => handleServiceClick('math')}
             className={`p-6 rounded-xl border-2 transition-all duration-300 ${
               activeService === 'math'
-                ? 'border-primary bg-primary text-white'
-                : 'border-primary/30 hover:border-primary/50 bg-white text-primary'
+                ? 'card-navy-selected text-white'
+                : 'card-navy text-white/80 hover:text-white'
             }`}
           >
-            <div className={`mb-2 ${activeService === 'math' ? 'text-white' : 'text-primary'}`}>
+            <div className={`mb-2 ${activeService === 'math' ? 'text-white' : 'text-white/80'}`}>
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/>
                 <path d="M8 6h8"/>
@@ -154,53 +154,53 @@ export const Services = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold">Matemática</h3>
-            <p className="text-sm opacity-80">Aulas personalizadas</p>
+            <p className="text-sm opacity-80 font-light">Aulas personalizadas</p>
           </button>
           
           <button
             onClick={() => handleServiceClick('essay')}
             className={`p-6 rounded-xl border-2 transition-all duration-300 ${
               activeService === 'essay'
-                ? 'border-primary bg-primary text-white'
-                : 'border-primary/30 hover:border-primary/50 bg-white text-primary'
+                ? 'card-navy-selected text-white'
+                : 'card-navy text-white/80 hover:text-white'
             }`}
           >
-            <div className={`mb-2 ${activeService === 'essay' ? 'text-white' : 'text-primary'}`}>
+            <div className={`mb-2 ${activeService === 'essay' ? 'text-white' : 'text-white/80'}`}>
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
               </svg>
             </div>
             <h3 className="text-xl font-semibold">Redação</h3>
-            <p className="text-sm opacity-80">Correções detalhadas</p>
+            <p className="text-sm opacity-80 font-light">Correções detalhadas</p>
           </button>
 
           <button
             onClick={() => handleServiceClick('study-path')}
             className={`p-6 rounded-xl border-2 transition-all duration-300 ${
               activeService === 'study-path'
-                ? 'border-primary bg-primary text-white'
-                : 'border-primary/30 hover:border-primary/50 bg-white text-primary'
+                ? 'card-navy-selected text-white'
+                : 'card-navy text-white/80 hover:text-white'
             }`}
           >
-            <div className={`mb-2 ${activeService === 'study-path' ? 'text-white' : 'text-primary'}`}>
+            <div className={`mb-2 ${activeService === 'study-path' ? 'text-white' : 'text-white/80'}`}>
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
                 <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
               </svg>
             </div>
             <h3 className="text-xl font-semibold">Trilhas de Estudo</h3>
-            <p className="text-sm opacity-80">Estudo personalizado</p>
+            <p className="text-sm opacity-80 font-light">Estudo personalizado</p>
           </button>
 
           <button
             onClick={() => handleServiceClick('complete')}
             className={`p-6 rounded-xl border-2 transition-all duration-300 ${
               activeService === 'complete'
-                ? 'border-primary bg-primary text-white'
-                : 'border-primary/30 hover:border-primary/50 bg-white text-primary'
+                ? 'card-navy-selected text-white'
+                : 'card-navy text-white/80 hover:text-white'
             }`}
           >
-            <div className={`mb-2 ${activeService === 'complete' ? 'text-white' : 'text-primary'}`}>
+            <div className={`mb-2 ${activeService === 'complete' ? 'text-white' : 'text-white/80'}`}>
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
                 <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
@@ -208,7 +208,7 @@ export const Services = () => {
               </svg>
             </div>
             <h3 className="text-xl font-semibold">Experiência Completa</h3>
-            <p className="text-sm opacity-80">Tudo incluído</p>
+            <p className="text-sm opacity-80 font-light">Tudo incluído</p>
           </button>
         </div>
 
@@ -265,7 +265,7 @@ export const Services = () => {
                        activeService === 'study-path' ? 'Trilhas de Estudo' : 
                        'Experiência Completa'
                      )}
-                     className="btn-modern w-full py-3 px-6"
+                     className="btn-yellow w-full py-3 px-6"
                    >
                      {activeService === 'math' ? 'Quero aulas de matemática' :
                       activeService === 'essay' ? 'Enviar minha redação' :

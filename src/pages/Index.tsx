@@ -106,11 +106,11 @@ const Index = () => {
       <main>
         <Hero />
         <ThematicSections />
-        <Benefits />
-        <SocialProof />
         <Services />
+        <Benefits />
         <HowItWorks />
         <TrustSection />
+        <SocialProof />
         <FinalCTA />
         <FAQ />
       </main>

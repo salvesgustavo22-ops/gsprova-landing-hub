@@ -117,83 +117,79 @@ export default function LeadServicos() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      
-      <main className="py-16 lg:py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            
-            {/* Header */}
-            <div className="text-center mb-12">
-              <h1 className="text-3xl lg:text-4xl font-bold mb-4">
-                Escolha o serviço ideal para você
-              </h1>
-              <p className="text-lg text-muted-foreground">
-                Preencha seus dados e receba informações detalhadas sobre o serviço escolhido
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-8">
+    <div className="min-h-screen section-modern">
+      <div className="section-content">
+        <Navigation />
+        
+        <main className="py-16 lg:py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
               
-              {/* Contact Information */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Seus dados</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="name">Nome completo *</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="Seu nome completo"
-                        required
-                        className="mt-1"
-                      />
+              {/* Header */}
+              <div className="text-center mb-12">
+                <h1 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
+                  Escolha o serviço ideal para você
+                </h1>
+                <p className="text-lg text-white/85 font-light">
+                  Preencha seus dados e receba informações detalhadas sobre o serviço escolhido
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-8">
+                
+                {/* Contact Information */}
+                <div className="card-navy p-8 rounded-xl">
+                  <h2 className="text-xl font-semibold text-white mb-6">Seus dados</h2>
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="name" className="text-white">Nome completo *</Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          type="text"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          placeholder="Seu nome completo"
+                          required
+                          className="mt-1 bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                        />
+                      </div>
+
+                      <div>
+                        <Label htmlFor="whatsapp" className="text-white">WhatsApp *</Label>
+                        <Input
+                          id="whatsapp"
+                          name="whatsapp"
+                          type="tel"
+                          value={formData.whatsapp}
+                          onChange={handleInputChange}
+                          placeholder="(11) 99999-9999"
+                          required
+                          className="mt-1 bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                        />
+                      </div>
                     </div>
 
                     <div>
-                      <Label htmlFor="whatsapp">WhatsApp *</Label>
+                      <Label htmlFor="email" className="text-white">E-mail *</Label>
                       <Input
-                        id="whatsapp"
-                        name="whatsapp"
-                        type="tel"
-                        value={formData.whatsapp}
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
                         onChange={handleInputChange}
-                        placeholder="(11) 99999-9999"
+                        placeholder="seu@email.com"
                         required
-                        className="mt-1"
+                        className="mt-1 bg-white/10 border-white/20 text-white placeholder:text-white/60"
                       />
                     </div>
                   </div>
+                </div>
 
-                  <div>
-                    <Label htmlFor="email">E-mail *</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="seu@email.com"
-                      required
-                      className="mt-1"
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Service Selection */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>Selecione o serviço *</CardTitle>
-                </CardHeader>
-                <CardContent>
+                {/* Service Selection */}
+                <div className="card-navy p-8 rounded-xl">
+                  <h2 className="text-xl font-semibold text-white mb-6">Selecione o serviço *</h2>
                   <RadioGroup value={formData.service} onValueChange={handleServiceChange}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {services.map((service) => {
@@ -207,27 +203,31 @@ export default function LeadServicos() {
                             />
                             <Label
                               htmlFor={service.id}
-                              className="flex flex-col p-4 border rounded-lg cursor-pointer hover:bg-muted/50 peer-checked:border-primary peer-checked:bg-primary/5 relative"
+                              className={`flex flex-col p-4 rounded-lg cursor-pointer transition-all duration-300 relative ${
+                                formData.service === service.id 
+                                  ? 'card-navy-selected text-white' 
+                                  : 'bg-white/5 border border-white/20 text-white/80 hover:text-white hover:bg-white/10'
+                              }`}
                             >
                               {service.popular && (
-                                <span className="absolute -top-2 -right-2 bg-accent text-primary text-xs px-2 py-1 rounded-full font-bold">
+                                <span className="absolute -top-2 -right-2 bg-accent text-accent-dark-text text-xs px-2 py-1 rounded-full font-bold">
                                   POPULAR
                                 </span>
                               )}
                               
                               <div className="flex items-center gap-3 mb-2">
-                                <Icon className="text-primary" size={24} />
+                                <Icon className="text-accent" size={24} />
                                 <span className="font-semibold">{service.name}</span>
                               </div>
                               
-                              <p className="text-sm text-muted-foreground mb-3">
+                              <p className="text-sm mb-3 font-light opacity-80">
                                 {service.description}
                               </p>
                               
                               <ul className="space-y-1">
                                 {service.benefits.map((benefit, index) => (
                                   <li key={index} className="flex items-center text-xs">
-                                    <CheckCircle className="mr-2 text-primary" size={12} />
+                                    <CheckCircle className="mr-2 text-accent" size={12} />
                                     {benefit}
                                   </li>
                                 ))}
@@ -238,29 +238,29 @@ export default function LeadServicos() {
                       })}
                     </div>
                   </RadioGroup>
-                </CardContent>
-              </Card>
+                </div>
 
-              {/* Submit Button */}
-              <div className="text-center">
-                <Button
-                  type="submit"
-                  className="btn-hero bg-primary hover:bg-primary/90 text-white py-6 px-12 text-lg"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Enviando..." : "Receber Informações Agora"}
-                </Button>
-                
-                <p className="text-xs text-muted-foreground mt-4">
-                  Seus dados estão seguros. Não compartilhamos com terceiros.
-                </p>
-              </div>
-            </form>
+                {/* Submit Button */}
+                <div className="text-center">
+                  <Button
+                    type="submit"
+                    className="btn-yellow py-6 px-12 text-lg"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Enviando..." : "Receber Informações Agora"}
+                  </Button>
+                  
+                  <p className="text-xs text-white/70 mt-4 font-light">
+                    Seus dados estão seguros. Não compartilhamos com terceiros.
+                  </p>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+        </div>
+      </div>
   );
 }

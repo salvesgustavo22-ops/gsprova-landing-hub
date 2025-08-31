@@ -43,30 +43,31 @@ export default function Enem2025() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <div className="min-h-screen section-modern">
+      <div className="section-content">
+        <Navigation />
       
       <main>
         {/* Hero Section */}
-        <section className="py-16 lg:py-24 bg-gradient-to-br from-primary to-primary/90 text-white">
-          <div className="container mx-auto px-4">
+        <section className="section-modern py-16 lg:py-24">
+          <div className="section-content container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <Badge className="mb-4 bg-accent text-primary" variant="secondary">
+              <Badge className="mb-4 bg-accent text-accent-dark-text font-semibold" variant="secondary">
                 ENEM 2025
               </Badge>
               
-              <h1 className="text-3xl lg:text-5xl font-bold mb-6 leading-tight">
+              <h1 className="text-3xl lg:text-5xl font-bold mb-6 leading-tight text-white">
                 Tudo sobre o ENEM 2025:<br />
                 <span className="text-accent">Estratégias que funcionam</span>
               </h1>
               
-              <p className="text-xl text-white/90 mb-8 leading-relaxed">
+              <p className="text-xl text-white/90 mb-8 leading-relaxed font-light">
                 Descubra os tópicos de matemática que mais caem, aprenda a estrutura perfeita da redação e baixe nosso checklist completo para não perder nenhum detalhe importante.
               </p>
 
               <Button 
                 onClick={handleChecklistCTA}
-                className="btn-hero bg-accent hover:bg-accent/90 text-primary text-lg px-8 py-6"
+                className="btn-yellow text-lg px-8 py-6"
               >
                 Baixar Checklist ENEM 2025 Gratuito
               </Button>
@@ -75,47 +76,45 @@ export default function Enem2025() {
         </section>
 
         {/* Math Topics Section */}
-        <section className="py-16 lg:py-20">
-          <div className="container mx-auto px-4">
+        <section className="section-modern py-16 lg:py-20">
+          <div className="section-content container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                <Calculator className="inline-block mr-3 text-primary" size={36} />
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
+                <Calculator className="inline-block mr-3 text-white" size={36} />
                 Matemática no ENEM 2025
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-white/85 max-w-2xl mx-auto font-light">
                 Foque nos tópicos que realmente importam. Estes assuntos representam mais de 70% das questões de matemática.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {mathTopics.map((topic, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
+                <div key={index} className="card-navy hover:shadow-lg transition-shadow p-6">
+                  <div className="mb-4">
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-lg">{topic.title}</CardTitle>
-                      <Badge variant={topic.weight === "Alto" ? "default" : "secondary"}>
+                      <h3 className="text-lg font-semibold text-white">{topic.title}</h3>
+                      <Badge variant={topic.weight === "Alto" ? "default" : "secondary"} className="bg-accent text-accent-dark-text">
                         {topic.weight}
                       </Badge>
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{topic.description}</p>
-                  </CardContent>
-                </Card>
+                  </div>
+                  <p className="text-white/80 font-light">{topic.description}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* Essay Structure Section */}
-        <section className="py-16 lg:py-20 bg-muted/50">
-          <div className="container mx-auto px-4">
+        <section className="section-modern py-16 lg:py-20">
+          <div className="section-content container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                <PenTool className="inline-block mr-3 text-primary" size={36} />
+              <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
+                <PenTool className="inline-block mr-3 text-white" size={36} />
                 Estrutura da Redação ENEM
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg text-white/85 max-w-2xl mx-auto font-light">
                 A fórmula testada e aprovada para conseguir nota máxima na redação do ENEM.
               </p>
             </div>
@@ -123,19 +122,17 @@ export default function Enem2025() {
             <div className="max-w-3xl mx-auto">
               <div className="space-y-6">
                 {essayStructure.map((step, index) => (
-                  <Card key={index} className="border-l-4 border-l-primary">
-                    <CardContent className="pt-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
-                          {index + 1}
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-lg mb-2">{step.step}</h3>
-                          <p className="text-muted-foreground">{step.description}</p>
-                        </div>
+                  <div key={index} className="card-navy border-l-4 border-l-accent p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="bg-accent text-accent-dark-text rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
+                        {index + 1}
                       </div>
-                    </CardContent>
-                  </Card>
+                      <div>
+                        <h3 className="font-semibold text-lg mb-2 text-white">{step.step}</h3>
+                        <p className="text-white/80 font-light">{step.description}</p>
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -143,29 +140,29 @@ export default function Enem2025() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 lg:py-20 bg-gradient-to-br from-primary to-primary/90 text-white">
-          <div className="container mx-auto px-4 text-center">
+        <section className="section-modern py-16 lg:py-20">
+          <div className="section-content container mx-auto px-4 text-center">
             <div className="max-w-3xl mx-auto">
               <Target className="mx-auto mb-6 text-accent" size={64} />
               
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-white">
                 Não estude às cegas para o ENEM 2025
               </h2>
               
-              <p className="text-xl text-white/90 mb-8 leading-relaxed">
+              <p className="text-xl text-white/90 mb-8 leading-relaxed font-light">
                 Baixe nosso checklist completo com todos os tópicos essenciais, cronograma de estudos e dicas de redação. Material criado por especialistas que já aprovaram centenas de alunos.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Button 
                   onClick={handleChecklistCTA}
-                  className="btn-hero bg-accent hover:bg-accent/90 text-primary text-lg px-10 py-6"
+                  className="btn-yellow text-lg px-10 py-6"
                 >
                   <CheckCircle className="mr-2" size={20} />
                   Baixar Checklist Gratuito
                 </Button>
                 
-                <p className="text-sm text-white/70">
+                <p className="text-sm text-white/70 font-light">
                   ✓ PDF completo • ✓ Cronograma incluso • ✓ Acesso imediato
                 </p>
               </div>
@@ -176,6 +173,7 @@ export default function Enem2025() {
 
       <Footer />
       <StickyWhatsApp />
+      </div>
     </div>
   );
 }

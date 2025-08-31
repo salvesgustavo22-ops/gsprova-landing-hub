@@ -49,33 +49,33 @@ export const ThematicSections = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {thematicSections.map((section) => (
-            <Card key={section.id} className="group hover:shadow-xl transition-all duration-300 border-0 overflow-hidden">
+            <div key={section.id} className="card-navy group hover:shadow-xl transition-all duration-300 border-0 overflow-hidden rounded-xl">
               {/* Gradient Header */}
               <div className={`bg-gradient-to-r ${section.gradient} p-6`}>
                 <div className="flex items-center gap-4 mb-4">
                   <div className="bg-white/20 p-3 rounded-lg">
                     <section.icon className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-2xl font-bold text-white">
+                  <h3 className="text-2xl font-bold text-white">
                     {section.title}
-                  </CardTitle>
+                  </h3>
                 </div>
-                <CardDescription className="text-white/90 text-base leading-relaxed">
+                <p className="text-white/90 text-base leading-relaxed font-light">
                   {section.description}
-                </CardDescription>
+                </p>
               </div>
 
-              <CardContent className="p-6">
+              <div className="p-6">
                 {/* Highlights */}
                 <div className="mb-6">
-                  <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-primary" />
+                  <h4 className="font-semibold text-white mb-3 flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-white" />
                     Destaques:
                   </h4>
                   <ul className="space-y-2">
                     {section.highlights.map((highlight, index) => (
-                      <li key={index} className="flex items-center gap-2 text-muted-foreground">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                      <li key={index} className="flex items-center gap-2 text-white/80 font-light">
+                        <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                         {highlight}
                       </li>
                     ))}
@@ -84,12 +84,12 @@ export const ThematicSections = () => {
 
                 {/* CTA Button */}
                 <Link to={section.link}>
-                  <button className="btn-modern w-full group-hover:scale-105 transition-transform duration-300">
+                  <button className="btn-yellow w-full group-hover:scale-105 transition-transform duration-300">
                     {section.buttonText}
                   </button>
                 </Link>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
@@ -99,7 +99,7 @@ export const ThematicSections = () => {
             Não sabe qual vestibular focar? Vamos te ajudar a escolher a melhor estratégia.
           </p>
           <Link to="/lead-servicos">
-            <button className="btn-modern px-8">
+            <button className="btn-yellow px-8">
               Falar com nossa equipe
             </button>
           </Link>

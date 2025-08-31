@@ -18,7 +18,12 @@
     /* Primary - Azul Vibrante (Confiança/Foco) #2563EB */
     --primary: 217 81% 54%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 262 81% 58%;
+    --primary-hover: 217 81% 48%;
+
+    /* Primary Navy - Azul Marinho (Cards e seleção) */
+    --primary-navy: 220 80% 15%;
+    --primary-navy-foreground: 0 0% 100%;
+    --primary-navy-light: 220 70% 50%;
 
     /* Secondary - Laranja Intenso (Ação/Conversão) #F97316 */
     --secondary: 24 95% 53%;
@@ -31,8 +36,11 @@
 
     /* Accent - Amarelo Solar (Urgência/Ênfase) #FACC15 */
     --accent: 47 96% 54%;
-    --accent-foreground: 219 27% 15%;
+    --accent-foreground: 219 27% 25%; /* Cinza escuro para texto */
     --accent-hover: 47 96% 50%;
+
+    /* Dark Navy Text - Cinza muito escuro para contrast no amarelo */
+    --accent-dark-text: 219 27% 20%;
 
     /* Muted - Cinza Claro #F3F4F6 */
     --muted: 220 14% 96%;
@@ -247,6 +255,37 @@
     @apply text-white px-6 py-3 rounded-xl;
     @apply shadow-lg hover:shadow-xl transition-all duration-300;
     @apply transform hover:scale-105;
+  }
+
+  /* Yellow CTA Buttons */
+  .btn-yellow {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; /* Montserrat Semibold */
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-dark-text));
+    @apply px-6 py-3 rounded-xl border-0;
+    @apply shadow-lg hover:shadow-xl transition-all duration-300;
+    @apply transform hover:scale-105;
+  }
+
+  .btn-yellow:hover {
+    background: hsl(var(--accent-hover));
+    color: hsl(var(--accent-dark-text));
+  }
+
+  /* Navy cards - not selected */
+  .card-navy {
+    background: rgba(55, 65, 81, 0.15); /* Navy with 85% transparency */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    @apply rounded-xl transition-all duration-300;
+  }
+
+  /* Navy cards - selected */
+  .card-navy-selected {
+    background: hsl(var(--primary-navy)); /* Opaque navy */
+    border: 2px solid hsl(var(--primary-navy-light));
+    @apply rounded-xl transition-all duration-300;
   }
 
   /* Hero convenience boxes - distinct from buttons */
