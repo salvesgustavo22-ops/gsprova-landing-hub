@@ -14,6 +14,7 @@ interface FormData {
   whatsapp: string;
   service: string;
   message: string;
+  email: string;
 }
 
 export const ContactForm = () => {
@@ -21,7 +22,8 @@ export const ContactForm = () => {
     name: '',
     whatsapp: '',
     service: '',
-    message: ''
+    message: '',
+    email: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [lastSubmission, setLastSubmission] = useState<number>(0);
@@ -42,7 +44,7 @@ export const ContactForm = () => {
     }
 
     // Basic validation
-    if (!formData.name.trim() || !formData.whatsapp.trim() || !formData.service) {
+    if (!formData.name.trim() || !formData.whatsapp.trim() || !formData.email.trim() || !formData.service) {
       toast({
         title: "Campos obrigatórios",
         description: "Por favor, preencha todos os campos obrigatórios.",
@@ -56,14 +58,15 @@ export const ContactForm = () => {
     try {
       // Save to database
       const { error } = await supabase
-        .from('contact_submissions')
+        .from('leads')
         .insert({
           name: formData.name.trim(),
+          email: formData.email.trim(),
           phone: formData.whatsapp.trim(),
-          service_interest: formData.service,
+          lead_type: 'contact_form',
+          service_selected: formData.service,
           message: formData.message.trim() || null,
-          form_type: 'homepage_contact',
-          accepts_whatsapp: true
+          source: 'homepage_contact'
         });
 
       if (error) {
@@ -86,7 +89,8 @@ export const ContactForm = () => {
         name: '',
         whatsapp: '',
         service: '',
-        message: ''
+        message: '',
+        email: ''
       });
       setLastSubmission(now);
 
@@ -135,15 +139,27 @@ export const ContactForm = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="whatsapp">WhatsApp</Label>
+                    <Label htmlFor="email">E-mail</Label>
                     <Input
-                      id="whatsapp"
-                      value={formData.whatsapp}
-                      onChange={(e) => handleChange('whatsapp', e.target.value)}
-                      placeholder="(11) 99999-9999"
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleChange('email', e.target.value)}
+                      placeholder="seu@email.com"
                       required
                     />
                   </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="whatsapp">WhatsApp</Label>
+                  <Input
+                    id="whatsapp"
+                    value={formData.whatsapp}
+                    onChange={(e) => handleChange('whatsapp', e.target.value)}
+                    placeholder="(11) 99999-9999"
+                    required
+                  />
                 </div>
 
                 <div className="space-y-2">
