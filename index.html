@@ -9,11 +9,18 @@
     <meta name="author" content="GS Aprova" />
     <link rel="canonical" href="https://gsaprova.com.br" />
 
-    <!-- Resource hints for performance optimization -->
+    <!-- Enhanced resource hints for performance optimization -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    
+    <!-- Cache control hints -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/assets/hero-modern-bg.jpg" as="image" type="image/jpeg">
+    <link rel="preload" href="/assets/gs-aprova-logo.png" as="image" type="image/png">
     
     <!-- Critical CSS - Simplified for mobile compatibility -->
     <style>
@@ -93,5 +100,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

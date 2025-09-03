@@ -5,13 +5,20 @@ export const lazyLoadComponent = (importFunc: () => Promise<any>) => {
   return importFunc;
 };
 
-// Resource preloading helper
-export const preloadResource = (href: string, as: string, type?: string) => {
+// Resource preloading helper with cache optimization
+export const preloadResource = (href: string, as: string, type?: string, crossOrigin?: string) => {
   const link = document.createElement('link');
   link.rel = 'preload';
   link.href = href;
   link.as = as;
   if (type) link.type = type;
+  if (crossOrigin) link.crossOrigin = crossOrigin;
+  
+  // Add cache hints
+  if (as === 'image' || as === 'font' || as === 'script' || as === 'style') {
+    link.setAttribute('fetchpriority', 'high');
+  }
+  
   document.head.appendChild(link);
   return link;
 };

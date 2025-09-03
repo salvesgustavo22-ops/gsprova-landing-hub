@@ -19,4 +19,35 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Create separate chunks for better caching
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          ui: ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+          utils: ['clsx', 'tailwind-merge', 'class-variance-authority']
+        },
+        // Add content hash to filenames for better cache busting
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name?.split('.') || [];
+          const ext = info[info.length - 1];
+          if (assetInfo.name && /\.(woff|woff2|eot|ttf|otf)$/.test(assetInfo.name)) {
+            return 'assets/fonts/[name]-[hash].[ext]';
+          }
+          if (assetInfo.name && /\.(png|jpe?g|gif|svg|webp|avif)$/.test(assetInfo.name)) {
+            return 'assets/images/[name]-[hash].[ext]';
+          }
+          return 'assets/[name]-[hash].[ext]';
+        }
+      }
+    },
+    // Enable source maps for better debugging
+    sourcemap: mode === 'development',
+    // Optimize chunks
+    chunkSizeWarningLimit: 1000,
+  },
 }));

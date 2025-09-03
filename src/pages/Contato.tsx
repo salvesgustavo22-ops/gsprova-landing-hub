@@ -13,6 +13,7 @@ import { useToast } from "@/hooks/use-toast";
 
 interface FormData {
   name: string;
+  email: string;
   phone: string;
   service_interest: string;
   message: string;
@@ -22,6 +23,7 @@ interface FormData {
 const Contato = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
+    email: "",
     phone: "",
     service_interest: "",
     message: "",
@@ -71,14 +73,15 @@ const Contato = () => {
     
     try {
       const { error } = await supabase
-        .from('contact_submissions')
+        .from('leads')
         .insert({
           name: formData.name,
+          email: formData.email,
           phone: formData.phone,
-          service_interest: formData.service_interest,
+          service_selected: formData.service_interest,
           message: formData.message,
-          accepts_whatsapp: formData.accepts_whatsapp,
-          form_type: 'contact_page'
+          lead_type: 'contact_form',
+          source: 'contact_page'
         });
 
       if (error) throw error;
@@ -209,6 +212,24 @@ const Contato = () => {
                   required
                   placeholder="(11) 99999-9999"
                   maxLength={15}
+                  className="h-12 text-base"
+                />
+              </div>
+
+              <div className="space-y-3">
+                <Label htmlFor="email" className="text-sm font-medium">
+                  Seu E-mail *
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => {
+                    handleFirstInteraction();
+                    setFormData(prev => ({ ...prev, email: e.target.value }));
+                  }}
+                  required
+                  placeholder="seu@email.com"
                   className="h-12 text-base"
                 />
               </div>

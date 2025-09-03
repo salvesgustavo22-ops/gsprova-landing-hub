@@ -14,11 +14,12 @@ import gsAprovaLogo from '@/assets/gs-aprova-logo.png';
 interface ContactSubmission {
   id: string;
   name: string;
+  email: string;
   phone: string;
-  service_interest: string;
+  service_selected: string;
   message: string | null;
-  accepts_whatsapp: boolean;
-  form_type: string;
+  lead_type: string;
+  source: string;
   created_at: string;
 }
 
@@ -46,7 +47,7 @@ const Admin = () => {
       try {
         setLoading(true);
         const { data, error } = await supabase
-          .from('contact_submissions')
+          .from('leads')
           .select('*')
           .order('created_at', { ascending: false });
 
@@ -198,18 +199,7 @@ const Admin = () => {
             
             <Card>
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg">WhatsApp Aceito</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold text-green-600">
-                  {submissions.filter(s => s.accepts_whatsapp).length}
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg">Hoje</CardTitle>
+                <CardTitle className="text-lg">Contatos de Hoje</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-orange-600">
@@ -257,11 +247,6 @@ const Admin = () => {
                             <div className="flex items-center space-x-2">
                               <Phone className="w-4 h-4 text-muted-foreground" />
                               <span>{submission.phone}</span>
-                              {submission.accepts_whatsapp && (
-                                <Badge variant="secondary" className="text-xs">
-                                  WhatsApp OK
-                                </Badge>
-                              )}
                             </div>
                             
                             <div className="flex items-center space-x-2">
@@ -276,15 +261,15 @@ const Admin = () => {
                           <div className="space-y-3">
                             <div>
                               <p className="text-sm text-muted-foreground mb-1">Interesse:</p>
-                              <Badge className={getServiceBadgeColor(submission.service_interest)}>
-                                {formatServiceName(submission.service_interest)}
+                              <Badge className={getServiceBadgeColor(submission.service_selected)}>
+                                {formatServiceName(submission.service_selected)}
                               </Badge>
                             </div>
                             
                             <div>
-                              <p className="text-sm text-muted-foreground mb-1">Tipo:</p>
+                              <p className="text-sm text-muted-foreground mb-1">Origem:</p>
                               <Badge variant="outline" className="text-xs">
-                                {submission.form_type}
+                                {submission.source}
                               </Badge>
                             </div>
                           </div>
