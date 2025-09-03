@@ -58,6 +58,7 @@
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        will-change: transform;
       }
       
       /* Hero section critical styles */
@@ -70,6 +71,35 @@
         display: flex;
         align-items: center;
         background: linear-gradient(135deg, hsl(219 27% 15%), hsl(220 25% 25%));
+        will-change: transform;
+      }
+      
+      /* Optimized animation classes to prevent forced reflows */
+      .animate-in {
+        animation-fill-mode: both;
+        will-change: transform, opacity;
+      }
+      
+      .animate-out {
+        animation-fill-mode: both;
+        will-change: transform, opacity;
+      }
+      
+      /* Tooltip optimization */
+      [data-radix-popper-content-wrapper] {
+        will-change: transform;
+        transform: translateZ(0);
+      }
+      
+      /* Dialog optimization */
+      [data-radix-dialog-overlay] {
+        will-change: opacity;
+        transform: translateZ(0);
+      }
+      
+      [data-radix-dialog-content] {
+        will-change: transform, opacity;
+        transform: translateZ(0);
       }
       
       /* Button critical styles */
@@ -81,9 +111,10 @@
         border-radius: 0.5rem;
         font-weight: 600;
         text-decoration: none;
-        transition: all 0.2s ease;
+        transition: transform 0.2s ease, background-color 0.2s ease;
         cursor: pointer;
         border: none;
+        will-change: transform;
       }
       
       .btn-primary {

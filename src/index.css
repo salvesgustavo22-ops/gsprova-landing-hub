@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations to prevent forced reflows */
+@layer base {
+  /* Optimize Radix UI components */
+  [data-radix-popper-content-wrapper] {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  
+  [data-radix-dialog-overlay],
+  [data-radix-alert-dialog-overlay] {
+    will-change: opacity;
+    transform: translateZ(0);
+  }
+  
+  [data-radix-dialog-content],
+  [data-radix-alert-dialog-content] {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+  
+  [data-radix-tooltip-content] {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+  
+  /* Global animation performance */
+  .animate-in,
+  .animate-out {
+    will-change: transform, opacity;
+  }
+  
+  /* Optimize hover effects */
+  [class*="hover:scale"],
+  [class*="hover:translate"] {
+    will-change: transform;
+  }
+}
+
 /* GS Aprova Design System - Educational Excellence */
 
 @layer base {
