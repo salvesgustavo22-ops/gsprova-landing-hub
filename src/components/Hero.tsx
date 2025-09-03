@@ -50,10 +50,16 @@ export const Hero = () => {
 
   return (
     <section className="hero-modern relative">
-      {/* Modern Background with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-        style={{ backgroundImage: `url(${heroBgImage})` }}
+      {/* Modern Background with Overlay - Optimized for LCP */}
+      <img 
+        src={heroBgImage} 
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover opacity-30"
+        fetchPriority="high"
+        loading="eager"
+        width="1920"
+        height="1080"
+        style={{ objectPosition: 'center' }}
       />
       
       {/* Floating Elements */}
