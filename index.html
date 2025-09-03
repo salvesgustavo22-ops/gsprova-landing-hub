@@ -18,11 +18,11 @@
     <!-- Cache control hints -->
     <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
     
-    <!-- Preload critical assets with high priority -->
+    <!-- Preload critical assets with highest priority for LCP optimization -->
+    <link rel="preload" href="/src/assets/hero-modern-bg.jpg" as="image" type="image/jpeg" fetchpriority="high">
+    <link rel="preload" href="/lovable-uploads/7cea088c-1e84-4b15-86ab-6a6c2aa3d4ed.png" as="image" type="image/png" fetchpriority="high">
     <link rel="preload" href="/src/main.tsx" as="script" type="module" crossorigin>
     <link rel="preload" href="/src/index.css" as="style">
-    <link rel="preload" href="/assets/hero-modern-bg.jpg" as="image" type="image/jpeg" fetchpriority="high">
-    <link rel="preload" href="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png" as="image" type="image/png" fetchpriority="high">
     
     <!-- Load fonts asynchronously to prevent render blocking -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
