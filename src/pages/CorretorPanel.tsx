@@ -194,7 +194,7 @@ const CorretorPanel = () => {
     return bank.toUpperCase();
   };
 
-  const getStatusBadge = (status: 'enviada' | 'a_corrigir' | 'corrigida' | 'revisar') => {
+  const getStatusBadge = (status: 'enviada' | 'a_corrigir' | 'corrigida' | 'revisar' | 'pending' | 'corrected') => {
     switch (status) {
       case 'enviada':
         return <Badge variant="outline">Enviada</Badge>;
@@ -204,6 +204,10 @@ const CorretorPanel = () => {
         return <Badge>Corrigida</Badge>;
       case 'revisar':
         return <Badge variant="destructive">Revisar</Badge>;
+      case 'pending':
+        return <Badge variant="secondary">A Corrigir</Badge>;
+      case 'corrected':
+        return <Badge>Corrigida</Badge>;
       default:
         return <Badge variant="outline">Enviada</Badge>;
     }
