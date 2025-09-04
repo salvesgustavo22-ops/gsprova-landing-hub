@@ -21,14 +21,14 @@ const mathServices: ServiceDetail[] = [
     id: "aula-avulsa-math",
     title: "Aula Avulsa",
     description: "Aula personalizada de Matemática focada nas suas dificuldades específicas",
-    price: "R$ 70",
+    price: "De R$ 70 por R$39,99",
     features: ["1 aula de 50min", "Exercícios personalizados", "Material didático", "Suporte pós-aula", "Até 6x no cartão"]
   },
   {
     id: "pacote-4-aulas-math", 
     title: "Pacote 4 Aulas",
     description: "Pacote econômico com 4 aulas de Matemática e acompanhamento completo",
-    price: "R$ 250",
+    price: "R$ 129,99",
     originalPrice: "R$ 280",
     features: ["4 aulas de 50min cada", "Plano de estudos", "Exercícios exclusivos", "Relatório de progresso", "Suporte contínuo", "Até 6x no cartão"],
     badge: "Mais Popular",
@@ -39,16 +39,16 @@ const mathServices: ServiceDetail[] = [
 const essayServices: ServiceDetail[] = [
   {
     id: "correcao-avulsa", 
-    title: "Correção Avulsa",
+    title: "Correção Avulsa - Promoção",
     description: "Correção detalhada da sua redação com feedback personalizado",
-    price: "R$ 70",
+    price: "R$ 19,90",
     features: ["Correção detalhada", "Feedback personalizado", "Nota estimada", "Dicas de melhoria", "Entrega em 48h", "Até 6x no cartão"]
   },
   {
     id: "pacote-completo-essay",
-    title: "Pacote Completo", 
+    title: "Pacote Completo - promoção!", 
     description: "Pacote com correções ilimitadas e acompanhamento mensal",
-    price: "R$ 250",
+    price: "R$ 99,90",
     originalPrice: "R$ 350",
     features: ["Correções ilimitadas/mês", "Acompanhamento semanal", "Banco de temas", "Videoaulas exclusivas", "Mentoria personalizada", "Até 6x no cartão"],
     badge: "Melhor Custo-Benefício",
@@ -59,9 +59,9 @@ const essayServices: ServiceDetail[] = [
 const studyPathServices: ServiceDetail[] = [
   {
     id: "trilha-personalizada",
-    title: "Trilha Personalizada",
+    title: "Trilha Personalizada - Promoção!",
     description: "Criamos trilhas com conteúdos e exercícios baseados em uma avaliação das suas necessidades, além de oferecer mentoria",
-    price: "R$ 350",
+    price: "R$ 89,90",
     features: ["Avaliação diagnóstica", "Trilha personalizada", "Exercícios direcionados", "Mentoria semanal", "Acompanhamento mensal", "Até 6x no cartão"]
   }
 ];
@@ -71,8 +71,8 @@ const completeServices: ServiceDetail[] = [
     id: "experiencia-completa",
     title: "Experiência Completa",
     description: "Pacote completo com aulas de Matemática, correção de redação e trilha de aprendizado personalizada",
-    price: "R$ 720",
-    originalPrice: "R$ 920",
+    price: "R$ 349,90",
+    originalPrice: "R$ 699,90",
     features: ["4 aulas de Matemática", "Correções ilimitadas de redação", "Trilha personalizada", "Mentoria semanal", "Suporte contínuo", "Até 6x no cartão"],
     badge: "Melhor Oferta",
     popular: true
@@ -130,7 +130,7 @@ export const Services = () => {
             Nossos Serviços
           </h2>
           <p className="text-lg text-white/85 max-w-2xl mx-auto font-light">
-            Escolha o serviço ideal para sua preparação e comece hoje mesmo
+            Escolha o serviço ideal para sua preparação e comece hoje mesmo. aproveite as promoções!
           </p>
         </div>
 
