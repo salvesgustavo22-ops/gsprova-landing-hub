@@ -228,7 +228,13 @@ export type Database = {
       app_role: "admin" | "user"
       correction_bank: "enem" | "fuvest" | "vunesp" | "other"
       essay_origin: "gs_aprova" | "external"
-      essay_status: "pending" | "corrected"
+      essay_status:
+        | "pending"
+        | "corrected"
+        | "enviada"
+        | "a_corrigir"
+        | "corrigida"
+        | "revisar"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -359,7 +365,14 @@ export const Constants = {
       app_role: ["admin", "user"],
       correction_bank: ["enem", "fuvest", "vunesp", "other"],
       essay_origin: ["gs_aprova", "external"],
-      essay_status: ["pending", "corrected"],
+      essay_status: [
+        "pending",
+        "corrected",
+        "enviada",
+        "a_corrigir",
+        "corrigida",
+        "revisar",
+      ],
     },
   },
 } as const
