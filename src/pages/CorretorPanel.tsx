@@ -19,7 +19,7 @@ type Essay = {
   theme_title: string | null;
   bank: string;
   bank_other: string | null;
-  status: 'pending' | 'corrected';
+  status: 'enviada' | 'a_corrigir' | 'corrigida' | 'revisar' | 'pending' | 'corrected';
   correction_id: string | null;
   essay_file_path: string;
   proposal_file_path: string | null;
@@ -194,11 +194,19 @@ const CorretorPanel = () => {
     return bank.toUpperCase();
   };
 
-  const getStatusBadge = (status: 'pending' | 'corrected') => {
-    if (status === 'pending') {
-      return <Badge variant="outline">Pendente</Badge>;
+  const getStatusBadge = (status: 'enviada' | 'a_corrigir' | 'corrigida' | 'revisar') => {
+    switch (status) {
+      case 'enviada':
+        return <Badge variant="outline">Enviada</Badge>;
+      case 'a_corrigir':
+        return <Badge variant="secondary">A Corrigir</Badge>;
+      case 'corrigida':
+        return <Badge>Corrigida</Badge>;
+      case 'revisar':
+        return <Badge variant="destructive">Revisar</Badge>;
+      default:
+        return <Badge variant="outline">Enviada</Badge>;
     }
-    return <Badge>Corrigida</Badge>;
   };
 
   if (!isAuthenticated) {

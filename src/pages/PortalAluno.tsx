@@ -123,14 +123,52 @@ const PortalAluno = () => {
           </div>
         </header>
 
+        {/* Cards de Preços */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <Card className="border-primary/20">
+            <CardContent className="p-6 text-center">
+              <h3 className="text-xl font-semibold text-primary mb-2">Correção Avulsa</h3>
+              <p className="text-3xl font-bold text-primary mb-2">R$ 70</p>
+              <p className="text-sm text-muted-foreground mb-4">
+                Correção individual detalhada com feedback personalizado
+              </p>
+              <ul className="text-sm text-left space-y-1 mb-4">
+                <li>✓ Correção completa seguindo critérios oficiais</li>
+                <li>✓ Feedback detalhado por competência</li>
+                <li>✓ Sugestões de melhoria</li>
+                <li>✓ Entrega em até 3 dias úteis</li>
+              </ul>
+            </CardContent>
+          </Card>
+          
+          <Card className="border-primary/20 bg-primary/5">
+            <CardContent className="p-6 text-center">
+              <h3 className="text-xl font-semibold text-primary mb-2">Pacote 4 Correções</h3>
+              <p className="text-3xl font-bold text-primary mb-2">R$ 250</p>
+              <p className="text-sm text-muted-foreground mb-4">
+                Melhor custo-benefício para acompanhamento contínuo
+              </p>
+              <ul className="text-sm text-left space-y-1 mb-4">
+                <li>✓ 4 correções completas</li>
+                <li>✓ Economia de R$ 30</li>
+                <li>✓ Acompanhamento da evolução</li>
+                <li>✓ Suporte direto via WhatsApp</li>
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Banner de Entrega */}
         <Card className="mb-8 bg-gradient-to-r from-primary/10 to-primary/20 border-primary/30">
           <CardContent className="p-8 text-center">
             <h2 className="text-2xl font-bold text-primary mb-4">
               📝 Entregar Redação
             </h2>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-4">
               Envie sua redação para correção profissional
+            </p>
+            <p className="text-sm text-muted-foreground mb-6">
+              💰 Pagamento deve ser efetuado pelo WhatsApp do GS Aprova após envio da redação
             </p>
             <Dialog open={showSubmissionDialog} onOpenChange={setShowSubmissionDialog}>
               <DialogTrigger asChild>

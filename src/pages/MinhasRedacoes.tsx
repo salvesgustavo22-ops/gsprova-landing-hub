@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowLeft, Download, MessageCircle } from "lucide-react";
+import { ArrowLeft, Download, MessageCircle, MoreHorizontal, X, Upload } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
@@ -17,11 +18,15 @@ type Essay = {
   theme_title: string | null;
   bank: string;
   bank_other: string | null;
-  status: 'pending' | 'corrected';
+  status: 'enviada' | 'a_corrigir' | 'corrigida' | 'revisar' | 'pending' | 'corrected';
   correction_id: string | null;
   correction_file_path: string | null;
   created_at: string;
   downloaded_at: string | null;
+  essay_file_path: string;
+  corrector_comments?: string | null;
+  revision_essay_file_path?: string | null;
+  is_revision?: boolean;
 };
 
 const MinhasRedacoes = () => {
@@ -129,11 +134,81 @@ const MinhasRedacoes = () => {
     return bank.toUpperCase();
   };
 
-  const getStatusBadge = (status: 'pending' | 'corrected') => {
-    if (status === 'pending') {
-      return <Badge variant="outline">A Corrigir</Badge>;
+  const handleDownloadEssay = async (essay: Essay) => {
+    try {
+      const { data, error } = await supabase.storage
+        .from('essay-files')
+        .download(essay.essay_file_path);
+
+      if (error) {
+        throw error;
+      }
+
+      const url = URL.createObjectURL(data);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `Redacao_${essay.correction_id || essay.id}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      toast({
+        title: "Download realizado!",
+        description: "Sua redação foi baixada com sucesso.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Erro no download",
+        description: error.message,
+        variant: "destructive",
+      });
     }
-    return <Badge>Corrigida</Badge>;
+  };
+
+  const handleCancelSubmission = async (essayId: string) => {
+    try {
+      const { error } = await supabase
+        .from('essays')
+        .delete()
+        .eq('id', essayId);
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: "Envio cancelado",
+        description: "Sua redação foi removida com sucesso.",
+      });
+      
+      fetchEssays();
+    } catch (error: any) {
+      toast({
+        title: "Erro ao cancelar",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const getStatusBadge = (status: 'enviada' | 'a_corrigir' | 'corrigida' | 'revisar' | 'pending' | 'corrected') => {
+    switch (status) {
+      case 'enviada':
+        return <Badge variant="outline">Enviada</Badge>;
+      case 'a_corrigir':
+        return <Badge variant="secondary">A Corrigir</Badge>;
+      case 'corrigida':
+        return <Badge>Corrigida</Badge>;
+      case 'revisar':
+        return <Badge variant="destructive">Revisar</Badge>;
+      case 'pending':
+        return <Badge variant="outline">A Corrigir</Badge>;
+      case 'corrected':
+        return <Badge>Corrigida</Badge>;
+      default:
+        return <Badge variant="outline">Enviada</Badge>;
+    }
   };
 
   if (!user) return null;
@@ -210,7 +285,7 @@ const MinhasRedacoes = () => {
                         </TableCell>
                         <TableCell>
                           <div className="flex gap-2">
-                            {essay.status === 'corrected' && essay.correction_file_path && (
+                            {essay.status === 'corrigida' && essay.correction_file_path && (
                               <Button
                                 size="sm"
                                 onClick={() => handleDownloadCorrection(essay)}
@@ -220,15 +295,51 @@ const MinhasRedacoes = () => {
                                 Baixar Correção
                               </Button>
                             )}
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              onClick={() => handleWhatsAppContact(essay.correction_id || undefined)}
-                              className="flex items-center gap-1"
-                            >
-                              <MessageCircle className="h-3 w-3" />
-                              WhatsApp
-                            </Button>
+                            
+                            {essay.status === 'revisar' && (
+                              <div className="space-y-2">
+                                {essay.corrector_comments && (
+                                  <div className="text-xs text-muted-foreground p-2 bg-muted rounded">
+                                    <strong>Comentários:</strong> {essay.corrector_comments}
+                                  </div>
+                                )}
+                                <Button
+                                  size="sm"
+                                  onClick={() => navigate(`/enviar-redacao?type=${essay.origin}&revision=${essay.id}&bank=${essay.bank}`)}
+                                  className="flex items-center gap-1"
+                                >
+                                  <Upload className="h-3 w-3" />
+                                  Enviar Nova Redação
+                                </Button>
+                              </div>
+                            )}
+                            
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <Button size="sm" variant="outline">
+                                  <MoreHorizontal className="h-3 w-3" />
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent>
+                                <DropdownMenuItem onClick={() => handleDownloadEssay(essay)}>
+                                  <Download className="h-3 w-3 mr-1" />
+                                  Baixar Redação
+                                </DropdownMenuItem>
+                                {essay.status === 'enviada' && (
+                                  <DropdownMenuItem 
+                                    onClick={() => handleCancelSubmission(essay.id)}
+                                    className="text-destructive"
+                                  >
+                                    <X className="h-3 w-3 mr-1" />
+                                    Cancelar Envio
+                                  </DropdownMenuItem>
+                                )}
+                                <DropdownMenuItem onClick={() => handleWhatsAppContact(essay.correction_id || undefined)}>
+                                  <MessageCircle className="h-3 w-3 mr-1" />
+                                  WhatsApp
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
                           </div>
                         </TableCell>
                       </TableRow>

@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
@@ -32,10 +34,12 @@ const AuthAluno = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
+  const [dataProtectionAccepted, setDataProtectionAccepted] = useState(false);
   
   // Forgot password
   const [forgotEmail, setForgotEmail] = useState("");
   const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [showEmailConfirmDialog, setShowEmailConfirmDialog] = useState(false);
 
   useEffect(() => {
     if (user) {
@@ -68,11 +72,17 @@ const AuthAluno = () => {
       const { error } = await signIn(email, password);
       
       if (error) {
+        let errorMessage = error.message;
+        
+        if (error.message === "Invalid login credentials") {
+          errorMessage = "Email ou senha incorretos";
+        } else if (error.message === "Email not confirmed") {
+          errorMessage = "Acesse seu email e confirme seu cadastro antes de fazer login";
+        }
+        
         toast({
           title: "Erro no login",
-          description: error.message === "Invalid login credentials" 
-            ? "Email ou senha incorretos" 
-            : error.message,
+          description: errorMessage,
           variant: "destructive",
         });
       } else {
@@ -116,8 +126,33 @@ const AuthAluno = () => {
       setLoading(false);
       return;
     }
+
+    if (!dataProtectionAccepted) {
+      toast({
+        title: "Aceite os termos",
+        description: "Você deve aceitar os termos de proteção de dados para continuar",
+        variant: "destructive",
+      });
+      setLoading(false);
+      return;
+    }
     
     try {
+      // Get user's IP and location
+      let userIP = '';
+      let userLocation = '';
+      try {
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        userIP = ipData.ip;
+        
+        const locationResponse = await fetch(`https://ipapi.co/${userIP}/json/`);
+        const locationData = await locationResponse.json();
+        userLocation = `${locationData.city || ''}, ${locationData.region || ''}, ${locationData.country_name || ''}`;
+      } catch (error) {
+        console.log('Could not get IP/location:', error);
+      }
+
       const { error } = await signUp(signupEmail, signupPassword);
       
       if (error) {
@@ -135,25 +170,25 @@ const AuthAluno = () => {
           });
         }
       } else {
-        // Create profile
+        // Create profile with data protection info
         const { error: profileError } = await supabase
           .from('profiles')
           .insert({
             user_id: (await supabase.auth.getUser()).data.user?.id,
             first_name: firstName,
             last_name: lastName,
-            phone: phone.replace(/\D/g, "")
+            phone: phone.replace(/\D/g, ""),
+            data_protection_accepted: true,
+            data_protection_ip: userIP,
+            data_protection_location: userLocation,
+            data_protection_timestamp: new Date().toISOString()
           });
           
         if (profileError) {
           console.error("Error creating profile:", profileError);
         }
         
-        toast({
-          title: "Conta criada com sucesso!",
-          description: "Confirme seu email para ativar a conta.",
-        });
-        setActiveTab("signin");
+        setShowEmailConfirmDialog(true);
       }
     } catch (error: any) {
       toast({
@@ -184,7 +219,7 @@ const AuthAluno = () => {
       } else {
         toast({
           title: "Email enviado!",
-          description: "Verifique sua caixa de entrada para redefinir a senha.",
+          description: "Verifique sua caixa de entrada e confira no spam ou lixo eletrônico se não chegou.",
         });
         setShowForgotPassword(false);
       }
@@ -400,11 +435,23 @@ const AuthAluno = () => {
                       {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </Button>
                   </div>
+                 </div>
+                
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="data-protection"
+                    checked={dataProtectionAccepted}
+                    onCheckedChange={(checked) => setDataProtectionAccepted(checked as boolean)}
+                  />
+                  <Label htmlFor="data-protection" className="text-sm text-muted-foreground">
+                    Estou ciente que a GS Aprova segue a legislação brasileira sobre proteção de dados
+                  </Label>
                 </div>
+                
                 <Button
                   type="submit"
                   className="w-full"
-                  disabled={loading}
+                  disabled={loading || !dataProtectionAccepted}
                 >
                   {loading ? "Cadastrando..." : "Cadastrar"}
                 </Button>
@@ -422,6 +469,32 @@ const AuthAluno = () => {
           </div>
         </CardContent>
       </Card>
+
+      <Dialog open={showEmailConfirmDialog} onOpenChange={setShowEmailConfirmDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>✅ Cadastro Realizado!</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <p>
+              Seu cadastro foi realizado com sucesso! Para ativar sua conta, você precisa confirmar seu email.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              📧 Verifique sua caixa de entrada e clique no link de confirmação. 
+              Se não encontrar o email, confira na pasta de spam ou lixo eletrônico.
+            </p>
+            <Button 
+              onClick={() => {
+                setShowEmailConfirmDialog(false);
+                setActiveTab("signin");
+              }} 
+              className="w-full"
+            >
+              Entendi, vou verificar meu email
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

@@ -11,6 +11,7 @@ export const Navigation = () => {
     { name: "Início", path: "/" },
     { name: "ENEM 2025", path: "/enem-2025" },
     { name: "Fuvest 2025", path: "/fuvest-2025" },
+    { name: "Portal de Redações", path: "/portal-aluno" },
     { name: "Matemática Online", path: "/#matematica" },
     { name: "Correção de Redação", path: "/#redacao" },
     { name: "Planos", path: "/#planos" },
@@ -20,7 +21,7 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
+    <nav className="sticky top-0 z-50 bg-white backdrop-blur-sm border-b border-border shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo and Title */}
