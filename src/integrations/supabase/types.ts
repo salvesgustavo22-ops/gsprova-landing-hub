@@ -216,6 +216,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      create_corretor_user: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
       generate_correction_id: {
         Args: { essay_origin: Database["public"]["Enums"]["essay_origin"] }
         Returns: string
