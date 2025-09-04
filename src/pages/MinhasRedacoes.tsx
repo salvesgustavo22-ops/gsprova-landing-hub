@@ -320,25 +320,31 @@ const MinhasRedacoes = () => {
                                   <MoreHorizontal className="h-3 w-3" />
                                 </Button>
                               </DropdownMenuTrigger>
-                              <DropdownMenuContent>
-                                <DropdownMenuItem onClick={() => handleDownloadEssay(essay)}>
-                                  <Download className="h-3 w-3 mr-1" />
-                                  Baixar Redação
-                                </DropdownMenuItem>
-                                {essay.status === 'enviada' && (
-                                  <DropdownMenuItem 
-                                    onClick={() => handleCancelSubmission(essay.id)}
-                                    className="text-destructive"
-                                  >
-                                    <X className="h-3 w-3 mr-1" />
-                                    Cancelar Envio
-                                  </DropdownMenuItem>
-                                )}
-                                <DropdownMenuItem onClick={() => handleWhatsAppContact(essay.correction_id || undefined)}>
-                                  <MessageCircle className="h-3 w-3 mr-1" />
-                                  WhatsApp
-                                </DropdownMenuItem>
-                              </DropdownMenuContent>
+                               <DropdownMenuContent>
+                                 <DropdownMenuItem onClick={() => handleDownloadEssay(essay)}>
+                                   <Download className="h-3 w-3 mr-1" />
+                                   Baixar Redação
+                                 </DropdownMenuItem>
+                                 {essay.correction_file_path && (
+                                   <DropdownMenuItem onClick={() => handleDownloadCorrection(essay)}>
+                                     <Download className="h-3 w-3 mr-1" />
+                                     Baixar Correção
+                                   </DropdownMenuItem>
+                                 )}
+                                 {essay.status === 'enviada' && (
+                                   <DropdownMenuItem 
+                                     onClick={() => handleCancelSubmission(essay.id)}
+                                     className="text-destructive"
+                                   >
+                                     <X className="h-3 w-3 mr-1" />
+                                     Cancelar Envio
+                                   </DropdownMenuItem>
+                                 )}
+                                 <DropdownMenuItem onClick={() => handleWhatsAppContact(essay.correction_id || undefined)}>
+                                   <MessageCircle className="h-3 w-3 mr-1" />
+                                   Enviar Dúvidas
+                                 </DropdownMenuItem>
+                               </DropdownMenuContent>
                             </DropdownMenu>
                           </div>
                         </TableCell>

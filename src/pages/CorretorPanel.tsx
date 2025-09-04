@@ -8,10 +8,11 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Download, Send, LogOut } from "lucide-react";
+import { Download, Send, LogOut, Save, MessageCircle } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type Essay = {
   id: string;
@@ -40,6 +41,8 @@ const CorretorPanel = () => {
   const [loading, setLoading] = useState(false);
   const [correctionFile, setCorrectionFile] = useState<File | null>(null);
   const [selectedEssayId, setSelectedEssayId] = useState<string | null>(null);
+  const [statusChanges, setStatusChanges] = useState<{[key: string]: string}>({});
+  const [pendingChanges, setPendingChanges] = useState<string[]>([]);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -155,7 +158,7 @@ const CorretorPanel = () => {
       const { error: updateError } = await supabase
         .from('essays')
         .update({
-          status: 'corrected',
+          status: 'corrigida',
           correction_id: correctionIdData,
           correction_file_path: uploadData.path
         })
@@ -181,6 +184,61 @@ const CorretorPanel = () => {
         variant: "destructive",
       });
     }
+  };
+
+  const handleStatusChange = (essayId: string, newStatus: string) => {
+    setStatusChanges(prev => ({ ...prev, [essayId]: newStatus }));
+    setPendingChanges(prev => prev.includes(essayId) ? prev : [...prev, essayId]);
+  };
+
+  const handleSaveChanges = async () => {
+    if (pendingChanges.length === 0) {
+      toast({
+        title: "Nenhuma alteração",
+        description: "Não há alterações pendentes para salvar",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      for (const essayId of pendingChanges) {
+        const newStatus = statusChanges[essayId];
+        if (newStatus) {
+          const { error } = await supabase
+            .from('essays')
+            .update({ status: newStatus as any })
+            .eq('id', essayId);
+
+          if (error) {
+            throw error;
+          }
+        }
+      }
+
+      toast({
+        title: "Alterações salvas!",
+        description: `${pendingChanges.length} status atualizados com sucesso`,
+      });
+
+      setStatusChanges({});
+      setPendingChanges([]);
+      fetchEssays();
+
+    } catch (error: any) {
+      toast({
+        title: "Erro ao salvar alterações",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleWhatsAppContact = (correctionId: string) => {
+    const message = `Olá! Tenho uma dúvida sobre a correção ID: ${correctionId}`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/5511999999999?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   const getOriginText = (origin: 'gs_aprova' | 'external') => {
@@ -262,6 +320,16 @@ const CorretorPanel = () => {
           </Button>
         </div>
 
+        <div className="flex justify-between items-center mb-4">
+          <div></div>
+          {pendingChanges.length > 0 && (
+            <Button onClick={handleSaveChanges} className="gap-2">
+              <Save className="h-4 w-4" />
+              Salvar Alterações ({pendingChanges.length})
+            </Button>
+          )}
+        </div>
+
         <Card>
           <CardHeader>
             <CardTitle>Redações para Correção</CardTitle>
@@ -280,10 +348,11 @@ const CorretorPanel = () => {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Data</TableHead>
+                      <TableHead>ID Correção</TableHead>
                       <TableHead>Aluno</TableHead>
                       <TableHead>Origem</TableHead>
-                      <TableHead>Tema/Banca</TableHead>
+                      <TableHead>Banca</TableHead>
+                      <TableHead>Arquivos</TableHead>
                       <TableHead>Status</TableHead>
                       <TableHead>Ações</TableHead>
                     </TableRow>
@@ -292,7 +361,12 @@ const CorretorPanel = () => {
                     {essays.map((essay) => (
                       <TableRow key={essay.id}>
                         <TableCell>
-                          {format(new Date(essay.created_at), "dd/MM/yyyy", { locale: ptBR })}
+                          <div className="font-mono text-sm">
+                            {essay.correction_id || 'Pendente'}
+                          </div>
+                          <div className="text-xs text-muted-foreground">
+                            {format(new Date(essay.created_at), "dd/MM/yyyy", { locale: ptBR })}
+                          </div>
                         </TableCell>
                         <TableCell>
                           <div>
@@ -305,7 +379,9 @@ const CorretorPanel = () => {
                           </div>
                         </TableCell>
                         <TableCell>
-                          {getOriginText(essay.origin)}
+                          <Badge variant="outline">
+                            {getOriginText(essay.origin)}
+                          </Badge>
                         </TableCell>
                         <TableCell>
                           <div>
@@ -320,65 +396,96 @@ const CorretorPanel = () => {
                           </div>
                         </TableCell>
                         <TableCell>
-                          {getStatusBadge(essay.status)}
-                          {essay.correction_id && (
-                            <div className="text-xs text-muted-foreground mt-1">
-                              ID: {essay.correction_id}
-                            </div>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex gap-2 flex-wrap">
+                          <div className="flex flex-col gap-1">
                             <Button
                               size="sm"
                               variant="outline"
                               onClick={() => handleDownloadFile(essay.essay_file_path, `Redacao_${essay.id}.pdf`)}
+                              className="text-xs h-7"
                             >
                               <Download className="h-3 w-3 mr-1" />
                               Redação
                             </Button>
-                            {essay.proposal_file_path && (
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => essay.proposal_file_path ? 
+                                handleDownloadFile(essay.proposal_file_path, `Proposta_${essay.id}.pdf`) : 
+                                null
+                              }
+                              disabled={!essay.proposal_file_path}
+                              className="text-xs h-7"
+                            >
+                              <Download className="h-3 w-3 mr-1" />
+                              {essay.proposal_file_path ? 'Proposta' : '-'}
+                            </Button>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <Select 
+                            value={statusChanges[essay.id] || essay.status} 
+                            onValueChange={(value) => handleStatusChange(essay.id, value)}
+                          >
+                            <SelectTrigger className="w-32">
+                              <SelectValue />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="enviada">Enviada</SelectItem>
+                              <SelectItem value="a_corrigir">A Corrigir</SelectItem>
+                              <SelectItem value="corrigida">Corrigida</SelectItem>
+                              <SelectItem value="revisar">Revisar</SelectItem>
+                            </SelectContent>
+                          </Select>
+                          {pendingChanges.includes(essay.id) && (
+                            <div className="text-xs text-orange-600 mt-1">
+                              Alteração pendente
+                            </div>
+                          )}
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex flex-col gap-1">
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button size="sm" variant="default" className="text-xs h-7">
+                                  <Send className="h-3 w-3 mr-1" />
+                                  Enviar Correção
+                                </Button>
+                              </DialogTrigger>
+                              <DialogContent>
+                                <DialogHeader>
+                                  <DialogTitle>Enviar Correção - {essay.correction_id || 'Nova'}</DialogTitle>
+                                </DialogHeader>
+                                <div className="space-y-4">
+                                  <div>
+                                    <Label htmlFor="correction">Arquivo de Correção (PDF)</Label>
+                                    <Input
+                                      id="correction"
+                                      type="file"
+                                      accept=".pdf"
+                                      onChange={(e) => setCorrectionFile(e.target.files?.[0] || null)}
+                                    />
+                                  </div>
+                                  <Button
+                                    onClick={() => handleSendCorrection(essay.id, essay.origin)}
+                                    className="w-full"
+                                    disabled={!correctionFile}
+                                  >
+                                    Confirmar Envio
+                                  </Button>
+                                </div>
+                              </DialogContent>
+                            </Dialog>
+                            
+                            {essay.correction_id && (
                               <Button
                                 size="sm"
                                 variant="outline"
-                                onClick={() => handleDownloadFile(essay.proposal_file_path!, `Proposta_${essay.id}.pdf`)}
+                                onClick={() => handleWhatsAppContact(essay.correction_id!)}
+                                className="text-xs h-7"
                               >
-                                <Download className="h-3 w-3 mr-1" />
-                                Proposta
+                                <MessageCircle className="h-3 w-3 mr-1" />
+                                Dúvidas
                               </Button>
-                            )}
-                            {essay.status === 'pending' && (
-                              <Dialog>
-                                <DialogTrigger asChild>
-                                  <Button size="sm">
-                                    <Send className="h-3 w-3 mr-1" />
-                                    Enviar Correção
-                                  </Button>
-                                </DialogTrigger>
-                                <DialogContent>
-                                  <DialogHeader>
-                                    <DialogTitle>Enviar Correção</DialogTitle>
-                                  </DialogHeader>
-                                  <div className="space-y-4">
-                                    <div>
-                                      <Label htmlFor="correction">Arquivo de Correção</Label>
-                                      <Input
-                                        id="correction"
-                                        type="file"
-                                        accept=".pdf"
-                                        onChange={(e) => setCorrectionFile(e.target.files?.[0] || null)}
-                                      />
-                                    </div>
-                                    <Button
-                                      onClick={() => handleSendCorrection(essay.id, essay.origin)}
-                                      className="w-full"
-                                      disabled={!correctionFile}
-                                    >
-                                      Confirmar Envio
-                                    </Button>
-                                  </div>
-                                </DialogContent>
-                              </Dialog>
                             )}
                           </div>
                         </TableCell>
