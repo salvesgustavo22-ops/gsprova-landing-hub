@@ -13,6 +13,7 @@ import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import type { User } from "@supabase/supabase-js";
 
 type Essay = {
   id: string;
@@ -35,32 +36,81 @@ type Essay = {
 const CorretorPanel = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [user, setUser] = useState<User | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loginData, setLoginData] = useState({ username: "", password: "" });
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [essays, setEssays] = useState<Essay[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [correctionFile, setCorrectionFile] = useState<File | null>(null);
   const [selectedEssayId, setSelectedEssayId] = useState<string | null>(null);
   const [statusChanges, setStatusChanges] = useState<{[key: string]: string}>({});
   const [pendingChanges, setPendingChanges] = useState<string[]>([]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  useEffect(() => {
+    // Check for existing session
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        setUser(session.user);
+        setIsAuthenticated(true);
+        fetchEssays();
+      }
+      setLoading(false);
+    };
+
+    checkAuth();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (session?.user) {
+          setUser(session.user);
+          setIsAuthenticated(true);
+          fetchEssays();
+        } else {
+          setUser(null);
+          setIsAuthenticated(false);
+        }
+      }
+    );
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (loginData.username === "CORRETOR" && loginData.password === "GsAprova@34") {
-      setIsAuthenticated(true);
-      fetchEssays();
-    } else {
+    
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: loginData.email,
+        password: loginData.password,
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      if (data.user) {
+        setUser(data.user);
+        setIsAuthenticated(true);
+        toast({
+          title: "Login realizado!",
+          description: "Bem-vindo ao painel do corretor.",
+        });
+      }
+    } catch (error: any) {
       toast({
-        title: "Credenciais inválidas",
-        description: "Usuário ou senha incorretos",
+        title: "Erro no login",
+        description: error.message,
         variant: "destructive",
       });
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
     setIsAuthenticated(false);
-    setLoginData({ username: "", password: "" });
     navigate("/");
   };
 
@@ -281,11 +331,12 @@ const CorretorPanel = () => {
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <Label htmlFor="username">Usuário</Label>
+                <Label htmlFor="email">Email</Label>
                 <Input
-                  id="username"
-                  value={loginData.username}
-                  onChange={(e) => setLoginData(prev => ({ ...prev, username: e.target.value }))}
+                  id="email"
+                  type="email"
+                  value={loginData.email}
+                  onChange={(e) => setLoginData(prev => ({ ...prev, email: e.target.value }))}
                   required
                 />
               </div>
