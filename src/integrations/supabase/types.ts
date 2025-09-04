@@ -14,6 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
+      essays: {
+        Row: {
+          bank: Database["public"]["Enums"]["correction_bank"]
+          bank_other: string | null
+          correction_file_path: string | null
+          correction_id: string | null
+          created_at: string
+          downloaded_at: string | null
+          essay_file_path: string
+          id: string
+          origin: Database["public"]["Enums"]["essay_origin"]
+          proposal_file_path: string | null
+          status: Database["public"]["Enums"]["essay_status"]
+          theme_title: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          bank: Database["public"]["Enums"]["correction_bank"]
+          bank_other?: string | null
+          correction_file_path?: string | null
+          correction_id?: string | null
+          created_at?: string
+          downloaded_at?: string | null
+          essay_file_path: string
+          id?: string
+          origin: Database["public"]["Enums"]["essay_origin"]
+          proposal_file_path?: string | null
+          status?: Database["public"]["Enums"]["essay_status"]
+          theme_title?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          bank?: Database["public"]["Enums"]["correction_bank"]
+          bank_other?: string | null
+          correction_file_path?: string | null
+          correction_id?: string | null
+          created_at?: string
+          downloaded_at?: string | null
+          essay_file_path?: string
+          id?: string
+          origin?: Database["public"]["Enums"]["essay_origin"]
+          proposal_file_path?: string | null
+          status?: Database["public"]["Enums"]["essay_status"]
+          theme_title?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           created_at: string
@@ -53,6 +104,36 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          created_at: string
+          first_name: string
+          id: string
+          last_name: string
+          phone: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          first_name: string
+          id?: string
+          last_name: string
+          phone: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          phone?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -82,6 +163,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      generate_correction_id: {
+        Args: { essay_origin: Database["public"]["Enums"]["essay_origin"] }
+        Returns: string
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -96,6 +181,9 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      correction_bank: "enem" | "fuvest" | "vunesp" | "other"
+      essay_origin: "gs_aprova" | "external"
+      essay_status: "pending" | "corrected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -224,6 +312,9 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      correction_bank: ["enem", "fuvest", "vunesp", "other"],
+      essay_origin: ["gs_aprova", "external"],
+      essay_status: ["pending", "corrected"],
     },
   },
 } as const
