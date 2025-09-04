@@ -20,8 +20,8 @@ const mathServices: ServiceDetail[] = [
   {
     id: "aula-avulsa-math",
     title: "Aula Avulsa",
-    description: "Aula personalizada de Matemática focada nas suas dificuldades específicas",
-    price: "De R$ 70 por R$39,99",
+    description: "Promoção - Aula personalizada de Matemática focada nas suas dificuldades específicas",
+    price: "De R$ 70 por R$39,90",
     features: ["1 aula de 50min", "Exercícios personalizados", "Material didático", "Suporte pós-aula", "Até 6x no cartão"]
   },
   {
@@ -41,14 +41,14 @@ const essayServices: ServiceDetail[] = [
     id: "correcao-avulsa", 
     title: "Correção Avulsa - Promoção",
     description: "Correção detalhada da sua redação com feedback personalizado",
-    price: "R$ 19,90",
+    price: "R$ 9,90 para as 100 primeiras; R$19,90",
     features: ["Correção detalhada", "Feedback personalizado", "Nota estimada", "Dicas de melhoria", "Entrega em 48h", "Até 6x no cartão"]
   },
   {
     id: "pacote-completo-essay",
     title: "Pacote Completo - promoção!", 
     description: "Pacote com correções ilimitadas e acompanhamento mensal",
-    price: "R$ 99,90",
+    price: "R$ 149,90",
     originalPrice: "R$ 350",
     features: ["Correções ilimitadas/mês", "Acompanhamento semanal", "Banco de temas", "Videoaulas exclusivas", "Mentoria personalizada", "Até 6x no cartão"],
     badge: "Melhor Custo-Benefício",
@@ -61,7 +61,7 @@ const studyPathServices: ServiceDetail[] = [
     id: "trilha-personalizada",
     title: "Trilha Personalizada - Promoção!",
     description: "Criamos trilhas com conteúdos e exercícios baseados em uma avaliação das suas necessidades, além de oferecer mentoria",
-    price: "R$ 89,90",
+    price: "R$ 69,90",
     features: ["Avaliação diagnóstica", "Trilha personalizada", "Exercícios direcionados", "Mentoria semanal", "Acompanhamento mensal", "Até 6x no cartão"]
   }
 ];
@@ -71,7 +71,7 @@ const completeServices: ServiceDetail[] = [
     id: "experiencia-completa",
     title: "Experiência Completa",
     description: "Pacote completo com aulas de Matemática, correção de redação e trilha de aprendizado personalizada",
-    price: "R$ 349,90",
+    price: "R$ 299,90",
     originalPrice: "R$ 699,90",
     features: ["4 aulas de Matemática", "Correções ilimitadas de redação", "Trilha personalizada", "Mentoria semanal", "Suporte contínuo", "Até 6x no cartão"],
     badge: "Melhor Oferta",
