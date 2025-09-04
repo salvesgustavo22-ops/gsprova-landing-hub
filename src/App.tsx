@@ -15,6 +15,13 @@ import LeadChecklist from "./pages/LeadChecklist";
 import LeadServicos from "./pages/LeadServicos";
 import ObrigadoChecklist from "./pages/ObrigadoChecklist";
 import ObrigadoServicos from "./pages/ObrigadoServicos";
+import TemasRedacao from "./pages/TemasRedacao";
+import AuthAluno from "./pages/AuthAluno";
+import PortalAluno from "./pages/PortalAluno";
+import EnviarRedacao from "./pages/EnviarRedacao";
+import MinhasRedacoes from "./pages/MinhasRedacoes";
+import CorretorPanel from "./pages/CorretorPanel";
+import RedefinirSenha from "./pages/RedefinirSenha";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +43,13 @@ const App = () => (
             <Route path="/obrigado-servicos" element={<ObrigadoServicos />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/temas-redacao-portal-secreto-gs-aprova-2025" element={<TemasRedacao />} />
+            <Route path="/auth-aluno" element={<AuthAluno />} />
+            <Route path="/portal-aluno" element={<PortalAluno />} />
+            <Route path="/enviar-redacao" element={<EnviarRedacao />} />
+            <Route path="/minhas-redacoes" element={<MinhasRedacoes />} />
+            <Route path="/corretor-painel-gs-aprova" element={<CorretorPanel />} />
+            <Route path="/redefinir-senha" element={<RedefinirSenha />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
