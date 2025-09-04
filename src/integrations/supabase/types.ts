@@ -20,12 +20,23 @@ export type Database = {
           bank_other: string | null
           correction_file_path: string | null
           correction_id: string | null
+          corrector_comments: string | null
           created_at: string
+          data_protection_accepted: boolean
+          data_protection_ip: unknown | null
+          data_protection_location: string | null
+          data_protection_timestamp: string | null
           downloaded_at: string | null
           essay_file_path: string
+          geolocation: string | null
           id: string
+          ip_address: unknown | null
+          is_revision: boolean
           origin: Database["public"]["Enums"]["essay_origin"]
           proposal_file_path: string | null
+          revision_corrected_at: string | null
+          revision_essay_file_path: string | null
+          revision_submitted_at: string | null
           status: Database["public"]["Enums"]["essay_status"]
           theme_title: string | null
           updated_at: string
@@ -36,12 +47,23 @@ export type Database = {
           bank_other?: string | null
           correction_file_path?: string | null
           correction_id?: string | null
+          corrector_comments?: string | null
           created_at?: string
+          data_protection_accepted?: boolean
+          data_protection_ip?: unknown | null
+          data_protection_location?: string | null
+          data_protection_timestamp?: string | null
           downloaded_at?: string | null
           essay_file_path: string
+          geolocation?: string | null
           id?: string
+          ip_address?: unknown | null
+          is_revision?: boolean
           origin: Database["public"]["Enums"]["essay_origin"]
           proposal_file_path?: string | null
+          revision_corrected_at?: string | null
+          revision_essay_file_path?: string | null
+          revision_submitted_at?: string | null
           status?: Database["public"]["Enums"]["essay_status"]
           theme_title?: string | null
           updated_at?: string
@@ -52,12 +74,23 @@ export type Database = {
           bank_other?: string | null
           correction_file_path?: string | null
           correction_id?: string | null
+          corrector_comments?: string | null
           created_at?: string
+          data_protection_accepted?: boolean
+          data_protection_ip?: unknown | null
+          data_protection_location?: string | null
+          data_protection_timestamp?: string | null
           downloaded_at?: string | null
           essay_file_path?: string
+          geolocation?: string | null
           id?: string
+          ip_address?: unknown | null
+          is_revision?: boolean
           origin?: Database["public"]["Enums"]["essay_origin"]
           proposal_file_path?: string | null
+          revision_corrected_at?: string | null
+          revision_essay_file_path?: string | null
+          revision_submitted_at?: string | null
           status?: Database["public"]["Enums"]["essay_status"]
           theme_title?: string | null
           updated_at?: string
@@ -107,6 +140,10 @@ export type Database = {
       profiles: {
         Row: {
           created_at: string
+          data_protection_accepted: boolean
+          data_protection_ip: unknown | null
+          data_protection_location: string | null
+          data_protection_timestamp: string | null
           first_name: string
           id: string
           last_name: string
@@ -116,6 +153,10 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          data_protection_accepted?: boolean
+          data_protection_ip?: unknown | null
+          data_protection_location?: string | null
+          data_protection_timestamp?: string | null
           first_name: string
           id?: string
           last_name: string
@@ -125,6 +166,10 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          data_protection_accepted?: boolean
+          data_protection_ip?: unknown | null
+          data_protection_location?: string | null
+          data_protection_timestamp?: string | null
           first_name?: string
           id?: string
           last_name?: string
