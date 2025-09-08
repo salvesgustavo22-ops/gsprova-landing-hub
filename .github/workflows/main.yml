@@ -1,0 +1,246 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Evita execuções concorrentes do mesmo PR/branch
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    name: Lint, Typecheck, Test & Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm i
+          fi
+
+      - name: Lint
+        run: |
+          if npm run -s | grep -q "^  lint$"; then
+            npm run lint
+          else
+            npx eslint .
+          fi
+
+      - name: Typecheck
+        run: |
+          if npm run -s | grep -q "^  typecheck$"; then
+            npm run typecheck
+          else
+            npx tsc --noEmit
+          fi
+
+      - name: Unit tests (Vitest)
+        run: |
+          if npm run -s | grep -q "^  test:ci$"; then
+            npm run test:ci
+          else
+            npx vitest run --coverage --reporter=dot
+          fi
+
+      - name: Build (Vite)
+        run: |
+          if npm run -s | grep -q "^  build$"; then
+            npm run build
+          else
+            npx vite build
+          fi
+
+      - name: Upload dist as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-${{ matrix.node-version }}
+          path: dist
+
+  lighthouse:
+    name: Lighthouse on local build
+    needs: build-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+
+      - name: Install & Build
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm i
+          fi
+          if npm run -s | grep -q "^  build$"; then
+            npm run build
+          else
+            npx vite build
+          fi
+
+      - name: Start static server
+        run: |
+          npx http-server ./dist -p 8080 &>/dev/null &
+          echo $! > server.pid
+          sleep 3
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: 'http://localhost:8080'
+          configPath: ''
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          runs: 1
+          # Defina metas; falha PR se abaixo do alvo:
+          assertions: |
+            categories:performance: error
+            categories:accessibility: warn
+            categories:best-practices: warn
+            categories:seo: warn
+
+      - name: Stop server
+        if: always()
+        run: |
+          if [ -f server.pid ]; then kill $(cat server.pid) || true; fi
+
+  link-check:
+    name: Link checker (Lychee)
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build (for generated HTML)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+      - run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm i
+          fi
+          if npm run -s | grep -q "^  build$"; then
+            npm run build
+          else
+            npx vite build
+          fi
+
+      - name: Run Lychee on repo & dist
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Verifica links no repositório e nos HTML gerados
+          args: >
+            --no-progress
+            --accept 200,206,429
+            --include-fragments
+            --max-redirects 5
+            .
+            ./dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  codacy:
+    name: Codacy Analysis CLI
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Opcional: se você usar cobertura de testes, exporte/aponte aqui.
+      # - name: Upload coverage to Codacy
+      #   uses: codacy/codacy-coverage-reporter-action@v1
+      #   with:
+      #     project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      #     coverage-reports: coverage/lcov.info
+
+      - name: Run Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@v4
+        with:
+          # Respeita configurações do codacy.yml do repositório
+          # Falha o job se existirem issues "Major/Blocker"
+          args: >
+            --fail-on-issues=true
+            --max-allowed-issues-severity=Major
+
+  policy-gates:
+    name: Project Policy Gates (SEO/Analytics/Supabase)
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        run: |
+          missing=0
+          for f in public/sitemap.xml public/robots.txt; do
+            if [ ! -f "$f" ]; then
+              echo "::error file=$f::Missing required file $f"
+              missing=1
+            fi
+          done
+          if [ -d supabase ]; then
+            echo "Supabase directory found."
+          else
+            echo "::warning::No /supabase directory found (skip if not used)."
+          fi
+          exit $missing
+
+      - name: SEO & Analytics sanity checks
+        run: |
+          # Falha se sitemap.xml estiver vazio
+          if [ -f public/sitemap.xml ] && [ ! -s public/sitemap.xml ]; then
+            echo "::error file=public/sitemap.xml::sitemap.xml is empty"
+            exit 1
+          fi
+          # Verifica se robots.txt tem pelo menos uma regra
+          if [ -f public/robots.txt ] && ! grep -qiE 'User-agent|Allow|Disallow|Sitemap' public/robots.txt; then
+            echo "::error file=public/robots.txt::robots.txt missing standard directives"
+            exit 1
+          fi
+          # Aviso caso GA não esteja configurado nos arquivos públicos
+          if ! grep -Rqi "gtag(" public || ! grep -Rqi "G-" public; then
+            echo "::warning::Google Analytics not detected in /public. Ensure GA is injected at runtime/build for production."
+          fi
+
+      - name: Supabase client safety checks
+        run: |
+          # Garante que service_role NÃO aparece no repositório
+          if grep -Rqi "service_role" .; then
+            echo "::error::Found 'service_role' reference in repo. Never expose service_role in client."
+            exit 1
+          fi
+          # Garante que chaves supabase públicas usam VITE_*
+          if grep -Rqi "SUPABASE_" . && ! grep -Rqi "VITE_SUPABASE_" .; then
+            echo "::warning::Supabase keys should be exposed as VITE_SUPABASE_* (public) and only anon key on client."
+          fi
