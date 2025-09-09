@@ -21,7 +21,7 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white backdrop-blur-sm border-b border-border shadow-sm">
+    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85 border-b border-border shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo and Title */}
