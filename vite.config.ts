@@ -46,18 +46,18 @@ export default defineConfig(({ mode }) => ({
         }
       }
     },
-    // Enable source maps for better debugging
+    // Enable source maps for development only
     sourcemap: mode === 'development',
     // Performance budget and optimization
     chunkSizeWarningLimit: 180, // 180 KB limit per chunk
     target: 'esnext',
-    minify: 'terser',
-    terserOptions: {
+    minify: mode === 'production' ? 'terser' : false,
+    terserOptions: mode === 'production' ? {
       compress: {
-        drop_console: mode === 'production',
+        drop_console: true,
         drop_debugger: true,
       },
-    },
+    } : undefined,
   },
   // Performance optimization for development
   optimizeDeps: {

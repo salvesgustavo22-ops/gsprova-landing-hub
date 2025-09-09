@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GS Aprova - Correção de Redação Online</title>
+    <script>
+      // Single Page Application (SPA) redirect for GitHub Pages
+      // This script takes the current URL and redirects to the index page
+      // with the path encoded in the query string for the router to handle
+      const pathSegmentsToKeep = 0;
+      const l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + 
+        '/?/' + l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <div style="text-align: center; padding: 50px;">
+        <h1>Redirecionando...</h1>
+        <p>Esta página requer JavaScript habilitado para funcionar corretamente.</p>
+        <p><a href="/">Voltar para o início</a></p>
+      </div>
+    </noscript>
+  </body>
+</html>
