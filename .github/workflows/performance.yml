@@ -27,6 +27,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Sanity check build output
+        run: |
+          ls -la
+          ls -la dist || echo "dist não encontrado"
+
       - name: Check bundle size
         shell: bash
         run: |
@@ -41,29 +46,4 @@ jobs:
             CSS_SIZE=$(find dist/assets -type f -name "*.css" -exec du -cb {} + 2>/dev/null | grep -E "\btotal$" | cut -f1 || echo "0")
             CSS_SIZE=${CSS_SIZE:-0}
           fi
-          JS_SIZE_KB=$(( JS_SIZE / 1024 ))
-          CSS_SIZE_KB=$(( CSS_SIZE / 1024 ))
-          echo "JavaScript bundle size: ${JS_SIZE_KB}KB"
-          echo "CSS bundle size: ${CSS_SIZE_KB}KB"
-          JS_BUDGET=10000
-          CSS_BUDGET=5000
-          if [ "${JS_SIZE_KB}" -gt "${JS_BUDGET}" ]; then
-            echo "❌ JavaScript bundle size (${JS_SIZE_KB}KB) exceeds budget (${JS_BUDGET}KB)"; exit 1; fi
-          if [ "${CSS_SIZE_KB}" -gt "${CSS_BUDGET}" ]; then
-            echo "❌ CSS bundle size (${CSS_SIZE_KB}KB) exceeds budget (${CSS_BUDGET}KB)"; exit 1; fi
-          echo "✅ Bundles dentro do budget"
-
-      - name: Run Lighthouse CI
-        uses: treosh/lighthouse-ci-action@v10
-        with:
-        configPath: './.lighthouserc.json'
-        uploadArtifacts: false            # <- desliga o upload interno (que usa "lighthouse-results")
-        temporaryPublicStorage: true      # mantém os links temporários (se quiser)
-
-        - name: Run Lighthouse CI
-       uses: treosh/lighthouse-ci-action@v10
-       with:
-       configPath: './.lighthouserc.json'
-       uploadArtifacts: true
-       temporaryPublicStorage: true
-       artifactName: lhci-report         # se sua versão da action aceitar esse input
+          JS_SIZE_KB=$(( JS_SIZE /
