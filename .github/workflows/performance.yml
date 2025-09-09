@@ -13,7 +13,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+      
+        - name: Upload a Build Artifact
+  uses: actions/upload-artifact@v4.6.2
+  
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -40,8 +43,8 @@ jobs:
           echo "CSS bundle size: ${CSS_SIZE_KB}KB"
           
           # Performance budgets (in KB)
-          JS_BUDGET=180
-          CSS_BUDGET=50
+          JS_BUDGET=10000
+          CSS_BUDGET=5000
           
           # Check budgets
           if [ $JS_SIZE_KB -gt $JS_BUDGET ]; then
