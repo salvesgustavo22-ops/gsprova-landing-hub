@@ -1,0 +1,52 @@
+[
+  {
+    "path": "/",
+    "resourceSizes": [
+      { "resourceType": "total",        "budget": 1500 },  // KB
+      { "resourceType": "script",       "budget": 900  },
+      { "resourceType": "stylesheet",   "budget": 150  },
+      { "resourceType": "image",        "budget": 600  },
+      { "resourceType": "font",         "budget": 200  },
+      { "resourceType": "third-party",  "budget": 400  }
+    ],
+    "resourceCounts": [
+      { "resourceType": "total",        "budget": 60   },
+      { "resourceType": "script",       "budget": 20   },
+      { "resourceType": "stylesheet",   "budget": 6    },
+      { "resourceType": "image",        "budget": 25   },
+      { "resourceType": "font",         "budget": 6    },
+      { "resourceType": "third-party",  "budget": 10   }
+    ],
+    "timings": [
+      { "metric": "first-contentful-paint", "budget": 2500 }, // ms
+      { "metric": "largest-contentful-paint","budget": 3000 },
+      { "metric": "total-blocking-time",    "budget": 200  },
+      { "metric": "cumulative-layout-shift","budget": 0.10 }
+    ]
+  },
+  {
+    "path": "/*",
+    "resourceSizes": [
+      { "resourceType": "total",        "budget": 1800 },
+      { "resourceType": "script",       "budget": 1000 },
+      { "resourceType": "stylesheet",   "budget": 200  },
+      { "resourceType": "image",        "budget": 700  },
+      { "resourceType": "font",         "budget": 220  },
+      { "resourceType": "third-party",  "budget": 450  }
+    ],
+    "resourceCounts": [
+      { "resourceType": "total",        "budget": 70   },
+      { "resourceType": "script",       "budget": 24   },
+      { "resourceType": "stylesheet",   "budget": 8    },
+      { "resourceType": "image",        "budget": 30   },
+      { "resourceType": "font",         "budget": 8    },
+      { "resourceType": "third-party",  "budget": 12   }
+    ],
+    "timings": [
+      { "metric": "first-contentful-paint", "budget": 2600 },
+      { "metric": "largest-contentful-paint","budget": 3200 },
+      { "metric": "total-blocking-time",    "budget": 220  },
+      { "metric": "cumulative-layout-shift","budget": 0.10 }
+    ]
+  }
+]
