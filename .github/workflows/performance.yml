@@ -11,13 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-     - name: Upload a Build Artifact
-  uses: actions/upload-artifact@v4.6.2
-  with:
-    path: '/gsaprova-landing-hub/github/workflows'
-    # The desired behavior if no files are found using the provided path.
-
-          
+     
       - name: Checkout code
         uses: actions/checkout@v4
       
@@ -34,6 +28,32 @@ jobs:
         
       - name: Build project
         run: npm run build
+
+        # 4) Instalar Lighthouse CI (CLI)
+      - name: Install Lighthouse CI
+        run: npm i -g @lhci/cli@0.13.x
+
+      # 5) Rodar LHCI contra build local
+      #    Serve a pasta de build (ajuste "dist" se usar outra saída)
+      - name: Run Lighthouse CI
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx lhci autorun \
+            --upload.target=filesystem \
+            --collect.staticDistDir=dist \
+            --collect.numberOfRuns=2 \
+            --assert.assertions."categories:performance".minScore=0.85
+
+      # 6) Upload dos relatórios como artifact
+      #    Use um nome simples, sem espaços/caracteres especiais.
+      - name: Upload Lighthouse report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: ".lighthouseci/*"
+          if-no-files-found: error
+          
         
       - name: Check bundle size
         run: |
