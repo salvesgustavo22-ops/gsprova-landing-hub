@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-                  - name: Upload a Build Artifact
+     - name: Upload a Build Artifact
   uses: actions/upload-artifact@v4.6.2
   with:
-    path: gsaprova-landing-hub/github/workflows
+    path: '/gsaprova-landing-hub/github/workflows'
     # The desired behavior if no files are found using the provided path.
 
           
