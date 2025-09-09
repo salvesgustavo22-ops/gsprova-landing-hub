@@ -1,7 +1,8 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "dist",
+      "url": ["http://localhost:4173/"],        // SOMENTE a home (adicione outras rotas se quiser)
+      "startServerCommand": "npm run preview -- --port 4173",
       "numberOfRuns": 2,
       "settings": {
         "chromeFlags": "--headless=new --no-sandbox",
