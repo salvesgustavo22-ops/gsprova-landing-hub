@@ -27,19 +27,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Sanity check build output
-        run: |
-          ls -la
-          ls -la dist
-
       - name: Check bundle size
         shell: bash
         run: |
           set -euo pipefail
           if [ ! -d dist/assets ]; then
             echo "ℹ️ Pasta dist/assets não existe; definindo tamanhos como 0."
-            JS_SIZE=0
-            CSS_SIZE=0
+            JS_SIZE=0; CSS_SIZE=0
           else
             export LC_ALL=C
             JS_SIZE=$(find dist/assets -type f -name "*.js" -exec du -cb {} + 2>/dev/null | grep -E "\btotal$" | cut -f1 || echo "0")
@@ -54,21 +48,14 @@ jobs:
           JS_BUDGET=10000
           CSS_BUDGET=5000
           if [ "${JS_SIZE_KB}" -gt "${JS_BUDGET}" ]; then
-            echo "❌ JavaScript bundle size (${JS_SIZE_KB}KB) exceeds budget (${JS_BUDGET}KB)"
-            exit 1
-          else
-            echo "✅ JavaScript bundle size within budget"
-          fi
+            echo "❌ JavaScript bundle size (${JS_SIZE_KB}KB) exceeds budget (${JS_BUDGET}KB)"; exit 1; fi
           if [ "${CSS_SIZE_KB}" -gt "${CSS_BUDGET}" ]; then
-            echo "❌ CSS bundle size (${CSS_SIZE_KB}KB) exceeds budget (${CSS_BUDGET}KB)"
-            exit 1
-          else
-            echo "✅ CSS bundle size within budget"
-          fi
+            echo "❌ CSS bundle size (${CSS_SIZE_KB}KB) exceeds budget (${CSS_BUDGET}KB)"; exit 1; fi
+          echo "✅ Bundles dentro do budget"
 
       - name: Run Lighthouse CI
-  uses: treosh/lighthouse-ci-action@v10
-  with:
-    configPath: './.lighthouserc.json'  # ajuste se o arquivo estiver noutro lugar
-    uploadArtifacts: true               # a própria action anexa os relatórios ao job
-    temporaryPublicStorage: true        # gera links temporários (útil em PR)
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          configPath: './.lighthouserc.json'
+          uploadArtifacts: true
+          temporaryPublicStorage: true
