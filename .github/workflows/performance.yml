@@ -66,23 +66,9 @@ jobs:
             echo "✅ CSS bundle size within budget"
           fi
 
-      - name: Run Lighthouse CI (staticDistDir)
-        env:
-          LHCI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          npx lhci autorun \
-            --collect.staticDistDir=dist \
-            --collect.numberOfRuns=2 \
-            --upload.target=filesystem \
-            --assert.assertions."categories:performance".minScore=0.80 \
-            --assert.assertions."categories:accessibility".minScore=0.85 \
-            --assert.assertions."categories:best-practices".minScore=0.85 \
-            --assert.assertions."categories:seo".minScore=0.85 \
-            --chrome-flags="--headless=new --no-sandbox"
-
-      - name: Upload Lighthouse report
-        uses: actions/upload-artifact@v4
-        with:
-          name: lighthouse-report
-          path: ".lighthouseci/*"
-          if-no-files-found: error
+      - name: Run Lighthouse CI
+  uses: treosh/lighthouse-ci-action@v10
+  with:
+    configPath: './.lighthouserc.json'  # ajuste se o arquivo estiver noutro lugar
+    uploadArtifacts: true               # a própria action anexa os relatórios ao job
+    temporaryPublicStorage: true        # gera links temporários (útil em PR)
