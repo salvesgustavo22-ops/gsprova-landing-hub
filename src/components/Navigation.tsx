@@ -83,7 +83,7 @@ export const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden py-4 border-t border-border">
+          <div className="lg:hidden py-4 border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
             <div className="flex flex-col space-y-3">
               {navigationItems.map((item) => (
                 <Link
