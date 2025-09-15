@@ -275,8 +275,10 @@ jobs:
 
       # ----------------- PR -----------------
       - name: Create branch
-        env: { GH_TOKEN: ${{ github.token }} }
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          echo "criando branch..."
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -B chore/lgpd-contatos-routes
