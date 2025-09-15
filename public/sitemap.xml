@@ -2,72 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gsmatematicanegocios.com.br/</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://gsmatematicanegocios.com.br/enem-2025</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-01-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://gsmatematicanegocios.com.br/fuvest-2025</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-01-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://gsmatematicanegocios.com.br/lead-checklist</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gsmatematicanegocios.com.br/lead-servicos</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-01-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gsmatematicanegocios.com.br/contato</loc>
-    <lastmod>2025-09-15</lastmod>
+    <lastmod>2025-01-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://gsmatematicanegocios.com.br/obrigado-checklist</loc>
-    <lastmod>2025-09-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://gsmatematicanegocios.com.br/obrigado-servicos</loc>
-    <lastmod>2025-09-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <!-- Novas páginas legais -->
-  <url>
-    <loc>https://gsmatematicanegocios.com.br/sobre</loc>
-    <lastmod>2025-09-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://gsmatematicanegocios.com.br/termos</loc>
-    <lastmod>2025-09-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://gsmatematicanegocios.com.br/privacidade</loc>
-    <lastmod>2025-09-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-</urlset>    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gsmatematicanegocios.com.br/obrigado-checklist</loc>
