@@ -132,6 +132,8 @@ jobs:
   link-check:
     name: Link checker (Lychee)
     needs: build-test
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
