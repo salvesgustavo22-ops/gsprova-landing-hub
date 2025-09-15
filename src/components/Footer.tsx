@@ -1,19 +1,4 @@
-import { Link } from "react-router-dom";
-
-export default function Footer() {
-  return (
-    <footer className="border-t mt-16">
-      <div className="container mx-auto max-w-6xl px-4 py-8 text-sm text-gray-600 flex flex-col sm:flex-row gap-3 sm:gap-6">
-        <span>© {new Date().getFullYear()} GS Aprova</span>
-        <nav className="flex gap-4">
-          <Link to="/termos" className="underline">Termos de Uso</Link>
-          <Link to="/privacidade" className="underline">Política de Privacidade</Link>
-          <Link to="/legal" className="underline">Aviso Legal</Link>
-        </nav>
-      </div>
-    </footer>
-  );
-}import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/components/ui/separator";
 import { Instagram, MessageCircle, Mail, Phone } from "lucide-react";
 
 export const Footer = () => {
@@ -45,10 +30,10 @@ export const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4 text-white">Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/avisolegal" className="text-white/80 hover:text-white transition-colors">Sobre</a></li>
+              <li><a href="/sobre" className="text-white/80 hover:text-white transition-colors">Sobre</a></li>
               <li><a href="/contato" className="text-white/80 hover:text-white transition-colors">Contato</a></li>
-              <li><a href="/termosdeuso" className="text-white/80 hover:text-white transition-colors">Termos de Uso</a></li>
-              <li><a href="/politicadeprivacidade" className="text-white/80 hover:text-white transition-colors">Política de Privacidade</a></li>
+              <li><a href="/termos" className="text-white/80 hover:text-white transition-colors">Termos de Uso</a></li>
+              <li><a href="/privacidade" className="text-white/80 hover:text-white transition-colors">Política de Privacidade</a></li>
             </ul>
           </div>
 

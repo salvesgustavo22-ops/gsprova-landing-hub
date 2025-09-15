@@ -1,139 +1,40 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/analytics";
 
-type LeadPayload = {
+interface FormData {
   name: string;
+  whatsapp: string;
+  service: string;
+  message: string;
   email: string;
-  phone?: string;
-  marketingOptIn: boolean;
-  acceptedTerms: boolean;
-};
+}
 
-export default function ContactForm() {
-  const [form, setForm] = useState<LeadPayload>({
-    name: "",
-    email: "",
-    phone: "",
-    marketingOptIn: false,
-    acceptedTerms: false,
+export const ContactForm = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    whatsapp: '',
+    service: '',
+    message: '',
+    email: ''
   });
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [lastSubmission, setLastSubmission] = useState<number>(0);
+  const { toast } = useToast();
 
-  function update<K extends keyof LeadPayload>(key: K, value: LeadPayload[K]) {
-    setForm((f) => ({ ...f, [key]: value }));
-  }
-
-  async function onSubmit(e: React.FormEvent) {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError(null);
-
-    // Validação mínima
-    if (!form.name.trim()) return setError("Informe seu nome.");
-    if (!/\S+@\S+\.\S+/.test(form.email)) return setError("E-mail inválido.");
-    if (!form.acceptedTerms)
-      return setError("Você precisa aceitar os Termos e a Política de Privacidade.");
-
-    try {
-      setSubmitting(true);
-
-      // 🔽 Substitua por sua chamada ao Supabase/API
-      // Exemplo: await supabase.from('leads').insert({ ...form })
-      await new Promise((r) => setTimeout(r, 500));
-
-      setSuccess(true);
-    } catch (err) {
-      setError("Falha ao enviar. Tente novamente.");
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
-  if (success) {
-    return (
-      <div className="p-4 border rounded bg-green-50">
-        <p>Recebido! Em breve entraremos em contato.</p>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={onSubmit} className="space-y-4">
-      {error && <div className="p-3 text-sm text-red-700 bg-red-50 border">{error}</div>}
-
-      <div>
-        <label className="block text-sm font-medium mb-1">Nome*</label>
-        <input
-          className="w-full border rounded px-3 py-2"
-          value={form.name}
-          onChange={(e) => update("name", e.target.value)}
-          placeholder="Seu nome"
-          required
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium mb-1">E-mail*</label>
-        <input
-          type="email"
-          className="w-full border rounded px-3 py-2"
-          value={form.email}
-          onChange={(e) => update("email", e.target.value)}
-          placeholder="voce@exemplo.com"
-          required
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium mb-1">WhatsApp (opcional)</label>
-        <input
-          className="w-full border rounded px-3 py-2"
-          value={form.phone}
-          onChange={(e) => update("phone", e.target.value)}
-          placeholder="(11) 9XXXX-XXXX"
-        />
-      </div>
-
-      {/* 🔽 Checkbox obrigatório: aceitar termos + privacidade */}
-      <label className="flex items-start gap-2 text-sm">
-        <input
-          type="checkbox"
-          className="mt-1"
-          checked={form.acceptedTerms}
-          onChange={(e) => update("acceptedTerms", e.target.checked)}
-          required
-        />
-        <span>
-          Declaro que li e concordo com os{" "}
-          <Link to="/termos" className="underline">Termos de Uso</Link> e com a{" "}
-          <Link to="/privacidade" className="underline">Política de Privacidade</Link>.
-        </span>
-      </label>
-
-      {/* 🔽 Checkbox opcional: marketing/WhatsApp */}
-      <label className="flex items-start gap-2 text-sm">
-        <input
-          type="checkbox"
-          className="mt-1"
-          checked={form.marketingOptIn}
-          onChange={(e) => update("marketingOptIn", e.target.checked)}
-        />
-        <span>
-          Autorizo o envio de comunicações por e-mail/WhatsApp sobre conteúdos e ofertas do GS Aprova. (Opcional)
-        </span>
-      </label>
-
-      <button
-        type="submit"
-        disabled={submitting}
-        className="px-4 py-2 rounded bg-black text-white disabled:opacity-60"
-      >
-        {submitting ? "Enviando..." : "Enviar"}
-      </button>
-    </form>
-  );
-}    if (now - lastSubmission < 30000) {
+    
+    // Rate limiting: prevent submissions within 30 seconds
+    const now = Date.now();
+    if (now - lastSubmission < 30000) {
       toast({
         title: "Aguarde um momento",
         description: "Aguarde 30 segundos antes de enviar outra solicitação.",

@@ -115,13 +115,6 @@ const Index = () => {
         <FAQ />
       </main>
       <Footer />
-      <section className="container mx-auto max-w-6xl px-4 mt-12 text-xs text-gray-500">
-  <p>
-    Ao enviar seus dados, você concorda com os{" "}
-    <a href="/termos" className="underline">Termos de Uso</a> e a{" "}
-    <a href="/privacidade" className="underline">Política de Privacidade</a>.
-  </p>
-</section>
       <StickyWhatsApp />
     </div>
   );
