@@ -3,7 +3,7 @@ import { Instagram, MessageCircle, Mail, Phone } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer id="contact" className="relative border-t border-border">
+    <footer className="relative border-t border-border">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -30,10 +30,10 @@ export const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4 text-white">Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/avisolegal" className="text-white/80 hover:text-white transition-colors">Sobre</a></li>
+              <li><a href="/sobre" className="text-white/80 hover:text-white transition-colors">Sobre</a></li>
               <li><a href="/contato" className="text-white/80 hover:text-white transition-colors">Contato</a></li>
-              <li><a href="/TermosDeUso" className="text-white/80 hover:text-white transition-colors">Termos de Uso</a></li>
-              <li><a href="/PoliticaDePrivacidade" className="text-white/80 hover:text-white transition-colors">Política de Privacidade</a></li>
+              <li><a href="/termos" className="text-white/80 hover:text-white transition-colors">Termos de Uso</a></li>
+              <li><a href="/privacidade" className="text-white/80 hover:text-white transition-colors">Política de Privacidade</a></li>
             </ul>
           </div>
 

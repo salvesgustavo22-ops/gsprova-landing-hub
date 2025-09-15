@@ -123,7 +123,7 @@ export const Services = () => {
   const currentServices = getCurrentServices();
 
   return (
-    <section id="services" className="section-modern py-16 lg:py-24">
+    <section id="servicos" className="section-modern py-16 lg:py-24">
       <div className="section-content container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
