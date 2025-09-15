@@ -1,0 +1,242 @@
+# .github/workflows/legal-privacy-pr.yml
+name: Create PR - Privacy page + legal components
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  legal-privacy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Ensure folders
+        run: |
+          mkdir -p src/pages
+          mkdir -p src/components/legal
+          mkdir -p src/lib
+
+      - name: Write src/lib/legal.ts
+        run: |
+          cat > src/lib/legal.ts <<'EOF'
+          export const ORG_LEGAL_NAME = "GUSTAVO SOUZA ALVES";
+          export const ORG_CNPJ = "55.454.341/0001-29";
+          export const CONTACT_EMAIL = "gsaprova@gsmatematicanegocios.com.br";
+          export const WHATSAPP_LINK = "https://wa.me/5511974969036";
+          export const LAST_UPDATED = "15/09/2025";
+
+          const STORAGE_KEY = "gsaprova.cookie.prefs";
+          export type CookiePrefs = { necessary: boolean; analytics: boolean; marketing: boolean; };
+
+          export function getCookiePrefs(): CookiePrefs | null {
+            if (typeof window === "undefined") return null;
+            try { const raw = localStorage.getItem(STORAGE_KEY); return raw ? (JSON.parse(raw) as CookiePrefs) : null; }
+            catch { return null; }
+          }
+          export function setCookiePrefs(prefs: CookiePrefs) {
+            if (typeof window === "undefined") return;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...prefs, necessary: true }));
+          }
+          EOF
+
+      - name: Write LegalLayout.tsx
+        run: |
+          cat > src/components/legal/LegalLayout.tsx <<'EOF'
+          import React, { PropsWithChildren } from "react";
+          type Props = PropsWithChildren<{ title: string; lastUpdated?: string }>;
+          export default function LegalLayout({ title, lastUpdated, children }: Props) {
+            return (
+              <main className="mx-auto max-w-3xl px-6 py-10">
+                <h1 className="text-3xl font-bold mb-2">{title}</h1>
+                {lastUpdated && <p className="text-sm text-gray-500 mb-8">Última atualização: {lastUpdated}</p>}
+                <div className="prose prose-slate max-w-none">{children}</div>
+              </main>
+            );
+          }
+          EOF
+
+      - name: Write CookieBanner.tsx
+        run: |
+          cat > src/components/legal/CookieBanner.tsx <<'EOF'
+          import React, { useEffect, useState } from "react";
+          import { setCookiePrefs, getCookiePrefs, CookiePrefs } from "../../lib/legal";
+          export default function CookieBanner() {
+            const [visible, setVisible] = useState(false);
+            useEffect(() => { const prefs = getCookiePrefs(); if (!prefs) setVisible(true); }, []);
+            const acceptAll = () => { const all: CookiePrefs = { necessary: true, analytics: true, marketing: true }; setCookiePrefs(all); setVisible(false); };
+            const rejectNonEssential = () => { const minimal: CookiePrefs = { necessary: true, analytics: false, marketing: false }; setCookiePrefs(minimal); setVisible(false); };
+            if (!visible) return null;
+            return (
+              <div className="fixed bottom-4 inset-x-0 px-4">
+                <div className="mx-auto max-w-3xl rounded-2xl border bg-white p-4 shadow">
+                  <p className="mb-3 text-sm">
+                    Usamos cookies para melhorar sua experiência, medir audiência e personalizar conteúdo.
+                    Você pode aceitar todos ou gerenciar preferências. Ao continuar, você concorda com esta Política de Privacidade.
+                  </p>
+                  <div className="flex gap-2">
+                    <button onClick={acceptAll} className="rounded-xl border px-3 py-2 text-sm">Aceitar todos</button>
+                    <button onClick={rejectNonEssential} className="rounded-xl border px-3 py-2 text-sm">Rejeitar não essenciais</button>
+                    <a href="#cookie-preferences" className="rounded-xl border px-3 py-2 text-sm underline" onClick={() => setVisible(false)}>Gerenciar preferências</a>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+          EOF
+
+      - name: Write ConsentCheckboxes.tsx
+        run: |
+          cat > src/components/legal/ConsentCheckboxes.tsx <<'EOF'
+          import React, { useEffect, useState } from "react";
+          import { CookiePrefs, getCookiePrefs, setCookiePrefs } from "../../lib/legal";
+          export default function ConsentCheckboxes() {
+            const [prefs, setPrefs] = useState<CookiePrefs>({ necessary: true, analytics: false, marketing: false });
+            useEffect(() => { const saved = getCookiePrefs(); if (saved) setPrefs(saved); }, []);
+            const update = (key: keyof CookiePrefs) => (e: React.ChangeEvent<HTMLInputElement>) => {
+              const next = { ...prefs, [key]: e.target.checked || key === "necessary" };
+              if (key === "necessary") next.necessary = true;
+              setPrefs(next);
+            };
+            const save = () => { setCookiePrefs(prefs); alert("Preferências salvas."); };
+            return (
+              <div id="cookie-preferences" className="rounded-2xl border p-4 space-y-3">
+                <label className="flex items-center gap-2"><input type="checkbox" checked readOnly /> <span><strong>Necessários</strong> (sempre ativos)</span></label>
+                <label className="flex items-center gap-2"><input type="checkbox" checked={prefs.analytics} onChange={update("analytics")} /> <span>Analytics</span></label>
+                <label className="flex items-center gap-2"><input type="checkbox" checked={prefs.marketing} onChange={update("marketing")} /> <span>Marketing</span></label>
+                <button onClick={save} className="rounded-xl border px-3 py-2 text-sm">Salvar preferências</button>
+              </div>
+            );
+          }
+          EOF
+
+      - name: Write DataRequestForm.tsx
+        run: |
+          cat > src/components/legal/DataRequestForm.tsx <<'EOF'
+          import React, { useState } from "react";
+          import { CONTACT_EMAIL, WHATSAPP_LINK } from "../../lib/legal";
+          export default function DataRequestForm() {
+            const [name, setName] = useState("");
+            const [emailOrWhats, setEmailOrWhats] = useState("");
+            const [requestType, setRequestType] = useState("acesso");
+            const [message, setMessage] = useState("");
+            const subject = encodeURIComponent(`LGPD - Solicitação de ${requestType} de dados`);
+            const body = encodeURIComponent(`Nome: ${name}\nContato: ${emailOrWhats}\nTipo de solicitação: ${requestType}\n\nDescrição:\n${message}\n`);
+            return (
+              <div className="rounded-2xl border p-4 space-y-3">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <input className="rounded-xl border px-3 py-2" placeholder="Seu nome completo" value={name} onChange={(e) => setName(e.target.value)} />
+                  <input className="rounded-xl border px-3 py-2" placeholder="Seu e-mail ou WhatsApp" value={emailOrWhats} onChange={(e) => setEmailOrWhats(e.target.value)} />
+                </div>
+                <select className="rounded-xl border px-3 py-2" value={requestType} onChange={(e) => setRequestType(e.target.value)}>
+                  <option value="acesso">Acesso aos dados</option>
+                  <option value="correcao">Correção</option>
+                  <option value="eliminacao">Eliminação</option>
+                  <option value="portabilidade">Portabilidade</option>
+                  <option value="informacoes">Informações sobre compartilhamentos</option>
+                  <option value="revogacao-consentimento">Revogação de consentimento</option>
+                </select>
+                <textarea className="w-full rounded-xl border px-3 py-2" rows={4} placeholder="Descreva sua solicitação." value={message} onChange={(e) => setMessage(e.target.value)} />
+                <div className="flex flex-wrap gap-2">
+                  <a className="rounded-xl border px-3 py-2 text-sm underline" href={`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`}>Enviar por e-mail (DPO)</a>
+                  <a className="rounded-xl border px-3 py-2 text-sm underline" href={WHATSAPP_LINK} target="_blank" rel="noreferrer">Abrir no WhatsApp</a>
+                </div>
+                <p className="text-xs text-gray-500">Prazo-alvo de resposta: até 48h úteis.</p>
+              </div>
+            );
+          }
+          EOF
+
+      - name: Write Privacidade.tsx
+        run: |
+          cat > src/pages/Privacidade.tsx <<'EOF'
+          import React from "react";
+          import LegalLayout from "../components/legal/LegalLayout";
+          import CookieBanner from "../components/legal/CookieBanner";
+          import ConsentCheckboxes from "../components/legal/ConsentCheckboxes";
+          import DataRequestForm from "../components/legal/DataRequestForm";
+          import { CONTACT_EMAIL, WHATSAPP_LINK, ORG_LEGAL_NAME, ORG_CNPJ, LAST_UPDATED } from "../lib/legal";
+
+          export default function Privacidade() {
+            return (
+              <LegalLayout title="Política de Privacidade (LGPD)" lastUpdated={LAST_UPDATED}>
+                <CookieBanner />
+                <section className="space-y-4">
+                  <h2 className="text-xl font-semibold">1. Controlador e Encarregado (DPO)</h2>
+                  <p>Controlador: <strong>{ORG_LEGAL_NAME} – CNPJ {ORG_CNPJ}</strong>.<br />Encarregado (DPO): <a className="underline" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+                  <h2 className="text-xl font-semibold">2. Quais dados coletamos</h2>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li><strong>Identificação/contato:</strong> nome, e-mail e WhatsApp.</li>
+                    <li><strong>Conteúdo enviado:</strong> redações e anexos.</li>
+                    <li><strong>Comprovantes:</strong> dados necessários para validar pagamento (sem armazenar cartão/banco).</li>
+                    <li><strong>Técnicos/analytics:</strong> IP, dispositivo, páginas e horários (cookies).</li>
+                  </ul>
+                  <h2 className="text-xl font-semibold">3. Bases legais (LGPD)</h2>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>Execução de contrato (art. 7º, V)</li>
+                    <li>Consentimento (art. 7º, I) para marketing/publicação de redações</li>
+                    <li>Legítimo interesse (art. 7º, IX) segurança/antifraude/usabilidade</li>
+                    <li>Obrigação legal (art. 7º, II) registros fiscais/contábeis</li>
+                  </ul>
+                  <h2 className="text-xl font-semibold">4. Finalidades</h2>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>Prestar e aperfeiçoar serviços</li>
+                    <li>Comunicação operacional</li>
+                    <li>Obrigações legais</li>
+                    <li>Métricas e segurança</li>
+                    <li>Marketing (se consentido)</li>
+                  </ul>
+                  <h2 className="text-xl font-semibold">5. Compartilhamento</h2>
+                  <p>Provedores (hospedagem, e-mail, analytics, atendimento) e autoridades quando exigido por lei. <strong>Não vendemos</strong> dados.</p>
+                  <h2 className="text-xl font-semibold">6. Retenção</h2>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>Serviço: durante a relação e até 5 anos após</li>
+                    <li>Logs: prazos compatíveis com segurança</li>
+                    <li>Consentimento: até revogação/finalidade</li>
+                  </ul>
+                  <h2 className="text-xl font-semibold">7. Segurança</h2>
+                  <p>Medidas técnicas e administrativas; notificaremos incidentes relevantes conforme LGPD.</p>
+                  <h2 className="text-xl font-semibold">8. Direitos do titular</h2>
+                  <p>Canais: <a className="underline" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> | <a className="underline" href={WHATSAPP_LINK} target="_blank" rel="noreferrer">WhatsApp</a> (prazo-alvo: 48h úteis)</p>
+                  <h2 className="text-xl font-semibold">9. Cookies e preferências</h2>
+                  <p>Gerencie suas preferências abaixo:</p>
+                  <ConsentCheckboxes />
+                  <h2 className="text-xl font-semibold">10. Menores de idade</h2>
+                  <p>Serviços mediante contratação por responsável legal ou consentimento expresso (sujeito à comprovação).</p>
+                  <h2 className="text-xl font-semibold">11. Transferências internacionais</h2>
+                  <p>Aplicamos salvaguardas adequadas quando necessário.</p>
+                  <h2 className="text-xl font-semibold">12. Exercício de direitos (formulário rápido)</h2>
+                  <DataRequestForm />
+                  <h2 className="text-xl font-semibold">13. Atualizações</h2>
+                  <p>Manteremos a versão vigente com a data de atualização.</p>
+                  <h2 className="text-xl font-semibold">14. Contato do DPO</h2>
+                  <p><a className="underline" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> | <a className="underline" href={WHATSAPP_LINK} target="_blank" rel="noreferrer">WhatsApp</a></p>
+                </section>
+              </LegalLayout>
+            );
+          }
+          EOF
+
+      - name: Create branch, commit and push
+        run: |
+          BRANCH="chore/privacy-legal-components"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$BRANCH"
+          git add src/lib/legal.ts src/components/legal/*.tsx src/pages/Privacidade.tsx
+          git commit -m "feat(legal): add Privacy page (TSX) + cookie banner, consent checkboxes, LGPD request form"
+          git push -u origin "$BRANCH" --force
+
+      - name: Open PR and try auto-merge (squash)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          gh pr create --base main --head chore/privacy-legal-components \
+            --title "Privacy page + legal components (LGPD)" \
+            --body "Adiciona Política de Privacidade em React/TSX, banner de cookies, preferências de consentimento e formulário LGPD."
+          gh pr merge --auto --squash || true
