@@ -11,7 +11,7 @@ export const Navigation = () => {
   
   // Track active section for homepage
   const isHomePage = location.pathname === '/';
-  const sectionIds = ['hero', 'services', 'testimonials'];
+  const sectionIds = ['hero', 'services', 'testimonials', 'contact'];
   const activeSection = useActiveSection(sectionIds);
 
   // Primary navigation items (decision-critical)

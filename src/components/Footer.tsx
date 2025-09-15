@@ -3,7 +3,7 @@ import { Instagram, MessageCircle, Mail, Phone } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="relative border-t border-border">
+    <footer id="contact" className="relative border-t border-border">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
