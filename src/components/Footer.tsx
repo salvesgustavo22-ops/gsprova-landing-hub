@@ -1,4 +1,19 @@
-import { Separator } from "@/components/ui/separator";
+import { Link } from "react-router-dom";
+
+export default function Footer() {
+  return (
+    <footer className="border-t mt-16">
+      <div className="container mx-auto max-w-6xl px-4 py-8 text-sm text-gray-600 flex flex-col sm:flex-row gap-3 sm:gap-6">
+        <span>© {new Date().getFullYear()} GS Aprova</span>
+        <nav className="flex gap-4">
+          <Link to="/termos" className="underline">Termos de Uso</Link>
+          <Link to="/privacidade" className="underline">Política de Privacidade</Link>
+          <Link to="/legal" className="underline">Aviso Legal</Link>
+        </nav>
+      </div>
+    </footer>
+  );
+}import { Separator } from "@/components/ui/separator";
 import { Instagram, MessageCircle, Mail, Phone } from "lucide-react";
 
 export const Footer = () => {
