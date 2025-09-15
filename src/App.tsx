@@ -22,6 +22,8 @@ import EnviarRedacao from "./pages/EnviarRedacao";
 import MinhasRedacoes from "./pages/MinhasRedacoes";
 import CorretorPanel from "./pages/CorretorPanel";
 import RedefinirSenha from "./pages/RedefinirSenha";
+import PoliticaDePrivacidade from "./pages/PoliticaDePrivacidade";
+import TermoDeUso from "./pages/TermoDeUso";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +52,8 @@ const App = () => (
             <Route path="/minhas-redacoes" element={<MinhasRedacoes />} />
             <Route path="/corretor-painel-gs-aprova" element={<CorretorPanel />} />
             <Route path="/redefinir-senha" element={<RedefinirSenha />} />
+            <Route path="/PoliticaDePrivacidade" element={<PoliticaDePrivacidade />} />
+            <Route path="/TermoDeUso" element={<TermoDeUso />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
