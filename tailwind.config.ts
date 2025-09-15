@@ -27,7 +27,10 @@ export default {
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))',
-					hover: 'hsl(var(--primary-hover))'
+					hover: 'hsl(var(--primary-hover))',
+					navy: 'hsl(var(--primary-navy))',
+					'navy-foreground': 'hsl(var(--primary-navy-foreground))',
+					'navy-light': 'hsl(var(--primary-navy-light))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -41,7 +44,8 @@ export default {
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))',
-					hover: 'hsl(var(--accent-hover))'
+					hover: 'hsl(var(--accent-hover))',
+					'dark-text': 'hsl(var(--accent-dark-text))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
