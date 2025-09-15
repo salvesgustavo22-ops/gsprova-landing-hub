@@ -32,8 +32,8 @@ export const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li><a href="/avisolegal" className="text-white/80 hover:text-white transition-colors">Sobre</a></li>
               <li><a href="/contato" className="text-white/80 hover:text-white transition-colors">Contato</a></li>
-              <li><a href="/termosdeuso" className="text-white/80 hover:text-white transition-colors">Termos de Uso</a></li>
-              <li><a href="/politicadeprivacidade" className="text-white/80 hover:text-white transition-colors">Política de Privacidade</a></li>
+              <li><a href="/TermosDeUso" className="text-white/80 hover:text-white transition-colors">Termos de Uso</a></li>
+              <li><a href="/PoliticaDePrivacidade" className="text-white/80 hover:text-white transition-colors">Política de Privacidade</a></li>
             </ul>
           </div>
 
