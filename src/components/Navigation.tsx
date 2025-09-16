@@ -17,6 +17,7 @@ export const Navigation = () => {
     { name: "Planos", path: "/#planos" },
     { name: "Depoimentos", path: "/#depoimentos" },
     { name: "FAQ", path: "/#faq" },
+    { name: "Sobre", path: "/about" },
     { name: "Contato", path: "/contato" }
   ];
 

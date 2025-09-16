@@ -37,6 +37,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://gsmatematicanegocios.com.br/about</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gsmatematicanegocios.com.br/terms</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://gsmatematicanegocios.com.br/privacy</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://gsmatematicanegocios.com.br/obrigado-checklist</loc>
     <lastmod>2025-01-03</lastmod>
     <changefreq>yearly</changefreq>
