@@ -1,31 +1,53 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { BUSINESS_WHATSAPP_URL, WHATSAPP_MESSAGES } from "@/lib/constants";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
+  // Simplified navigation items (only essentials)
   const navigationItems = [
     { name: "Início", path: "/" },
-    { name: "ENEM 2025", path: "/enem-2025" },
-    { name: "Fuvest 2025", path: "/fuvest-2025" },
-    { name: "Portal de Redações", path: "/portal-aluno" },
-    { name: "Matemática Online", path: "/#matematica" },
-    { name: "Correção de Redação", path: "/#redacao" },
-    { name: "Planos", path: "/#planos" },
-    { name: "Depoimentos", path: "/#depoimentos" },
-    { name: "FAQ", path: "/#faq" },
-    { name: "Sobre", path: "/about" },
+    { name: "Planos e Preços", path: "/#pricing" },
+    { name: "Correção de Redação", path: "/#essay" },
     { name: "Contato", path: "/contato" }
   ];
 
+  // Handle scroll shadow effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 8);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleWhatsAppClick = () => {
+    trackWhatsAppClick('header_whatsapp_click', 'navigation');
+    const message = encodeURIComponent("Quero minha aula");
+    window.open(`${BUSINESS_WHATSAPP_URL}?text=${message}`, '_blank');
+  };
+
+  const handlePromoBadgeClick = () => {
+    trackWhatsAppClick('header_badge_click', 'promo');
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85 border-b border-border shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo and Title */}
+    <nav 
+      aria-label="Principal" 
+      className={`sticky top-0 z-50 bg-background/90 backdrop-blur border-b transition-shadow ${
+        isScrolled ? 'shadow-sm' : ''
+      }`}
+    >
+      <div className="container mx-auto px-4 py-3">
+        <div className="flex items-center justify-between">
+          {/* Left: Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
               src="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png" 
@@ -35,47 +57,62 @@ export const Navigation = () => {
               height="32"
             />
             <span className="text-foreground font-bold text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
-              Curso GS Aprova
+              GS Aprova
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-6">
+          {/* Center/Right: Nav + Promo + CTA (Desktop) */}
+          <div className="hidden md:flex items-center gap-6">
             {navigationItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  location.pathname === item.path ? "text-primary" : "text-muted-foreground"
-                }`}
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
               >
                 {item.name}
               </Link>
             ))}
+
+            {/* Promo badge */}
+            <button
+              onClick={handlePromoBadgeClick}
+              className="text-sm font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              aria-label="Ver promoção de até 30% de desconto"
+            >
+              ATÉ 30% OFF até 30/09
+            </button>
+
+            {/* WhatsApp CTA */}
+            <Button
+              onClick={handleWhatsAppClick}
+              className="rounded-xl px-4 py-2 font-semibold bg-primary text-primary-foreground hover:bg-primary/90 shadow focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              Falar no WhatsApp
+            </Button>
           </div>
 
-          <div className="flex items-center space-x-4">
-            {/* Desktop CTA Button */}
-            <div className="hidden lg:block">
-              <button
-                onClick={() => {
-                  const message = encodeURIComponent("Oi, quero me inscrever no GS Aprova. Vim pelo site.");
-                  window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
-                }}
-                className="bg-background border border-muted-foreground/40 text-foreground hover:bg-muted px-4 py-2 rounded-lg font-semibold transition-colors"
-                style={{fontFamily: 'Montserrat, sans-serif', fontWeight: '600'}}
-              >
-                Inscreva-se
-              </button>
-            </div>
-
+          {/* Mobile condensed actions */}
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={handlePromoBadgeClick}
+              className="text-xs font-bold px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+              aria-label="Ver promoção"
+            >
+              30% OFF até 30/09
+            </button>
+            <Button
+              onClick={handleWhatsAppClick}
+              className="rounded-lg px-3 py-1.5 text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 shadow focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              WhatsApp
+            </Button>
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
+              className="ml-2"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -84,7 +121,7 @@ export const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden py-4 border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
+          <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur">
             <div className="flex flex-col space-y-3">
               {navigationItems.map((item) => (
                 <Link

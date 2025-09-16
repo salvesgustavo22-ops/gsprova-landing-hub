@@ -1,5 +1,5 @@
 import { Navigation } from "@/components/Navigation";
-import { Hero } from "@/components/Hero";
+import Hero from "@/sections/Hero";
 import { ThematicSections } from "@/components/ThematicSections";
 import { Benefits } from "@/components/Benefits";
 import { SocialProof } from "@/components/SocialProof";
@@ -105,8 +105,17 @@ const Index = () => {
       <ScrollTracker />
       <main>
         <Hero />
-        <ThematicSections />
-        <Services />
+        
+        {/* Essay Correction Section */}
+        <section id="essay" className="scroll-mt-20">
+          <ThematicSections />
+        </section>
+        
+        {/* Planos e Preços Section */}
+        <section id="pricing" className="scroll-mt-20">
+          <Services />
+        </section>
+        
         <Benefits />
         <HowItWorks />
         <TrustSection />
