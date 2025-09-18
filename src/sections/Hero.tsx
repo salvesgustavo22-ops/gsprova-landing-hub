@@ -1,103 +1,117 @@
 import { Button } from "@/components/ui/button";
-import { BUSINESS_WHATSAPP_URL } from "@/lib/constants";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { Card, CardContent } from "@/components/ui/card";
+import { Users, Trophy, PenTool } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
+import { BUSINESS_WHATSAPP_URL, WHATSAPP_MESSAGES } from "@/lib/constants";
 import heroStudentImage from "@/assets/hero-student-18yo.jpg";
 
 export default function Hero() {
-  const handleWhatsAppClick = () => {
-    trackWhatsAppClick('hero_whatsapp_click', 'primary_cta');
-    const message = encodeURIComponent("Quero minha aula");
+  const handlePrimaryCTAClick = () => {
+    trackEvent('cta_click', { label: 'Hero - Corrigir Redação' });
+    const redacaoSection = document.getElementById('redacao');
+    if (redacaoSection) {
+      redacaoSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Fallback to WhatsApp with essay correction message
+      const message = encodeURIComponent("Quero corrigir minha redação");
+      window.open(`${BUSINESS_WHATSAPP_URL}?text=${message}`, '_blank');
+    }
+  };
+
+  const handleSecondaryCTAClick = () => {
+    trackEvent('cta_click', { label: 'Hero - WhatsApp' });
+    const message = encodeURIComponent(WHATSAPP_MESSAGES.heroEnem);
     window.open(`${BUSINESS_WHATSAPP_URL}?text=${message}`, '_blank');
   };
 
-  const handleViewPlansClick = () => {
-    trackWhatsAppClick('hero_view_plans_click', 'secondary_cta');
-    document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <section className="relative bg-gradient-to-br from-background via-accent/5 to-primary/5">
-      <div className="container mx-auto px-4 py-16 md:py-20">
-        <div className="grid md:grid-cols-2 gap-10 items-center max-w-7xl mx-auto">
-          {/* Left column: text */}
-          <div className="space-y-6">
-            <p className="text-sm font-bold tracking-wide uppercase text-primary/80 mb-2">
+    <section className="relative bg-gradient-to-br from-[#0C3B8E] via-[#0E4FB0] to-[#1B6CFF] min-h-[72vh] md:min-h-[72vh] overflow-hidden">
+      {/* Overlay for contrast */}
+      <div className="absolute inset-0 bg-black/15 md:bg-black/15"></div>
+      
+      <div className="relative z-10 container mx-auto px-4 py-12 md:py-20">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-center max-w-7xl mx-auto">
+          {/* Left column: text content */}
+          <div className="order-1 space-y-6 max-w-[720px]">
+            <p className="text-sm font-bold tracking-wide uppercase text-white/90 mb-2">
               Promoção de Início de Turma
             </p>
             
-            <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-foreground">
-              Comece hoje sua preparação para o ENEM com até{" "}
-              <span className="text-primary">30% OFF</span>
+            <h1 className="text-white text-3xl md:text-5xl font-extrabold leading-tight tracking-[-0.02em]">
+              Passe no ENEM e Fuvest com Matemática e Correção de Redação Personalizada
             </h1>
             
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Aulas ao vivo + trilha de estudos + correção de redação — do básico ao avançado, no seu ritmo.
-            </p>
+            <h2 className="text-white/90 text-base md:text-lg mt-3">
+              Plano de estudos individualizado + redações corrigidas com feedback detalhado em 24h e simulados focados no que mais cai.
+            </h2>
 
-            <ul className="space-y-3 text-base text-muted-foreground">
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-bold text-lg">•</span>
-                <span>Plano flexível para sua rotina</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-bold text-lg">•</span>
-                <span>Correções com feedback prático</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-primary font-bold text-lg">•</span>
-                <span>Suporte direto no WhatsApp</span>
-              </li>
-            </ul>
-
-            <div className="flex flex-col sm:flex-row items-start gap-4 pt-4">
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <Button
-                onClick={handleWhatsAppClick}
-                className="w-full sm:w-auto rounded-xl px-6 py-3 text-lg font-semibold bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-all transform hover:scale-105"
-                data-analytics="hero_whatsapp_click"
+                onClick={handlePrimaryCTAClick}
+                className="w-full sm:w-auto rounded-xl px-5 py-3 font-semibold bg-white text-gray-900 hover:bg-gray-100 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all transform hover:scale-105"
+                aria-label="Iniciar correção de redação"
               >
-                Quero minha aula
+                Quero corrigir minha redação
               </Button>
               
               <Button
-                onClick={handleViewPlansClick}
+                onClick={handleSecondaryCTAClick}
                 variant="outline"
-                className="w-full sm:w-auto rounded-xl px-6 py-3 text-lg font-semibold border-2 border-primary/20 text-primary hover:bg-primary/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-all"
-                data-analytics="hero_view_plans_click"
+                className="w-full sm:w-auto rounded-xl px-5 py-3 font-semibold border-2 border-white text-white hover:bg-white hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all"
+                aria-label="Falar no WhatsApp"
               >
-                Ver planos com desconto
+                Falar no WhatsApp
               </Button>
             </div>
 
-            <div className="pt-2 space-y-2">
-              <p className="text-sm text-primary font-medium">
-                Válido até 30/09 • Vagas limitadas
-              </p>
+            <p className="mt-3 text-sm text-white/90">
+              Válido até 30/09 • Vagas limitadas
+            </p>
+
+            <p className="mt-2 text-xs text-white/80">
+              +15 anos ajudando alunos a aprovarem • Fundado por professor com experiência em vestibulares
+            </p>
+
+            {/* Social Proof Cards */}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <Card className="bg-white/10 backdrop-blur-md border border-white/15 text-white">
+                <CardContent className="p-3 text-center">
+                  <Users className="size-5 opacity-90 mx-auto mb-2" />
+                  <div className="font-bold text-sm">+900</div>
+                  <div className="text-xs opacity-90">alunos atendidos</div>
+                </CardContent>
+              </Card>
               
-              <p className="text-xs text-muted-foreground/80">
-                +15 anos ajudando alunos a aprovarem • Fundado por professor com experiência em vestibulares
-              </p>
+              <Card className="bg-white/10 backdrop-blur-md border border-white/15 text-white">
+                <CardContent className="p-3 text-center">
+                  <Trophy className="size-5 opacity-90 mx-auto mb-2" />
+                  <div className="font-bold text-sm">95%</div>
+                  <div className="text-xs opacity-90">de aprovação</div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white/10 backdrop-blur-md border border-white/15 text-white">
+                <CardContent className="p-3 text-center">
+                  <PenTool className="size-5 opacity-90 mx-auto mb-2" />
+                  <div className="font-bold text-sm">70/100</div>
+                  <div className="text-xs opacity-90">nota média em redação</div>
+                </CardContent>
+              </Card>
             </div>
           </div>
 
-          {/* Right column: image / illustration */}
-          <div className="relative">
-            <div className="relative">
+          {/* Right column: image */}
+          <div className="order-2 md:order-2 mt-8 md:mt-0 relative">
+            <picture className="relative">
               <img
                 src={heroStudentImage}
-                alt="Estudante revisando conteúdo para o ENEM"
-                className="w-full h-auto rounded-2xl shadow-2xl object-cover max-h-[600px]"
+                alt="Estudante estudando com caderno e notebook"
+                className="w-full h-[300px] md:h-[520px] object-cover object-center rounded-2xl shadow-lg"
                 loading="eager"
+                decoding="async"
                 fetchPriority="high"
               />
-              
-              {/* Floating promo badge on image */}
-              <div className="absolute -top-4 -left-4 bg-primary text-primary-foreground px-4 py-2 rounded-full font-bold text-sm shadow-lg transform rotate-[-12deg]">
-                30% OFF
-              </div>
-              
-              {/* Gradient overlay for better contrast */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent rounded-2xl"></div>
-            </div>
+            </picture>
           </div>
         </div>
       </div>

@@ -13,7 +13,9 @@ import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { ScrollTracker } from "@/components/ScrollTracker";
 import { useEffect } from "react";
-import { initializeGA4 } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
+import { BUSINESS_WHATSAPP_URL } from "@/lib/constants";
+import { Button } from "@/components/ui/button";
 import { deferExecution } from "@/utils/performance";
 import heroImage from "@/assets/hero-student-18yo.jpg";
 
@@ -22,7 +24,7 @@ const Index = () => {
     // Defer non-critical initializations
     deferExecution(() => {
       // Initialize Google Analytics 4
-      initializeGA4('G-KCQG5DDZGG');
+      // initializeGA4('G-KCQG5DDZGG'); // Commented out for now
     }, 100);
     
     // Add resource hints to improve loading performance
@@ -106,13 +108,8 @@ const Index = () => {
       <main>
         <Hero />
         
-        {/* Essay Correction Section */}
-        <section id="essay" className="scroll-mt-20">
-          <ThematicSections />
-        </section>
-        
-        {/* Planos e Preços Section */}
-        <section id="pricing" className="scroll-mt-20">
+        {/* Matemática Section */}
+        <section id="matematica" className="scroll-mt-20">
           <Services />
         </section>
         
@@ -120,7 +117,39 @@ const Index = () => {
         <HowItWorks />
         <TrustSection />
         <SocialProof />
-        <FinalCTA />
+        
+        {/* Redação Section */}
+        <section id="redacao" className="scroll-mt-20">
+          <ThematicSections />
+        </section>
+        
+        {/* Simulados Section */}
+        <section id="simulados" className="scroll-mt-20">
+          <div className="py-16 bg-muted/30">
+            <div className="container mx-auto px-4 text-center">
+              <h2 className="text-3xl font-bold text-foreground mb-4">Simulados ENEM</h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Pratique com simulados que reproduzem fielmente o formato do ENEM
+              </p>
+              <Button 
+                onClick={() => {
+                  trackEvent('cta_click', { label: 'Simulados - Quero fazer' });
+                  const message = encodeURIComponent("Quero saber mais sobre os simulados ENEM");
+                  window.open(`${BUSINESS_WHATSAPP_URL}?text=${message}`, '_blank');
+                }}
+                className="bg-primary hover:bg-primary/90"
+              >
+                Quero fazer simulados
+              </Button>
+            </div>
+          </div>
+        </section>
+        
+        {/* Planos e Preços Section */}
+        <section id="pricing" className="scroll-mt-20">
+          <FinalCTA />
+        </section>
+        
         <FAQ />
       </main>
       <Footer />
