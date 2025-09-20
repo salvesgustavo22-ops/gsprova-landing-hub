@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
+  base-uri 'self';
+  object-src 'none';
   script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;
-  connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
+  connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com;
   img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com;
   style-src 'self' 'unsafe-inline';
   font-src 'self' data:;
   frame-src https://www.googletagmanager.com;
+  frame-ancestors 'self';
+  upgrade-insecure-requests;
 ">
     <title>GS Aprova | Aulas de Matemática e Correção de Redação para ENEM e Fuvest</title>
     <meta name="keywords" content="aulas particulares matemática ENEM, correção redação Fuvest, professor ENEM SP, redação nota 900, aulas vestibular, reforço escolar online, revisão matemática, plantão vestibular, consultoria ENEM" />
