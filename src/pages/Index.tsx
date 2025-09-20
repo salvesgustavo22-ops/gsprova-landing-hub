@@ -21,10 +21,10 @@ import heroImage from "@/assets/hero-student-18yo.jpg";
 
 const Index = () => {
   useEffect(() => {
-    // Defer non-critical initializations
+    Defer non-critical initializations
     deferExecution(() => {
-      // Initialize Google Analytics 4
-      // initializeGA4('G-KCQG5DDZGG'); // Commented out for now
+      Initialize Google Analytics 4
+      initializeGA4('G-KCQG5DDZGG'); // Commented out for now
     }, 100);
     
     // Add resource hints to improve loading performance
