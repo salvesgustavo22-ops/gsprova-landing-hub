@@ -11,6 +11,9 @@ import { FinalCTA } from "@/components/FinalCTA";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
+import { StickyFormBar } from "@/components/StickyFormBar";
+import { LeadMagnet } from "@/components/LeadMagnet";
+import { Testimonials } from "@/components/Testimonials";
 import { ScrollTracker } from "@/components/ScrollTracker";
 import { useEffect } from "react";
 import { trackEvent } from "@/lib/analytics";
@@ -108,6 +111,12 @@ const Index = () => {
       <main>
         <Hero />
         
+        {/* Lead Magnet Section */}
+        <LeadMagnet />
+        
+        {/* Testimonials Section */}
+        <Testimonials />
+        
         {/* Matemática Section */}
         <section id="matematica" className="scroll-mt-20">
           <Services />
@@ -119,7 +128,7 @@ const Index = () => {
         <SocialProof />
         
         {/* Redação Section */}
-        <section id="redacao" className="scroll-mt-20">
+        <section id="essay" className="scroll-mt-20">
           <ThematicSections />
         </section>
         
@@ -154,6 +163,7 @@ const Index = () => {
       </main>
       <Footer />
       <StickyWhatsApp />
+      <StickyFormBar />
     </div>
   );
 };

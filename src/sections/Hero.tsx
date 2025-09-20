@@ -1,79 +1,82 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Trophy, PenTool } from "lucide-react";
+import { Users, Trophy, PenTool, CheckCircle2, MessageCircle, Target } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { BUSINESS_WHATSAPP_URL, WHATSAPP_MESSAGES } from "@/lib/constants";
+import { MiniForm } from "@/components/MiniForm";
 import heroStudentImage from "@/assets/hero-student-18yo.jpg";
 
 export default function Hero() {
   const handlePrimaryCTAClick = () => {
-    trackEvent('cta_click', { label: 'Hero - Corrigir Redação' });
-    const redacaoSection = document.getElementById('redacao');
-    if (redacaoSection) {
-      redacaoSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // Fallback to WhatsApp with essay correction message
-      const message = encodeURIComponent("Quero corrigir minha redação");
-      window.open(`${BUSINESS_WHATSAPP_URL}?text=${message}`, '_blank');
-    }
-  };
-
-  const handleSecondaryCTAClick = () => {
-    trackEvent('cta_click', { label: 'Hero - WhatsApp' });
-    const message = encodeURIComponent(WHATSAPP_MESSAGES.heroEnem);
+    trackEvent('hero_whatsapp_click', { source: 'primary_cta' });
+    const message = encodeURIComponent("Oi, quero falar sobre aulas de Matemática e correção de Redação. Vim pelo site GS Aprova.");
     window.open(`${BUSINESS_WHATSAPP_URL}?text=${message}`, '_blank');
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-[#0C3B8E] via-[#0E4FB0] to-[#1B6CFF] min-h-[72vh] md:min-h-[72vh] overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#0C3B8E] via-[#0E4FB0] to-[#1B6CFF] min-h-[72vh] md:min-h-[80vh] overflow-hidden">
       {/* Overlay for contrast */}
       <div className="absolute inset-0 bg-black/15 md:bg-black/15"></div>
       
       <div className="relative z-10 container mx-auto px-4 py-12 md:py-20">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-10 items-center max-w-7xl mx-auto">
-          {/* Left column: text content */}
-          <div className="order-1 space-y-6 max-w-[720px]">
-            <p className="text-sm font-bold tracking-wide uppercase text-white/90 mb-2">
-              Promoção de Início de Turma
-            </p>
-            
-            <h1 className="text-white text-3xl md:text-5xl font-extrabold leading-tight tracking-[-0.02em]">
-              Passe no ENEM e Fuvest com Matemática e Correção de Redação Personalizada
-            </h1>
-            
-            <h2 className="text-white/90 text-base md:text-lg mt-3">
-              Plano de estudos individualizado + redações corrigidas com feedback detalhado em 24h e simulados focados no que mais cai.
-            </h2>
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start max-w-7xl mx-auto">
+          {/* Left column: content */}
+          <div className="order-2 md:order-1 space-y-6">
+            <div>
+              <h1 className="text-white text-3xl md:text-5xl font-extrabold leading-tight tracking-[-0.02em] mb-4">
+                Redação ENEM com feedback prático + Matemática sem enrolação.
+              </h1>
+              
+              <h2 className="text-white/90 text-base md:text-lg">
+                Correções com devolutiva objetiva, trilhas e simulados focados no que mais cai.
+              </h2>
+            </div>
 
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+            {/* USP Bullets - Mobile: above form, Desktop: left side */}
+            <div className="md:hidden space-y-3">
+              <div className="flex items-center space-x-3 text-white/90">
+                <CheckCircle2 className="w-5 h-5 text-white" />
+                <span className="text-sm">Correção com critérios do ENEM</span>
+              </div>
+              <div className="flex items-center space-x-3 text-white/90">
+                <Target className="w-5 h-5 text-white" />
+                <span className="text-sm">Trilha prática por nível</span>
+              </div>
+              <div className="flex items-center space-x-3 text-white/90">
+                <MessageCircle className="w-5 h-5 text-white" />
+                <span className="text-sm">Suporte direto no WhatsApp</span>
+              </div>
+            </div>
+
+            {/* Desktop USP Bullets */}
+            <div className="hidden md:block space-y-4">
+              <div className="flex items-center space-x-4 text-white/90">
+                <CheckCircle2 className="w-6 h-6 text-white" />
+                <span>Correção com critérios do ENEM</span>
+              </div>
+              <div className="flex items-center space-x-4 text-white/90">
+                <Target className="w-6 h-6 text-white" />
+                <span>Trilha prática por nível</span>
+              </div>
+              <div className="flex items-center space-x-4 text-white/90">
+                <MessageCircle className="w-6 h-6 text-white" />
+                <span>Suporte direto no WhatsApp</span>
+              </div>
+            </div>
+
+            {/* Primary CTA */}
+            <div className="mt-6">
               <Button
                 onClick={handlePrimaryCTAClick}
-                className="w-full sm:w-auto rounded-xl px-5 py-3 font-semibold bg-white text-gray-900 hover:bg-gray-100 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all transform hover:scale-105"
-                aria-label="Iniciar correção de redação"
-              >
-                Quero corrigir minha redação
-              </Button>
-              
-              <Button
-                onClick={handleSecondaryCTAClick}
-                variant="outline"
-                className="w-full sm:w-auto rounded-xl px-5 py-3 font-semibold border-2 border-white text-white hover:bg-white hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all"
+                className="w-full md:w-auto rounded-xl px-8 py-4 text-lg font-semibold bg-white text-gray-900 hover:bg-gray-100 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all transform hover:scale-105"
                 aria-label="Falar no WhatsApp"
               >
                 Falar no WhatsApp
               </Button>
             </div>
 
-            <p className="mt-3 text-sm text-white/90">
-              Válido até 30/09 • Vagas limitadas
-            </p>
-
-            <p className="mt-2 text-xs text-white/80">
-              +15 anos ajudando alunos a aprovarem • Fundado por professor com experiência em vestibulares
-            </p>
-
-            {/* Social Proof Cards */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {/* Social Proof Cards - Desktop only */}
+            <div className="hidden md:grid grid-cols-3 gap-3 mt-8">
               <Card className="bg-white/10 backdrop-blur-md border border-white/15 text-white">
                 <CardContent className="p-3 text-center">
                   <Users className="size-5 opacity-90 mx-auto mb-2" />
@@ -100,18 +103,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right column: image */}
-          <div className="order-2 md:order-2 mt-8 md:mt-0 relative">
-            <picture className="relative">
-              <img
-                src={heroStudentImage}
-                alt="Estudante estudando com caderno e notebook"
-                className="w-full h-[300px] md:h-[520px] object-cover object-center rounded-2xl shadow-lg"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-              />
-            </picture>
+          {/* Right column: Mini Form */}
+          <div className="order-1 md:order-2">
+            <MiniForm source="hero_miniform" />
           </div>
         </div>
       </div>
