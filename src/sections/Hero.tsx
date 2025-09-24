@@ -74,7 +74,7 @@ export default function Hero() {
                 className="w-full md:w-auto rounded-xl px-8 py-4 text-lg font-semibold bg-white text-gray-900 hover:bg-gray-100 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 aria-label="Matricular no Intensivo"
               >
-                Matricular no Intensivo — R$ 199,90
+                Matricular no Intensivo ENEM — R$ 199,90
               </Button>
               <Button
                 onClick={handleSecondaryCTAClick}
@@ -82,7 +82,7 @@ export default function Hero() {
                 className="w-full md:w-auto rounded-xl px-8 py-4 text-lg font-semibold bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-all"
                 aria-label="Quero as 2 correções"
               >
-                Quero as 2 correções — R$ 29,90
+                Quero apenas o material de Revisão para o ENEM
               </Button>
             </div>
 
