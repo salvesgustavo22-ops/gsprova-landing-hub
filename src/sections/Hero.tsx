@@ -71,7 +71,7 @@ export default function Hero() {
             <div className="mt-6 space-y-3 md:space-y-0 md:space-x-4 md:flex">
               <Button
                 onClick={handlePrimaryCTAClick}
-                className="w-full md:w-auto rounded-xl px-8 py-4 text-lg font-semibold bg-white text-gray-900 hover:bg-gray-100 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all transform hover:scale-105"
+                className="w-full md:w-auto rounded-xl px-8 py-4 text-lg font-semibold bg-white text-gray-900 hover:bg-gray-100 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
                 aria-label="Matricular no Intensivo"
               >
                 Matricular no Intensivo — R$ 199,90
@@ -113,6 +113,8 @@ export default function Hero() {
               </Card>
             </div>
           </div>          
+        </div> {/* <-- Add this closing div */}
+      </div>
     </section>
   );
 }
