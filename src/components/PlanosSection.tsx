@@ -86,7 +86,7 @@ export const PlanosSection = () => {
               )}
               
               <CardHeader className="text-center pb-4">
-                <h3 className="text-xl font-bold text-primary mb-2">
+                <h3 className="text-xl font-bold text-muted-foreground mb-2">
                   {plano.titulo}
                 </h3>
                 {plano.datas && (
@@ -94,7 +94,7 @@ export const PlanosSection = () => {
                     {plano.datas}
                   </p>
                 )}
-                <div className="text-2xl font-bold text-muted">
+                <div className="text-2xl font-bold text-muted-foreground">
                   {plano.preco}
                 </div>
               </CardHeader>
