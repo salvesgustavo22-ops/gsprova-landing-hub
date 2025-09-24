@@ -60,10 +60,10 @@ export const PlanosSection = () => {
   };
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-16 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-muted mb-4">
             Escolha seu plano
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -86,7 +86,7 @@ export const PlanosSection = () => {
               )}
               
               <CardHeader className="text-center pb-4">
-                <h3 className="text-xl font-bold text-foreground mb-2">
+                <h3 className="text-xl font-bold text-muted mb-2">
                   {plano.titulo}
                 </h3>
                 {plano.datas && (
@@ -94,7 +94,7 @@ export const PlanosSection = () => {
                     {plano.datas}
                   </p>
                 )}
-                <div className="text-2xl font-bold text-primary">
+                <div className="text-2xl font-bold text-muted">
                   {plano.preco}
                 </div>
               </CardHeader>
