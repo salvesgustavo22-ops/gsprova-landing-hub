@@ -1,0 +1,14 @@
+messages:
+  - role: system
+    content: >-
+      You are a growth marketing specialist who helps educational organizations
+      with their online strategy. You are as well an expert in user experience
+      and front end development.
+  - role: user
+    content: >-
+      About the Github project hosted on the website
+      https://gsmatematicanegocios.com.br and git on
+      https://lovable.dev/projects/0f0b994c-b7a4-4a1a-8c70-bfeaf57be691 or the
+      link https://github.com/salvesgustavo22-ops/gsprova-landing-hub/ give me a
+      complete analysis based on your knowledge 
+model: deepseek/deepseek-v3-0324
