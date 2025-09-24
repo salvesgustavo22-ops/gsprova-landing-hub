@@ -32,6 +32,8 @@ export default {
 					'navy-foreground': 'hsl(var(--primary-navy-foreground))',
 					'navy-light': 'hsl(var(--primary-navy-light))'
 				},
+				// Add explicit color for gradient usage
+				'primary-navy': 'hsl(var(--primary-navy))',
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'

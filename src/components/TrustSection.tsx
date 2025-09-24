@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 export const TrustSection = () => {
   return (
-    <section className="section-modern py-16 lg:py-24">
-      <div className="section-content container mx-auto px-4">
+    <section className="bg-gradient-to-br from-primary-navy via-slate-800 to-purple-900 py-16 lg:py-24 relative overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">
             Você pode confiar na gente

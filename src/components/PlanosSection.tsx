@@ -60,13 +60,13 @@ export const PlanosSection = () => {
   };
 
   return (
-    <section className="py-16 bg-background">
+    <section className="bg-gradient-to-br from-primary-navy via-slate-800 to-purple-900 py-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Escolha seu plano
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-white/85 max-w-2xl mx-auto">
             Opções personalizadas para sua jornada rumo à aprovação
           </p>
         </div>
@@ -127,24 +127,24 @@ export const PlanosSection = () => {
         </div>
 
         {/* Ofertas Secundárias */}
-        <div className="mt-16 text-center bg-muted/30 rounded-xl p-8">
-          <h3 className="text-2xl font-bold text-foreground mb-6">
+        <div className="mt-16 text-center bg-black/20 rounded-xl p-8">
+          <h3 className="text-2xl font-bold text-white mb-6">
             Ofertas Secundárias
           </h3>
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <div>
-              <h4 className="font-semibold text-foreground mb-2">
+              <h4 className="font-semibold text-white mb-2">
                 Aulas particulares
               </h4>
-              <p className="text-muted-foreground mb-4">
+              <p className="text-white/85 mb-4">
                 A partir de R$ 49,90/hora
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-2">
+              <h4 className="font-semibold text-white mb-2">
                 Planos customizados
               </h4>
-              <p className="text-muted-foreground mb-4">
+              <p className="text-white/85 mb-4">
                 Monte seu pacote sob medida
               </p>
             </div>
