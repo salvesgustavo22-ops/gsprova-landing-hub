@@ -82,7 +82,7 @@ export default function Hero() {
                 className="w-full md:w-auto rounded-xl px-8 py-4 text-lg font-semibold bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-all"
                 aria-label="Quero as 2 correções"
               >
-                Quero apenas o material de Revisão para o ENEM
+                Quero o material de Revisão - R$99,90
               </Button>
             </div>
 
