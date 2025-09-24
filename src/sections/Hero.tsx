@@ -116,11 +116,7 @@ export default function Hero() {
           </div>
 
           {/* Right column: Mini Form */}
-          <div className="order-1 md:order-2">
-            <MiniForm source="hero_miniform" />
-          </div>
-        </div>
-      </div>
+          
     </section>
   );
 }
