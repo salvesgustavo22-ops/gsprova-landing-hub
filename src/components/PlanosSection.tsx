@@ -14,7 +14,7 @@ const planos = [
       "Recomendações práticas para ganhar pontos",
       "Entrega priorizada na reta final"
     ],
-    cta: "Quero as 2 correções — R$ 29,90",
+    cta: "Quero 2 correções — R$ 29,90",
     href: "/planos#correcao",
     badge: null
   },
@@ -32,7 +32,7 @@ const planos = [
     ],
     cta: "Matricular no Intensivo — R$ 199,90",
     href: "/planos#curso-intensivo",
-    badge: "Mais recomendado"
+    badge: "Recomendado"
   },
   {
     id: "material",
@@ -63,10 +63,10 @@ export const PlanosSection = () => {
     <section className="py-16 bg-accent">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-muted-foreground mb-4">
             Escolha seu plano
           </h2>
-          <p className="text-lg text-secondary-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Opções personalizadas para sua jornada rumo à aprovação
           </p>
         </div>
