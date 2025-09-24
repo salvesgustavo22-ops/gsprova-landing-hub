@@ -63,10 +63,10 @@ export const PlanosSection = () => {
     <section className="py-16 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-muted mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground mb-4">
             Escolha seu plano
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-secondary-foreground max-w-2xl mx-auto">
             Opções personalizadas para sua jornada rumo à aprovação
           </p>
         </div>
@@ -86,7 +86,7 @@ export const PlanosSection = () => {
               )}
               
               <CardHeader className="text-center pb-4">
-                <h3 className="text-xl font-bold text-muted mb-2">
+                <h3 className="text-xl font-bold text-primary mb-2">
                   {plano.titulo}
                 </h3>
                 {plano.datas && (
