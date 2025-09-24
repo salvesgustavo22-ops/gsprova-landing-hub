@@ -12,3 +12,9 @@ messages:
       link https://github.com/salvesgustavo22-ops/gsprova-landing-hub/ give me a
       complete analysis based on your knowledge 
 model: deepseek/deepseek-v3-0324
+testData: []
+evaluators:
+  - name: Groundedness
+    uses: github/groundedness
+  - name: Relevance
+    uses: github/relevance
