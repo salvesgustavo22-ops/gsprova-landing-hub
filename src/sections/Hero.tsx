@@ -3,7 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Users, Trophy, PenTool, CheckCircle2, MessageCircle, Target } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { BUSINESS_WHATSAPP_URL, WHATSAPP_MESSAGES } from "@/lib/constants";
-import { MiniForm } from "@/components/MiniForm";
 import heroStudentImage from "@/assets/hero-student-18yo.jpg";
 
 export default function Hero() {
@@ -113,10 +112,7 @@ export default function Hero() {
                 </CardContent>
               </Card>
             </div>
-          </div>
-
-          {/* Right column: Mini Form */}
-          
+          </div>          
     </section>
   );
 }
