@@ -76,15 +76,15 @@ export const Navigation = () => {
               Redação
             </a>
             <a 
-              href="/#simulados" 
+              href="/leads" 
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              onClick={() => handleNavClick('Simulados')}
+              onClick={() => handleNavClick('Inscreva-se agora')}
               aria-label="Ir para seção de Simulados"
             >
-              Simulados
+              Inscreva-se agora
             </a>
             <a 
-              href="/#pricing" 
+              href="/planos" 
               className="text-sm font-semibold text-primary hover:text-primary-hover transition-colors"
               onClick={() => handleNavClick('Planos e Preços')}
               aria-label="Ir para Planos e Preços"
@@ -150,17 +150,17 @@ export const Navigation = () => {
                 Redação
               </a>
               <a 
-                href="/#simulados" 
+                href="/leads" 
                 className="text-sm font-medium text-foreground hover:text-primary transition-colors py-2"
                 onClick={() => {
-                  handleNavClick('Simulados');
+                  handleNavClick('Inscreva-se agora');
                   setIsOpen(false);
                 }}
               >
-                Simulados
+                Inscreva-se agora
               </a>
               <a 
-                href="/#pricing" 
+                href="/planos" 
                 className="text-sm font-semibold text-primary hover:text-primary-hover transition-colors py-2"
                 onClick={() => {
                   handleNavClick('Planos e Preços');
