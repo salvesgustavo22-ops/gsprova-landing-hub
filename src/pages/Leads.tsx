@@ -25,6 +25,21 @@ const Leads = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    // Google tag (gtag.js)
+    const script1 = document.createElement("script");
+    script1.async = true;
+    script1.src = "https://www.googletagmanager.com/gtag/js?id=G-KCQG5DDZGG";
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement("script");
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KCQG5DDZGG');
+    `;
+    document.head.appendChild(script2);
+
     // Update page title and meta description
     document.title = "Contato - GS Aprova";
     
@@ -32,6 +47,12 @@ const Leads = () => {
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Fale com o GS Aprova. Atendimento rápido para Curso Intensivo ENEM, Correção de Redação e Material Completo.');
     }
+
+    // Cleanup scripts on unmount (optional but recommended)
+    return () => {
+      document.head.removeChild(script1);
+      document.head.removeChild(script2);
+    };
   }, []);
 
   const formatPhone = (value: string) => {
