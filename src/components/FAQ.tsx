@@ -8,28 +8,24 @@ import { trackFAQInteraction, trackWhatsAppClick } from "@/lib/analytics";
 
 const faqs = [
   {
-    question: "As aulas são online ou presenciais?",
-    answer: "Oferecemos tanto aulas online quanto presenciais (região de São Paulo). Você pode escolher a modalidade que melhor se adapta à sua rotina e necessidades."
+    question: "Como funciona o Curso Intensivo?",
+    answer: "De 03/10 a 09/11, com aulas diárias (40h/semana), correções semanais e mentorias individuais."
   },
   {
-    question: "Como funciona a correção de redação?",
-    answer: "Você envia sua redação por WhatsApp ou email, e em até 48h você recebe a correção detalhada com nota, feedback específico por competência e dicas de melhoria personalizadas."
+    question: "O que está incluso no Material de Revisão?",
+    answer: "Resumos, mapas mentais, listas de exercícios e simulados organizados por tema."
   },
   {
-    question: "Quanto tempo demora para receber a correção?",
-    answer: "A correção da redação é entregue em até 48 horas. Para aulas, podemos agendar para o mesmo dia ou próximo dia útil."
+    question: "Posso cancelar?",
+    answer: "Sim, você tem 7 dias de garantia com devolução integral."
   },
   {
-    question: "O pagamento é seguro?",
-    answer: "Sim! Aceitamos Pix (com desconto), cartão de crédito e débito. Todos os pagamentos são processados com segurança através de certificação SSL e seguimos rigorosamente a LGPD para proteção dos seus dados."
+    question: "Quais são as formas de pagamento?",
+    answer: "Parcelamento em até 6x no cartão."
   },
   {
-    question: "Meus dados pessoais ficam seguros?",
-    answer: "Absolutamente! Seguimos a Lei Geral de Proteção de Dados (LGPD). Seus dados são criptografados, nunca compartilhados com terceiros e usados apenas para prestação dos nossos serviços educacionais."
-  },
-  {
-    question: "Posso experimentar uma aula antes de fechar pacote?",
-    answer: "Sim! Agende uma aula-pocket gratuitamente e conheça nossa metodologia de ensino personalizada antes de escolher um pacote."
+    question: "Qual o prazo para entrega das correções?",
+    answer: "Até 5 dias úteis após envio."
   }
 ];
 

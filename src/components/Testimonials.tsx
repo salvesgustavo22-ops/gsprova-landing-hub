@@ -15,21 +15,21 @@ const testimonials: Testimonial[] = [
   {
     id: "ana",
     name: "Ana Souza",
-    quote: "Passei de 480 para 680 na redação com o feedback da GS Aprova.",
+    quote: "Passei de 480 para 680 na redação com as devolutivas da GS Aprova.",
     avatar: "/placeholder-avatar-1.jpg",
     initials: "AS"
   },
   {
     id: "pedro",
     name: "Pedro Lima", 
-    quote: "Finalmente entendi matemática sem enrolação. Gabaritei funções.",
+    quote: "Revisão diária me deu segurança na objetiva e na redação.",
     avatar: "/placeholder-avatar-2.jpg",
     initials: "PL"
   },
   {
     id: "carla",
     name: "Carla Mendes",
-    quote: "O suporte no WhatsApp manteve meu ritmo. Evoluí toda semana.",
+    quote: "Mentoria semanal manteve meu ritmo até a prova.",
     avatar: "/placeholder-avatar-3.jpg",
     initials: "CM"
   }
@@ -47,7 +47,7 @@ export const Testimonials = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Resultados Reais
+            Resultados reais
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Veja como nossos alunos transformaram seus estudos e conquistaram suas aprovações

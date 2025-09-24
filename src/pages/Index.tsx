@@ -1,19 +1,11 @@
 import { Navigation } from "@/components/Navigation";
 import Hero from "@/sections/Hero";
-import { ThematicSections } from "@/components/ThematicSections";
-import { Benefits } from "@/components/Benefits";
-import { SocialProof } from "@/components/SocialProof";
-import { Services } from "@/components/Services";
-import { TrustAndSecurity } from "@/components/TrustAndSecurity";
-import { HowItWorks } from "@/components/HowItWorks";
-import { TrustSection } from "@/components/TrustSection";
-import { FinalCTA } from "@/components/FinalCTA";
+import { PlanosSection } from "@/components/PlanosSection";
+import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { StickyFormBar } from "@/components/StickyFormBar";
-import { LeadMagnet } from "@/components/LeadMagnet";
-import { Testimonials } from "@/components/Testimonials";
 import { ScrollTracker } from "@/components/ScrollTracker";
 import { useEffect } from "react";
 import { trackEvent } from "@/lib/analytics";
@@ -56,11 +48,11 @@ const Index = () => {
     // Critical styles are now in index.html for better performance
     
     // Update page title and meta description for SEO
-    document.title = "ENEM 2025 e Fuvest 2025: Aulas de Matemática Online e Correção de Redação | GS Aprova";
+    document.title = "GS Aprova — Curso Intensivo ENEM, Correção de Redação e Revisão Completa";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Prepare-se para o ENEM 2025 e Fuvest 2025 com aulas de matemática online, correção de redação personalizada e trilha de estudos. Simulados, dicas práticas e suporte direto no WhatsApp.');
+      metaDescription.setAttribute('content', 'Revisão diária até o ENEM (09/11), correção semanal de redação, mentoria individual e material completo. Garantia 7 dias.');
     }
 
     // Add structured data for SEO
@@ -111,53 +103,13 @@ const Index = () => {
       <main>
         <Hero />
         
-        {/* Lead Magnet Section */}
-        <LeadMagnet />
+        {/* Planos Section */}
+        <section id="planos" className="scroll-mt-20">
+          <PlanosSection />
+        </section>
         
         {/* Testimonials Section */}
         <Testimonials />
-        
-        {/* Matemática Section */}
-        <section id="matematica" className="scroll-mt-20">
-          <Services />
-        </section>
-        
-        <Benefits />
-        <HowItWorks />
-        <TrustSection />
-        <SocialProof />
-        
-        {/* Redação Section */}
-        <section id="essay" className="scroll-mt-20">
-          <ThematicSections />
-        </section>
-        
-        {/* Simulados Section */}
-        <section id="simulados" className="scroll-mt-20">
-          <div className="py-16 bg-muted/30">
-            <div className="container mx-auto px-4 text-center">
-              <h2 className="text-3xl font-bold text-foreground mb-4">Simulados ENEM</h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Pratique com simulados que reproduzem fielmente o formato do ENEM
-              </p>
-              <Button 
-                onClick={() => {
-                  trackEvent('cta_click', { label: 'Simulados - Quero fazer' });
-                  const message = encodeURIComponent("Quero saber mais sobre os simulados ENEM");
-                  window.open(`${BUSINESS_WHATSAPP_URL}?text=${message}`, '_blank');
-                }}
-                className="bg-primary hover:bg-primary/90"
-              >
-                Quero fazer simulados
-              </Button>
-            </div>
-          </div>
-        </section>
-        
-        {/* Planos e Preços Section */}
-        <section id="pricing" className="scroll-mt-20">
-          <FinalCTA />
-        </section>
         
         <FAQ />
       </main>

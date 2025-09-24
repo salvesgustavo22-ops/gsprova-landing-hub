@@ -8,9 +8,13 @@ import heroStudentImage from "@/assets/hero-student-18yo.jpg";
 
 export default function Hero() {
   const handlePrimaryCTAClick = () => {
-    trackEvent('hero_whatsapp_click', { source: 'primary_cta' });
-    const message = encodeURIComponent("Oi, quero falar sobre aulas de Matemática e correção de Redação. Vim pelo site GS Aprova.");
-    window.open(`${BUSINESS_WHATSAPP_URL}?text=${message}`, '_blank');
+    trackEvent('hero_cta_click', { source: 'intensivo_cta' });
+    window.location.href = '/planos#curso-intensivo';
+  };
+
+  const handleSecondaryCTAClick = () => {
+    trackEvent('hero_cta_click', { source: 'correcao_cta' });
+    window.location.href = '/planos#correcao';
   };
 
   return (
@@ -24,11 +28,11 @@ export default function Hero() {
           <div className="order-2 md:order-1 space-y-6">
             <div>
               <h1 className="text-white text-3xl md:text-5xl font-extrabold leading-tight tracking-[-0.02em] mb-4">
-                Redação ENEM com feedback prático + Matemática sem enrolação.
+                ENEM sem enrolação: revisão diária + correção de redação + mentoria
               </h1>
               
               <h2 className="text-white/90 text-base md:text-lg">
-                Correções com devolutiva objetiva, trilhas e simulados focados no que mais cai.
+                Curso intensivo até o ENEM (09/11/2025) e pacotes sob medida para você evoluir rápido.
               </h2>
             </div>
 
@@ -64,14 +68,22 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Primary CTA */}
-            <div className="mt-6">
+            {/* Primary CTAs */}
+            <div className="mt-6 space-y-3 md:space-y-0 md:space-x-4 md:flex">
               <Button
                 onClick={handlePrimaryCTAClick}
                 className="w-full md:w-auto rounded-xl px-8 py-4 text-lg font-semibold bg-white text-gray-900 hover:bg-gray-100 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white transition-all transform hover:scale-105"
-                aria-label="Falar no WhatsApp"
+                aria-label="Matricular no Intensivo"
               >
-                Falar no WhatsApp
+                Matricular no Intensivo — R$ 199,90
+              </Button>
+              <Button
+                onClick={handleSecondaryCTAClick}
+                variant="outline"
+                className="w-full md:w-auto rounded-xl px-8 py-4 text-lg font-semibold bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-all"
+                aria-label="Quero as 2 correções"
+              >
+                Quero as 2 correções — R$ 29,90
               </Button>
             </div>
 
