@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { StickyFormBar } from "@/components/StickyFormBar";
 import { BlogSection } from "@/components/BlogSection";
+import QuickSurvey from "@/components/QuickSurvey";
 import { ScrollTracker } from "@/components/ScrollTracker";
 import { useEffect } from "react";
 import { trackEvent } from "@/lib/analytics";
@@ -120,6 +121,7 @@ const Index = () => {
       <Footer />
       <StickyWhatsApp />
       <StickyFormBar />
+      <QuickSurvey />
     </div>
   );
 };

@@ -39,15 +39,15 @@ export default function Hero() {
             <div className="md:hidden space-y-3">
               <div className="flex items-center space-x-3 text-white/90">
                 <CheckCircle2 className="w-5 h-5 text-white" />
-                <span className="text-sm">Correção com critérios do ENEM</span>
+                <span className="text-sm">Aulas online em vídeo de todas as matérias</span>
               </div>
               <div className="flex items-center space-x-3 text-white/90">
                 <Target className="w-5 h-5 text-white" />
-                <span className="text-sm">Trilha prática por nível</span>
+                <span className="text-sm">Sem enrolação direto ao ponto, falando o que cai na prova</span>
               </div>
               <div className="flex items-center space-x-3 text-white/90">
                 <MessageCircle className="w-5 h-5 text-white" />
-                <span className="text-sm">Suporte direto no WhatsApp</span>
+                <span className="text-sm">Mentoria individual com professores para adaptar estratégia de estudos</span>
               </div>
             </div>
 
@@ -55,15 +55,15 @@ export default function Hero() {
             <div className="hidden md:block space-y-4">
               <div className="flex items-center space-x-4 text-white/90">
                 <CheckCircle2 className="w-6 h-6 text-white" />
-                <span>Correção com critérios do ENEM</span>
+                <span>Aulas online em vídeo de todas as matérias</span>
               </div>
               <div className="flex items-center space-x-4 text-white/90">
                 <Target className="w-6 h-6 text-white" />
-                <span>Trilha prática por nível</span>
+                <span>Sem enrolação direto ao ponto, falando o que cai na prova</span>
               </div>
               <div className="flex items-center space-x-4 text-white/90">
                 <MessageCircle className="w-6 h-6 text-white" />
-                <span>Suporte direto no WhatsApp</span>
+                <span>Mentoria individual com professores para adaptar estratégia de estudos</span>
               </div>
             </div>
 
