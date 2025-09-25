@@ -51,21 +51,21 @@ const Obrigado = () => {
                   </p>
                 </div>
                 
-                <div className="space-y-4">
-                  <Button
-                    onClick={handleVerPlanos}
-                    className="w-full bg-primary hover:bg-primary/90"
-                    size="lg"
-                  >
-                    Ver planos e benefícios
-                  </Button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
                     onClick={handleWhatsAppClick}
-                    variant="outline"
-                    className="w-full"
                     size="lg"
+                    className="min-w-[200px]"
                   >
                     Falar no WhatsApp
+                  </Button>
+                  <Button
+                    onClick={handleVerPlanos}
+                    variant="outline"
+                    size="lg"
+                    className="min-w-[200px]"
+                  >
+                    Ver planos e benefícios
                   </Button>
                 </div>
 

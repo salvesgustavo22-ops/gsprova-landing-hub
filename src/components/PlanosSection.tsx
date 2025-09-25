@@ -53,14 +53,11 @@ const planos = [
 export const PlanosSection = () => {
   const handlePlanoCTA = (planoId: string) => {
     trackEvent('plans_cta_click', { label: planoId });
-    const plano = planos.find(p => p.id === planoId);
-    if (plano) {
-      window.location.href = plano.href;
-    }
+    window.location.href = '/leads';
   };
 
   return (
-    <section className="py-16 bg-accent">
+    <section className="py-16 bg-[var(--gradient-section)]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-muted-foreground mb-4">

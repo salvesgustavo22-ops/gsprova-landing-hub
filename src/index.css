@@ -44,45 +44,47 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 219 27% 15%;
+    /* Dark theme base */
+    --background: 220 20% 8%;
+    --foreground: 210 40% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 219 27% 15%;
+    --card: 220 18% 12%;
+    --card-foreground: 210 40% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 219 27% 15%;
+    --popover: 220 18% 12%;
+    --popover-foreground: 210 40% 95%;
 
-    /* Primary - Azul Vibrante (Confiança/Foco) #2563EB */
-    --primary: 217 81% 54%;
-    --primary-foreground: 0 0% 100%;
-    --primary-hover: 217 81% 48%;
+    /* Primary - Electric Blue (Modern/Tech) */
+    --primary: 217 91% 65%;
+    --primary-foreground: 220 20% 8%;
+    --primary-hover: 217 91% 70%;
 
-    /* Primary Navy - Azul Marinho (Cards e seleção) */
+    /* Primary Navy - Deep Navy */
     --primary-navy: 220 80% 15%;
-    --primary-navy-foreground: 0 0% 100%;
-    --primary-navy-light: 220 70% 50%;
+    --primary-navy-foreground: 210 40% 95%;
+    --primary-navy-light: 220 70% 25%;
 
-    /* Secondary - Laranja Intenso (Ação/Conversão) #F97316 */
-    --secondary: 24 95% 53%;
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary - Vibrant Orange (Action) */
+    --secondary: 24 100% 58%;
+    --secondary-foreground: 220 20% 8%;
 
-    /* Success - Achievement Green */
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 98%;
-    --success-light: 142 76% 94%;
+    /* Success - Modern Green */
+    --success: 142 76% 45%;
+    --success-foreground: 220 20% 8%;
+    --success-light: 142 76% 15%;
 
-    /* Accent - Amarelo Solar (Urgência/Ênfase) #FACC15 */
-    --accent: 47 96% 54%;
-    --accent-foreground: 219 27% 25%; /* Cinza escuro para texto */
-    --accent-hover: 47 96% 50%;
+    /* Accent - Neon Cyan (Highlight) */
+    --accent: 189 100% 60%;
+    --accent-foreground: 220 20% 8%;
+    --accent-hover: 189 100% 65%;
 
-    /* Dark Navy Text - Cinza muito escuro para contrast no amarelo */
-    --accent-dark-text: 219 27% 20%;
+    /* Gold accent for premium elements */
+    --gold: 43 96% 60%;
+    --gold-foreground: 220 20% 8%;
 
-    /* Muted - Cinza Claro #F3F4F6 */
-    --muted: 220 14% 96%;
-    --muted-foreground: 219 27% 15%;
+    /* Muted - Dark grays */
+    --muted: 220 15% 16%;
+    --muted-foreground: 210 30% 70%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -91,15 +93,20 @@
     --input: 220 14% 91%;
     --ring: 217 81% 54%;
 
-    /* Design System Extensions - Modern Educational */
-    --gradient-hero: linear-gradient(135deg, hsl(220 80% 12%) 0%, hsl(0 0% 8%) 50%, hsl(270 70% 15%) 100%);
-    --gradient-hero-overlay: linear-gradient(135deg, hsl(220 70% 50%) 0%, hsl(270 60% 40%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 14% 98%));
-    --gradient-modern: linear-gradient(135deg, hsl(220 70% 50%) 0%, hsl(270 60% 40%) 100%);
-    --shadow-card: 0 4px 12px -4px hsl(217 81% 54% / 0.1);
-    --shadow-card-hover: 0 8px 24px -8px hsl(217 81% 54% / 0.15);
-    --shadow-cta: 0 4px 16px -4px hsl(24 95% 53% / 0.3);
-    --shadow-hero: 0 20px 40px -10px hsl(220 80% 15% / 0.6);
+    /* Dark theme gradients and effects */
+    --gradient-hero: linear-gradient(135deg, hsl(220 20% 6%) 0%, hsl(217 30% 10%) 50%, hsl(189 50% 15%) 100%);
+    --gradient-hero-overlay: linear-gradient(135deg, hsl(217 91% 65% / 0.1) 0%, hsl(189 100% 60% / 0.1) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 18% 12%), hsl(220 15% 16%));
+    --gradient-modern: linear-gradient(135deg, hsl(217 91% 65%) 0%, hsl(189 100% 60%) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(220 20% 8%) 0%, hsl(220 18% 10%) 100%);
+    --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.4);
+    --shadow-card-hover: 0 12px 40px -12px hsl(217 91% 65% / 0.3);
+    --shadow-cta: 0 8px 24px -8px hsl(24 100% 58% / 0.4);
+    --shadow-hero: 0 25px 50px -15px hsl(0 0% 0% / 0.8);
+    
+    /* Wallpaper elements */
+    --pattern-shield: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M30 15l15 10v15l-15 10-15-10V25l15-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --pattern-check: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ff88' fill-opacity='0.05'%3E%3Cpath d='M8 12l-2-2-1.5 1.5L8 15l6-6-1.5-1.5L8 12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -181,13 +188,17 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 300; /* Montserrat Light */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    background-image: var(--pattern-shield), var(--pattern-check);
+    background-position: 0 0, 30px 30px;
+    background-size: 60px 60px, 40px 40px;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 700;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
   }
 
   /* Global section background */

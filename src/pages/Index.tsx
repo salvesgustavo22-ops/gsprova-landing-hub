@@ -6,6 +6,7 @@ import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import { StickyFormBar } from "@/components/StickyFormBar";
+import { BlogSection } from "@/components/BlogSection";
 import { ScrollTracker } from "@/components/ScrollTracker";
 import { useEffect } from "react";
 import { trackEvent } from "@/lib/analytics";
@@ -110,6 +111,9 @@ const Index = () => {
         
         {/* Testimonials Section */}
         <Testimonials />
+        
+        {/* Blog Section */}
+        <BlogSection />
         
         <FAQ />
       </main>

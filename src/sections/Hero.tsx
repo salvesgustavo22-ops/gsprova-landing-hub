@@ -8,18 +8,18 @@ import heroStudentImage from "@/assets/hero-student-18yo.jpg";
 export default function Hero() {
   const handlePrimaryCTAClick = () => {
     trackEvent('hero_cta_click', { source: 'intensivo_cta' });
-    window.location.href = '/planos#curso-intensivo';
+    window.location.href = '/leads';
   };
 
   const handleSecondaryCTAClick = () => {
     trackEvent('hero_cta_click', { source: 'correcao_cta' });
-    window.location.href = '/planos#correcao';
+    window.location.href = '/leads';
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-[#0C3B8E] via-[#0E4FB0] to-[#1B6CFF] min-h-[72vh] md:min-h-[80vh] overflow-hidden">
-      {/* Overlay for contrast */}
-      <div className="absolute inset-0 bg-black/15 md:bg-black/15"></div>
+    <section className="relative bg-[var(--gradient-hero)] min-h-[72vh] md:min-h-[80vh] overflow-hidden">
+      {/* Overlay with pattern */}
+      <div className="absolute inset-0 bg-[var(--gradient-hero-overlay)]"></div>
       
       <div className="relative z-10 container mx-auto px-4 py-12 md:py-20">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start max-w-7xl mx-auto">
