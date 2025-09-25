@@ -77,19 +77,12 @@ export default function QuickSurvey() {
 
     try {
       const { error } = await supabase
-        .from('leads')
+        .from('surveys')
         .insert({
-          name: 'Pesquisa Anônima',
-          phone: 'N/A',
-          email: null,
-          lead_type: 'survey',
-          source: 'quick_survey',
-          message: JSON.stringify({
-            age: formData.age,
-            state: formData.state,
-            hasDifficulties: formData.hasDifficulties,
-            difficulties: formData.difficulties
-          })
+          age: parseInt(formData.age),
+          state: formData.state,
+          has_difficulties: formData.hasDifficulties,
+          difficulties: formData.difficulties
         });
 
       if (error) throw error;
