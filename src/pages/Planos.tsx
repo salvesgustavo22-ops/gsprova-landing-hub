@@ -80,7 +80,7 @@ const Planos = () => {
       
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-primary to-primary-hover">
+        <section className="py-16 bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6]">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               Escolha seu plano
@@ -92,33 +92,33 @@ const Planos = () => {
         </section>
 
         {/* Planos Section */}
-        <section className="py-16">
+        <section className="py-16 bg-white dark:bg-[#0F172A]">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {planos.map((plano) => (
                 <Card 
                   key={plano.id}
                   id={plano.id}
-                  className={`relative bg-card shadow-lg rounded-xl border border-border/50 hover:shadow-xl transition-shadow duration-300 ${
-                    plano.badge ? 'ring-2 ring-primary' : ''
-                  }`}
+                  className={`relative bg-white dark:bg-[#1E3A8A] shadow-lg rounded-xl border ${
+                    plano.badge ? 'border-[#FBBF24] border-2' : 'border-[#E5E7EB] dark:border-[#FBBF24]/20'
+                  } hover:shadow-xl transition-shadow duration-300`}
                 >
                   {plano.badge && (
-                    <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground">
+                    <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FBBF24] text-[#1E3A8A]">
                       {plano.badge}
                     </Badge>
                   )}
                   
                   <CardHeader className="text-center pb-4">
-                    <h2 className="text-xl font-bold text-foreground mb-2">
+                    <h2 className="text-xl font-bold text-[#1E3A8A] dark:text-white mb-2">
                       {plano.titulo}
                     </h2>
                     {plano.datas && (
-                      <p className="text-sm text-muted-foreground mb-2">
+                      <p className="text-sm text-gray-600 dark:text-white/70 mb-2">
                         {plano.datas}
                       </p>
                     )}
-                    <div className="text-2xl font-bold text-primary">
+                    <div className="text-2xl font-bold text-[#1E3A8A] dark:text-[#FBBF24]">
                       {plano.preco}
                     </div>
                   </CardHeader>
@@ -127,21 +127,21 @@ const Planos = () => {
                     <ul className="space-y-3">
                       {plano.bullets.map((bullet, index) => (
                         <li key={index} className="flex items-start space-x-3">
-                          <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                          <span className="text-sm text-foreground">{bullet}</span>
+                          <Check className="w-5 h-5 text-[#FBBF24] flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-[#111827] dark:text-white">{bullet}</span>
                         </li>
                       ))}
                     </ul>
 
                     <Button
                       onClick={() => handlePlanoCTA(plano.id)}
-                      className="w-full bg-primary hover:bg-primary/90 mt-6"
+                      className="w-full bg-[#FBBF24] text-[#1E3A8A] hover:brightness-95 mt-6 font-semibold"
                       size="lg"
                     >
                       {plano.cta}
                     </Button>
 
-                    <div className="flex items-center justify-center space-x-2 text-xs text-muted-foreground pt-2">
+                    <div className="flex items-center justify-center space-x-2 text-xs text-gray-600 dark:text-white/70 pt-2">
                       <Shield className="w-4 h-4" />
                       <span>Garantia 7 dias — cancelamento com devolução integral</span>
                     </div>
@@ -153,38 +153,38 @@ const Planos = () => {
         </section>
 
         {/* Ofertas Secundárias */}
-        <section className="py-16 bg-muted/30">
+        <section className="py-16 bg-[#F3F4F6] dark:bg-[#0F172A]">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold text-foreground mb-8">
+            <h2 className="text-3xl font-bold text-[#1E3A8A] dark:text-white mb-8">
               Ofertas Secundárias
             </h2>
             <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-8">
               <div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">
+                <h3 className="text-xl font-semibold text-[#1E3A8A] dark:text-white mb-2">
                   Aulas particulares
                 </h3>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-gray-600 dark:text-white/70 mb-4">
                   A partir de R$ 49,90/hora
                 </p>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-foreground mb-2">
+                <h3 className="text-xl font-semibold text-[#1E3A8A] dark:text-white mb-2">
                   Planos customizados
                 </h3>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-gray-600 dark:text-white/70 mb-4">
                   Monte seu pacote sob medida
                 </p>
               </div>
             </div>
             <Button
               onClick={handleOfertasSecundarias}
-              variant="outline"
+              className="bg-[#1E3A8A] text-white hover:bg-[#1E3A8A]/90 px-8"
               size="lg"
             >
               Falar no WhatsApp
             </Button>
             
-            <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground mt-4">
+            <div className="flex items-center justify-center space-x-2 text-sm text-gray-600 dark:text-white/70 mt-4">
               <Shield className="w-4 h-4" />
               <span>Garantia 7 dias — cancelamento com devolução integral</span>
             </div>

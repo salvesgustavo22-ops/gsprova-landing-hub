@@ -37,7 +37,7 @@ export const Navigation = () => {
   return (
     <nav 
       aria-label="Menu principal"
-      className={`sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b transition-all duration-200 ${
+      className={`sticky top-0 z-50 bg-white/90 dark:bg-[#0F172A]/90 backdrop-blur-md border-b border-gray-200 dark:border-[#FBBF24]/20 transition-all duration-200 ${
         isScrolled ? 'shadow-lg' : ''
       }`}
     >
@@ -52,53 +52,45 @@ export const Navigation = () => {
               width="64"
               height="32"
             />
-            <span className="text-foreground font-bold text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
+            <span className="text-[#1E3A8A] dark:text-white font-bold text-lg" style={{fontFamily: 'Montserrat, sans-serif'}}>
               GS Aprova
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            <a 
-              href="/#matematica" 
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              onClick={() => handleNavClick('Matemática')}
-              aria-label="Ir para seção de Matemática"
+            <Link 
+              to="/" 
+              className="text-sm font-medium text-[#1E3A8A] dark:text-white hover:text-[#3B82F6] dark:hover:text-[#FBBF24] transition-colors"
+              onClick={() => handleNavClick('Início')}
+              aria-label="Ir para página inicial"
             >
-              Matemática
-            </a>
-            <a 
-              href="/#redacao" 
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              onClick={() => handleNavClick('Redação')}
-              aria-label="Ir para seção de Redação"
+              Início
+            </Link>
+            <Link 
+              to="/planos" 
+              className="text-sm font-medium text-[#1E3A8A] dark:text-white hover:text-[#3B82F6] dark:hover:text-[#FBBF24] transition-colors"
+              onClick={() => handleNavClick('Planos')}
+              aria-label="Ir para Planos"
             >
-              Redação
-            </a>
-            <a 
-              href="/leads" 
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-              onClick={() => handleNavClick('Inscreva-se agora')}
-              aria-label="Ir para seção de Simulados"
+              Planos
+            </Link>
+            <Link 
+              to="/contato" 
+              className="text-sm font-medium text-[#1E3A8A] dark:text-white hover:text-[#3B82F6] dark:hover:text-[#FBBF24] transition-colors"
+              onClick={() => handleNavClick('Contato')}
+              aria-label="Ir para Contato"
             >
-              Inscreva-se agora
-            </a>
-            <a 
-              href="/planos" 
-              className="text-sm font-semibold text-primary hover:text-primary-hover transition-colors"
-              onClick={() => handleNavClick('Planos e Preços')}
-              aria-label="Ir para Planos e Preços"
-            >
-              Planos e Preços
-            </a>
+              Contato
+            </Link>
 
             {/* Primary CTA */}
             <Button
               onClick={handleCTAClick}
-              className="rounded-xl px-6 py-2 font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
-              aria-label="Começar agora seus estudos"
+              className="rounded-xl px-6 py-2 font-semibold bg-[#FBBF24] text-[#1E3A8A] hover:brightness-95 shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FBBF24]"
+              aria-label="Matricular agora"
             >
-              Começar agora
+              Matricular agora
             </Button>
           </div>
 
@@ -107,10 +99,10 @@ export const Navigation = () => {
             <Button
               onClick={handleCTAClick}
               size="sm"
-              className="rounded-lg px-3 py-1.5 text-sm font-semibold bg-secondary text-secondary-foreground hover:bg-secondary/90"
-              aria-label="Começar agora seus estudos"
+              className="rounded-lg px-3 py-1.5 text-sm font-semibold bg-[#FBBF24] text-[#1E3A8A] hover:brightness-95"
+              aria-label="Matricular agora"
             >
-              Começar agora
+              Matricular agora
             </Button>
 
             <Button
@@ -127,48 +119,38 @@ export const Navigation = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t bg-background/95 backdrop-blur">
+          <div className="md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-[#FBBF24]/20 bg-white dark:bg-[#0F172A] backdrop-blur">
             <div className="flex flex-col space-y-3 pt-4">
-              <a 
-                href="/#matematica" 
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors py-2"
+              <Link 
+                to="/" 
+                className="text-sm font-medium text-[#1E3A8A] dark:text-white hover:text-[#3B82F6] dark:hover:text-[#FBBF24] transition-colors py-2"
                 onClick={() => {
-                  handleNavClick('Matemática');
+                  handleNavClick('Início');
                   setIsOpen(false);
                 }}
               >
-                Matemática
-              </a>
-              <a 
-                href="/#redacao" 
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors py-2"
+                Início
+              </Link>
+              <Link 
+                to="/planos" 
+                className="text-sm font-medium text-[#1E3A8A] dark:text-white hover:text-[#3B82F6] dark:hover:text-[#FBBF24] transition-colors py-2"
                 onClick={() => {
-                  handleNavClick('Redação');
+                  handleNavClick('Planos');
                   setIsOpen(false);
                 }}
               >
-                Redação
-              </a>
-              <a 
-                href="/leads" 
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors py-2"
+                Planos
+              </Link>
+              <Link 
+                to="/contato" 
+                className="text-sm font-medium text-[#1E3A8A] dark:text-white hover:text-[#3B82F6] dark:hover:text-[#FBBF24] transition-colors py-2"
                 onClick={() => {
-                  handleNavClick('Inscreva-se agora');
+                  handleNavClick('Contato');
                   setIsOpen(false);
                 }}
               >
-                Inscreva-se agora
-              </a>
-              <a 
-                href="/planos" 
-                className="text-sm font-semibold text-primary hover:text-primary-hover transition-colors py-2"
-                onClick={() => {
-                  handleNavClick('Planos e Preços');
-                  setIsOpen(false);
-                }}
-              >
-                Planos e Preços
-              </a>
+                Contato
+              </Link>
             </div>
           </div>
         )}

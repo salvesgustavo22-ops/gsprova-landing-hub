@@ -3,14 +3,8 @@ import { Instagram, MessageCircle, Mail, Phone } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="relative border-t border-border">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('/lovable-uploads/3e196025-f642-4155-ba69-da7ca6ee1d2c.png')` }}
-      />
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-primary/30"></div>
+    <footer className="relative bg-[#1E3A8A] border-t border-[#FBBF24]/20">
+      {/* Removed background image for cleaner dark footer */}
       
       <div className="relative z-10 container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
@@ -53,7 +47,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <Separator className="my-8" />
+        <Separator className="my-8 bg-white/20" />
         
         {/* Security Section */}
         <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
@@ -89,7 +83,7 @@ export const Footer = () => {
           </div>
         </div>
         
-        <Separator className="my-8" />
+        <Separator className="my-8 bg-white/20" />
         
         <div className="text-center text-sm text-white/70">
           © 2025 GS Aprova. Todos os direitos reservados.

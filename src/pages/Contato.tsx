@@ -112,22 +112,22 @@ const Contato = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-accent/10 to-primary/10 flex items-center justify-center p-4">
-        <Card className="w-full max-w-md shadow-2xl border-0">
+      <div className="min-h-screen bg-[#F3F4F6] dark:bg-[#0F172A] flex items-center justify-center p-4">
+        <Card className="w-full max-w-md shadow-2xl border-0 bg-white dark:bg-[#1E3A8A]">
           <CardHeader className="text-center pb-4">
-            <div className="mx-auto w-16 h-16 bg-success rounded-full flex items-center justify-center mb-4">
+            <div className="mx-auto w-16 h-16 bg-[#22C55E] rounded-full flex items-center justify-center mb-4">
               <CheckCircle className="w-8 h-8 text-white" />
             </div>
-            <CardTitle className="text-2xl font-bold text-primary">
+            <CardTitle className="text-2xl font-bold text-[#1E3A8A] dark:text-white">
               Pronto! 🎉
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6 text-center">
             <div className="space-y-2">
-              <p className="text-lg font-medium text-primary">
+              <p className="text-lg font-medium text-[#1E3A8A] dark:text-white">
                 Seu interesse foi enviado
               </p>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-gray-600 dark:text-white/80 text-sm leading-relaxed">
                 Responderemos no seu WhatsApp em até 2 horas.
                 Já vamos preparar sua trilha!
               </p>
@@ -136,7 +136,7 @@ const Contato = () => {
             <div className="space-y-3">
               <Button 
                 onClick={handleWhatsAppClick}
-                className="w-full h-12 bg-success text-white hover:bg-success/90 flex items-center justify-center gap-3 font-semibold text-base"
+                className="w-full h-12 bg-[#22C55E] text-white hover:bg-[#22C55E]/90 flex items-center justify-center gap-3 font-semibold text-base"
               >
                 <MessageCircleIcon className="w-5 h-5" />
                 Acelerar no WhatsApp
@@ -144,7 +144,7 @@ const Contato = () => {
               <Button 
                 variant="outline" 
                 onClick={() => window.location.href = '/'}
-                className="w-full h-12 text-base"
+                className="w-full h-12 text-base border-[#1E3A8A] text-[#1E3A8A] dark:border-white dark:text-white hover:bg-[#1E3A8A]/10 dark:hover:bg-white/10"
               >
                 Voltar ao site
               </Button>
@@ -156,7 +156,7 @@ const Contato = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-accent/10 to-primary/10 p-4">
+    <div className="min-h-screen bg-[#F3F4F6] dark:bg-[#0F172A] p-4">
       <div className="container mx-auto max-w-lg pt-8">
         <div className="mb-6">
           <Button 
@@ -169,17 +169,17 @@ const Contato = () => {
           </Button>
           
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-primary mb-3">
+            <h1 className="text-3xl font-bold text-[#1E3A8A] dark:text-white mb-3">
               Vamos começar! 🚀
             </h1>
-            <p className="text-muted-foreground text-base leading-relaxed">
+            <p className="text-gray-600 dark:text-white/80 text-base leading-relaxed">
               Preenche aí que já preparamos sua trilha de estudos.
               Resposta em até 2 horas no WhatsApp.
             </p>
           </div>
         </div>
 
-        <Card className="shadow-2xl border-0">
+        <Card className="shadow-2xl border-0 bg-white dark:bg-[#1E3A8A]">
           <CardContent className="p-6">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-3">
@@ -286,21 +286,21 @@ const Contato = () => {
 
               <Button 
                 type="submit" 
-                className="w-full h-14 text-lg font-bold bg-primary hover:bg-primary/90 text-white"
+                className="w-full h-14 text-lg font-bold bg-[#FBBF24] text-[#1E3A8A] hover:brightness-95"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Enviando..." : "Enviar meu interesse 🎯"}
               </Button>
 
-              <div className="text-center pt-4 border-t">
-                <p className="text-xs text-muted-foreground mb-3">
+              <div className="text-center pt-4 border-t border-gray-200 dark:border-white/20">
+                <p className="text-xs text-gray-600 dark:text-white/70 mb-3">
                   Ou fala direto com a gente:
                 </p>
                 <Button 
                   type="button"
                   variant="outline"
                   onClick={handleWhatsAppClick}
-                  className="text-sm h-10 border-success text-success hover:bg-success hover:text-white"
+                  className="text-sm h-10 border-[#22C55E] text-[#22C55E] hover:bg-[#22C55E] hover:text-white dark:border-[#22C55E] dark:text-[#22C55E]"
                 >
                   <MessageCircleIcon className="w-4 h-4 mr-2" />
                   WhatsApp direto
