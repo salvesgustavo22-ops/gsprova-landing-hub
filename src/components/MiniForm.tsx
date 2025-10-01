@@ -147,7 +147,7 @@ export const MiniForm = ({ source = "hero_miniform" }: MiniFormProps) => {
             <h3 className="text-lg font-bold text-foreground mb-2">
               Recebido! Vamos falar com você em instantes.
             </h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-[#1E3A8A]">
               Enquanto isso, conheça nossos planos.
             </p>
           </div>
@@ -187,7 +187,7 @@ export const MiniForm = ({ source = "hero_miniform" }: MiniFormProps) => {
         <h3 className="text-lg font-bold text-foreground">
           Contrate agora a aula ou sua correção de redações
         </h3>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-[#1E3A8A]">
           Preencha e falamos com você em minutos.
         </p>
       </CardHeader>
@@ -237,12 +237,12 @@ export const MiniForm = ({ source = "hero_miniform" }: MiniFormProps) => {
               required
               aria-describedby="lgpd-error"
             />
-            <Label htmlFor="lgpd" className="text-xs text-muted-foreground leading-relaxed">
+            <Label htmlFor="lgpd" className="text-xs text-[#1E3A8A] leading-relaxed">
               Autorizo contato do GS Aprova. *
             </Label>
           </div>
 
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-[#1E3A8A]">
             Seus dados não serão compartilhados.
           </p>
 
@@ -261,7 +261,7 @@ export const MiniForm = ({ source = "hero_miniform" }: MiniFormProps) => {
           </Button>
         </form>
 
-        <div className="mt-4 flex items-center justify-center space-x-4 text-xs text-muted-foreground">
+        <div className="mt-4 flex items-center justify-center space-x-4 text-xs text-[#1E3A8A]">
           <div className="flex items-center space-x-1">
             <Clock className="w-3 h-3" />
             <span>Resposta rápida</span>

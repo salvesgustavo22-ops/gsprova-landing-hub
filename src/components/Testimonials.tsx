@@ -49,7 +49,7 @@ export const Testimonials = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Resultados reais
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-[#1E3A8A] max-w-2xl mx-auto">
             Veja como nossos alunos transformaram seus estudos e conquistaram suas aprovações
           </p>
         </div>
@@ -82,7 +82,7 @@ export const Testimonials = () => {
                     <p className="font-semibold text-foreground">
                       {testimonial.name}
                     </p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-[#1E3A8A]">
                       Aluno GS Aprova
                     </p>
                   </div>
@@ -94,7 +94,7 @@ export const Testimonials = () => {
 
         {/* Trust indicators */}
         <div className="mt-12 text-center">
-          <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-[#1E3A8A]">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-success rounded-full"></div>
               <span>+900 alunos aprovados</span>

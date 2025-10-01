@@ -200,7 +200,7 @@ export const ContactForm = () => {
               </form>
 
               <div className="mt-6 pt-6 border-t text-center">
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-[#1E3A8A] mb-4">
                   Ou entre em contato diretamente:
                 </p>
                 <Button 

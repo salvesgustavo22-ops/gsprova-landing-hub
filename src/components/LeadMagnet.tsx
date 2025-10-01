@@ -117,7 +117,7 @@ export const LeadMagnet = () => {
                 <h3 className="text-2xl font-bold text-foreground mb-2">
                   Obrigado! O checklist está no seu e-mail.
                 </h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="text-[#1E3A8A] mb-6">
                   Verifique sua caixa de entrada e spam. Em instantes você receberá o PDF com os 10 erros mais comuns em redações do ENEM.
                 </p>
                 <Button
@@ -153,7 +153,7 @@ export const LeadMagnet = () => {
               <CardTitle className="text-2xl font-bold text-foreground">
                 <h2>Checklist: 10 erros que derrubam a sua redação</h2>
               </CardTitle>
-              <p className="text-muted-foreground">
+              <p className="text-[#1E3A8A]">
                 Receba agora o PDF + mini-diagnóstico gratuito
               </p>
             </CardHeader>
@@ -224,7 +224,7 @@ export const LeadMagnet = () => {
               </form>
 
               <div className="mt-4 text-center">
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-[#1E3A8A]">
                   Seus dados são protegidos. Não fazemos spam.
                 </p>
               </div>
