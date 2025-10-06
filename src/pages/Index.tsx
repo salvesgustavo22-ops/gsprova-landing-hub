@@ -4,37 +4,31 @@ import { PricingCard } from "@/components/PricingCard";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/StickyWhatsApp";
 import QuickSurvey from "@/components/QuickSurvey";
 import { ScrollTracker } from "@/components/ScrollTracker";
+import Hero from "@/sections/Hero";
+import { MateriaisExclusivos } from "@/components/MateriaisExclusivos";
 import { useEffect } from "react";
-import { trackEvent, trackPageSection, trackClick } from "@/lib/analytics";
+import { trackPageSection, trackClick } from "@/lib/analytics";
 import { BUSINESS_WHATSAPP_URL } from "@/lib/constants";
-import { experiments } from "@/config/experiments";
 import { 
-  CheckCircle, 
-  Clock, 
   Target, 
-  Users, 
   BookOpen, 
-  MessageCircle,
-  Award,
-  TrendingUp,
-  Zap
+  Clock, 
+  MessageCircle
 } from "lucide-react";
-import heroImage from "@/assets/hero-student-18yo.jpg";
 
 const Index = () => {
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = "GS Aprova — ENEM sem enrolação: revisão diária + correção de redação + mentoria";
+    document.title = "GS Aprova — Descubra os Temas que Mais Caem no ENEM 2025";
     
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Intensivo até 09/11/2025. Foco no que mais cai. Suporte no WhatsApp. Correção de redação com devolutiva e mentoria individual.');
+      metaDescription.setAttribute('content', '35% das questões ENEM são matemática básica! Guia baseado na análise das provas oficiais 2022-2024 + apostas para 2025. Download gratuito.');
     }
 
     // Add structured data for SEO
@@ -195,8 +189,6 @@ const Index = () => {
     }
   ];
 
-  const heroVariant = experiments.HERO_VARIANT;
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -204,50 +196,12 @@ const Index = () => {
       
       <main>
         {/* 1. Hero Section */}
-        <section 
-          data-testid="hero-main"
-          className={
-            heroVariant === 'dark' 
-              ? "min-h-screen bg-gradient-to-br from-[#0F172A] to-[#1E3A8A] text-white relative overflow-hidden"
-              : "min-h-screen bg-gradient-to-r from-[#1E3A8A] to-[#3B82F6] text-white relative overflow-hidden"
-          }
-        >
-          <div className="container mx-auto px-4 md:px-6 pt-20 pb-16">
-            <div className="flex flex-col items-center text-center space-y-8 relative z-10">
-              <Badge className="bg-[#FBBF24] text-[#1E3A8A] px-4 py-2 text-sm font-semibold">
-                Vagas limitadas
-              </Badge>
-              
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight max-w-4xl font-['Montserrat']">
-                ENEM sem enrolação: revisão diária + correção de redação + mentoria
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-white/90 max-w-3xl">
-                Intensivo até 09/11/2025. Foco no que mais cai. Suporte no WhatsApp.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <Button
-                  onClick={handlePrimaryCTA}
-                  className="bg-[#FBBF24] text-[#1E3A8A] hover:brightness-95 font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300 transform hover:scale-105"
-                  data-analytics="cta_hero_matricular"
-                >
-                  Matricular — R$ 199,90
-                </Button>
-                
-                <Button
-                  onClick={handleSecondaryCTA}
-                  className="bg-white text-[#1E3A8A] border border-[#FBBF24] hover:bg-[#FBBF24] hover:text-[#1E3A8A] font-semibold px-8 py-4 text-lg rounded-lg transition-all duration-300"
-                  data-analytics="cta_hero_correcao"
-                >
-                  2 correções — R$ 29,90
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Hero />
+        
+        {/* 2. Materiais Exclusivos */}
+        <MateriaisExclusivos />
 
-        {/* 2. Benefits Section */}
+        {/* 3. Benefits Section */}
         <Section variant="neutral" data-testid="section-benefits">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1E3A8A] mb-4">

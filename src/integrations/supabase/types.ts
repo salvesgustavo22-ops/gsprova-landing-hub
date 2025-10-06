@@ -106,6 +106,33 @@ export type Database = {
           },
         ]
       }
+      guia_leads: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          name: string
+          updated_at: string | null
+          whatsapp: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          name: string
+          updated_at?: string | null
+          whatsapp: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          name?: string
+          updated_at?: string | null
+          whatsapp?: string
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           created_at: string
@@ -142,6 +169,42 @@ export type Database = {
           service_selected?: string | null
           source?: string | null
           updated_at?: string
+        }
+        Relationships: []
+      }
+      material_purchases: {
+        Row: {
+          amount: number
+          created_at: string | null
+          email: string
+          id: string
+          material_type: string
+          name: string
+          status: string | null
+          updated_at: string | null
+          whatsapp: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          email: string
+          id?: string
+          material_type: string
+          name: string
+          status?: string | null
+          updated_at?: string | null
+          whatsapp: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          email?: string
+          id?: string
+          material_type?: string
+          name?: string
+          status?: string | null
+          updated_at?: string | null
+          whatsapp?: string
         }
         Relationships: []
       }
@@ -184,6 +247,39 @@ export type Database = {
           phone?: string
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      service_leads: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          message: string | null
+          name: string
+          service_type: string
+          updated_at: string | null
+          whatsapp: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          service_type: string
+          updated_at?: string | null
+          whatsapp: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          service_type?: string
+          updated_at?: string | null
+          whatsapp?: string
         }
         Relationships: []
       }
