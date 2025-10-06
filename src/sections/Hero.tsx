@@ -4,11 +4,11 @@ import { GuiaLeadForm } from "@/components/GuiaLeadForm";
 
 export default function Hero() {
   return (
-    <section className="relative bg-gradient-to-br from-[#1E3A8A] via-[#3B82F6] to-[#1E3A8A] min-h-[85vh] overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#1E3A8A] via-[#3B82F6] to-[#1E3A8A] min-h-[75vh] overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#FBBF24]/20 via-transparent to-transparent"></div>
       
-      <div className="relative z-10 container mx-auto px-4 py-12 md:py-20">
+      <div className="relative z-10 container mx-auto px-4 py-8 md:py-16">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto">
           {/* Left column: content */}
           <div className="order-2 md:order-1 space-y-6">

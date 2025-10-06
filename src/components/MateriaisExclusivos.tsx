@@ -81,9 +81,9 @@ export const MateriaisExclusivos = () => {
   };
 
   return (
-    <section id="materiais" className="py-16 lg:py-24 bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6]">
+    <section id="materiais" className="py-12 lg:py-16 bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
             Materiais Exclusivos
           </h2>
@@ -92,41 +92,41 @@ export const MateriaisExclusivos = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {/* Card 1: Guia Completo */}
-          <Card className="bg-white border-2 border-[#FBBF24] hover:shadow-2xl transition-all duration-300">
+          <Card className="bg-white/5 backdrop-blur-sm border-2 border-white hover:border-white hover:bg-white/10 transition-all duration-300">
             <CardHeader>
               <div className="flex items-center justify-between mb-4">
-                <BookOpen className="w-12 h-12 text-[#FBBF24]" />
-                <span className="text-3xl font-bold text-[#1E3A8A]">R$ 9,90</span>
+                <BookOpen className="w-12 h-12 text-white" />
+                <span className="text-3xl font-bold text-white">R$ 9,90</span>
               </div>
-              <CardTitle className="text-2xl text-[#1E3A8A]">
+              <CardTitle className="text-2xl text-white">
                 Guia Completo de Matemática + Apostas
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="space-y-3">
                 <li className="flex items-start space-x-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#1E3A8A]">Análise dos 5 blocos que representam 90% das questões</span>
+                  <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                  <span className="text-white/90">Análise dos 5 blocos que representam 90% das questões</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#1E3A8A]">200+ lacunas temáticas identificadas</span>
+                  <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                  <span className="text-white/90">200+ lacunas temáticas identificadas</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#1E3A8A]">Estratégias baseadas em dados oficiais INEP</span>
+                  <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                  <span className="text-white/90">Estratégias baseadas em dados oficiais INEP</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#1E3A8A]">Foco nos 35% de matemática básica</span>
+                  <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                  <span className="text-white/90">Foco nos 35% de matemática básica</span>
                 </li>
               </ul>
               
               <Button 
                 onClick={() => handleOpenForm('guia')}
-                className="w-full bg-gradient-to-r from-[#FBBF24] to-[#F59E0B] hover:from-[#F59E0B] hover:to-[#FBBF24] text-white font-semibold py-6 text-lg"
+                className="w-full bg-white hover:bg-white/90 text-[#1E3A8A] font-semibold py-6 text-lg"
               >
                 Garantir por R$ 9,90
               </Button>
@@ -134,39 +134,39 @@ export const MateriaisExclusivos = () => {
           </Card>
 
           {/* Card 2: 45 Questões */}
-          <Card className="bg-white border-2 border-[#00FFFF] hover:shadow-2xl transition-all duration-300">
+          <Card className="bg-[#FBBF24]/10 backdrop-blur-sm border-2 border-[#FBBF24] hover:border-[#FBBF24] hover:bg-[#FBBF24]/20 transition-all duration-300">
             <CardHeader>
               <div className="flex items-center justify-between mb-4">
-                <FileText className="w-12 h-12 text-[#00FFFF]" />
-                <span className="text-3xl font-bold text-[#1E3A8A]">R$ 15,90</span>
+                <FileText className="w-12 h-12 text-[#FBBF24]" />
+                <span className="text-3xl font-bold text-[#FBBF24]">R$ 15,90</span>
               </div>
-              <CardTitle className="text-2xl text-[#1E3A8A]">
+              <CardTitle className="text-2xl text-[#FBBF24]">
                 45 Questões Exclusivas com Gabarito
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="space-y-3">
                 <li className="flex items-start space-x-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#1E3A8A]">70% temas mais recorrentes</span>
+                  <CheckCircle2 className="w-5 h-5 text-[#FBBF24] flex-shrink-0 mt-0.5" />
+                  <span className="text-white/90">70% temas mais recorrentes</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#1E3A8A]">30% nossas apostas para 2025</span>
+                  <CheckCircle2 className="w-5 h-5 text-[#FBBF24] flex-shrink-0 mt-0.5" />
+                  <span className="text-white/90">30% nossas apostas para 2025</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#1E3A8A]">Resoluções passo a passo</span>
+                  <CheckCircle2 className="w-5 h-5 text-[#FBBF24] flex-shrink-0 mt-0.5" />
+                  <span className="text-white/90">Resoluções passo a passo</span>
                 </li>
                 <li className="flex items-start space-x-3">
-                  <CheckCircle2 className="w-5 h-5 text-[#10B981] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#1E3A8A]">Nível ENEM autêntico</span>
+                  <CheckCircle2 className="w-5 h-5 text-[#FBBF24] flex-shrink-0 mt-0.5" />
+                  <span className="text-white/90">Nível ENEM autêntico</span>
                 </li>
               </ul>
               
               <Button 
                 onClick={() => handleOpenForm('questoes')}
-                className="w-full bg-gradient-to-r from-[#00FFFF] to-[#06B6D4] hover:from-[#06B6D4] hover:to-[#00FFFF] text-[#1E3A8A] font-semibold py-6 text-lg"
+                className="w-full bg-[#FBBF24] hover:bg-[#F59E0B] text-[#1E3A8A] font-semibold py-6 text-lg"
               >
                 Quero as Questões
               </Button>
