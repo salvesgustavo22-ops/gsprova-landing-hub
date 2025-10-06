@@ -76,6 +76,14 @@ export const Navigation = () => {
               Planos
             </Link>
             <Link 
+              to="/blog" 
+              className="text-sm font-medium text-[#1E3A8A] dark:text-white hover:text-[#3B82F6] dark:hover:text-[#FBBF24] transition-colors"
+              onClick={() => handleNavClick('Blog')}
+              aria-label="Ir para Blog"
+            >
+              Blog
+            </Link>
+            <Link 
               to="/contato" 
               className="text-sm font-medium text-[#1E3A8A] dark:text-white hover:text-[#3B82F6] dark:hover:text-[#FBBF24] transition-colors"
               onClick={() => handleNavClick('Contato')}
@@ -140,6 +148,16 @@ export const Navigation = () => {
                 }}
               >
                 Planos
+              </Link>
+              <Link 
+                to="/blog" 
+                className="text-sm font-medium text-[#1E3A8A] dark:text-white hover:text-[#3B82F6] dark:hover:text-[#FBBF24] transition-colors py-2"
+                onClick={() => {
+                  handleNavClick('Blog');
+                  setIsOpen(false);
+                }}
+              >
+                Blog
               </Link>
               <Link 
                 to="/contato" 

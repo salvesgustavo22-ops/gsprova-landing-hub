@@ -11,6 +11,8 @@ import QuickSurvey from "@/components/QuickSurvey";
 import { ScrollTracker } from "@/components/ScrollTracker";
 import Hero from "@/sections/Hero";
 import { MateriaisExclusivos } from "@/components/MateriaisExclusivos";
+import { EmailPopup } from "@/components/EmailPopup";
+import { NossosDiferenciais } from "@/components/NossosDiferenciais";
 import { useEffect } from "react";
 import { trackPageSection, trackClick } from "@/lib/analytics";
 import { BUSINESS_WHATSAPP_URL } from "@/lib/constants";
@@ -120,24 +122,24 @@ const Index = () => {
     }
   ];
 
-  // Testimonials data
+  // Testimonials data - Updated to focus on quality and confidence
   const testimonials = [
     {
-      name: "Ana Carolina",
-      text: "Subiu minha nota em matemática de 650 para 780 pontos. O método realmente funciona!",
-      score: "+120 pontos em mat",
+      name: "Maria Silva",
+      text: "As aulas de matemática são muito didáticas. Finalmente entendi funções!",
+      score: "Aprovada FUVEST 2024",
       photo: "/placeholder-student-1.jpg"
     },
     {
-      name: "Pedro Silva",
-      text: "A correção de redação foi fundamental. Passei de 600 para 920 na redação!",
-      score: "+320 pontos redação",
+      name: "João Santos",
+      text: "A trilha personalizada me deu confiança. Sabia exatamente o que estudar.",
+      score: "Aprovado USP 2024",
       photo: "/placeholder-student-2.jpg"
     },
     {
-      name: "Mariana Santos",
-      text: "Mentoria individualizada fez toda diferença. Consegui minha vaga na USP!",
-      score: "Aprovada USP",
+      name: "Ana Costa",
+      text: "O material baseado nas provas oficiais fez toda diferença.",
+      score: "Nota 950 em matemática",
       photo: "/placeholder-student-3.jpg"
     }
   ];
@@ -193,6 +195,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <ScrollTracker />
+      <EmailPopup />
       
       <main>
         {/* 1. Hero Section */}
@@ -201,7 +204,10 @@ const Index = () => {
         {/* 2. Materiais Exclusivos */}
         <MateriaisExclusivos />
 
-        {/* 3. Benefits Section */}
+        {/* 3. Nossos Diferenciais */}
+        <NossosDiferenciais />
+
+        {/* 4. Benefits Section */}
         <Section variant="neutral" data-testid="section-benefits">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1E3A8A] mb-4">
@@ -239,7 +245,7 @@ const Index = () => {
           </div>
         </Section>
 
-        {/* 3. Testimonials Section */}
+        {/* 5. Testimonials Section */}
         <Section variant="light" className="bg-[#E0F2FE] dark:bg-[#1E3A8A]" data-testid="section-testimonials">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1E3A8A] dark:text-white mb-4">
@@ -261,7 +267,7 @@ const Index = () => {
           </div>
         </Section>
 
-        {/* 4. Pricing Section */}
+        {/* 6. Pricing Section */}
         <Section variant="light" id="planos" data-testid="section-pricing">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1E3A8A] mb-4">
@@ -283,7 +289,7 @@ const Index = () => {
           </div>
         </Section>
 
-        {/* 5. Contact Section */}
+        {/* 7. Contact Section */}
         <Section variant="neutral" className="bg-[#F3F4F6] dark:bg-[#0F172A]" data-testid="section-contact">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">
