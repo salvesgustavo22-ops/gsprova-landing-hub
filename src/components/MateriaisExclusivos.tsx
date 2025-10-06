@@ -3,7 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { BookOpen, FileText, CheckCircle2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { BookOpen, FileText, CheckCircle2, Zap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { trackEvent } from "@/lib/analytics";
@@ -94,11 +95,19 @@ export const MateriaisExclusivos = () => {
 
         <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {/* Card 1: Guia Completo */}
-          <Card className="bg-white/5 backdrop-blur-sm border-2 border-white hover:border-white hover:bg-white/10 transition-all duration-300">
-            <CardHeader>
+          <Card className="relative bg-white/5 backdrop-blur-sm border-2 border-white hover:border-white hover:bg-white/10 transition-all duration-300">
+            <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#DC2626] text-white px-4 py-1 flex items-center gap-1 animate-pulse">
+              <Zap className="w-4 h-4" />
+              PROMOÇÃO
+            </Badge>
+            
+            <CardHeader className="pt-8">
               <div className="flex items-center justify-between mb-4">
                 <BookOpen className="w-12 h-12 text-white" />
-                <span className="text-3xl font-bold text-white">R$ 9,90</span>
+                <div className="text-right">
+                  <div className="text-lg text-white/60 line-through">R$ 29,90</div>
+                  <span className="text-3xl font-bold text-white">R$ 9,90</span>
+                </div>
               </div>
               <CardTitle className="text-2xl text-white">
                 Guia Completo de Matemática + Apostas
@@ -133,34 +142,42 @@ export const MateriaisExclusivos = () => {
             </CardContent>
           </Card>
 
-          {/* Card 2: 45 Questões */}
-          <Card className="bg-[#FBBF24]/10 backdrop-blur-sm border-2 border-[#FBBF24] hover:border-[#FBBF24] hover:bg-[#FBBF24]/20 transition-all duration-300">
-            <CardHeader>
+          {/* Card 2: Pacote Completo */}
+          <Card className="relative bg-[#FBBF24]/10 backdrop-blur-sm border-2 border-[#FBBF24] hover:border-[#FBBF24] hover:bg-[#FBBF24]/20 transition-all duration-300 transform hover:scale-[1.02]">
+            <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#F59E0B] text-white px-4 py-1 flex items-center gap-1 animate-pulse">
+              <Zap className="w-4 h-4" />
+              SUPER OFERTA
+            </Badge>
+            
+            <CardHeader className="pt-8">
               <div className="flex items-center justify-between mb-4">
                 <FileText className="w-12 h-12 text-[#FBBF24]" />
-                <span className="text-3xl font-bold text-[#FBBF24]">R$ 15,90</span>
+                <div className="text-right">
+                  <div className="text-lg text-[#FBBF24]/60 line-through">R$ 49,90</div>
+                  <span className="text-3xl font-bold text-[#FBBF24]">R$ 15,90</span>
+                </div>
               </div>
               <CardTitle className="text-2xl text-[#FBBF24]">
-                45 Questões Exclusivas com Gabarito
+                Pacote Completo: Guia + 45 Questões
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="space-y-3">
                 <li className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-[#FBBF24] flex-shrink-0 mt-0.5" />
-                  <span className="text-white/90">70% temas mais recorrentes</span>
+                  <span className="text-white/90">✅ Tudo do Guia Completo (análise + lacunas + estratégias)</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-[#FBBF24] flex-shrink-0 mt-0.5" />
-                  <span className="text-white/90">30% nossas apostas para 2025</span>
+                  <span className="text-white/90">✅ 45 questões exclusivas (70% recorrentes + 30% apostas)</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-[#FBBF24] flex-shrink-0 mt-0.5" />
-                  <span className="text-white/90">Resoluções passo a passo</span>
+                  <span className="text-white/90">✅ Resoluções detalhadas passo a passo</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-[#FBBF24] flex-shrink-0 mt-0.5" />
-                  <span className="text-white/90">Nível ENEM autêntico</span>
+                  <span className="text-white/90">✅ Material completo para maximizar sua nota</span>
                 </li>
               </ul>
               
@@ -168,7 +185,7 @@ export const MateriaisExclusivos = () => {
                 onClick={() => handleOpenForm('questoes')}
                 className="w-full bg-[#FBBF24] hover:bg-[#F59E0B] text-[#1E3A8A] font-semibold py-6 text-lg"
               >
-                Quero as Questões
+                Quero o Pacote Completo — R$ 15,90
               </Button>
             </CardContent>
           </Card>

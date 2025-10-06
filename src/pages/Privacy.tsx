@@ -36,60 +36,64 @@ const Privacy = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-3 text-2xl">
                 <Shield className="w-6 h-6 text-primary" />
-                Privacy Policy – GS Aprova
+                Política de Privacidade – GS Aprova
               </CardTitle>
             </CardHeader>
             <CardContent className="prose prose-gray max-w-none space-y-6">
               <section>
-                <h3 className="text-xl font-semibold text-primary mb-3">1. Data we collect</h3>
+                <h3 className="text-xl font-semibold text-primary mb-3">1. Dados que coletamos</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  We may collect personal data such as your name, email, and study preferences when you register or fill out forms.
+                  Coletamos dados pessoais como nome, e-mail e preferências de estudo quando você se cadastra ou preenche formulários em nossa plataforma.
                 </p>
               </section>
 
               <section>
-                <h3 className="text-xl font-semibold text-primary mb-3">2. How we use data</h3>
+                <h3 className="text-xl font-semibold text-primary mb-3">2. Como usamos seus dados</h3>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-start gap-2">
                     <span className="text-primary">•</span>
-                    <span>To personalize your study experience</span>
+                    <span>Para personalizar sua experiência de estudos</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary">•</span>
-                    <span>To communicate about classes, services, and promotions</span>
+                    <span>Para comunicar sobre aulas, serviços e promoções</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary">•</span>
-                    <span>To improve our platform</span>
+                    <span>Para melhorar nossa plataforma e serviços</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary">•</span>
+                    <span>Para processar pagamentos e enviar materiais contratados</span>
                   </li>
                 </ul>
               </section>
 
               <section>
-                <h3 className="text-xl font-semibold text-primary mb-3">3. Data sharing</h3>
+                <h3 className="text-xl font-semibold text-primary mb-3">3. Compartilhamento de dados</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  We do not sell your data. Information may be shared only with service providers that support our operations, under confidentiality agreements.
+                  Não vendemos seus dados para terceiros. As informações podem ser compartilhadas apenas com prestadores de serviços que apoiam nossas operações, sob acordos de confidencialidade.
                 </p>
               </section>
 
               <section>
-                <h3 className="text-xl font-semibold text-primary mb-3">4. Data security</h3>
+                <h3 className="text-xl font-semibold text-primary mb-3">4. Segurança dos dados</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  We adopt measures to protect your personal information. However, no system is completely secure.
+                  Adotamos medidas técnicas e organizacionais para proteger suas informações pessoais contra acesso não autorizado, perda ou destruição. Contudo, nenhum sistema é completamente seguro.
                 </p>
               </section>
 
               <section>
-                <h3 className="text-xl font-semibold text-primary mb-3">5. User rights</h3>
+                <h3 className="text-xl font-semibold text-primary mb-3">5. Direitos dos usuários</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  You may request access, correction, or deletion of your data at any time by contacting our support team.
+                  Você pode solicitar acesso, correção ou exclusão de seus dados a qualquer momento entrando em contato com nossa equipe de suporte.
                 </p>
               </section>
 
               <section>
-                <h3 className="text-xl font-semibold text-primary mb-3">6. Updates</h3>
+                <h3 className="text-xl font-semibold text-primary mb-3">6. Atualizações desta política</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  This policy may be updated periodically. Please check this page for the latest version.
+                  Esta política pode ser atualizada periodicamente. Recomendamos verificar esta página regularmente para se manter informado sobre como protegemos seus dados.
                 </p>
               </section>
 
