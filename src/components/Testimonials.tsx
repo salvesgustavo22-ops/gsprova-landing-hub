@@ -63,7 +63,7 @@ export const Testimonials = () => {
               <CardContent className="p-6">
                 <div className="flex items-start mb-4">
                   <Quote className="w-8 h-8 text-primary mr-3 flex-shrink-0" />
-                  <p className="text-foreground leading-relaxed">
+                  <p className="text-[#1E3A8A] leading-relaxed">
                     "{testimonial.quote}"
                   </p>
                 </div>
@@ -79,7 +79,7 @@ export const Testimonials = () => {
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="font-semibold text-foreground">
+                    <p className="font-semibold text-[#1E3A8A]">
                       {testimonial.name}
                     </p>
                     <p className="text-sm text-[#1E3A8A]">

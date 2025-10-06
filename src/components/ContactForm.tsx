@@ -128,7 +128,7 @@ export const ContactForm = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Nome completo</Label>
+                    <Label htmlFor="name" className="text-[#1E3A8A]">Nome completo</Label>
                     <Input
                       id="name"
                       value={formData.name}
@@ -139,7 +139,7 @@ export const ContactForm = () => {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="email">E-mail</Label>
+                    <Label htmlFor="email" className="text-[#1E3A8A]">E-mail</Label>
                     <Input
                       id="email"
                       type="email"
@@ -152,7 +152,7 @@ export const ContactForm = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="whatsapp">WhatsApp</Label>
+                  <Label htmlFor="whatsapp" className="text-[#1E3A8A]">WhatsApp</Label>
                   <Input
                     id="whatsapp"
                     value={formData.whatsapp}
@@ -163,7 +163,7 @@ export const ContactForm = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="service">Serviço de interesse</Label>
+                  <Label htmlFor="service" className="text-[#1E3A8A]">Serviço de interesse</Label>
                   <Select onValueChange={(value) => handleChange('service', value)} required>
                     <SelectTrigger>
                       <SelectValue placeholder="Selecione o serviço" />
@@ -180,7 +180,7 @@ export const ContactForm = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Mensagem (opcional)</Label>
+                  <Label htmlFor="message" className="text-[#1E3A8A]">Mensagem (opcional)</Label>
                   <Textarea
                     id="message"
                     value={formData.message}
