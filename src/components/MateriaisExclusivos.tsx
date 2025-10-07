@@ -82,7 +82,7 @@ export const MateriaisExclusivos = () => {
   };
 
   return (
-    <section id="materiais" className="py-12 lg:py-16 bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6]">
+    <section id="materiais-exclusivos" className="py-12 lg:py-16 bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">

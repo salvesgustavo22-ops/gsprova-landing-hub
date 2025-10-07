@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Trophy, PenTool } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Users, Trophy, PenTool, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
 import { GuiaLeadForm } from "@/components/GuiaLeadForm";
 
 export default function Hero() {
@@ -20,6 +21,55 @@ export default function Hero() {
               <h2 className="text-white/90 text-lg md:text-xl leading-relaxed">
                 Baseado na análise das provas oficiais 2022-2024. <span className="text-[#FBBF24] font-bold">35% são matemática básica</span> + nossas apostas exclusivas para 2025
               </h2>
+            </div>
+
+            {/* Planos e Guias Oferecidos */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+              <Card 
+                className="bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-[#FBBF24] transition-all duration-300 cursor-pointer group"
+                onClick={() => {
+                  const materiaisSection = document.getElementById('materiais-exclusivos');
+                  if (materiaisSection) {
+                    materiaisSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                <CardContent className="p-5">
+                  <BookOpen className="w-8 h-8 text-[#FBBF24] mb-3" />
+                  <h3 className="text-white font-bold text-lg mb-2">
+                    Guias e Materiais
+                  </h3>
+                  <p className="text-white/80 text-sm mb-3">
+                    Guias completos com análises e questões exclusivas
+                  </p>
+                  <div className="flex items-center text-[#FBBF24] font-semibold text-sm group-hover:translate-x-1 transition-transform">
+                    Ver materiais <ArrowRight className="w-4 h-4 ml-1" />
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card 
+                className="bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-[#FBBF24] transition-all duration-300 cursor-pointer group"
+                onClick={() => {
+                  const planosSection = document.getElementById('planos');
+                  if (planosSection) {
+                    planosSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                <CardContent className="p-5">
+                  <GraduationCap className="w-8 h-8 text-[#FBBF24] mb-3" />
+                  <h3 className="text-white font-bold text-lg mb-2">
+                    Cursos e Mentorias
+                  </h3>
+                  <p className="text-white/80 text-sm mb-3">
+                    Aulas, correções, trilhas personalizadas e mentoria individual
+                  </p>
+                  <div className="flex items-center text-[#FBBF24] font-semibold text-sm group-hover:translate-x-1 transition-transform">
+                    Ver planos <ArrowRight className="w-4 h-4 ml-1" />
+                  </div>
+                </CardContent>
+              </Card>
             </div>
 
             {/* Social Proof Cards */}
