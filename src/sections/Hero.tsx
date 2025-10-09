@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Users, Trophy, PenTool, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
+import { Target, ListChecks, BarChart, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
 import { GuiaLeadForm } from "@/components/GuiaLeadForm";
 
 export default function Hero() {
@@ -76,25 +76,25 @@ export default function Hero() {
             <div className="grid grid-cols-3 gap-3 mt-8">
               <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
                 <CardContent className="p-4 text-center">
-                  <Users className="w-6 h-6 opacity-90 mx-auto mb-2" />
-                  <div className="font-bold text-lg">+900</div>
-                  <div className="text-xs opacity-90">alunos atendidos</div>
+                  <Target className="w-6 h-6 opacity-90 mx-auto mb-2" />
+                  <div className="font-bold text-lg">5 Eixos</div>
+                  <div className="text-xs opacity-90">temáticos predominantes</div>
                 </CardContent>
               </Card>
               
               <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
                 <CardContent className="p-4 text-center">
-                  <Trophy className="w-6 h-6 opacity-90 mx-auto mb-2" />
-                  <div className="font-bold text-lg">95%</div>
-                  <div className="text-xs opacity-90">de aprovação</div>
+                  <ListChecks className="w-6 h-6 opacity-90 mx-auto mb-2" />
+                  <div className="font-bold text-lg">+200</div>
+                  <div className="text-xs opacity-90">abordagens possíveis</div>
                 </CardContent>
               </Card>
               
               <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
                 <CardContent className="p-4 text-center">
-                  <PenTool className="w-6 h-6 opacity-90 mx-auto mb-2" />
-                  <div className="font-bold text-lg">70/100</div>
-                  <div className="text-xs opacity-90">nota média</div>
+                  <BarChart className="w-6 h-6 opacity-90 mx-auto mb-2" />
+                  <div className="font-bold text-lg">INEP</div>
+                  <div className="text-xs opacity-90">dados oficiais</div>
                 </CardContent>
               </Card>
             </div>
