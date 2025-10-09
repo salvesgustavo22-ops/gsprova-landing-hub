@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { StickyWhatsApp } from '@/components/StickyWhatsApp';
-import { Calculator, PenTool, BookOpen, Target, CheckCircle } from 'lucide-react';
+import { Calculator, PenTool, Target, CheckCircle } from 'lucide-react';
 import { trackPageSection } from '@/lib/analytics';
 
 export default function Enem2025() {

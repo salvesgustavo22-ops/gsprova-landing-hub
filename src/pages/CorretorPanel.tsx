@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -55,13 +55,13 @@ type Essay = {
 const CorretorPanel = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [user, setUser] = useState<User | null>(null);
+  const [_user, setUser] = useState<User | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [essays, setEssays] = useState<Essay[]>([]);
   const [loading, setLoading] = useState(true);
   const [correctionFile, setCorrectionFile] = useState<File | null>(null);
-  const [selectedEssayId, setSelectedEssayId] = useState<string | null>(null);
+  const [_selectedEssayId, setSelectedEssayId] = useState<string | null>(null);
   const [statusChanges, setStatusChanges] = useState<{ [key: string]: string }>({});
   const [pendingChanges, setPendingChanges] = useState<string[]>([]);
 
@@ -96,7 +96,7 @@ const CorretorPanel = () => {
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [fetchEssays]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -135,7 +135,7 @@ const CorretorPanel = () => {
     navigate('/');
   };
 
-  const fetchEssays = async () => {
+  const fetchEssays = useCallback(async () => {
     setLoading(true);
     try {
       const { data, error } = await supabase
@@ -166,7 +166,7 @@ const CorretorPanel = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [toast]);
 
   const handleDownloadFile = async (filePath: string, fileName: string) => {
     try {
@@ -320,27 +320,6 @@ const CorretorPanel = () => {
       return bankOther;
     }
     return bank.toUpperCase();
-  };
-
-  const getStatusBadge = (
-    status: 'enviada' | 'a_corrigir' | 'corrigida' | 'revisar' | 'pending' | 'corrected'
-  ) => {
-    switch (status) {
-      case 'enviada':
-        return <Badge variant="outline">Enviada</Badge>;
-      case 'a_corrigir':
-        return <Badge variant="secondary">A Corrigir</Badge>;
-      case 'corrigida':
-        return <Badge>Corrigida</Badge>;
-      case 'revisar':
-        return <Badge variant="destructive">Revisar</Badge>;
-      case 'pending':
-        return <Badge variant="secondary">A Corrigir</Badge>;
-      case 'corrected':
-        return <Badge>Corrigida</Badge>;
-      default:
-        return <Badge variant="outline">Enviada</Badge>;
-    }
   };
 
   if (!isAuthenticated) {

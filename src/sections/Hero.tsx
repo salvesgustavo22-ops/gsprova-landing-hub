@@ -1,5 +1,4 @@
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Target, Award, TrendingUp, BookOpen, GraduationCap, ArrowRight } from 'lucide-react';
 import { GuiaLeadForm } from '@/components/GuiaLeadForm';
 

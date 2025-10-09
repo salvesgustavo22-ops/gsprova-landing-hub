@@ -1,6 +1,5 @@
 import { Navigation } from '@/components/Navigation';
 import { Section } from '@/components/Section';
-import { PricingCard } from '@/components/PricingCard';
 import { TestimonialCard } from '@/components/TestimonialCard';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { Button } from '@/components/ui/button';
@@ -14,8 +13,7 @@ import { MateriaisExclusivos } from '@/components/MateriaisExclusivos';
 import { EmailPopup } from '@/components/EmailPopup';
 import { NossosDiferenciais } from '@/components/NossosDiferenciais';
 import { useEffect, useState } from 'react';
-import { trackPageSection, trackClick, trackEvent } from '@/lib/analytics';
-import { BUSINESS_WHATSAPP_URL } from '@/lib/constants';
+import { trackPageSection, trackEvent } from '@/lib/analytics';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -24,7 +22,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-import { Target, BookOpen, Clock, MessageCircle, Check, Shield, Flame } from 'lucide-react';
+import { Check, Shield, Flame } from 'lucide-react';
 
 const Index = () => {
   useEffect(() => {
@@ -82,51 +80,6 @@ const Index = () => {
       document.head.removeChild(script);
     };
   }, []);
-
-  // Hero CTA handlers
-  const handlePrimaryCTA = () => {
-    trackClick('cta_hero_matricular');
-    const planosSection = document.getElementById('planos');
-    if (planosSection) {
-      planosSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.href = '/planos#curso-intensivo';
-    }
-  };
-
-  const handleSecondaryCTA = () => {
-    trackClick('cta_hero_correcao');
-    const planosSection = document.getElementById('planos');
-    if (planosSection) {
-      planosSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.href = '/planos#correcao';
-    }
-  };
-
-  // Benefits data
-  const benefits = [
-    {
-      icon: Target,
-      title: 'Trilha focada',
-      description: 'Conteúdo direcionado para o que mais cai no ENEM',
-    },
-    {
-      icon: BookOpen,
-      title: 'Correção com devolutiva',
-      description: 'Análise detalhada com sugestões de melhoria',
-    },
-    {
-      icon: Clock,
-      title: 'Simulados táticos',
-      description: 'Treinamento com tempo cronometrado',
-    },
-    {
-      icon: MessageCircle,
-      title: 'Mentoria on-demand',
-      description: 'Suporte direto no WhatsApp quando precisar',
-    },
-  ];
 
   // Testimonials data - Updated to focus on quality and confidence
   const testimonials = [

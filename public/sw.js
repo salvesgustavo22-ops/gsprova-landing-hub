@@ -1,7 +1,6 @@
 // Service Worker for caching static assets
 const CACHE_NAME = 'gs-aprova-v1';
 const STATIC_CACHE_TTL = 365 * 24 * 60 * 60 * 1000; // 1 year for static assets
-const API_CACHE_TTL = 5 * 60 * 1000; // 5 minutes for API responses
 
 // Assets to cache immediately
 const STATIC_ASSETS = [
@@ -78,7 +77,7 @@ self.addEventListener('fetch', event => {
             cache.put(request, networkResponse.clone());
           }
           return networkResponse;
-        } catch (error) {
+        } catch (_error) {
           // Return cached version if network fails
           return cachedResponse || new Response('Offline', { status: 503 });
         }
@@ -90,7 +89,7 @@ self.addEventListener('fetch', event => {
             cache.put(request, networkResponse.clone());
           }
           return networkResponse;
-        } catch (error) {
+        } catch (_error) {
           return cachedResponse || new Response('Offline', { status: 503 });
         }
       }

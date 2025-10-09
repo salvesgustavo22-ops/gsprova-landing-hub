@@ -12,7 +12,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
@@ -169,8 +168,8 @@ const EnviarRedacao = () => {
         const locationResponse = await fetch(`https://ipapi.co/${userIP}/json/`);
         const locationData = await locationResponse.json();
         userLocation = `${locationData.city || ''}, ${locationData.region || ''}, ${locationData.country_name || ''}`;
-      } catch (error) {
-        console.log('Could not get IP/location:', error);
+      } catch {
+        // Silently continue if IP/location cannot be retrieved
       }
 
       // Upload files

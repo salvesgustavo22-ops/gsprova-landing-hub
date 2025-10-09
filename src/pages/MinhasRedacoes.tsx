@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -54,9 +54,9 @@ const MinhasRedacoes = () => {
       return;
     }
     fetchEssays();
-  }, [user, navigate]);
+  }, [user, navigate, fetchEssays]);
 
-  const fetchEssays = async () => {
+  const fetchEssays = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from('essays')
@@ -78,7 +78,7 @@ const MinhasRedacoes = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [user, toast]);
 
   const handleDownloadCorrection = async (essay: Essay) => {
     if (!essay.correction_file_path || !essay.correction_id) return;

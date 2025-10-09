@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
-import { CheckCircle, Download, MessageCircle, Clock, Star } from 'lucide-react';
+import { CheckCircle, Download, MessageCircle } from 'lucide-react';
 import { trackConversion, trackWhatsAppClick } from '@/lib/analytics';
 
 export default function ObrigadoChecklist() {
@@ -42,29 +41,6 @@ export default function ObrigadoChecklist() {
     );
     window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
   };
-
-  const nextSteps = [
-    {
-      icon: Download,
-      title: '1. Baixe seu checklist',
-      description: 'Clique no botão abaixo para fazer o download do PDF completo',
-    },
-    {
-      icon: Clock,
-      title: '2. Organize seu tempo',
-      description: 'Use o cronograma incluído para planejar suas semanas de estudo',
-    },
-    {
-      icon: Star,
-      title: '3. Foque no essencial',
-      description: "Priorize os tópicos marcados como 'alta frequência'",
-    },
-    {
-      icon: MessageCircle,
-      title: '4. Tire suas dúvidas',
-      description: 'Fale conosco no WhatsApp para orientações personalizadas',
-    },
-  ];
 
   return (
     <div className="section-modern min-h-screen">

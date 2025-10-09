@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import {
@@ -17,68 +16,71 @@ import { trackConversion, trackWhatsAppClick } from '@/lib/analytics';
 export default function ObrigadoServicos() {
   const [selectedService, setSelectedService] = useState<string>('');
 
-  const serviceDetails = {
-    'matematica-online': {
-      name: 'Matemática Online',
-      icon: Calculator,
-      description: 'Aulas focadas nos tópicos que mais caem no ENEM e Fuvest',
-      features: [
-        'Lista completa dos tópicos que mais caem',
-        'Videoaulas explicativas passo a passo',
-        'Exercícios resolvidos estilo ENEM/Fuvest',
-        'Revisão personalizada dos seus erros',
-        'Plano de evolução semanal',
-        'Suporte direto via WhatsApp',
-      ],
-      price: 'A partir de R$ 70/aula',
-      nextStep: 'Ver detalhes das aulas de matemática',
-    },
-    'correcao-redacao': {
-      name: 'Correção de Redação',
-      icon: PenTool,
-      description: 'Correção personalizada linha a linha com critérios oficiais',
-      features: [
-        'Correção detalhada por parágrafo',
-        'Comentários específicos em cada linha',
-        'Orientação para melhorar a tese',
-        'Sugestões de reescrita e melhoria',
-        'Avaliação pelos critérios oficiais',
-        'Feedback via WhatsApp',
-      ],
-      price: 'A partir de R$ 45/redação',
-      nextStep: 'Ver detalhes da correção de redação',
-    },
-    'trilha-personalizada': {
-      name: 'Trilha Personalizada',
-      icon: Route,
-      description: 'Cronograma de estudos adaptado ao seu perfil e objetivos',
-      features: [
-        'Diagnóstico completo do seu nível',
-        'Cronograma personalizado por semana',
-        'Ajustes baseados no seu progresso',
-        'Lembretes e metas semanais',
-        'Acompanhamento contínuo',
-        'Orientação via WhatsApp',
-      ],
-      price: 'A partir de R$ 120/mês',
-      nextStep: 'Montar minha trilha personalizada',
-    },
-    'plano-completo': {
-      name: 'Plano Completo',
-      icon: Layers,
-      description: 'Matemática + Redação + Trilha com acompanhamento integral',
-      features: [
-        'Tudo dos planos anteriores incluído',
-        'Acompanhamento integral e integrado',
-        'Prioridade no atendimento',
-        'Relatórios semanais de progresso',
-        'Ajustes em tempo real',
-        'Suporte premium no WhatsApp',
-      ],
-      price: 'A partir de R$ 200/mês',
-      nextStep: 'Conhecer o plano completo',
-    },
-  };
+  const serviceDetails = useMemo(
+    () => ({
+      'matematica-online': {
+        name: 'Matemática Online',
+        icon: Calculator,
+        description: 'Aulas focadas nos tópicos que mais caem no ENEM e Fuvest',
+        features: [
+          'Lista completa dos tópicos que mais caem',
+          'Videoaulas explicativas passo a passo',
+          'Exercícios resolvidos estilo ENEM/Fuvest',
+          'Revisão personalizada dos seus erros',
+          'Plano de evolução semanal',
+          'Suporte direto via WhatsApp',
+        ],
+        price: 'A partir de R$ 70/aula',
+        nextStep: 'Ver detalhes das aulas de matemática',
+      },
+      'correcao-redacao': {
+        name: 'Correção de Redação',
+        icon: PenTool,
+        description: 'Correção personalizada linha a linha com critérios oficiais',
+        features: [
+          'Correção detalhada por parágrafo',
+          'Comentários específicos em cada linha',
+          'Orientação para melhorar a tese',
+          'Sugestões de reescrita e melhoria',
+          'Avaliação pelos critérios oficiais',
+          'Feedback via WhatsApp',
+        ],
+        price: 'A partir de R$ 45/redação',
+        nextStep: 'Ver detalhes da correção de redação',
+      },
+      'trilha-personalizada': {
+        name: 'Trilha Personalizada',
+        icon: Route,
+        description: 'Cronograma de estudos adaptado ao seu perfil e objetivos',
+        features: [
+          'Diagnóstico completo do seu nível',
+          'Cronograma personalizado por semana',
+          'Ajustes baseados no seu progresso',
+          'Lembretes e metas semanais',
+          'Acompanhamento contínuo',
+          'Orientação via WhatsApp',
+        ],
+        price: 'A partir de R$ 120/mês',
+        nextStep: 'Montar minha trilha personalizada',
+      },
+      'plano-completo': {
+        name: 'Plano Completo',
+        icon: Layers,
+        description: 'Matemática + Redação + Trilha com acompanhamento integral',
+        features: [
+          'Tudo dos planos anteriores incluído',
+          'Acompanhamento integral e integrado',
+          'Prioridade no atendimento',
+          'Relatórios semanais de progresso',
+          'Ajustes em tempo real',
+          'Suporte premium no WhatsApp',
+        ],
+        price: 'A partir de R$ 200/mês',
+        nextStep: 'Conhecer o plano completo',
+      },
+    }),
+    []
+  );
 
   useEffect(() => {
     document.title = 'Informações do Seu Serviço | GS Aprova';
@@ -99,7 +101,7 @@ export default function ObrigadoServicos() {
 
     // Track conversion
     trackConversion('service_interest', 0, 'BRL');
-  }, []);
+  }, [serviceDetails]);
 
   const handleWhatsAppClick = () => {
     const service = serviceDetails[selectedService as keyof typeof serviceDetails];

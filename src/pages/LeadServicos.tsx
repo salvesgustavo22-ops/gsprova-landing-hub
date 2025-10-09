@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
@@ -120,7 +119,7 @@ export default function LeadServicos() {
 
       // Redirect to thank you page with service info
       window.location.href = `/obrigado-servicos?service=${formData.service}`;
-    } catch (error) {
+    } catch {
       toast({
         title: 'Erro no envio',
         description: 'Tente novamente em alguns instantes.',
