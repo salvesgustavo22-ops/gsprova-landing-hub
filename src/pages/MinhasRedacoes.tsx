@@ -1,16 +1,28 @@
-import { useState, useEffect } from "react";
-import { useAuth } from "@/hooks/useAuth";
-import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { ArrowLeft, Download, MessageCircle, MoreHorizontal, X, Upload } from "lucide-react";
-import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { useState, useEffect, useCallback } from 'react';
+import { useAuth } from '@/hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
+import { ArrowLeft, Download, MessageCircle, MoreHorizontal, X, Upload } from 'lucide-react';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 type Essay = {
   id: string;
@@ -38,13 +50,13 @@ const MinhasRedacoes = () => {
 
   useEffect(() => {
     if (!user) {
-      navigate("/auth-aluno");
+      navigate('/auth-aluno');
       return;
     }
     fetchEssays();
-  }, [user, navigate]);
+  }, [user, navigate, fetchEssays]);
 
-  const fetchEssays = async () => {
+  const fetchEssays = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from('essays')
@@ -59,18 +71,18 @@ const MinhasRedacoes = () => {
       setEssays(data || []);
     } catch (error: any) {
       toast({
-        title: "Erro ao carregar redações",
+        title: 'Erro ao carregar redações',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     } finally {
       setLoading(false);
     }
-  };
+  }, [user, toast]);
 
   const handleDownloadCorrection = async (essay: Essay) => {
     if (!essay.correction_file_path || !essay.correction_id) return;
-    
+
     try {
       const { data, error } = await supabase.storage
         .from('essay-files')
@@ -96,29 +108,28 @@ const MinhasRedacoes = () => {
           .from('essays')
           .update({ downloaded_at: new Date().toISOString() })
           .eq('id', essay.id);
-        
+
         fetchEssays(); // Refresh data
       }
 
       toast({
-        title: "Download realizado!",
+        title: 'Download realizado!',
         description: `Em caso de dúvidas, envie mensagem ao WhatsApp informando o ID: ${essay.correction_id}`,
       });
-
     } catch (error: any) {
       toast({
-        title: "Erro no download",
+        title: 'Erro no download',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     }
   };
 
   const handleWhatsAppContact = (correctionId?: string) => {
-    const message = correctionId 
+    const message = correctionId
       ? `Olá! Tenho dúvidas sobre a correção ID: ${correctionId}`
       : 'Olá! Tenho dúvidas sobre minha redação.';
-    
+
     const url = `https://wa.me/5511974969036?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
@@ -154,45 +165,44 @@ const MinhasRedacoes = () => {
       URL.revokeObjectURL(url);
 
       toast({
-        title: "Download realizado!",
-        description: "Sua redação foi baixada com sucesso.",
+        title: 'Download realizado!',
+        description: 'Sua redação foi baixada com sucesso.',
       });
     } catch (error: any) {
       toast({
-        title: "Erro no download",
+        title: 'Erro no download',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     }
   };
 
   const handleCancelSubmission = async (essayId: string) => {
     try {
-      const { error } = await supabase
-        .from('essays')
-        .delete()
-        .eq('id', essayId);
+      const { error } = await supabase.from('essays').delete().eq('id', essayId);
 
       if (error) {
         throw error;
       }
 
       toast({
-        title: "Envio cancelado",
-        description: "Sua redação foi removida com sucesso.",
+        title: 'Envio cancelado',
+        description: 'Sua redação foi removida com sucesso.',
       });
-      
+
       fetchEssays();
     } catch (error: any) {
       toast({
-        title: "Erro ao cancelar",
+        title: 'Erro ao cancelar',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     }
   };
 
-  const getStatusBadge = (status: 'enviada' | 'a_corrigir' | 'corrigida' | 'revisar' | 'pending' | 'corrected') => {
+  const getStatusBadge = (
+    status: 'enviada' | 'a_corrigir' | 'corrigida' | 'revisar' | 'pending' | 'corrected'
+  ) => {
     switch (status) {
       case 'enviada':
         return <Badge variant="outline">Enviada</Badge>;
@@ -216,13 +226,9 @@ const MinhasRedacoes = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center gap-4 mb-8">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => navigate("/portal-aluno")}
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
+        <div className="mb-8 flex items-center gap-4">
+          <Button variant="outline" size="sm" onClick={() => navigate('/portal-aluno')}>
+            <ArrowLeft className="mr-2 size-4" />
             Voltar
           </Button>
           <h1 className="text-3xl font-bold text-primary">Minhas Redações</h1>
@@ -234,16 +240,13 @@ const MinhasRedacoes = () => {
           </CardHeader>
           <CardContent>
             {loading ? (
-              <div className="text-center py-8">
+              <div className="py-8 text-center">
                 <p>Carregando redações...</p>
               </div>
             ) : essays.length === 0 ? (
-              <div className="text-center py-8">
+              <div className="py-8 text-center">
                 <p className="text-muted-foreground">Nenhuma redação enviada ainda.</p>
-                <Button 
-                  onClick={() => navigate("/portal-aluno")}
-                  className="mt-4"
-                >
+                <Button onClick={() => navigate('/portal-aluno')} className="mt-4">
                   Enviar Primeira Redação
                 </Button>
               </div>
@@ -260,29 +263,23 @@ const MinhasRedacoes = () => {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {essays.map((essay) => (
+                    {essays.map(essay => (
                       <TableRow key={essay.id}>
                         <TableCell>
-                          {format(new Date(essay.created_at), "dd/MM/yyyy", { locale: ptBR })}
+                          {format(new Date(essay.created_at), 'dd/MM/yyyy', { locale: ptBR })}
                         </TableCell>
-                        <TableCell>
-                          {getOriginText(essay.origin)}
-                        </TableCell>
+                        <TableCell>{getOriginText(essay.origin)}</TableCell>
                         <TableCell>
                           <div>
                             {essay.theme_title && (
-                              <div className="font-medium text-sm mb-1">
-                                {essay.theme_title}
-                              </div>
+                              <div className="mb-1 text-sm font-medium">{essay.theme_title}</div>
                             )}
                             <div className="text-sm text-muted-foreground">
                               {getBankText(essay.bank, essay.bank_other)}
                             </div>
                           </div>
                         </TableCell>
-                        <TableCell>
-                          {getStatusBadge(essay.status)}
-                        </TableCell>
+                        <TableCell>{getStatusBadge(essay.status)}</TableCell>
                         <TableCell>
                           <div className="flex gap-2">
                             {essay.status === 'corrigida' && essay.correction_file_path && (
@@ -291,60 +288,68 @@ const MinhasRedacoes = () => {
                                 onClick={() => handleDownloadCorrection(essay)}
                                 className="flex items-center gap-1"
                               >
-                                <Download className="h-3 w-3" />
+                                <Download className="size-3" />
                                 Baixar Correção
                               </Button>
                             )}
-                            
+
                             {essay.status === 'revisar' && (
                               <div className="space-y-2">
                                 {essay.corrector_comments && (
-                                  <div className="text-xs text-muted-foreground p-2 bg-muted rounded">
+                                  <div className="rounded bg-muted p-2 text-xs text-muted-foreground">
                                     <strong>Comentários:</strong> {essay.corrector_comments}
                                   </div>
                                 )}
                                 <Button
                                   size="sm"
-                                  onClick={() => navigate(`/enviar-redacao?type=${essay.origin}&revision=${essay.id}&bank=${essay.bank}`)}
+                                  onClick={() =>
+                                    navigate(
+                                      `/enviar-redacao?type=${essay.origin}&revision=${essay.id}&bank=${essay.bank}`
+                                    )
+                                  }
                                   className="flex items-center gap-1"
                                 >
-                                  <Upload className="h-3 w-3" />
+                                  <Upload className="size-3" />
                                   Enviar Nova Redação
                                 </Button>
                               </div>
                             )}
-                            
+
                             <DropdownMenu>
                               <DropdownMenuTrigger asChild>
                                 <Button size="sm" variant="outline">
-                                  <MoreHorizontal className="h-3 w-3" />
+                                  <MoreHorizontal className="size-3" />
                                 </Button>
                               </DropdownMenuTrigger>
-                               <DropdownMenuContent>
-                                 <DropdownMenuItem onClick={() => handleDownloadEssay(essay)}>
-                                   <Download className="h-3 w-3 mr-1" />
-                                   Baixar Redação
-                                 </DropdownMenuItem>
-                                 {essay.correction_file_path && (
-                                   <DropdownMenuItem onClick={() => handleDownloadCorrection(essay)}>
-                                     <Download className="h-3 w-3 mr-1" />
-                                     Baixar Correção
-                                   </DropdownMenuItem>
-                                 )}
-                                 {essay.status === 'enviada' && (
-                                   <DropdownMenuItem 
-                                     onClick={() => handleCancelSubmission(essay.id)}
-                                     className="text-destructive"
-                                   >
-                                     <X className="h-3 w-3 mr-1" />
-                                     Cancelar Envio
-                                   </DropdownMenuItem>
-                                 )}
-                                 <DropdownMenuItem onClick={() => handleWhatsAppContact(essay.correction_id || undefined)}>
-                                   <MessageCircle className="h-3 w-3 mr-1" />
-                                   Enviar Dúvidas
-                                 </DropdownMenuItem>
-                               </DropdownMenuContent>
+                              <DropdownMenuContent>
+                                <DropdownMenuItem onClick={() => handleDownloadEssay(essay)}>
+                                  <Download className="mr-1 size-3" />
+                                  Baixar Redação
+                                </DropdownMenuItem>
+                                {essay.correction_file_path && (
+                                  <DropdownMenuItem onClick={() => handleDownloadCorrection(essay)}>
+                                    <Download className="mr-1 size-3" />
+                                    Baixar Correção
+                                  </DropdownMenuItem>
+                                )}
+                                {essay.status === 'enviada' && (
+                                  <DropdownMenuItem
+                                    onClick={() => handleCancelSubmission(essay.id)}
+                                    className="text-destructive"
+                                  >
+                                    <X className="mr-1 size-3" />
+                                    Cancelar Envio
+                                  </DropdownMenuItem>
+                                )}
+                                <DropdownMenuItem
+                                  onClick={() =>
+                                    handleWhatsAppContact(essay.correction_id || undefined)
+                                  }
+                                >
+                                  <MessageCircle className="mr-1 size-3" />
+                                  Enviar Dúvidas
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
                             </DropdownMenu>
                           </div>
                         </TableCell>

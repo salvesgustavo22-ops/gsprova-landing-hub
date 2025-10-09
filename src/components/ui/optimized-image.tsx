@@ -60,18 +60,18 @@ export const OptimizedImage = ({
   return (
     <div className="relative overflow-hidden">
       {!isLoaded && (
-        <div 
+        <div
           className={cn(
-            "absolute inset-0 bg-muted animate-pulse",
-            "flex items-center justify-center text-muted-foreground"
+            'absolute inset-0 animate-pulse bg-muted',
+            'flex items-center justify-center text-muted-foreground'
           )}
           style={{ width, height }}
           aria-label="Loading image"
         >
-          <div className="w-8 h-8 border-2 border-current border-t-transparent rounded-full animate-spin" />
+          <div className="size-8 animate-spin rounded-full border-2 border-current border-t-transparent" />
         </div>
       )}
-      
+
       <img
         {...imageProps}
         onLoad={handleLoad}

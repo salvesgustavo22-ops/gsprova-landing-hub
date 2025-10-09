@@ -1,19 +1,38 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { Download, Send, LogOut, Save, MessageCircle } from "lucide-react";
-import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import type { User } from "@supabase/supabase-js";
+import { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
+import { Download, Send, LogOut, Save, MessageCircle } from 'lucide-react';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import type { User } from '@supabase/supabase-js';
 
 type Essay = {
   id: string;
@@ -36,20 +55,22 @@ type Essay = {
 const CorretorPanel = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [user, setUser] = useState<User | null>(null);
+  const [_user, setUser] = useState<User | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [essays, setEssays] = useState<Essay[]>([]);
   const [loading, setLoading] = useState(true);
   const [correctionFile, setCorrectionFile] = useState<File | null>(null);
-  const [selectedEssayId, setSelectedEssayId] = useState<string | null>(null);
-  const [statusChanges, setStatusChanges] = useState<{[key: string]: string}>({});
+  const [_selectedEssayId, setSelectedEssayId] = useState<string | null>(null);
+  const [statusChanges, setStatusChanges] = useState<{ [key: string]: string }>({});
   const [pendingChanges, setPendingChanges] = useState<string[]>([]);
 
   useEffect(() => {
     // Check for existing session
     const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
       if (session?.user) {
         setUser(session.user);
         setIsAuthenticated(true);
@@ -61,25 +82,25 @@ const CorretorPanel = () => {
     checkAuth();
 
     // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        if (session?.user) {
-          setUser(session.user);
-          setIsAuthenticated(true);
-          fetchEssays();
-        } else {
-          setUser(null);
-          setIsAuthenticated(false);
-        }
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session?.user) {
+        setUser(session.user);
+        setIsAuthenticated(true);
+        fetchEssays();
+      } else {
+        setUser(null);
+        setIsAuthenticated(false);
       }
-    );
+    });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [fetchEssays]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: loginData.email,
@@ -94,15 +115,15 @@ const CorretorPanel = () => {
         setUser(data.user);
         setIsAuthenticated(true);
         toast({
-          title: "Login realizado!",
-          description: "Bem-vindo ao painel do corretor.",
+          title: 'Login realizado!',
+          description: 'Bem-vindo ao painel do corretor.',
         });
       }
     } catch (error: any) {
       toast({
-        title: "Erro no login",
+        title: 'Erro no login',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     }
   };
@@ -111,22 +132,24 @@ const CorretorPanel = () => {
     await supabase.auth.signOut();
     setUser(null);
     setIsAuthenticated(false);
-    navigate("/");
+    navigate('/');
   };
 
-  const fetchEssays = async () => {
+  const fetchEssays = useCallback(async () => {
     setLoading(true);
     try {
       const { data, error } = await supabase
         .from('essays')
-        .select(`
+        .select(
+          `
           *,
           profiles (
             first_name,
             last_name,
             phone
           )
-        `)
+        `
+        )
         .order('created_at', { ascending: true });
 
       if (error) {
@@ -136,20 +159,18 @@ const CorretorPanel = () => {
       setEssays((data as any) || []);
     } catch (error: any) {
       toast({
-        title: "Erro ao carregar redações",
+        title: 'Erro ao carregar redações',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     } finally {
       setLoading(false);
     }
-  };
+  }, [toast]);
 
   const handleDownloadFile = async (filePath: string, fileName: string) => {
     try {
-      const { data, error } = await supabase.storage
-        .from('essay-files')
-        .download(filePath);
+      const { data, error } = await supabase.storage.from('essay-files').download(filePath);
 
       if (error) {
         throw error;
@@ -163,12 +184,11 @@ const CorretorPanel = () => {
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
-
     } catch (error: any) {
       toast({
-        title: "Erro no download",
+        title: 'Erro no download',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     }
   };
@@ -176,17 +196,19 @@ const CorretorPanel = () => {
   const handleSendCorrection = async (essayId: string, origin: 'gs_aprova' | 'external') => {
     if (!correctionFile) {
       toast({
-        title: "Erro",
-        description: "Selecione o arquivo de correção",
-        variant: "destructive",
+        title: 'Erro',
+        description: 'Selecione o arquivo de correção',
+        variant: 'destructive',
       });
       return;
     }
 
     try {
       // Generate correction ID
-      const { data: correctionIdData, error: correctionIdError } = await supabase
-        .rpc('generate_correction_id', { essay_origin: origin });
+      const { data: correctionIdData, error: correctionIdError } = await supabase.rpc(
+        'generate_correction_id',
+        { essay_origin: origin }
+      );
 
       if (correctionIdError) {
         throw correctionIdError;
@@ -195,7 +217,7 @@ const CorretorPanel = () => {
       // Upload correction file
       const fileExt = correctionFile.name.split('.').pop();
       const fileName = `corrections/${correctionIdData}.${fileExt}`;
-      
+
       const { data: uploadData, error: uploadError } = await supabase.storage
         .from('essay-files')
         .upload(fileName, correctionFile);
@@ -210,7 +232,7 @@ const CorretorPanel = () => {
         .update({
           status: 'corrigida',
           correction_id: correctionIdData,
-          correction_file_path: uploadData.path
+          correction_file_path: uploadData.path,
         })
         .eq('id', essayId);
 
@@ -219,34 +241,33 @@ const CorretorPanel = () => {
       }
 
       toast({
-        title: "Correção enviada!",
+        title: 'Correção enviada!',
         description: `ID da correção: ${correctionIdData}`,
       });
 
       setCorrectionFile(null);
       setSelectedEssayId(null);
       fetchEssays();
-
     } catch (error: any) {
       toast({
-        title: "Erro ao enviar correção",
+        title: 'Erro ao enviar correção',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     }
   };
 
   const handleStatusChange = (essayId: string, newStatus: string) => {
     setStatusChanges(prev => ({ ...prev, [essayId]: newStatus }));
-    setPendingChanges(prev => prev.includes(essayId) ? prev : [...prev, essayId]);
+    setPendingChanges(prev => (prev.includes(essayId) ? prev : [...prev, essayId]));
   };
 
   const handleSaveChanges = async () => {
     if (pendingChanges.length === 0) {
       toast({
-        title: "Nenhuma alteração",
-        description: "Não há alterações pendentes para salvar",
-        variant: "destructive",
+        title: 'Nenhuma alteração',
+        description: 'Não há alterações pendentes para salvar',
+        variant: 'destructive',
       });
       return;
     }
@@ -267,19 +288,18 @@ const CorretorPanel = () => {
       }
 
       toast({
-        title: "Alterações salvas!",
+        title: 'Alterações salvas!',
         description: `${pendingChanges.length} status atualizados com sucesso`,
       });
 
       setStatusChanges({});
       setPendingChanges([]);
       fetchEssays();
-
     } catch (error: any) {
       toast({
-        title: "Erro ao salvar alterações",
+        title: 'Erro ao salvar alterações',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     }
   };
@@ -302,28 +322,9 @@ const CorretorPanel = () => {
     return bank.toUpperCase();
   };
 
-  const getStatusBadge = (status: 'enviada' | 'a_corrigir' | 'corrigida' | 'revisar' | 'pending' | 'corrected') => {
-    switch (status) {
-      case 'enviada':
-        return <Badge variant="outline">Enviada</Badge>;
-      case 'a_corrigir':
-        return <Badge variant="secondary">A Corrigir</Badge>;
-      case 'corrigida':
-        return <Badge>Corrigida</Badge>;
-      case 'revisar':
-        return <Badge variant="destructive">Revisar</Badge>;
-      case 'pending':
-        return <Badge variant="secondary">A Corrigir</Badge>;
-      case 'corrected':
-        return <Badge>Corrigida</Badge>;
-      default:
-        return <Badge variant="outline">Enviada</Badge>;
-    }
-  };
-
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <div className="flex min-h-screen items-center justify-center bg-background p-4">
         <Card className="w-full max-w-md">
           <CardHeader>
             <CardTitle>Acesso do Corretor</CardTitle>
@@ -336,7 +337,7 @@ const CorretorPanel = () => {
                   id="email"
                   type="email"
                   value={loginData.email}
-                  onChange={(e) => setLoginData(prev => ({ ...prev, email: e.target.value }))}
+                  onChange={e => setLoginData(prev => ({ ...prev, email: e.target.value }))}
                   required
                 />
               </div>
@@ -346,7 +347,7 @@ const CorretorPanel = () => {
                   id="password"
                   type="password"
                   value={loginData.password}
-                  onChange={(e) => setLoginData(prev => ({ ...prev, password: e.target.value }))}
+                  onChange={e => setLoginData(prev => ({ ...prev, password: e.target.value }))}
                   required
                 />
               </div>
@@ -363,19 +364,19 @@ const CorretorPanel = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-8">
+        <div className="mb-8 flex items-center justify-between">
           <h1 className="text-3xl font-bold">Painel do Corretor</h1>
           <Button onClick={handleLogout} variant="outline">
-            <LogOut className="h-4 w-4 mr-2" />
+            <LogOut className="mr-2 size-4" />
             Sair
           </Button>
         </div>
 
-        <div className="flex justify-between items-center mb-4">
+        <div className="mb-4 flex items-center justify-between">
           <div></div>
           {pendingChanges.length > 0 && (
             <Button onClick={handleSaveChanges} className="gap-2">
-              <Save className="h-4 w-4" />
+              <Save className="size-4" />
               Salvar Alterações ({pendingChanges.length})
             </Button>
           )}
@@ -387,11 +388,11 @@ const CorretorPanel = () => {
           </CardHeader>
           <CardContent>
             {loading ? (
-              <div className="text-center py-8">
+              <div className="py-8 text-center">
                 <p>Carregando redações...</p>
               </div>
             ) : essays.length === 0 ? (
-              <div className="text-center py-8">
+              <div className="py-8 text-center">
                 <p className="text-muted-foreground">Nenhuma redação encontrada.</p>
               </div>
             ) : (
@@ -409,14 +410,14 @@ const CorretorPanel = () => {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {essays.map((essay) => (
+                    {essays.map(essay => (
                       <TableRow key={essay.id}>
                         <TableCell>
                           <div className="font-mono text-sm">
                             {essay.correction_id || 'Pendente'}
                           </div>
                           <div className="text-xs text-muted-foreground">
-                            {format(new Date(essay.created_at), "dd/MM/yyyy", { locale: ptBR })}
+                            {format(new Date(essay.created_at), 'dd/MM/yyyy', { locale: ptBR })}
                           </div>
                         </TableCell>
                         <TableCell>
@@ -430,16 +431,12 @@ const CorretorPanel = () => {
                           </div>
                         </TableCell>
                         <TableCell>
-                          <Badge variant="outline">
-                            {getOriginText(essay.origin)}
-                          </Badge>
+                          <Badge variant="outline">{getOriginText(essay.origin)}</Badge>
                         </TableCell>
                         <TableCell>
                           <div>
                             {essay.theme_title && (
-                              <div className="font-medium text-sm mb-1">
-                                {essay.theme_title}
-                              </div>
+                              <div className="mb-1 text-sm font-medium">{essay.theme_title}</div>
                             )}
                             <div className="text-sm text-muted-foreground">
                               {getBankText(essay.bank, essay.bank_other)}
@@ -451,31 +448,37 @@ const CorretorPanel = () => {
                             <Button
                               size="sm"
                               variant="outline"
-                              onClick={() => handleDownloadFile(essay.essay_file_path, `Redacao_${essay.id}.pdf`)}
-                              className="text-xs h-7"
+                              onClick={() =>
+                                handleDownloadFile(essay.essay_file_path, `Redacao_${essay.id}.pdf`)
+                              }
+                              className="h-7 text-xs"
                             >
-                              <Download className="h-3 w-3 mr-1" />
+                              <Download className="mr-1 size-3" />
                               Redação
                             </Button>
                             <Button
                               size="sm"
                               variant="outline"
-                              onClick={() => essay.proposal_file_path ? 
-                                handleDownloadFile(essay.proposal_file_path, `Proposta_${essay.id}.pdf`) : 
-                                null
+                              onClick={() =>
+                                essay.proposal_file_path
+                                  ? handleDownloadFile(
+                                      essay.proposal_file_path,
+                                      `Proposta_${essay.id}.pdf`
+                                    )
+                                  : null
                               }
                               disabled={!essay.proposal_file_path}
-                              className="text-xs h-7"
+                              className="h-7 text-xs"
                             >
-                              <Download className="h-3 w-3 mr-1" />
+                              <Download className="mr-1 size-3" />
                               {essay.proposal_file_path ? 'Proposta' : '-'}
                             </Button>
                           </div>
                         </TableCell>
                         <TableCell>
-                          <Select 
-                            value={statusChanges[essay.id] || essay.status} 
-                            onValueChange={(value) => handleStatusChange(essay.id, value)}
+                          <Select
+                            value={statusChanges[essay.id] || essay.status}
+                            onValueChange={value => handleStatusChange(essay.id, value)}
                           >
                             <SelectTrigger className="w-32">
                               <SelectValue />
@@ -488,23 +491,23 @@ const CorretorPanel = () => {
                             </SelectContent>
                           </Select>
                           {pendingChanges.includes(essay.id) && (
-                            <div className="text-xs text-orange-600 mt-1">
-                              Alteração pendente
-                            </div>
+                            <div className="mt-1 text-xs text-orange-600">Alteração pendente</div>
                           )}
                         </TableCell>
                         <TableCell>
                           <div className="flex flex-col gap-1">
                             <Dialog>
                               <DialogTrigger asChild>
-                                <Button size="sm" variant="default" className="text-xs h-7">
-                                  <Send className="h-3 w-3 mr-1" />
+                                <Button size="sm" variant="default" className="h-7 text-xs">
+                                  <Send className="mr-1 size-3" />
                                   Enviar Correção
                                 </Button>
                               </DialogTrigger>
                               <DialogContent>
                                 <DialogHeader>
-                                  <DialogTitle>Enviar Correção - {essay.correction_id || 'Nova'}</DialogTitle>
+                                  <DialogTitle>
+                                    Enviar Correção - {essay.correction_id || 'Nova'}
+                                  </DialogTitle>
                                 </DialogHeader>
                                 <div className="space-y-4">
                                   <div>
@@ -513,7 +516,7 @@ const CorretorPanel = () => {
                                       id="correction"
                                       type="file"
                                       accept=".pdf"
-                                      onChange={(e) => setCorrectionFile(e.target.files?.[0] || null)}
+                                      onChange={e => setCorrectionFile(e.target.files?.[0] || null)}
                                     />
                                   </div>
                                   <Button
@@ -526,15 +529,15 @@ const CorretorPanel = () => {
                                 </div>
                               </DialogContent>
                             </Dialog>
-                            
+
                             {essay.correction_id && (
                               <Button
                                 size="sm"
                                 variant="outline"
                                 onClick={() => handleWhatsAppContact(essay.correction_id!)}
-                                className="text-xs h-7"
+                                className="h-7 text-xs"
                               >
-                                <MessageCircle className="h-3 w-3 mr-1" />
+                                <MessageCircle className="mr-1 size-3" />
                                 Dúvidas
                               </Button>
                             )}

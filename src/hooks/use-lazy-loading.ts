@@ -3,10 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 /**
  * Hook for implementing lazy loading with Intersection Observer
  */
-export const useLazyLoading = (
-  threshold = 0.1,
-  rootMargin = '50px 0px'
-) => {
+export const useLazyLoading = (threshold = 0.1, rootMargin = '50px 0px') => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
   const targetRef = useRef<HTMLElement>(null);
@@ -43,10 +40,7 @@ export const useLazyLoading = (
 /**
  * Hook for preloading images when they're about to enter viewport
  */
-export const useImagePreloader = (
-  imageSources: string[],
-  threshold = 0.5
-) => {
+export const useImagePreloader = (imageSources: string[], threshold = 0.5) => {
   const [preloadedImages, setPreloadedImages] = useState<Set<string>>(new Set());
   const { targetRef, isIntersecting } = useLazyLoading(threshold, '200px 0px');
 
@@ -55,7 +49,7 @@ export const useImagePreloader = (
 
     const preloadPromises = imageSources.map(src => {
       if (preloadedImages.has(src)) return Promise.resolve();
-      
+
       return new Promise<void>((resolve, reject) => {
         const img = new Image();
         img.onload = () => {

@@ -1,39 +1,69 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
-import { X, Users } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
-import { trackEvent } from "@/lib/analytics";
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
+import { X, Users } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { trackEvent } from '@/lib/analytics';
 
 const BRAZILIAN_STATES = [
-  "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", 
-  "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", 
-  "RS", "RO", "RR", "SC", "SP", "SE", "TO"
+  'AC',
+  'AL',
+  'AP',
+  'AM',
+  'BA',
+  'CE',
+  'DF',
+  'ES',
+  'GO',
+  'MA',
+  'MT',
+  'MS',
+  'MG',
+  'PA',
+  'PB',
+  'PR',
+  'PE',
+  'PI',
+  'RJ',
+  'RN',
+  'RS',
+  'RO',
+  'RR',
+  'SC',
+  'SP',
+  'SE',
+  'TO',
 ];
 
 const STUDY_DIFFICULTIES = [
-  "Matemática",
-  "Física", 
-  "Química",
-  "Biologia",
-  "Português",
-  "Redação",
-  "História",
-  "Geografia",
-  "Filosofia/Sociologia"
+  'Matemática',
+  'Física',
+  'Química',
+  'Biologia',
+  'Português',
+  'Redação',
+  'História',
+  'Geografia',
+  'Filosofia/Sociologia',
 ];
 
 export default function QuickSurvey() {
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
-    age: "",
-    state: "",
+    age: '',
+    state: '',
     hasDifficulties: false,
-    difficulties: [] as string[]
+    difficulties: [] as string[],
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -61,12 +91,12 @@ export default function QuickSurvey() {
     if (checked) {
       setFormData(prev => ({
         ...prev,
-        difficulties: [...prev.difficulties, difficulty]
+        difficulties: [...prev.difficulties, difficulty],
       }));
     } else {
       setFormData(prev => ({
         ...prev,
-        difficulties: prev.difficulties.filter(d => d !== difficulty)
+        difficulties: prev.difficulties.filter(d => d !== difficulty),
       }));
     }
   };
@@ -76,14 +106,12 @@ export default function QuickSurvey() {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
-        .from('surveys')
-        .insert({
-          age: parseInt(formData.age),
-          state: formData.state,
-          has_difficulties: formData.hasDifficulties,
-          difficulties: formData.difficulties
-        });
+      const { error } = await supabase.from('surveys').insert({
+        age: parseInt(formData.age),
+        state: formData.state,
+        has_difficulties: formData.hasDifficulties,
+        difficulties: formData.difficulties,
+      });
 
       if (error) throw error;
 
@@ -92,14 +120,13 @@ export default function QuickSurvey() {
       trackEvent('survey_submitted', {
         age: formData.age,
         state: formData.state,
-        difficulties_count: formData.difficulties.length
+        difficulties_count: formData.difficulties.length,
       });
 
       // Auto close after 2 seconds
       setTimeout(() => {
         setIsVisible(false);
       }, 2000);
-
     } catch (error) {
       console.error('Error submitting survey:', error);
     } finally {
@@ -110,32 +137,29 @@ export default function QuickSurvey() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-card border-border">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
+      <Card className="w-full max-w-md border-border bg-card">
         <CardContent className="p-6">
-          <div className="flex items-center justify-between mb-4">
+          <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Users className="w-5 h-5 text-primary" />
+              <Users className="size-5 text-primary" />
               <h3 className="font-semibold text-foreground">Pesquisa rápida</h3>
             </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleClose}
-              className="h-8 w-8 p-0"
-            >
-              <X className="w-4 h-4" />
+            <Button variant="ghost" size="sm" onClick={handleClose} className="size-8 p-0">
+              <X className="size-4" />
             </Button>
           </div>
 
           {isSubmitted ? (
-            <div className="text-center py-4">
-              <p className="text-foreground font-medium mb-2">Obrigado pela sua participação!</p>
-              <p className="text-muted-foreground text-sm">Suas respostas nos ajudam a melhorar nossos cursos.</p>
+            <div className="py-4 text-center">
+              <p className="mb-2 font-medium text-foreground">Obrigado pela sua participação!</p>
+              <p className="text-sm text-muted-foreground">
+                Suas respostas nos ajudam a melhorar nossos cursos.
+              </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <p className="text-muted-foreground text-sm mb-4">
+              <p className="mb-4 text-sm text-muted-foreground">
                 Nos ajude a conhecer melhor nossos estudantes (30 segundos)
               </p>
 
@@ -145,7 +169,7 @@ export default function QuickSurvey() {
                   id="age"
                   type="number"
                   value={formData.age}
-                  onChange={(e) => setFormData(prev => ({ ...prev, age: e.target.value }))}
+                  onChange={e => setFormData(prev => ({ ...prev, age: e.target.value }))}
                   placeholder="Ex: 18"
                   min="14"
                   max="30"
@@ -157,14 +181,14 @@ export default function QuickSurvey() {
                 <Label htmlFor="state">Em qual estado você está?</Label>
                 <Select
                   value={formData.state}
-                  onValueChange={(value) => setFormData(prev => ({ ...prev, state: value }))}
+                  onValueChange={value => setFormData(prev => ({ ...prev, state: value }))}
                   required
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Selecione seu estado" />
                   </SelectTrigger>
                   <SelectContent>
-                    {BRAZILIAN_STATES.map((state) => (
+                    {BRAZILIAN_STATES.map(state => (
                       <SelectItem key={state} value={state}>
                         {state}
                       </SelectItem>
@@ -178,31 +202,29 @@ export default function QuickSurvey() {
                   <Checkbox
                     id="difficulties"
                     checked={formData.hasDifficulties}
-                    onCheckedChange={(checked) => 
-                      setFormData(prev => ({ 
-                        ...prev, 
+                    onCheckedChange={checked =>
+                      setFormData(prev => ({
+                        ...prev,
                         hasDifficulties: !!checked,
-                        difficulties: checked ? prev.difficulties : []
+                        difficulties: checked ? prev.difficulties : [],
                       }))
                     }
                   />
-                  <Label htmlFor="difficulties">
-                    Tenho dificuldades em algumas matérias
-                  </Label>
+                  <Label htmlFor="difficulties">Tenho dificuldades em algumas matérias</Label>
                 </div>
 
                 {formData.hasDifficulties && (
-                  <div className="pl-6 space-y-2">
+                  <div className="space-y-2 pl-6">
                     <Label className="text-sm text-muted-foreground">
                       Quais matérias? (marque quantas quiser)
                     </Label>
                     <div className="grid grid-cols-2 gap-2">
-                      {STUDY_DIFFICULTIES.map((difficulty) => (
+                      {STUDY_DIFFICULTIES.map(difficulty => (
                         <div key={difficulty} className="flex items-center space-x-2">
                           <Checkbox
                             id={difficulty}
                             checked={formData.difficulties.includes(difficulty)}
-                            onCheckedChange={(checked) => 
+                            onCheckedChange={checked =>
                               handleDifficultyChange(difficulty, !!checked)
                             }
                           />
@@ -216,15 +238,11 @@ export default function QuickSurvey() {
                 )}
               </div>
 
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Enviando..." : "Enviar pesquisa"}
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? 'Enviando...' : 'Enviar pesquisa'}
               </Button>
 
-              <p className="text-xs text-muted-foreground text-center">
+              <p className="text-center text-xs text-muted-foreground">
                 Suas respostas são anônimas e nos ajudam a melhorar nossos cursos.
               </p>
             </form>

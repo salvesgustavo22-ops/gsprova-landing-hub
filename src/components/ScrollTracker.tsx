@@ -3,8 +3,8 @@ import { trackScroll, trackTimeOnPage } from '@/lib/analytics';
 
 export const ScrollTracker = () => {
   useEffect(() => {
-    let timeOnPageStart = Date.now();
-    let scrollPercentages: Set<number> = new Set();
+    const timeOnPageStart = Date.now();
+    const scrollPercentages: Set<number> = new Set();
     let ticking = false;
     let cachedScrollHeight = 0;
     let resizeTimeout: number;
@@ -23,7 +23,7 @@ export const ScrollTracker = () => {
         requestAnimationFrame(() => {
           // Batch all layout reads together
           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          
+
           // Only update scroll height if not cached, and defer it
           if (cachedScrollHeight === 0) {
             // Defer the height calculation to prevent forced reflow during scroll
@@ -33,10 +33,9 @@ export const ScrollTracker = () => {
             ticking = false;
             return;
           }
-          
-          const scrollPercent = cachedScrollHeight > 0 
-            ? Math.round((scrollTop / cachedScrollHeight) * 100) 
-            : 0;
+
+          const scrollPercent =
+            cachedScrollHeight > 0 ? Math.round((scrollTop / cachedScrollHeight) * 100) : 0;
 
           // Track scroll milestones (25%, 50%, 75%, 100%)
           const milestones = [25, 50, 75, 100];
@@ -46,7 +45,7 @@ export const ScrollTracker = () => {
               trackScroll(milestone);
             }
           });
-          
+
           ticking = false;
         });
         ticking = true;
@@ -63,7 +62,8 @@ export const ScrollTracker = () => {
 
     const handleBeforeUnload = () => {
       const timeOnPage = Math.round((Date.now() - timeOnPageStart) / 1000);
-      if (timeOnPage > 10) { // Only track if user spent more than 10 seconds
+      if (timeOnPage > 10) {
+        // Only track if user spent more than 10 seconds
         trackTimeOnPage(timeOnPage);
       }
     };

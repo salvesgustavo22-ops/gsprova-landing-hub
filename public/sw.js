@@ -1,7 +1,6 @@
 // Service Worker for caching static assets
 const CACHE_NAME = 'gs-aprova-v1';
 const STATIC_CACHE_TTL = 365 * 24 * 60 * 60 * 1000; // 1 year for static assets
-const API_CACHE_TTL = 5 * 60 * 1000; // 5 minutes for API responses
 
 // Assets to cache immediately
 const STATIC_ASSETS = [
@@ -9,35 +8,39 @@ const STATIC_ASSETS = [
   '/src/index.css',
   '/assets/gs-aprova-logo.png',
   '/assets/hero-modern-bg.jpg',
-  '/assets/hero-student-18yo.jpg'
+  '/assets/hero-student-18yo.jpg',
 ];
 
 // Install event - cache critical assets
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(STATIC_ASSETS))
+    caches
+      .open(CACHE_NAME)
+      .then(cache => cache.addAll(STATIC_ASSETS))
       .then(() => self.skipWaiting())
   );
 });
 
 // Activate event - clean up old caches
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
+    caches
+      .keys()
+      .then(cacheNames => {
+        return Promise.all(
+          cacheNames.map(cacheName => {
+            if (cacheName !== CACHE_NAME) {
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+      .then(() => self.clients.claim())
   );
 });
 
 // Fetch event - serve from cache with fallback to network
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', event => {
   const { request } = event;
   const url = new URL(request.url);
 
@@ -52,20 +55,20 @@ self.addEventListener('fetch', (event) => {
   }
 
   event.respondWith(
-    caches.open(CACHE_NAME).then(async (cache) => {
+    caches.open(CACHE_NAME).then(async cache => {
       const cachedResponse = await cache.match(request);
-      
+
       // Determine cache strategy based on asset type
       if (isStaticAsset(request.url)) {
         // Static assets: Cache first, fallback to network
         if (cachedResponse) {
           // Check if cache is still valid
           const cacheTime = await getCacheTime(cache, request);
-          if (cacheTime && (Date.now() - cacheTime < STATIC_CACHE_TTL)) {
+          if (cacheTime && Date.now() - cacheTime < STATIC_CACHE_TTL) {
             return cachedResponse;
           }
         }
-        
+
         // Fetch from network and update cache
         try {
           const networkResponse = await fetch(request);
@@ -74,7 +77,7 @@ self.addEventListener('fetch', (event) => {
             cache.put(request, networkResponse.clone());
           }
           return networkResponse;
-        } catch (error) {
+        } catch (_error) {
           // Return cached version if network fails
           return cachedResponse || new Response('Offline', { status: 503 });
         }
@@ -86,7 +89,7 @@ self.addEventListener('fetch', (event) => {
             cache.put(request, networkResponse.clone());
           }
           return networkResponse;
-        } catch (error) {
+        } catch (_error) {
           return cachedResponse || new Response('Offline', { status: 503 });
         }
       }
