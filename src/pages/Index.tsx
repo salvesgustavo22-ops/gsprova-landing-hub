@@ -330,44 +330,6 @@ const Index = () => {
         {/* 3. Nossos Diferenciais */}
         <NossosDiferenciais />
 
-        {/* 4. Benefits Section */}
-        <Section variant="neutral" data-testid="section-benefits">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1E3A8A] mb-4">
-              Como te ajudamos a conquistar sua vaga
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Metodologia comprovada com foco no que realmente importa
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {benefits.map((benefit, index) => {
-              const Icon = benefit.icon;
-              return (
-                <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-[#E5E7EB] hover:shadow-md transition-all duration-300">
-                  <Icon className="h-8 w-8 text-[#3B82F6] mb-4" />
-                  <h3 className="font-semibold text-lg text-[#1E3A8A] mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {benefit.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-          
-          <div className="text-center">
-            <Button
-              onClick={() => window.location.href = '/sobre'}
-              className="bg-[#1E3A8A] text-white hover:bg-[#1E3A8A]/90 px-8 py-3 rounded-lg font-semibold"
-            >
-              Ver como funciona
-            </Button>
-          </div>
-        </Section>
-
         {/* 5. Testimonials Section */}
         <Section variant="light" className="bg-[#E0F2FE] dark:bg-[#1E3A8A]" data-testid="section-testimonials">
           <div className="text-center mb-16">
