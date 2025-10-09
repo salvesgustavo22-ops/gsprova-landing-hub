@@ -1,6 +1,3 @@
-import { Button } from '@/components/ui/button';
-import { Clock, Target, Trophy } from 'lucide-react';
-
 export const FinalCTA = () => {
   const handleCTAClick = () => {
     const message = encodeURIComponent(

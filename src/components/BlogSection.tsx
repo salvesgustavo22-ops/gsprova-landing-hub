@@ -46,13 +46,13 @@ export const BlogSection = () => {
   const handleBlogClick = (postId: number) => {
     trackEvent('blog_post_click', { post_id: postId });
     // Navigate to blog post - for now just track the event
-    console.log(`Navigate to blog post ${postId}`);
+    console.warn(`Navigate to blog post ${postId}`);
   };
 
   const handleVerTodosClick = () => {
     trackEvent('blog_see_all_click');
     // Navigate to blog listing page
-    console.log('Navigate to blog listing');
+    console.warn('Navigate to blog listing');
   };
 
   return (

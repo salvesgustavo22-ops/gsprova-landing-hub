@@ -77,7 +77,7 @@ self.addEventListener('fetch', event => {
             cache.put(request, networkResponse.clone());
           }
           return networkResponse;
-        } catch (_error) {
+        } catch {
           // Return cached version if network fails
           return cachedResponse || new Response('Offline', { status: 503 });
         }
@@ -89,7 +89,7 @@ self.addEventListener('fetch', event => {
             cache.put(request, networkResponse.clone());
           }
           return networkResponse;
-        } catch (_error) {
+        } catch {
           return cachedResponse || new Response('Offline', { status: 503 });
         }
       }
