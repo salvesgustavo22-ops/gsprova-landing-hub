@@ -53,7 +53,7 @@ export const Testimonials = () => {
         </div>
 
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map(testimonial => (
             <Card
               key={testimonial.id}
               className="rounded-xl border border-border/50 bg-card shadow-lg transition-shadow duration-300 hover:shadow-xl"

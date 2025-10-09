@@ -150,8 +150,8 @@ const AuthAluno = () => {
         const locationResponse = await fetch(`https://ipapi.co/${userIP}/json/`);
         const locationData = await locationResponse.json();
         userLocation = `${locationData.city || ''}, ${locationData.region || ''}, ${locationData.country_name || ''}`;
-      } catch (error) {
-        console.log('Could not get IP/location:', error);
+      } catch {
+        console.warn('Could not get IP/location');
       }
 
       const { error } = await signUp(signupEmail, signupPassword);
