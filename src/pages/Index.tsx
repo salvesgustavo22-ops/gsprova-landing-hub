@@ -324,7 +324,7 @@ const Index = () => {
         {/* 1. Hero Section */}
         <Hero />
         
-        {/* 2. Materiais Exclusivos */}
+        {/* 2. Matemática no ENEM 2025 */}
         <MateriaisExclusivos />
 
         {/* 3. Nossos Diferenciais */}
