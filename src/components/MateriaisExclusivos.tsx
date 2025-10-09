@@ -86,10 +86,10 @@ export const MateriaisExclusivos = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-            Materiais Exclusivos
+            Matemática no enem 2025: os conteúdos que mais caem
           </h2>
           <p className="text-white/90 text-lg max-w-2xl mx-auto">
-            Conteúdos baseados na análise das provas oficiais INEP 2022-2024
+            Análise completa das provas oficiais INEP 2022-2024 com foco nos temas mais recorrentes para o ENEM 2025
           </p>
         </div>
 
