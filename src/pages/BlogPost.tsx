@@ -8,14 +8,14 @@ import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 const blogContent: Record<string, any> = {
-  'reta-final-enem-2025': {
+  'mandar-bem-no-enem': {
     title: 'Reta Final ENEM 2025: 7 Estratégias Que Funcionam',
     date: '2025-01-15',
     readTime: '8 min',
     tags: ['Estratégia', 'ENEM 2025', 'Reta Final'],
     image: '/lovable-uploads/18015f32-572d-4cad-9ba0-16d5315e7060.png',
     content: `
-Com o ENEM 2025 se aproximando (9 e 16 de novembro), a reta final exige estratégia inteligente. Baseado na análise das provas 2022-2024, aqui estão as 7 estratégias mais eficazes:
+Com o ENEM 2025 se aproximando (9 e 16 de novembro), a reta final exige estratégia inteligente. Baseado na análise das provas 2022-2024, aqui estão as 7 estratégias mais eficazes para o preparatório para o ENEM 2025:
 
 ## 1. Foque nos 35% Que Mais Caem
 Nossa análise das provas oficiais mostrou que **35% das questões de matemática são básicas**: razão, proporção, porcentagem e transformações de unidades.
@@ -38,7 +38,8 @@ Baseado nas lacunas identificadas, esperamos mais questões sobre:
 - Big data e tecnologia  
 - Saúde mental pós-pandemia
 
-## 7. Cronograma Otimizado (30 dias)
+## 7. Cronograma ENEM 2025 Otimizado (30 dias)
+Um cronograma ENEM 2025 bem estruturado é essencial:
 - **Semana 1-2**: Matemática básica (maior ROI)
 - **Semana 3**: Geometria + Estatística  
 - **Semana 4**: Funções + Financeira + Revisão
@@ -46,8 +47,8 @@ Baseado nas lacunas identificadas, esperamos mais questões sobre:
 **Conclusão:** Uma estratégia baseada em dados pode fazer toda a diferença na sua aprovação. Foque no que realmente importa e otimize seu tempo de estudo.
     `,
   },
-  'matematica-basica-35-porcento': {
-    title: 'Por Que 35% das Questões São Matemática Básica (Dados Oficiais INEP)',
+  'matematica-conteudos-enem': {
+    title: 'matemática no enem 2025: os conteúdos que mais caem',
     date: '2025-01-10',
     readTime: '10 min',
     tags: ['Matemática', 'Dados INEP', 'Análise'],
@@ -177,7 +178,7 @@ const BlogPost = () => {
               ))}
             </div>
 
-            <div className="prose prose-lg dark:prose-invert prose-headings:text-[#1E3A8A] dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-white/80 prose-strong:text-[#1E3A8A] dark:prose-strong:text-[#FBBF24] prose-ul:text-gray-700 dark:prose-ul:text-white/80 max-w-none">
+            <div className="prose prose-lg dark:prose-invert prose-headings:text-[#1E3A8A] dark:prose-headings:text-white prose-p:text-black dark:prose-p:text-white/80 prose-strong:text-[#1E3A8A] dark:prose-strong:text-[#FBBF24] prose-ul:text-black dark:prose-ul:text-white/80 prose-li:text-black dark:prose-li:text-white/80 max-w-none">
               {post.content.split('\n').map((paragraph: string, index: number) => {
                 if (paragraph.startsWith('## ')) {
                   return (

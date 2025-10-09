@@ -12,6 +12,7 @@ import Hero from '@/sections/Hero';
 import { MateriaisExclusivos } from '@/components/MateriaisExclusivos';
 import { EmailPopup } from '@/components/EmailPopup';
 import { NossosDiferenciais } from '@/components/NossosDiferenciais';
+import { BlogSection } from '@/components/BlogSection';
 import { useEffect, useState } from 'react';
 import { trackPageSection, trackEvent } from '@/lib/analytics';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -275,31 +276,8 @@ const Index = () => {
         {/* 3. Nossos Diferenciais */}
         <NossosDiferenciais />
 
-        {/* 5. Testimonials Section */}
-        <Section
-          variant="light"
-          className="bg-[#E0F2FE] dark:bg-[#1E3A8A]"
-          data-testid="section-testimonials"
-        >
-          <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-[#1E3A8A] dark:text-white md:text-4xl">
-              Resultados dos nossos alunos
-            </h2>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-white/80">
-              Veja como nossos estudantes conquistaram suas vagas
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard
-                key={index}
-                {...testimonial}
-                data-testid={`testimonial-${index + 1}`}
-              />
-            ))}
-          </div>
-        </Section>
+        {/* 5. Blog GS Aprova */}
+        <BlogSection />
 
         {/* 6. Pricing Section */}
         <Section variant="light" id="planos" data-testid="section-pricing">
