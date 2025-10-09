@@ -7,7 +7,7 @@ import { preconnectToDomains } from './utils/seo.ts';
 preconnectToDomains([
   'https://fonts.googleapis.com',
   'https://www.googletagmanager.com',
-  'https://klxkjwreoxvvqtphieah.supabase.co'
+  'https://klxkjwreoxvvqtphieah.supabase.co',
 ]);
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById('root')!).render(<App />);

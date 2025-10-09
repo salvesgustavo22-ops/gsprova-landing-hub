@@ -1,24 +1,24 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Checkbox } from "@/components/ui/checkbox";
-import { supabase } from "@/integrations/supabase/client";
-import { trackEvent } from "@/lib/analytics";
-import { ChevronUp, CheckCircle } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Checkbox } from '@/components/ui/checkbox';
+import { supabase } from '@/integrations/supabase/client';
+import { trackEvent } from '@/lib/analytics';
+import { ChevronUp, CheckCircle } from 'lucide-react';
 
 export const StickyFormBar = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
-    nome: "",
-    telefone: "",
-    lgpdAccepted: false
+    nome: '',
+    telefone: '',
+    lgpdAccepted: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,8 +36,8 @@ export const StickyFormBar = () => {
   }, []);
 
   const formatPhone = (value: string) => {
-    const digits = value.replace(/\D/g, "");
-    
+    const digits = value.replace(/\D/g, '');
+
     if (digits.length <= 2) {
       return digits;
     } else if (digits.length <= 4) {
@@ -63,20 +63,20 @@ export const StickyFormBar = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
+    setError('');
 
     if (formData.nome.length < 2) {
-      setError("Nome deve ter pelo menos 2 caracteres");
+      setError('Nome deve ter pelo menos 2 caracteres');
       return;
     }
 
     if (formData.telefone.length < 10) {
-      setError("WhatsApp inválido");
+      setError('WhatsApp inválido');
       return;
     }
 
     if (!formData.lgpdAccepted) {
-      setError("Você precisa autorizar o contato");
+      setError('Você precisa autorizar o contato');
       return;
     }
 
@@ -88,21 +88,19 @@ export const StickyFormBar = () => {
       const utmMedium = urlParams.get('utm_medium') || 'site';
       const utmCampaign = urlParams.get('utm_campaign') || 'sticky_form';
 
-      const { error: insertError } = await supabase
-        .from('leads')
-        .insert({
-          name: formData.nome,
-          email: '', // Required field, empty for phone-only forms
-          phone: formData.telefone,
-          lead_type: 'contratacao',
-          service_selected: 'aula_correcao',
-          message: 'Lead capturado via sticky_miniform',
-          source: `sticky_miniform|utm_source:${utmSource}|utm_medium:${utmMedium}|utm_campaign:${utmCampaign}`
-        });
+      const { error: insertError } = await supabase.from('leads').insert({
+        name: formData.nome,
+        email: '', // Required field, empty for phone-only forms
+        phone: formData.telefone,
+        lead_type: 'contratacao',
+        service_selected: 'aula_correcao',
+        message: 'Lead capturado via sticky_miniform',
+        source: `sticky_miniform|utm_source:${utmSource}|utm_medium:${utmMedium}|utm_campaign:${utmCampaign}`,
+      });
 
       if (insertError) {
         console.error('Erro ao inserir lead:', insertError);
-        setError("Erro ao enviar dados. Tente novamente.");
+        setError('Erro ao enviar dados. Tente novamente.');
         return;
       }
 
@@ -110,18 +108,18 @@ export const StickyFormBar = () => {
         source: 'sticky_miniform',
         utm_source: utmSource,
         utm_medium: utmMedium,
-        utm_campaign: utmCampaign
+        utm_campaign: utmCampaign,
       });
 
       setIsSubmitted(true);
       setTimeout(() => {
         setIsOpen(false);
         setIsSubmitted(false);
-        setFormData({ nome: "", telefone: "", lgpdAccepted: false });
+        setFormData({ nome: '', telefone: '', lgpdAccepted: false });
       }, 3000);
     } catch (err) {
       console.error('Erro no envio:', err);
-      setError("Erro inesperado. Tente novamente.");
+      setError('Erro inesperado. Tente novamente.');
     } finally {
       setIsSubmitting(false);
     }
@@ -130,32 +128,30 @@ export const StickyFormBar = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 md:hidden">
       <Sheet open={isOpen} onOpenChange={handleOpenChange}>
         <SheetTrigger asChild>
-          <Button 
-            className="w-full rounded-none bg-primary hover:bg-primary-hover text-primary-foreground py-4 px-6 flex items-center justify-between"
+          <Button
+            className="flex w-full items-center justify-between rounded-none bg-primary px-6 py-4 text-primary-foreground hover:bg-primary-hover"
             size="lg"
           >
             <span className="font-semibold">Contrate agora sua aula/correção</span>
-            <ChevronUp className="w-5 h-5" />
+            <ChevronUp className="size-5" />
           </Button>
         </SheetTrigger>
-        
+
         <SheetContent side="bottom" className="h-auto">
           <SheetHeader>
             <SheetTitle>Contrate agora</SheetTitle>
           </SheetHeader>
-          
+
           {isSubmitted ? (
             <div className="py-6 text-center">
-              <CheckCircle className="w-12 h-12 text-success mx-auto mb-3" />
-              <h3 className="text-lg font-bold mb-2">
+              <CheckCircle className="mx-auto mb-3 size-12 text-success" />
+              <h3 className="mb-2 text-lg font-bold">
                 Recebido! Vamos falar com você em instantes.
               </h3>
-              <p className="text-sm text-muted-foreground">
-                Você pode fechar esta janela.
-              </p>
+              <p className="text-sm text-muted-foreground">Você pode fechar esta janela.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4 py-4">
@@ -167,7 +163,7 @@ export const StickyFormBar = () => {
                   id="sticky-nome"
                   type="text"
                   value={formData.nome}
-                  onChange={(e) => setFormData(prev => ({ ...prev, nome: e.target.value }))}
+                  onChange={e => setFormData(prev => ({ ...prev, nome: e.target.value }))}
                   placeholder="Seu nome"
                   required
                   minLength={2}
@@ -192,12 +188,15 @@ export const StickyFormBar = () => {
                 <Checkbox
                   id="sticky-lgpd"
                   checked={formData.lgpdAccepted}
-                  onCheckedChange={(checked) => 
+                  onCheckedChange={checked =>
                     setFormData(prev => ({ ...prev, lgpdAccepted: !!checked }))
                   }
                   required
                 />
-                <Label htmlFor="sticky-lgpd" className="text-xs text-muted-foreground leading-relaxed">
+                <Label
+                  htmlFor="sticky-lgpd"
+                  className="text-xs leading-relaxed text-muted-foreground"
+                >
                   Autorizo contato do GS Aprova. *
                 </Label>
               </div>
@@ -214,7 +213,7 @@ export const StickyFormBar = () => {
                 className="w-full bg-primary hover:bg-primary-hover"
                 size="lg"
               >
-                {isSubmitting ? "Enviando..." : "Quero contratar agora"}
+                {isSubmitting ? 'Enviando...' : 'Quero contratar agora'}
               </Button>
             </form>
           )}

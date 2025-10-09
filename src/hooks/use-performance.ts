@@ -29,7 +29,7 @@ export const useWebVitals = () => {
 
     // Measure LCP (Largest Contentful Paint)
     if ('PerformanceObserver' in window) {
-      const lcpObserver = new PerformanceObserver((list) => {
+      const lcpObserver = new PerformanceObserver(list => {
         const entries = list.getEntries();
         const lastEntry = entries[entries.length - 1] as any;
         setVitals(prev => ({ ...prev, lcp: lastEntry.startTime }));
@@ -42,7 +42,7 @@ export const useWebVitals = () => {
       }
 
       // Measure FID (First Input Delay)
-      const fidObserver = new PerformanceObserver((list) => {
+      const fidObserver = new PerformanceObserver(list => {
         const entries = list.getEntries();
         entries.forEach((entry: any) => {
           setVitals(prev => ({ ...prev, fid: entry.processingStart - entry.startTime }));
@@ -57,7 +57,7 @@ export const useWebVitals = () => {
 
       // Measure CLS (Cumulative Layout Shift)
       let clsValue = 0;
-      const clsObserver = new PerformanceObserver((list) => {
+      const clsObserver = new PerformanceObserver(list => {
         const entries = list.getEntries();
         entries.forEach((entry: any) => {
           if (!entry.hadRecentInput) {
@@ -93,7 +93,9 @@ export const usePageLoadPerformance = () => {
 
   useEffect(() => {
     const handleLoad = () => {
-      const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+      const navigation = performance.getEntriesByType(
+        'navigation'
+      )[0] as PerformanceNavigationTiming;
       if (navigation) {
         const loadTime = navigation.loadEventEnd - navigation.loadEventStart;
         setLoadTime(loadTime);
@@ -127,19 +129,22 @@ export const usePerformanceBudget = () => {
 
     const checkBudget = () => {
       const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
-      
+
       let jsSize = 0;
       let cssSize = 0;
       let imageSize = 0;
 
       resources.forEach(resource => {
         const size = resource.transferSize || 0;
-        
+
         if (resource.name.includes('.js') || resource.initiatorType === 'script') {
           jsSize += size;
         } else if (resource.name.includes('.css') || resource.initiatorType === 'css') {
           cssSize += size;
-        } else if (resource.initiatorType === 'img' || /\.(jpg|jpeg|png|gif|webp|svg)/.test(resource.name)) {
+        } else if (
+          resource.initiatorType === 'img' ||
+          /\.(jpg|jpeg|png|gif|webp|svg)/.test(resource.name)
+        ) {
           imageSize += size;
         }
       });
@@ -147,7 +152,7 @@ export const usePerformanceBudget = () => {
       // Budget limits (in bytes)
       const budgets = {
         js: 180 * 1024, // 180 KB
-        css: 50 * 1024,  // 50 KB
+        css: 50 * 1024, // 50 KB
         images: 500 * 1024, // 500 KB
       };
 
@@ -171,13 +176,19 @@ export const usePerformanceBudget = () => {
 
       // Log warnings for exceeded budgets
       if (jsSize > budgets.js) {
-        console.warn(`⚠️ JS Budget exceeded: ${(jsSize / 1024).toFixed(2)}KB used, ${budgets.js / 1024}KB limit`);
+        console.warn(
+          `⚠️ JS Budget exceeded: ${(jsSize / 1024).toFixed(2)}KB used, ${budgets.js / 1024}KB limit`
+        );
       }
       if (cssSize > budgets.css) {
-        console.warn(`⚠️ CSS Budget exceeded: ${(cssSize / 1024).toFixed(2)}KB used, ${budgets.css / 1024}KB limit`);
+        console.warn(
+          `⚠️ CSS Budget exceeded: ${(cssSize / 1024).toFixed(2)}KB used, ${budgets.css / 1024}KB limit`
+        );
       }
       if (imageSize > budgets.images) {
-        console.warn(`⚠️ Image Budget exceeded: ${(imageSize / 1024).toFixed(2)}KB used, ${budgets.images / 1024}KB limit`);
+        console.warn(
+          `⚠️ Image Budget exceeded: ${(imageSize / 1024).toFixed(2)}KB used, ${budgets.images / 1024}KB limit`
+        );
       }
     };
 

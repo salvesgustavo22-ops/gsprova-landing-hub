@@ -85,7 +85,9 @@ export const updateSEOTags = ({
 
   // Add structured data
   if (structuredData) {
-    let scriptTag = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement;
+    let scriptTag = document.querySelector(
+      'script[type="application/ld+json"]'
+    ) as HTMLScriptElement;
     if (!scriptTag) {
       scriptTag = document.createElement('script');
       scriptTag.type = 'application/ld+json';
@@ -135,7 +137,9 @@ export const generateEducationalServiceStructuredData = (
 /**
  * Generate breadcrumb structured data
  */
-export const generateBreadcrumbStructuredData = (breadcrumbs: Array<{name: string; url: string}>) => {
+export const generateBreadcrumbStructuredData = (
+  breadcrumbs: Array<{ name: string; url: string }>
+) => {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -151,7 +155,7 @@ export const generateBreadcrumbStructuredData = (breadcrumbs: Array<{name: strin
 /**
  * Generate FAQ structured data
  */
-export const generateFAQStructuredData = (faqs: Array<{question: string; answer: string}>) => {
+export const generateFAQStructuredData = (faqs: Array<{ question: string; answer: string }>) => {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

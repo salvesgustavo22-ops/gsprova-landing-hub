@@ -1,13 +1,19 @@
-import { useState, useEffect } from "react";
-import { useAuth } from "@/hooks/useAuth";
-import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown, ChevronRight, Upload, LogOut, FileText } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { useState, useEffect } from 'react';
+import { useAuth } from '@/hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { ChevronDown, ChevronRight, Upload, LogOut, FileText } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 const PortalAluno = () => {
   const { user, signOut } = useAuth();
@@ -18,7 +24,7 @@ const PortalAluno = () => {
 
   useEffect(() => {
     if (!user) {
-      navigate("/auth-aluno");
+      navigate('/auth-aluno');
     }
   }, [user, navigate]);
 
@@ -26,12 +32,12 @@ const PortalAluno = () => {
     const { error } = await signOut();
     if (error) {
       toast({
-        title: "Erro ao sair",
+        title: 'Erro ao sair',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     } else {
-      navigate("/");
+      navigate('/');
     }
   };
 
@@ -41,59 +47,57 @@ const PortalAluno = () => {
   };
 
   const toggleTheme = (themeId: string) => {
-    setOpenThemes(prev => 
-      prev.includes(themeId) 
-        ? prev.filter(id => id !== themeId)
-        : [...prev, themeId]
+    setOpenThemes(prev =>
+      prev.includes(themeId) ? prev.filter(id => id !== themeId) : [...prev, themeId]
     );
   };
 
   const themes = [
     {
-      id: "1",
-      title: "Desafios da inclusão social no Brasil contemporâneo",
+      id: '1',
+      title: 'Desafios da inclusão social no Brasil contemporâneo',
       supportTexts: [
-        "A inclusão social no Brasil enfrenta desafios históricos relacionados à desigualdade socioeconômica, preconceitos estruturais e falta de políticas públicas efetivas.",
-        "O acesso limitado à educação de qualidade, saúde e oportunidades de trabalho perpetua ciclos de exclusão social que afetam principalmente grupos vulneráveis.",
-        "Iniciativas de inclusão devem considerar aspectos culturais, econômicos e sociais para promover uma sociedade mais justa e igualitária."
-      ]
+        'A inclusão social no Brasil enfrenta desafios históricos relacionados à desigualdade socioeconômica, preconceitos estruturais e falta de políticas públicas efetivas.',
+        'O acesso limitado à educação de qualidade, saúde e oportunidades de trabalho perpetua ciclos de exclusão social que afetam principalmente grupos vulneráveis.',
+        'Iniciativas de inclusão devem considerar aspectos culturais, econômicos e sociais para promover uma sociedade mais justa e igualitária.',
+      ],
     },
     {
-      id: "2", 
-      title: "O papel da tecnologia na educação do século XXI",
+      id: '2',
+      title: 'O papel da tecnologia na educação do século XXI',
       supportTexts: [
-        "A tecnologia revolucionou os métodos de ensino e aprendizagem, oferecendo novas possibilidades de acesso ao conhecimento.",
-        "Ferramentas digitais podem personalizar o ensino, atendendo às necessidades individuais dos estudantes e promovendo maior engajamento.",
-        "Entretanto, a democratização do acesso à tecnologia educacional ainda é um desafio, especialmente em regiões menos favorecidas."
-      ]
+        'A tecnologia revolucionou os métodos de ensino e aprendizagem, oferecendo novas possibilidades de acesso ao conhecimento.',
+        'Ferramentas digitais podem personalizar o ensino, atendendo às necessidades individuais dos estudantes e promovendo maior engajamento.',
+        'Entretanto, a democratização do acesso à tecnologia educacional ainda é um desafio, especialmente em regiões menos favorecidas.',
+      ],
     },
     {
-      id: "3",
-      title: "Sustentabilidade ambiental e desenvolvimento econômico",
+      id: '3',
+      title: 'Sustentabilidade ambiental e desenvolvimento econômico',
       supportTexts: [
-        "O desenvolvimento sustentável busca equilibrar o crescimento econômico com a preservação do meio ambiente para as futuras gerações.",
-        "Empresas estão adotando práticas ESG (Ambientais, Sociais e de Governança) como estratégia competitiva e responsabilidade social.",
-        "A transição para uma economia verde requer investimentos em tecnologias limpas e mudanças nos padrões de consumo da sociedade."
-      ]
+        'O desenvolvimento sustentável busca equilibrar o crescimento econômico com a preservação do meio ambiente para as futuras gerações.',
+        'Empresas estão adotando práticas ESG (Ambientais, Sociais e de Governança) como estratégia competitiva e responsabilidade social.',
+        'A transição para uma economia verde requer investimentos em tecnologias limpas e mudanças nos padrões de consumo da sociedade.',
+      ],
     },
     {
-      id: "4",
-      title: "Saúde mental na era digital",
+      id: '4',
+      title: 'Saúde mental na era digital',
       supportTexts: [
-        "O uso excessivo de redes sociais e dispositivos digitais tem impactos significativos na saúde mental, especialmente entre jovens.",
-        "A pandemia intensificou problemas como ansiedade e depressão, evidenciando a necessidade de maior atenção à saúde mental.",
-        "Estratégias de prevenção e tratamento devem incluir o uso consciente da tecnologia e o fortalecimento de vínculos sociais reais."
-      ]
+        'O uso excessivo de redes sociais e dispositivos digitais tem impactos significativos na saúde mental, especialmente entre jovens.',
+        'A pandemia intensificou problemas como ansiedade e depressão, evidenciando a necessidade de maior atenção à saúde mental.',
+        'Estratégias de prevenção e tratamento devem incluir o uso consciente da tecnologia e o fortalecimento de vínculos sociais reais.',
+      ],
     },
     {
-      id: "5",
-      title: "Democracia e participação cidadã no Brasil",
+      id: '5',
+      title: 'Democracia e participação cidadã no Brasil',
       supportTexts: [
-        "A participação ativa dos cidadãos é fundamental para o fortalecimento da democracia e a construção de políticas públicas efetivas.",
-        "Mecanismos de participação como conselhos populares, audiências públicas e plataformas digitais ampliam o diálogo entre sociedade e governo.",
-        "O combate à desinformação e a educação política são essenciais para garantir decisões conscientes e informadas da população."
-      ]
-    }
+        'A participação ativa dos cidadãos é fundamental para o fortalecimento da democracia e a construção de políticas públicas efetivas.',
+        'Mecanismos de participação como conselhos populares, audiências públicas e plataformas digitais ampliam o diálogo entre sociedade e governo.',
+        'O combate à desinformação e a educação política são essenciais para garantir decisões conscientes e informadas da população.',
+      ],
+    },
   ];
 
   if (!user) return null;
@@ -101,38 +105,34 @@ const PortalAluno = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <header className="flex justify-between items-center mb-8">
+        <header className="mb-8 flex items-center justify-between">
           <h1 className="text-3xl font-bold text-primary">Portal do Aluno</h1>
           <div className="flex gap-4">
             <Button
-              onClick={() => navigate("/minhas-redacoes")}
+              onClick={() => navigate('/minhas-redacoes')}
               variant="outline"
               className="flex items-center gap-2"
             >
-              <FileText className="h-4 w-4" />
+              <FileText className="size-4" />
               Minhas Redações
             </Button>
-            <Button
-              onClick={handleLogout}
-              variant="outline"
-              className="flex items-center gap-2"
-            >
-              <LogOut className="h-4 w-4" />
+            <Button onClick={handleLogout} variant="outline" className="flex items-center gap-2">
+              <LogOut className="size-4" />
               Sair
             </Button>
           </div>
         </header>
 
         {/* Cards de Preços */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <div className="mb-8 grid gap-6 md:grid-cols-2">
           <Card className="border-primary/20">
             <CardContent className="p-6 text-center">
-              <h3 className="text-xl font-semibold text-primary mb-2">Correção Avulsa</h3>
-              <p className="text-3xl font-bold text-primary mb-2">R$ 70</p>
-              <p className="text-sm text-muted-foreground mb-4">
+              <h3 className="mb-2 text-xl font-semibold text-primary">Correção Avulsa</h3>
+              <p className="mb-2 text-3xl font-bold text-primary">R$ 70</p>
+              <p className="mb-4 text-sm text-muted-foreground">
                 Correção individual detalhada com feedback personalizado
               </p>
-              <ul className="text-sm text-left space-y-1 mb-4">
+              <ul className="mb-4 space-y-1 text-left text-sm">
                 <li>✓ Correção completa seguindo critérios oficiais</li>
                 <li>✓ Feedback detalhado por competência</li>
                 <li>✓ Sugestões de melhoria</li>
@@ -140,15 +140,15 @@ const PortalAluno = () => {
               </ul>
             </CardContent>
           </Card>
-          
+
           <Card className="border-primary/20 bg-primary/5">
             <CardContent className="p-6 text-center">
-              <h3 className="text-xl font-semibold text-primary mb-2">Pacote 4 Correções</h3>
-              <p className="text-3xl font-bold text-primary mb-2">R$ 250</p>
-              <p className="text-sm text-muted-foreground mb-4">
+              <h3 className="mb-2 text-xl font-semibold text-primary">Pacote 4 Correções</h3>
+              <p className="mb-2 text-3xl font-bold text-primary">R$ 250</p>
+              <p className="mb-4 text-sm text-muted-foreground">
                 Melhor custo-benefício para acompanhamento contínuo
               </p>
-              <ul className="text-sm text-left space-y-1 mb-4">
+              <ul className="mb-4 space-y-1 text-left text-sm">
                 <li>✓ 4 correções completas</li>
                 <li>✓ Economia de R$ 30</li>
                 <li>✓ Acompanhamento da evolução</li>
@@ -159,21 +159,19 @@ const PortalAluno = () => {
         </div>
 
         {/* Banner de Entrega */}
-        <Card className="mb-8 bg-gradient-to-r from-primary/10 to-primary/20 border-primary/30">
+        <Card className="mb-8 border-primary/30 bg-gradient-to-r from-primary/10 to-primary/20">
           <CardContent className="p-8 text-center">
-            <h2 className="text-2xl font-bold text-primary mb-4">
-              📝 Entregar Redação
-            </h2>
-            <p className="text-muted-foreground mb-4">
+            <h2 className="mb-4 text-2xl font-bold text-primary">📝 Entregar Redação</h2>
+            <p className="mb-4 text-muted-foreground">
               Envie sua redação para correção profissional
             </p>
-            <p className="text-sm text-muted-foreground mb-6">
+            <p className="mb-6 text-sm text-muted-foreground">
               💰 Pagamento deve ser efetuado pelo WhatsApp do GS Aprova após envio da redação
             </p>
             <Dialog open={showSubmissionDialog} onOpenChange={setShowSubmissionDialog}>
               <DialogTrigger asChild>
                 <Button size="lg" className="flex items-center gap-2">
-                  <Upload className="h-5 w-5" />
+                  <Upload className="size-5" />
                   Enviar Redação
                 </Button>
               </DialogTrigger>
@@ -182,9 +180,7 @@ const PortalAluno = () => {
                   <DialogTitle>Tipo de Redação</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4">
-                  <p className="text-muted-foreground">
-                    Escolha o tipo da sua redação:
-                  </p>
+                  <p className="text-muted-foreground">Escolha o tipo da sua redação:</p>
                   <div className="grid grid-cols-1 gap-4">
                     <Button
                       onClick={() => handleSubmissionChoice('gs_aprova')}
@@ -219,37 +215,33 @@ const PortalAluno = () => {
 
         {/* Temas de Redação */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-semibold text-center mb-6">
-            Temas de Redação Disponíveis
-          </h2>
-          
-          {themes.map((theme) => (
+          <h2 className="mb-6 text-center text-2xl font-semibold">Temas de Redação Disponíveis</h2>
+
+          {themes.map(theme => (
             <Card key={theme.id} className="w-full">
               <Collapsible
                 open={openThemes.includes(theme.id)}
                 onOpenChange={() => toggleTheme(theme.id)}
               >
                 <CollapsibleTrigger asChild>
-                  <CardHeader className="cursor-pointer hover:bg-muted/50 transition-colors">
+                  <CardHeader className="cursor-pointer transition-colors hover:bg-muted/50">
                     <CardTitle className="flex items-center justify-between">
                       <span>{theme.title}</span>
                       {openThemes.includes(theme.id) ? (
-                        <ChevronDown className="h-5 w-5" />
+                        <ChevronDown className="size-5" />
                       ) : (
-                        <ChevronRight className="h-5 w-5" />
+                        <ChevronRight className="size-5" />
                       )}
                     </CardTitle>
                   </CardHeader>
                 </CollapsibleTrigger>
-                
+
                 <CollapsibleContent>
                   <CardContent className="pt-0">
                     <div className="space-y-3">
-                      <h4 className="font-medium text-primary mb-3">
-                        Textos de Apoio:
-                      </h4>
+                      <h4 className="mb-3 font-medium text-primary">Textos de Apoio:</h4>
                       {theme.supportTexts.map((text, index) => (
-                        <div key={index} className="p-3 bg-muted rounded-md">
+                        <div key={index} className="rounded-md bg-muted p-3">
                           <p className="text-sm text-muted-foreground">{text}</p>
                         </div>
                       ))}

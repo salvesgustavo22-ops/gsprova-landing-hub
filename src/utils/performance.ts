@@ -13,12 +13,12 @@ export const preloadResource = (href: string, as: string, type?: string, crossOr
   link.as = as;
   if (type) link.type = type;
   if (crossOrigin) link.crossOrigin = crossOrigin;
-  
+
   // Add cache hints
   if (as === 'image' || as === 'font' || as === 'script' || as === 'style') {
     link.setAttribute('fetchpriority', 'high');
   }
-  
+
   document.head.appendChild(link);
   return link;
 };
@@ -26,17 +26,14 @@ export const preloadResource = (href: string, as: string, type?: string, crossOr
 // Critical resource hints
 export const addResourceHints = () => {
   // DNS prefetch for external domains
-  const domains = [
-    'https://www.googletagmanager.com',
-    'https://fonts.googleapis.com'
-  ];
-  
+  const domains = ['https://www.googletagmanager.com', 'https://fonts.googleapis.com'];
+
   domains.forEach(domain => {
     const prefetch = document.createElement('link');
     prefetch.rel = 'dns-prefetch';
     prefetch.href = domain;
     document.head.appendChild(prefetch);
-    
+
     const preconnect = document.createElement('link');
     preconnect.rel = 'preconnect';
     preconnect.href = domain;

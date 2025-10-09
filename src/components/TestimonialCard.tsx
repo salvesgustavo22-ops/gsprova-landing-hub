@@ -1,6 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Star } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Card, CardContent } from '@/components/ui/card';
+import { Star } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface TestimonialCardProps {
   name: string;
@@ -17,13 +17,13 @@ export const TestimonialCard = ({
   text,
   score,
   className,
-  'data-testid': testId
+  'data-testid': testId,
 }: TestimonialCardProps) => {
   return (
-    <Card 
+    <Card
       data-testid={testId}
       className={cn(
-        "rounded-2xl p-6 bg-white border-[#E5E7EB] shadow-sm hover:shadow-md transition-all duration-300 dark:bg-[#1E3A8A] dark:text-white dark:border-[#FBBF24]/20",
+        'rounded-2xl border-[#E5E7EB] bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md dark:border-[#FBBF24]/20 dark:bg-[#1E3A8A] dark:text-white',
         className
       )}
     >
@@ -31,39 +31,30 @@ export const TestimonialCard = ({
         {/* Rating Stars */}
         <div className="flex gap-1">
           {[...Array(5)].map((_, i) => (
-            <Star 
-              key={i} 
-              className="h-4 w-4 fill-[#FBBF24] text-[#FBBF24]" 
-            />
+            <Star key={i} className="size-4 fill-[#FBBF24] text-[#FBBF24]" />
           ))}
         </div>
-        
+
         {/* Testimonial Text */}
-        <blockquote className="text-sm md:text-base italic">
-          "{text}"
-        </blockquote>
-        
+        <blockquote className="text-sm italic md:text-base">"{text}"</blockquote>
+
         {/* Author Info */}
         <div className="flex items-center gap-3">
           {photo ? (
-            <img 
+            <img
               src={photo}
               alt={`Foto de ${name}`}
-              className="w-10 h-10 rounded-full object-cover border-2 border-[#FBBF24]"
+              className="size-10 rounded-full border-2 border-[#FBBF24] object-cover"
             />
           ) : (
-            <div className="w-10 h-10 rounded-full bg-[#FBBF24] flex items-center justify-center text-[#1E3A8A] font-semibold text-sm">
+            <div className="flex size-10 items-center justify-center rounded-full bg-[#FBBF24] text-sm font-semibold text-[#1E3A8A]">
               {name.charAt(0)}
             </div>
           )}
-          
+
           <div>
-            <div className="font-semibold text-sm">{name}</div>
-            {score && (
-              <div className="text-xs text-[#FBBF24] font-medium">
-                {score}
-              </div>
-            )}
+            <div className="text-sm font-semibold">{name}</div>
+            {score && <div className="text-xs font-medium text-[#FBBF24]">{score}</div>}
           </div>
         </div>
       </CardContent>

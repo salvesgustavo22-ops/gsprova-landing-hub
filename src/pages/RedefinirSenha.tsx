@@ -1,32 +1,32 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { Eye, EyeOff, CheckCircle } from "lucide-react";
-import logoImage from "@/assets/gs-aprova-new-logo.png";
+import { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
+import { Eye, EyeOff, CheckCircle } from 'lucide-react';
+import logoImage from '@/assets/gs-aprova-new-logo.png';
 
 const RedefinirSenha = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [searchParams] = useSearchParams();
-  
+
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [passwordUpdated, setPasswordUpdated] = useState(false);
-  
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   useEffect(() => {
     // Handle the password reset token from URL
     const accessToken = searchParams.get('access_token');
     const refreshToken = searchParams.get('refresh_token');
-    
+
     if (accessToken && refreshToken) {
       supabase.auth.setSession({
         access_token: accessToken,
@@ -40,50 +40,50 @@ const RedefinirSenha = () => {
     const hasNumber = /\d/.test(password);
     const hasLetter = /[a-zA-Z]/.test(password);
     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    
+
     return hasMinLength && hasNumber && hasLetter && hasSpecialChar;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
+
     if (password !== confirmPassword) {
       toast({
-        title: "Erro",
-        description: "As senhas não coincidem",
-        variant: "destructive",
+        title: 'Erro',
+        description: 'As senhas não coincidem',
+        variant: 'destructive',
       });
       setLoading(false);
       return;
     }
-    
+
     if (!validatePassword(password)) {
       toast({
-        title: "Senha inválida",
-        description: "A senha deve ter pelo menos 8 caracteres, incluindo números, letras e caracteres especiais",
-        variant: "destructive",
+        title: 'Senha inválida',
+        description:
+          'A senha deve ter pelo menos 8 caracteres, incluindo números, letras e caracteres especiais',
+        variant: 'destructive',
       });
       setLoading(false);
       return;
     }
-    
+
     try {
       const { error } = await supabase.auth.updateUser({
-        password: password
+        password: password,
       });
-      
+
       if (error) {
         throw error;
       }
-      
+
       setPasswordUpdated(true);
-      
     } catch (error: any) {
       toast({
-        title: "Erro ao redefinir senha",
+        title: 'Erro ao redefinir senha',
         description: error.message,
-        variant: "destructive",
+        variant: 'destructive',
       });
     } finally {
       setLoading(false);
@@ -92,27 +92,20 @@ const RedefinirSenha = () => {
 
   if (passwordUpdated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <div className="flex min-h-screen items-center justify-center bg-background p-4">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
-            <img
-              src={logoImage}
-              alt="GS Aprova"
-              className="h-16 mx-auto mb-4"
-            />
+            <img src={logoImage} alt="GS Aprova" className="mx-auto mb-4 h-16" />
             <div className="flex items-center justify-center gap-2 text-green-600">
-              <CheckCircle className="h-6 w-6" />
+              <CheckCircle className="size-6" />
               <CardTitle>Senha Atualizada!</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="text-center space-y-4">
+          <CardContent className="space-y-4 text-center">
             <p className="text-muted-foreground">
               Sua senha foi redefinida com sucesso. Agora você pode fazer login com a nova senha.
             </p>
-            <Button
-              onClick={() => navigate("/auth-aluno")}
-              className="w-full"
-            >
+            <Button onClick={() => navigate('/auth-aluno')} className="w-full">
               Ir para Login
             </Button>
           </CardContent>
@@ -122,14 +115,10 @@ const RedefinirSenha = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+    <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <img
-            src={logoImage}
-            alt="GS Aprova"
-            className="h-16 mx-auto mb-4"
-          />
+          <img src={logoImage} alt="GS Aprova" className="mx-auto mb-4 h-16" />
           <CardTitle>Redefinir Senha</CardTitle>
         </CardHeader>
         <CardContent>
@@ -139,9 +128,9 @@ const RedefinirSenha = () => {
               <div className="relative">
                 <Input
                   id="password"
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={e => setPassword(e.target.value)}
                   required
                 />
                 <Button
@@ -151,22 +140,22 @@ const RedefinirSenha = () => {
                   className="absolute right-0 top-0 h-full px-3"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                 </Button>
               </div>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="mt-1 text-xs text-muted-foreground">
                 Mínimo 8 caracteres, incluindo números, letras e símbolos
               </p>
             </div>
-            
+
             <div>
               <Label htmlFor="confirm-password">Confirmar Nova Senha</Label>
               <div className="relative">
                 <Input
                   id="confirm-password"
-                  type={showConfirmPassword ? "text" : "password"}
+                  type={showConfirmPassword ? 'text' : 'password'}
                   value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  onChange={e => setConfirmPassword(e.target.value)}
                   required
                 />
                 <Button
@@ -176,17 +165,13 @@ const RedefinirSenha = () => {
                   className="absolute right-0 top-0 h-full px-3"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
-                  {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  {showConfirmPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                 </Button>
               </div>
             </div>
-            
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={loading}
-            >
-              {loading ? "Atualizando..." : "Atualizar Senha"}
+
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading ? 'Atualizando...' : 'Atualizar Senha'}
             </Button>
           </form>
         </CardContent>

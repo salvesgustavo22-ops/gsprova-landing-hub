@@ -1,14 +1,20 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
-import { trackEvent } from "@/lib/analytics";
-import { BUSINESS_WHATSAPP_URL } from "@/lib/constants";
-import { MessageCircle } from "lucide-react";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
+import { trackEvent } from '@/lib/analytics';
+import { BUSINESS_WHATSAPP_URL } from '@/lib/constants';
+import { MessageCircle } from 'lucide-react';
 
 interface ContactFormProps {
   origem?: string;
@@ -23,16 +29,16 @@ interface FormData {
   interest: string;
 }
 
-export const ContactForm = ({ 
-  origem = "contato-home", 
+export const ContactForm = ({
+  origem = 'contato-home',
   onSuccess,
-  'data-testid': testId 
+  'data-testid': testId,
 }: ContactFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
-    interest: ''
+    interest: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
@@ -48,7 +54,7 @@ export const ContactForm = ({
 
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
-    
+
     if (!formData.name.trim()) {
       newErrors.name = 'Nome é obrigatório';
     }
@@ -70,48 +76,45 @@ export const ContactForm = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsSubmitting(true);
-    
+
     try {
-      const { error } = await supabase
-        .from('leads')
-        .insert({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone.replace(/\D/g, ''),
-          lead_type: 'contact',
-          service_selected: formData.interest,
-          source: origem
-        });
+      const { error } = await supabase.from('leads').insert({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone.replace(/\D/g, ''),
+        lead_type: 'contact',
+        service_selected: formData.interest,
+        source: origem,
+      });
 
       if (error) throw error;
 
       // Track analytics event
       trackEvent('lead_submitted', {
         source: origem,
-        service: formData.interest
+        service: formData.interest,
       });
 
       toast({
-        title: "Mensagem enviada!",
-        description: "Entraremos em contato em breve.",
+        title: 'Mensagem enviada!',
+        description: 'Entraremos em contato em breve.',
       });
 
       // Reset form
       setFormData({ name: '', email: '', phone: '', interest: '' });
       setErrors({});
-      
+
       onSuccess?.();
-      
     } catch (error) {
       console.error('Erro ao enviar formulário:', error);
       toast({
-        title: "Erro ao enviar",
-        description: "Tente novamente ou entre em contato pelo WhatsApp.",
-        variant: "destructive",
+        title: 'Erro ao enviar',
+        description: 'Tente novamente ou entre em contato pelo WhatsApp.',
+        variant: 'destructive',
       });
     } finally {
       setIsSubmitting(false);
@@ -124,16 +127,16 @@ export const ContactForm = ({
   };
 
   return (
-    <Card 
+    <Card
       data-testid={testId}
-      className="bg-white border-[#1E3A8A] dark:bg-[#1E3A8A] dark:text-white rounded-2xl shadow-lg"
+      className="rounded-2xl border-[#1E3A8A] bg-white shadow-lg dark:bg-[#1E3A8A] dark:text-white"
     >
       <CardHeader>
-        <CardTitle className="text-xl md:text-2xl font-bold text-center text-[#1E3A8A] dark:text-white">
+        <CardTitle className="text-center text-xl font-bold text-[#1E3A8A] dark:text-white md:text-2xl">
           Fale Conosco
         </CardTitle>
       </CardHeader>
-      
+
       <CardContent className="space-y-4">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -143,10 +146,10 @@ export const ContactForm = ({
             <Input
               id="name"
               value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-              className={errors.name ? "border-red-500" : ""}
+              onChange={e => setFormData({ ...formData, name: e.target.value })}
+              className={errors.name ? 'border-red-500' : ''}
               aria-invalid={!!errors.name}
-              aria-describedby={errors.name ? "name-error" : undefined}
+              aria-describedby={errors.name ? 'name-error' : undefined}
             />
             {errors.name && (
               <span id="name-error" className="text-sm text-red-500">
@@ -163,10 +166,10 @@ export const ContactForm = ({
               id="email"
               type="email"
               value={formData.email}
-              onChange={(e) => setFormData({...formData, email: e.target.value})}
-              className={errors.email ? "border-red-500" : ""}
+              onChange={e => setFormData({ ...formData, email: e.target.value })}
+              className={errors.email ? 'border-red-500' : ''}
               aria-invalid={!!errors.email}
-              aria-describedby={errors.email ? "email-error" : undefined}
+              aria-describedby={errors.email ? 'email-error' : undefined}
             />
             {errors.email && (
               <span id="email-error" className="text-sm text-red-500">
@@ -182,11 +185,11 @@ export const ContactForm = ({
             <Input
               id="phone"
               value={formData.phone}
-              onChange={(e) => setFormData({...formData, phone: formatPhone(e.target.value)})}
+              onChange={e => setFormData({ ...formData, phone: formatPhone(e.target.value) })}
               placeholder="(11) 99999-9999"
-              className={errors.phone ? "border-red-500" : ""}
+              className={errors.phone ? 'border-red-500' : ''}
               aria-invalid={!!errors.phone}
-              aria-describedby={errors.phone ? "phone-error" : undefined}
+              aria-describedby={errors.phone ? 'phone-error' : undefined}
             />
             {errors.phone && (
               <span id="phone-error" className="text-sm text-red-500">
@@ -199,11 +202,11 @@ export const ContactForm = ({
             <Label htmlFor="interest" className="text-sm font-medium">
               Interesse *
             </Label>
-            <Select 
-              value={formData.interest} 
-              onValueChange={(value) => setFormData({...formData, interest: value})}
+            <Select
+              value={formData.interest}
+              onValueChange={value => setFormData({ ...formData, interest: value })}
             >
-              <SelectTrigger className={errors.interest ? "border-red-500" : ""}>
+              <SelectTrigger className={errors.interest ? 'border-red-500' : ''}>
                 <SelectValue placeholder="Selecione seu interesse" />
               </SelectTrigger>
               <SelectContent>
@@ -213,23 +216,19 @@ export const ContactForm = ({
                 <SelectItem value="combo">Combo Completo</SelectItem>
               </SelectContent>
             </Select>
-            {errors.interest && (
-              <span className="text-sm text-red-500">
-                {errors.interest}
-              </span>
-            )}
+            {errors.interest && <span className="text-sm text-red-500">{errors.interest}</span>}
           </div>
 
           <div className="flex gap-3">
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 bg-[#FBBF24] text-[#1E3A8A] hover:brightness-95 font-semibold"
+              className="flex-1 bg-[#FBBF24] font-semibold text-[#1E3A8A] hover:brightness-95"
               data-analytics="cta_form_submit"
             >
-              {isSubmitting ? "Enviando..." : "Enviar"}
+              {isSubmitting ? 'Enviando...' : 'Enviar'}
             </Button>
-            
+
             <Button
               type="button"
               variant="outline"
@@ -237,7 +236,7 @@ export const ContactForm = ({
               className="border-[#FBBF24] text-[#FBBF24] hover:bg-[#FBBF24] hover:text-[#1E3A8A]"
               data-analytics="cta_form_whatsapp"
             >
-              <MessageCircle className="h-4 w-4" />
+              <MessageCircle className="size-4" />
             </Button>
           </div>
         </form>

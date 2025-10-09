@@ -1,6 +1,6 @@
 /**
  * Supabase helper functions and utilities
- * 
+ *
  * This file contains reusable helper functions for working with Supabase
  * in edge functions and client-side code.
  */
@@ -32,7 +32,7 @@ export function isValidPhone(phone) {
  */
 export function sanitizeInput(input) {
   if (typeof input !== 'string') return '';
-  
+
   return input
     .trim()
     .replace(/[<>\"']/g, '') // Remove potentially dangerous characters
@@ -52,7 +52,7 @@ export function createErrorResponse(message, status = 400, details = {}) {
       error: true,
       message,
       details,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     }),
     {
       status,
@@ -60,8 +60,8 @@ export function createErrorResponse(message, status = 400, details = {}) {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-      }
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
     }
   );
 }
@@ -77,7 +77,7 @@ export function createSuccessResponse(data, status = 200) {
     JSON.stringify({
       success: true,
       data,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     }),
     {
       status,
@@ -85,8 +85,8 @@ export function createSuccessResponse(data, status = 200) {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-      }
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
     }
   );
 }
@@ -99,13 +99,13 @@ export function createSuccessResponse(data, status = 200) {
  */
 export function validateRequiredFields(data, requiredFields) {
   const missing = [];
-  
+
   for (const field of requiredFields) {
     if (!data || !data[field] || data[field].toString().trim() === '') {
       missing.push(field);
     }
   }
-  
+
   return missing;
 }
 
@@ -118,11 +118,11 @@ export function getClientIP(request) {
   const forwarded = request.headers.get('x-forwarded-for');
   const real = request.headers.get('x-real-ip');
   const clientIP = request.headers.get('x-client-ip');
-  
+
   if (forwarded) {
     return forwarded.split(',')[0].trim();
   }
-  
+
   return real || clientIP || 'unknown';
 }
 
@@ -142,24 +142,24 @@ const rateLimitStore = new Map();
 export function checkRateLimit(key, maxRequests = 10, windowMs = 60000) {
   const now = Date.now();
   const windowStart = now - windowMs;
-  
+
   if (!rateLimitStore.has(key)) {
     rateLimitStore.set(key, []);
   }
-  
+
   const requests = rateLimitStore.get(key);
-  
+
   // Remove expired requests
   const validRequests = requests.filter(timestamp => timestamp > windowStart);
-  
+
   if (validRequests.length >= maxRequests) {
     return false;
   }
-  
+
   // Add current request
   validRequests.push(now);
   rateLimitStore.set(key, validRequests);
-  
+
   return true;
 }
 
@@ -183,22 +183,22 @@ export function generateCorrectionId(prefix = 'G') {
  */
 export function validateFileUpload(file, allowedTypes = [], maxSize = 5 * 1024 * 1024) {
   const errors = [];
-  
+
   if (!file) {
     errors.push('No file provided');
     return { isValid: false, errors };
   }
-  
+
   if (allowedTypes.length > 0 && !allowedTypes.includes(file.type)) {
     errors.push(`File type ${file.type} not allowed. Allowed types: ${allowedTypes.join(', ')}`);
   }
-  
+
   if (file.size > maxSize) {
     errors.push(`File size ${file.size} exceeds maximum size ${maxSize}`);
   }
-  
+
   return {
     isValid: errors.length === 0,
-    errors
+    errors,
   };
 }

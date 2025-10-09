@@ -16,7 +16,7 @@ export const AriaLiveRegion = ({
   priority = 'polite',
   atomic = true,
   relevant = 'all',
-  className = 'sr-only'
+  className = 'sr-only',
 }: AriaLiveRegionProps) => {
   return (
     <div

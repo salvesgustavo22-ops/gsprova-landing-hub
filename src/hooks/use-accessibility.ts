@@ -104,7 +104,9 @@ export const useReducedMotion = () => {
  * Hook for managing color scheme preferences
  */
 export const useColorScheme = () => {
-  const [colorScheme, setColorScheme] = useState<'light' | 'dark' | 'no-preference'>('no-preference');
+  const [colorScheme, setColorScheme] = useState<'light' | 'dark' | 'no-preference'>(
+    'no-preference'
+  );
 
   useEffect(() => {
     const lightQuery = window.matchMedia('(prefers-color-scheme: light)');

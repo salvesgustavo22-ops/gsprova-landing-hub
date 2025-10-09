@@ -1,19 +1,19 @@
-import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
-import { StickyWhatsApp } from "@/components/StickyWhatsApp";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Calendar, Clock, ArrowLeft } from "lucide-react";
-import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Navigation } from '@/components/Navigation';
+import { Footer } from '@/components/Footer';
+import { StickyWhatsApp } from '@/components/StickyWhatsApp';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Calendar, Clock, ArrowLeft } from 'lucide-react';
+import { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 const blogContent: Record<string, any> = {
-  "reta-final-enem-2025": {
-    title: "Reta Final ENEM 2025: 7 Estratégias Que Funcionam",
-    date: "2025-01-15",
-    readTime: "8 min",
-    tags: ["Estratégia", "ENEM 2025", "Reta Final"],
-    image: "/lovable-uploads/18015f32-572d-4cad-9ba0-16d5315e7060.png",
+  'reta-final-enem-2025': {
+    title: 'Reta Final ENEM 2025: 7 Estratégias Que Funcionam',
+    date: '2025-01-15',
+    readTime: '8 min',
+    tags: ['Estratégia', 'ENEM 2025', 'Reta Final'],
+    image: '/lovable-uploads/18015f32-572d-4cad-9ba0-16d5315e7060.png',
     content: `
 Com o ENEM 2025 se aproximando (9 e 16 de novembro), a reta final exige estratégia inteligente. Baseado na análise das provas 2022-2024, aqui estão as 7 estratégias mais eficazes:
 
@@ -44,14 +44,14 @@ Baseado nas lacunas identificadas, esperamos mais questões sobre:
 - **Semana 4**: Funções + Financeira + Revisão
 
 **Conclusão:** Uma estratégia baseada em dados pode fazer toda a diferença na sua aprovação. Foque no que realmente importa e otimize seu tempo de estudo.
-    `
+    `,
   },
-  "matematica-basica-35-porcento": {
-    title: "Por Que 35% das Questões São Matemática Básica (Dados Oficiais INEP)",
-    date: "2025-01-10",
-    readTime: "10 min",
-    tags: ["Matemática", "Dados INEP", "Análise"],
-    image: "/lovable-uploads/280cddf7-6e06-4b0d-8568-923aca47f9f4.png",
+  'matematica-basica-35-porcento': {
+    title: 'Por Que 35% das Questões São Matemática Básica (Dados Oficiais INEP)',
+    date: '2025-01-10',
+    readTime: '10 min',
+    tags: ['Matemática', 'Dados INEP', 'Análise'],
+    image: '/lovable-uploads/280cddf7-6e06-4b0d-8568-923aca47f9f4.png',
     content: `
 Analisamos todas as 270 questões de matemática do ENEM 2022-2024 e descobrimos um padrão surpreendente.
 
@@ -96,8 +96,8 @@ Se você dominar apenas matemática básica, garante **35% da prova**. Isso pode
 5. **Resolva 100+ questões** de provas anteriores
 
 **Conclusão:** A matemática do ENEM é menos sobre fórmulas complexas e mais sobre raciocínio lógico aplicado a situações cotidianas. Foque no básico e garanta pontos valiosos.
-    `
-  }
+    `,
+  },
 };
 
 const BlogPost = () => {
@@ -107,7 +107,7 @@ const BlogPost = () => {
   useEffect(() => {
     if (post) {
       document.title = `${post.title} | Blog GS Aprova`;
-      
+
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
         metaDescription.setAttribute('content', post.content.substring(0, 155));
@@ -119,12 +119,10 @@ const BlogPost = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navigation />
-        <main className="pt-20 container mx-auto px-4 py-16 text-center">
-          <h1 className="text-3xl font-bold text-[#1E3A8A] mb-4">Artigo não encontrado</h1>
+        <main className="container mx-auto px-4 py-16 pt-20 text-center">
+          <h1 className="mb-4 text-3xl font-bold text-[#1E3A8A]">Artigo não encontrado</h1>
           <Link to="/blog">
-            <Button className="bg-[#1E3A8A] hover:bg-[#1E3A8A]/90">
-              Voltar ao Blog
-            </Button>
+            <Button className="bg-[#1E3A8A] hover:bg-[#1E3A8A]/90">Voltar ao Blog</Button>
           </Link>
         </main>
         <Footer />
@@ -135,36 +133,29 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <main className="pt-20">
         {/* Hero Image */}
         <div className="relative h-[400px] bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6]">
-          <img 
-            src={post.image} 
-            alt={post.title}
-            className="w-full h-full object-cover opacity-30"
-          />
+          <img src={post.image} alt={post.title} className="size-full object-cover opacity-30" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="container mx-auto px-4 text-center">
               <Link to="/blog">
-                <Button 
-                  variant="ghost" 
-                  className="text-white hover:bg-white/20 mb-6"
-                >
-                  <ArrowLeft className="w-4 h-4 mr-2" />
+                <Button variant="ghost" className="mb-6 text-white hover:bg-white/20">
+                  <ArrowLeft className="mr-2 size-4" />
                   Voltar ao Blog
                 </Button>
               </Link>
-              <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 max-w-4xl mx-auto">
+              <h1 className="mx-auto mb-4 max-w-4xl text-3xl font-bold text-white md:text-5xl">
                 {post.title}
               </h1>
               <div className="flex items-center justify-center space-x-6 text-white/90">
                 <div className="flex items-center space-x-2">
-                  <Calendar className="w-5 h-5" />
+                  <Calendar className="size-5" />
                   <span>{new Date(post.date).toLocaleDateString('pt-BR')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <Clock className="w-5 h-5" />
+                  <Clock className="size-5" />
                   <span>{post.readTime} de leitura</span>
                 </div>
               </div>
@@ -173,44 +164,58 @@ const BlogPost = () => {
         </div>
 
         {/* Content */}
-        <article className="py-16 bg-white dark:bg-[#0F172A]">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <div className="flex flex-wrap gap-2 mb-8">
+        <article className="bg-white py-16 dark:bg-[#0F172A]">
+          <div className="container mx-auto max-w-4xl px-4">
+            <div className="mb-8 flex flex-wrap gap-2">
               {post.tags.map((tag: string) => (
-                <Badge 
+                <Badge
                   key={tag}
-                  className="bg-[#FBBF24]/20 text-[#1E3A8A] dark:text-[#FBBF24] border border-[#FBBF24]"
+                  className="border border-[#FBBF24] bg-[#FBBF24]/20 text-[#1E3A8A] dark:text-[#FBBF24]"
                 >
                   {tag}
                 </Badge>
               ))}
             </div>
-            
-            <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-[#1E3A8A] dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-white/80 prose-strong:text-[#1E3A8A] dark:prose-strong:text-[#FBBF24] prose-ul:text-gray-700 dark:prose-ul:text-white/80">
+
+            <div className="prose prose-lg dark:prose-invert prose-headings:text-[#1E3A8A] dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-white/80 prose-strong:text-[#1E3A8A] dark:prose-strong:text-[#FBBF24] prose-ul:text-gray-700 dark:prose-ul:text-white/80 max-w-none">
               {post.content.split('\n').map((paragraph: string, index: number) => {
                 if (paragraph.startsWith('## ')) {
-                  return <h2 key={index} className="text-2xl font-bold mt-8 mb-4">{paragraph.replace('## ', '')}</h2>;
+                  return (
+                    <h2 key={index} className="mb-4 mt-8 text-2xl font-bold">
+                      {paragraph.replace('## ', '')}
+                    </h2>
+                  );
                 } else if (paragraph.startsWith('### ')) {
-                  return <h3 key={index} className="text-xl font-bold mt-6 mb-3">{paragraph.replace('### ', '')}</h3>;
+                  return (
+                    <h3 key={index} className="mb-3 mt-6 text-xl font-bold">
+                      {paragraph.replace('### ', '')}
+                    </h3>
+                  );
                 } else if (paragraph.startsWith('- ')) {
-                  return <li key={index} className="ml-6">{paragraph.replace('- ', '')}</li>;
+                  return (
+                    <li key={index} className="ml-6">
+                      {paragraph.replace('- ', '')}
+                    </li>
+                  );
                 } else if (paragraph.trim()) {
-                  return <p key={index} className="mb-4">{paragraph}</p>;
+                  return (
+                    <p key={index} className="mb-4">
+                      {paragraph}
+                    </p>
+                  );
                 }
                 return null;
               })}
             </div>
 
             {/* CTA */}
-            <div className="mt-12 p-8 bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6] rounded-xl text-center">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Quer nossa trilha completa?
-              </h3>
-              <p className="text-white/90 mb-6">
+            <div className="mt-12 rounded-xl bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6] p-8 text-center">
+              <h3 className="mb-4 text-2xl font-bold text-white">Quer nossa trilha completa?</h3>
+              <p className="mb-6 text-white/90">
                 Conheça nossos materiais exclusivos baseados em análise de dados oficiais
               </p>
               <Link to="/#materiais-exclusivos">
-                <Button className="bg-[#FBBF24] hover:brightness-95 text-[#1E3A8A] font-semibold px-8 py-6 text-lg">
+                <Button className="bg-[#FBBF24] px-8 py-6 text-lg font-semibold text-[#1E3A8A] hover:brightness-95">
                   Ver Matemática ENEM 2025
                 </Button>
               </Link>

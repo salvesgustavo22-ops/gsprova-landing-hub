@@ -1,32 +1,34 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Target, Award, TrendingUp, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
-import { GuiaLeadForm } from "@/components/GuiaLeadForm";
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Target, Award, TrendingUp, BookOpen, GraduationCap, ArrowRight } from 'lucide-react';
+import { GuiaLeadForm } from '@/components/GuiaLeadForm';
 
 export default function Hero() {
   return (
-    <section className="relative bg-gradient-to-br from-[#1E3A8A] via-[#3B82F6] to-[#1E3A8A] min-h-[75vh] overflow-hidden">
+    <section className="relative min-h-[75vh] overflow-hidden bg-gradient-to-br from-[#1E3A8A] via-[#3B82F6] to-[#1E3A8A]">
       {/* Decorative elements */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#FBBF24]/20 via-transparent to-transparent"></div>
-      
-      <div className="relative z-10 container mx-auto px-4 py-8 md:py-16">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center max-w-7xl mx-auto">
+
+      <div className="container relative z-10 mx-auto px-4 py-8 md:py-16">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 md:grid-cols-2 md:gap-12">
           {/* Left column: content */}
-          <div className="order-2 md:order-1 space-y-6">
+          <div className="order-2 space-y-6 md:order-1">
             <div>
-              <h1 className="text-white text-4xl md:text-6xl font-extrabold leading-tight tracking-[-0.02em] mb-6">
+              <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-[-0.02em] text-white md:text-6xl">
                 Descubra os Temas que Mais Caem no ENEM 2025
               </h1>
-              
-              <h2 className="text-white/90 text-lg md:text-xl leading-relaxed">
-                Baseado na análise das provas oficiais 2022-2024. <span className="text-[#FBBF24] font-bold">35% são matemática básica</span> + nossas apostas exclusivas para 2025
+
+              <h2 className="text-lg leading-relaxed text-white/90 md:text-xl">
+                Baseado na análise das provas oficiais 2022-2024.{' '}
+                <span className="font-bold text-[#FBBF24]">35% são matemática básica</span> + nossas
+                apostas exclusivas para 2025
               </h2>
             </div>
 
             {/* Planos e Guias Oferecidos */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
-              <Card 
-                className="bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-[#FBBF24] transition-all duration-300 cursor-pointer group"
+            <div className="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <Card
+                className="group cursor-pointer border-2 border-white/30 bg-white/10 backdrop-blur-md transition-all duration-300 hover:border-[#FBBF24]"
                 onClick={() => {
                   const materiaisSection = document.getElementById('materiais-exclusivos');
                   if (materiaisSection) {
@@ -35,21 +37,19 @@ export default function Hero() {
                 }}
               >
                 <CardContent className="p-5">
-                  <BookOpen className="w-8 h-8 text-[#FBBF24] mb-3" />
-                  <h3 className="text-white font-bold text-lg mb-2">
-                    Guias e Materiais
-                  </h3>
-                  <p className="text-white/80 text-sm mb-3">
+                  <BookOpen className="mb-3 size-8 text-[#FBBF24]" />
+                  <h3 className="mb-2 text-lg font-bold text-white">Guias e Materiais</h3>
+                  <p className="mb-3 text-sm text-white/80">
                     Guias completos com análises e questões exclusivas
                   </p>
-                  <div className="flex items-center text-[#FBBF24] font-semibold text-sm group-hover:translate-x-1 transition-transform">
-                    Ver materiais <ArrowRight className="w-4 h-4 ml-1" />
+                  <div className="flex items-center text-sm font-semibold text-[#FBBF24] transition-transform group-hover:translate-x-1">
+                    Ver materiais <ArrowRight className="ml-1 size-4" />
                   </div>
                 </CardContent>
               </Card>
 
-              <Card 
-                className="bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-[#FBBF24] transition-all duration-300 cursor-pointer group"
+              <Card
+                className="group cursor-pointer border-2 border-white/30 bg-white/10 backdrop-blur-md transition-all duration-300 hover:border-[#FBBF24]"
                 onClick={() => {
                   const planosSection = document.getElementById('planos');
                   if (planosSection) {
@@ -58,42 +58,40 @@ export default function Hero() {
                 }}
               >
                 <CardContent className="p-5">
-                  <GraduationCap className="w-8 h-8 text-[#FBBF24] mb-3" />
-                  <h3 className="text-white font-bold text-lg mb-2">
-                    Cursos e Mentorias
-                  </h3>
-                  <p className="text-white/80 text-sm mb-3">
+                  <GraduationCap className="mb-3 size-8 text-[#FBBF24]" />
+                  <h3 className="mb-2 text-lg font-bold text-white">Cursos e Mentorias</h3>
+                  <p className="mb-3 text-sm text-white/80">
                     Aulas, correções, trilhas personalizadas e mentoria individual
                   </p>
-                  <div className="flex items-center text-[#FBBF24] font-semibold text-sm group-hover:translate-x-1 transition-transform">
-                    Ver planos <ArrowRight className="w-4 h-4 ml-1" />
+                  <div className="flex items-center text-sm font-semibold text-[#FBBF24] transition-transform group-hover:translate-x-1">
+                    Ver planos <ArrowRight className="ml-1 size-4" />
                   </div>
                 </CardContent>
               </Card>
             </div>
 
             {/* Social Proof Cards */}
-            <div className="grid grid-cols-3 gap-3 mt-8">
-              <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
+            <div className="mt-8 grid grid-cols-3 gap-3">
+              <Card className="border border-white/20 bg-white/10 text-white backdrop-blur-md">
                 <CardContent className="p-4 text-center">
-                  <Target className="w-6 h-6 opacity-90 mx-auto mb-2" />
-                  <div className="font-bold text-sm">Foco no que</div>
+                  <Target className="mx-auto mb-2 size-6 opacity-90" />
+                  <div className="text-sm font-bold">Foco no que</div>
                   <div className="text-xs opacity-90">realmente cai</div>
                 </CardContent>
               </Card>
-              
-              <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
+
+              <Card className="border border-white/20 bg-white/10 text-white backdrop-blur-md">
                 <CardContent className="p-4 text-center">
-                  <Award className="w-6 h-6 opacity-90 mx-auto mb-2" />
-                  <div className="font-bold text-sm">Vestibulares</div>
+                  <Award className="mx-auto mb-2 size-6 opacity-90" />
+                  <div className="text-sm font-bold">Vestibulares</div>
                   <div className="text-xs opacity-90">e Concursos</div>
                 </CardContent>
               </Card>
-              
-              <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
+
+              <Card className="border border-white/20 bg-white/10 text-white backdrop-blur-md">
                 <CardContent className="p-4 text-center">
-                  <TrendingUp className="w-6 h-6 opacity-90 mx-auto mb-2" />
-                  <div className="font-bold text-sm">Trilhas</div>
+                  <TrendingUp className="mx-auto mb-2 size-6 opacity-90" />
+                  <div className="text-sm font-bold">Trilhas</div>
                   <div className="text-xs opacity-90">personalizadas</div>
                 </CardContent>
               </Card>
