@@ -140,7 +140,7 @@ export const ContactForm = ({
       <CardContent className="space-y-4">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label htmlFor="name" className="text-sm font-medium">
+            <Label htmlFor="name" className="text-sm font-medium text-[#1E3A8A] dark:text-white">
               Nome completo *
             </Label>
             <Input
@@ -159,7 +159,7 @@ export const ContactForm = ({
           </div>
 
           <div>
-            <Label htmlFor="email" className="text-sm font-medium">
+            <Label htmlFor="email" className="text-sm font-medium text-[#1E3A8A] dark:text-white">
               E-mail *
             </Label>
             <Input
@@ -179,7 +179,7 @@ export const ContactForm = ({
           </div>
 
           <div>
-            <Label htmlFor="phone" className="text-sm font-medium">
+            <Label htmlFor="phone" className="text-sm font-medium text-[#1E3A8A] dark:text-white">
               WhatsApp *
             </Label>
             <Input
@@ -199,7 +199,7 @@ export const ContactForm = ({
           </div>
 
           <div>
-            <Label htmlFor="interest" className="text-sm font-medium">
+            <Label htmlFor="interest" className="text-sm font-medium text-[#1E3A8A] dark:text-white">
               Interesse *
             </Label>
             <Select

@@ -120,7 +120,7 @@ export const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
-              className="size-8"
+              className="size-8 text-[#1E3A8A] dark:text-white"
               aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
             >
               {isOpen ? <X className="size-4" /> : <Menu className="size-4" />}
