@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Target, ListChecks, BarChart, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
+import { Target, Award, TrendingUp, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
 import { GuiaLeadForm } from "@/components/GuiaLeadForm";
 
 export default function Hero() {
@@ -77,24 +77,24 @@ export default function Hero() {
               <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
                 <CardContent className="p-4 text-center">
                   <Target className="w-6 h-6 opacity-90 mx-auto mb-2" />
-                  <div className="font-bold text-lg">5 Eixos</div>
-                  <div className="text-xs opacity-90">temáticos predominantes</div>
+                  <div className="font-bold text-sm">Foco no que</div>
+                  <div className="text-xs opacity-90">realmente cai</div>
                 </CardContent>
               </Card>
               
               <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
                 <CardContent className="p-4 text-center">
-                  <ListChecks className="w-6 h-6 opacity-90 mx-auto mb-2" />
-                  <div className="font-bold text-lg">+200</div>
-                  <div className="text-xs opacity-90">abordagens possíveis</div>
+                  <Award className="w-6 h-6 opacity-90 mx-auto mb-2" />
+                  <div className="font-bold text-sm">Vestibulares</div>
+                  <div className="text-xs opacity-90">e Concursos</div>
                 </CardContent>
               </Card>
               
               <Card className="bg-white/10 backdrop-blur-md border border-white/20 text-white">
                 <CardContent className="p-4 text-center">
-                  <BarChart className="w-6 h-6 opacity-90 mx-auto mb-2" />
-                  <div className="font-bold text-lg">INEP</div>
-                  <div className="text-xs opacity-90">dados oficiais</div>
+                  <TrendingUp className="w-6 h-6 opacity-90 mx-auto mb-2" />
+                  <div className="font-bold text-sm">Trilhas</div>
+                  <div className="text-xs opacity-90">personalizadas</div>
                 </CardContent>
               </Card>
             </div>

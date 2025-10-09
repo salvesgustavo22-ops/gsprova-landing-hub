@@ -117,19 +117,15 @@ export const MateriaisExclusivos = () => {
               <ul className="space-y-3">
                 <li className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                  <span className="text-white/90">Análise dos 5 blocos que representam 90% das questões</span>
+                  <span className="text-white/90">Análise dos 5 eixos temáticos predominantes na prova</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                  <span className="text-white/90">200+ lacunas temáticas identificadas</span>
+                  <span className="text-white/90">+ de 200 abordagens possíveis desse conteúdo</span>
                 </li>
                 <li className="flex items-start space-x-3">
                   <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                  <span className="text-white/90">Estratégias baseadas em dados oficiais INEP</span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <CheckCircle2 className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                  <span className="text-white/90">Foco nos 35% de matemática básica</span>
+                  <span className="text-white/90">Estratégias baseadas em dados oficiais do INEP</span>
                 </li>
               </ul>
               
