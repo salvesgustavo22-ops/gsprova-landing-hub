@@ -209,7 +209,7 @@ const BlogPost = () => {
               <p className="text-white/90 mb-6">
                 Conheça nossos materiais exclusivos baseados em análise de dados oficiais
               </p>
-              <Link to="/#materiais">
+              <Link to="/#materiais-exclusivos">
                 <Button className="bg-[#FBBF24] hover:brightness-95 text-[#1E3A8A] font-semibold px-8 py-6 text-lg">
                   Ver Matemática ENEM 2025
                 </Button>
