@@ -1,5 +1,40 @@
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { trackWhatsAppClick } from '@/lib/analytics';
 import gsAprovaLogo from '@/assets/gs-aprova-logo.png';
+
+interface ServiceCarousel {
+  title: string;
+  description: string;
+  price: string;
+  icon: string;
+}
+
+const services: ServiceCarousel[] = [
+  {
+    title: 'Aulas de Matemática',
+    description:
+      'Aulas personalizadas focadas nas suas dificuldades específicas em Matemática para ENEM e vestibulares',
+    price: '70',
+    icon: '📊',
+  },
+  {
+    title: 'Correção de Redação',
+    description:
+      'Correção detalhada com feedback personalizado para elevar sua nota de redação no ENEM',
+    price: '70',
+    icon: '✍️',
+  },
+  {
+    title: 'Pacotes Econômicos',
+    description:
+      'Planos com desconto especial para quem quer um acompanhamento completo e contínuo',
+    price: '250',
+    icon: '📚',
+  },
+];
 
 export const Header = () => {
   return (

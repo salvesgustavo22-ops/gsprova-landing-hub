@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { trackWhatsAppClick } from '@/lib/analytics';
-import { Calculator, BookOpen, Target, Zap, TrendingUp } from 'lucide-react';
+import { trackWhatsAppClick, trackPageSection } from '@/lib/analytics';
+import { Calculator, BookOpen, Target, Zap, TrendingUp, Award } from 'lucide-react';
 import heroBgImage from '@/assets/hero-modern-bg.jpg';
 
 export interface HeroProps {

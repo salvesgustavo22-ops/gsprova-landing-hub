@@ -51,7 +51,7 @@ const Auth = () => {
         });
         navigate('/admin');
       }
-    } catch {
+    } catch (error) {
       toast({
         variant: 'destructive',
         title: 'Erro inesperado',
@@ -109,7 +109,7 @@ const Auth = () => {
         });
         setActiveTab('signin');
       }
-    } catch {
+    } catch (error) {
       toast({
         variant: 'destructive',
         title: 'Erro inesperado',

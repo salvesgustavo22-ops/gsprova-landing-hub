@@ -1,5 +1,5 @@
 import { Separator } from '@/components/ui/separator';
-import { Instagram, MessageCircle } from 'lucide-react';
+import { Instagram, MessageCircle, Mail, Phone } from 'lucide-react';
 
 export const Footer = () => {
   return (

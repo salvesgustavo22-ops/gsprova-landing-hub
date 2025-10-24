@@ -1,3 +1,4 @@
+import { Shield, Lock, Award, CheckCircle, Clock, Users } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const trustFeatures = [

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { MessageCircleIcon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { MessageCircleIcon, XIcon } from 'lucide-react';
 import { trackWhatsAppClick } from '@/lib/analytics';
 
 export const StickyWhatsApp = () => {
