@@ -1,5 +1,6 @@
 import { UserPlus, Route, TrendingUp } from 'lucide-react';
-import { trackWhatsAppClick } from '@/lib/analytics';
+import { Button } from '@/components/ui/button';
+import { trackWhatsAppClick, trackPageSection } from '@/lib/analytics';
 
 const steps = [
   {
