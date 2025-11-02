@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import gsAprovaLogo from '@/assets/gs-aprova-logo.png';
+import novoLogo from '@/assets/novo-logo-gsaprova-novembro.png';
 
 export const Header = () => {
   return (
@@ -20,11 +20,7 @@ export const Header = () => {
       <header className="border-b border-primary/10 bg-white shadow-lg">
         <div className="container mx-auto flex items-center justify-between p-4">
           <div className="flex items-center space-x-3">
-            <img src={gsAprovaLogo} alt="GS Aprova Logo" className="size-12" />
-            <div>
-              <h1 className="text-xl font-bold text-primary">GS Aprova</h1>
-              <p className="text-xs text-primary/70">ENEM & Vestibulares</p>
-            </div>
+            <img src={novoLogo} alt="GS Aprova Logo" className="h-16 w-auto" />
           </div>
 
           <div className="flex items-center space-x-3">

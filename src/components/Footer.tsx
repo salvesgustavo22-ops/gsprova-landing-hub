@@ -11,9 +11,9 @@ export const Footer = () => {
           {/* Logo and description */}
           <div className="md:col-span-2">
             <img
-              src="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png"
+              src="/src/assets/novo-logo-gsaprova-novembro.png"
               alt="GS Aprova Logo"
-              className="mb-4 h-auto w-24 object-contain"
+              className="mb-4 h-auto w-32 object-contain"
             />
             <p className="max-w-md text-sm leading-relaxed text-white/90">
               Preparação focada para ENEM e Fuvest. Matemática prática, correção de redação

@@ -10,7 +10,8 @@ import QuickSurvey from '@/components/QuickSurvey';
 import { ScrollTracker } from '@/components/ScrollTracker';
 import Hero from '@/sections/Hero';
 import { MateriaisExclusivos } from '@/components/MateriaisExclusivos';
-import { EmailPopup } from '@/components/EmailPopup';
+import { NewsletterPopup } from '@/components/NewsletterPopup';
+import { SprintBox } from '@/components/SprintBox';
 import { NossosDiferenciais } from '@/components/NossosDiferenciais';
 import { BlogSection } from '@/components/BlogSection';
 import { useEffect, useState } from 'react';
@@ -109,8 +110,9 @@ const Index = () => {
     {
       id: 'curso-intensivo',
       titulo: 'Curso Intensivo de Matemática ENEM',
-      preco: 'R$ 39,90',
-      preco_parcelado: 'ou 3x de R$ 13,30',
+      preco: 'R$ 23,94',
+      preco_original: 'R$ 39,90',
+      preco_parcelado: 'ou 3x de R$ 7,98',
       bullets: [
         'Foco nos 35% de matemática básica',
         '200+ questões resolvidas passo a passo',
@@ -125,7 +127,8 @@ const Index = () => {
     {
       id: 'aulas-particulares',
       titulo: 'Aulas Particulares',
-      preco: 'a partir de R$ 49,90',
+      preco: 'a partir de R$ 29,94',
+      preco_original: 'R$ 49,90',
       preco_parcelado: 'por aula',
       bullets: [
         'Aulas individuais personalizadas',
@@ -140,7 +143,8 @@ const Index = () => {
     {
       id: 'correcao-redacao',
       titulo: 'Correção de Redação',
-      preco: 'R$ 12,90',
+      preco: 'R$ 11,94',
+      preco_original: 'R$ 19,90',
       preco_parcelado: 'por correção',
       bullets: [
         'Correção pelos critérios do ENEM',
@@ -156,7 +160,8 @@ const Index = () => {
     {
       id: 'trilha-personalizada',
       titulo: 'Trilha Personalizada',
-      preco: 'a partir de R$ 69,90',
+      preco: 'a partir de R$ 41,94',
+      preco_original: 'R$ 69,90',
       preco_parcelado: 'por mês',
       bullets: [
         'Diagnóstico completo',
@@ -171,7 +176,8 @@ const Index = () => {
     {
       id: 'mentoria-individual',
       titulo: 'Mentoria Individual',
-      preco: 'a partir de R$ 89,90',
+      preco: 'a partir de R$ 53,94',
+      preco_original: 'R$ 89,90',
       preco_parcelado: 'por sessão',
       bullets: [
         'Aula + Plantão de Dúvidas',
@@ -262,13 +268,29 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Black November Banner */}
+      <div className="bg-gradient-to-r from-orange-600 via-yellow-500 to-orange-600 py-2 text-center">
+        <div className="flex items-center justify-center gap-2 text-sm font-bold text-white">
+          <span className="text-xl">🔥</span>
+          <span>BLACK NOVEMBER: 40% OFF em todos os planos!</span>
+          <span className="text-xl">🔥</span>
+        </div>
+      </div>
+      
       <Navigation />
       <ScrollTracker />
-      <EmailPopup />
+      <NewsletterPopup />
 
       <main>
         {/* 1. Hero Section */}
         <Hero />
+
+        {/* Sprint Redação 900+ Box */}
+        <Section variant="light" className="py-12">
+          <div className="mx-auto max-w-2xl">
+            <SprintBox />
+          </div>
+        </Section>
 
         {/* 2. Matemática no ENEM 2025 */}
         <MateriaisExclusivos />
@@ -308,6 +330,11 @@ const Index = () => {
                   <CardHeader className="pb-4 pt-8 text-center">
                     <h2 className="mb-2 text-3xl font-bold text-[#1E3A8A]">{plano.titulo}</h2>
                     <div className="mb-2 text-5xl font-bold text-[#1E3A8A]">{plano.preco}</div>
+                    {plano.preco_original && (
+                      <div className="text-lg text-[#1E3A8A]/60 line-through">
+                        {plano.preco_original}
+                      </div>
+                    )}
                     <div className="text-lg text-[#1E3A8A]/80">{plano.preco_parcelado}</div>
                   </CardHeader>
 
@@ -356,6 +383,11 @@ const Index = () => {
                     <div className="text-3xl font-bold text-[#1E3A8A] dark:text-[#FBBF24]">
                       {plano.preco}
                     </div>
+                    {plano.preco_original && (
+                      <div className="text-sm text-gray-500 line-through dark:text-white/50">
+                        {plano.preco_original}
+                      </div>
+                    )}
                     <div className="text-sm text-gray-600 dark:text-white/70">
                       {plano.preco_parcelado}
                     </div>
