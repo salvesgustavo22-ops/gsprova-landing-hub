@@ -65,6 +65,39 @@ const CorretorPanel = () => {
   const [statusChanges, setStatusChanges] = useState<{ [key: string]: string }>({});
   const [pendingChanges, setPendingChanges] = useState<string[]>([]);
 
+  const fetchEssays = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('essays')
+        .select(
+          `
+          *,
+          profiles (
+            first_name,
+            last_name,
+            phone
+          )
+        `
+        )
+        .order('created_at', { ascending: true });
+
+      if (error) {
+        throw error;
+      }
+
+      setEssays((data as any) || []);
+    } catch (error: any) {
+      toast({
+        title: 'Erro ao carregar redações',
+        description: error.message,
+        variant: 'destructive',
+      });
+    } finally {
+      setLoading(false);
+    }
+  }, [toast]);
+
   useEffect(() => {
     // Check for existing session
     const checkAuth = async () => {
@@ -135,38 +168,6 @@ const CorretorPanel = () => {
     navigate('/');
   };
 
-  const fetchEssays = useCallback(async () => {
-    setLoading(true);
-    try {
-      const { data, error } = await supabase
-        .from('essays')
-        .select(
-          `
-          *,
-          profiles (
-            first_name,
-            last_name,
-            phone
-          )
-        `
-        )
-        .order('created_at', { ascending: true });
-
-      if (error) {
-        throw error;
-      }
-
-      setEssays((data as any) || []);
-    } catch (error: any) {
-      toast({
-        title: 'Erro ao carregar redações',
-        description: error.message,
-        variant: 'destructive',
-      });
-    } finally {
-      setLoading(false);
-    }
-  }, [toast]);
 
   const handleDownloadFile = async (filePath: string, fileName: string) => {
     try {

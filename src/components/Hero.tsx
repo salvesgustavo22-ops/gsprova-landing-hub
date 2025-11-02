@@ -41,7 +41,6 @@ export const Hero = ({
   };
 
   const handleServicesClick = () => {
-    trackPageSection('hero_services_cta', 'navigation');
     window.location.href = '/lead-servicos';
   };
 

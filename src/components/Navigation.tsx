@@ -46,18 +46,12 @@ export const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 transition-opacity hover:opacity-80">
             <img
-              src="/lovable-uploads/81baf984-0517-4524-96a3-e84ec5d2c55d.png"
+              src="/src/assets/novo-logo-gsaprova-novembro.png"
               alt="GS Aprova - Preparação para ENEM e Vestibulares"
-              className="h-8 w-auto"
+              className="h-12 w-auto"
               width="64"
-              height="32"
+              height="48"
             />
-            <span
-              className="text-lg font-bold text-[#1E3A8A] dark:text-white"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              GS Aprova
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -93,6 +87,14 @@ export const Navigation = () => {
               aria-label="Ir para Contato"
             >
               Contato
+            </Link>
+            <Link
+              to="/auth-aluno"
+              className="text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+              onClick={() => handleNavClick('Portal do Aluno')}
+              aria-label="Ir para Portal do Aluno"
+            >
+              Portal do Aluno
             </Link>
 
             {/* Primary CTA */}
@@ -171,6 +173,16 @@ export const Navigation = () => {
                 }}
               >
                 Contato
+              </Link>
+              <Link
+                to="/auth-aluno"
+                className="py-2 text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+                onClick={() => {
+                  handleNavClick('Portal do Aluno');
+                  setIsOpen(false);
+                }}
+              >
+                Portal do Aluno
               </Link>
             </div>
           </div>

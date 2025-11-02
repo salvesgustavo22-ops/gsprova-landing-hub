@@ -48,14 +48,6 @@ const MinhasRedacoes = () => {
   const [essays, setEssays] = useState<Essay[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!user) {
-      navigate('/auth-aluno');
-      return;
-    }
-    fetchEssays();
-  }, [user, navigate, fetchEssays]);
-
   const fetchEssays = useCallback(async () => {
     try {
       const { data, error } = await supabase
@@ -79,6 +71,14 @@ const MinhasRedacoes = () => {
       setLoading(false);
     }
   }, [user, toast]);
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/auth-aluno');
+      return;
+    }
+    fetchEssays();
+  }, [user, navigate, fetchEssays]);
 
   const handleDownloadCorrection = async (essay: Essay) => {
     if (!essay.correction_file_path || !essay.correction_id) return;

@@ -122,50 +122,43 @@ const PortalAluno = () => {
           </div>
         </header>
 
-        {/* Cards de Preços */}
-        <div className="mb-8 grid gap-6 md:grid-cols-2">
-          <Card className="border-primary/20">
-            <CardContent className="p-6 text-center">
-              <h3 className="mb-2 text-xl font-semibold text-primary">Correção Avulsa</h3>
-              <p className="mb-2 text-3xl font-bold text-primary">R$ 70</p>
-              <p className="mb-4 text-sm text-muted-foreground">
-                Correção individual detalhada com feedback personalizado
+        {/* Informação de Pagamento */}
+        <Card className="mb-8 border-primary/30 bg-gradient-to-r from-primary/10 to-primary/20">
+          <CardContent className="p-6">
+            <h3 className="mb-4 text-center text-xl font-semibold text-primary">
+              💰 Informações de Pagamento
+            </h3>
+            <div className="space-y-3 text-sm">
+              <p className="text-muted-foreground">
+                <strong className="text-primary">Valor:</strong> R$ 19,90 por redação
               </p>
-              <ul className="mb-4 space-y-1 text-left text-sm">
-                <li>✓ Correção completa seguindo critérios oficiais</li>
-                <li>✓ Feedback detalhado por competência</li>
-                <li>✓ Sugestões de melhoria</li>
-                <li>✓ Entrega em até 3 dias úteis</li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="border-primary/20 bg-primary/5">
-            <CardContent className="p-6 text-center">
-              <h3 className="mb-2 text-xl font-semibold text-primary">Pacote 4 Correções</h3>
-              <p className="mb-2 text-3xl font-bold text-primary">R$ 250</p>
-              <p className="mb-4 text-sm text-muted-foreground">
-                Melhor custo-benefício para acompanhamento contínuo
+              <p className="text-muted-foreground">
+                <strong className="text-primary">Formas de pagamento:</strong>
               </p>
-              <ul className="mb-4 space-y-1 text-left text-sm">
-                <li>✓ 4 correções completas</li>
-                <li>✓ Economia de R$ 30</li>
-                <li>✓ Acompanhamento da evolução</li>
-                <li>✓ Suporte direto via WhatsApp</li>
+              <ul className="ml-4 list-disc space-y-2 text-muted-foreground">
+                <li>
+                  PIX para celular: <strong>(11) 97496-9036</strong>
+                </li>
+                <li>
+                  WhatsApp <strong>(11) 97496-9036</strong> - Central de contato do GS Aprova
+                </li>
+                <li>Link de pagamento para cartão de débito/crédito via loja online do Banco C6</li>
               </ul>
-            </CardContent>
-          </Card>
-        </div>
+              <div className="mt-4 rounded-md bg-primary/10 p-3">
+                <p className="text-center text-xs font-medium text-primary">
+                  ⚠️ O comprovante de pagamento deve ser anexado junto ao pedido de correção
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Banner de Entrega */}
         <Card className="mb-8 border-primary/30 bg-gradient-to-r from-primary/10 to-primary/20">
           <CardContent className="p-8 text-center">
             <h2 className="mb-4 text-2xl font-bold text-primary">📝 Entregar Redação</h2>
-            <p className="mb-4 text-muted-foreground">
+            <p className="mb-6 text-muted-foreground">
               Envie sua redação para correção profissional
-            </p>
-            <p className="mb-6 text-sm text-muted-foreground">
-              💰 Pagamento deve ser efetuado pelo WhatsApp do GS Aprova após envio da redação
             </p>
             <Dialog open={showSubmissionDialog} onOpenChange={setShowSubmissionDialog}>
               <DialogTrigger asChild>
