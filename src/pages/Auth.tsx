@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
-import gsAprovaLogo from '@/assets/gs-aprova-logo.png';
+import gsAprovaLogo from '@/assets/novo-logo-gsaprova-novembro-2.jpg';
 
 const Auth = () => {
   const [email, setEmail] = useState('');

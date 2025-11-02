@@ -1,5 +1,6 @@
 import { Separator } from '@/components/ui/separator';
 import { Instagram, MessageCircle } from 'lucide-react';
+import logo from '@/assets/novo-logo-gsaprova-novembro-2.jpg';
 
 export const Footer = () => {
   return (
@@ -11,7 +12,7 @@ export const Footer = () => {
           {/* Logo and description */}
           <div className="md:col-span-2">
             <img
-              src="/src/assets/novo-logo-gsaprova-novembro.png"
+              src={logo}
               alt="GS Aprova Logo"
               className="mb-4 h-auto w-32 object-contain"
             />

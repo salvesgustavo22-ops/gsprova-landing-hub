@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import novoLogo from '@/assets/novo-logo-gsaprova-novembro.png';
+import novoLogo from '@/assets/novo-logo-gsaprova-novembro-2.jpg';
 
 export const Header = () => {
   return (

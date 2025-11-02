@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { Eye, EyeOff, CheckCircle } from 'lucide-react';
-import logoImage from '@/assets/gs-aprova-new-logo.png';
+import logoImage from '@/assets/novo-logo-gsaprova-novembro-2.jpg';
 
 const RedefinirSenha = () => {
   const navigate = useNavigate();

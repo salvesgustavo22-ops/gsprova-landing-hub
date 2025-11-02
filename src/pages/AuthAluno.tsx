@@ -11,7 +11,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { Eye, EyeOff, ArrowLeft } from 'lucide-react';
-import logoImage from '@/assets/gs-aprova-new-logo.png';
+import logoImage from '@/assets/novo-logo-gsaprova-novembro-2.jpg';
 
 const AuthAluno = () => {
   const { user, signIn, signUp } = useAuth();

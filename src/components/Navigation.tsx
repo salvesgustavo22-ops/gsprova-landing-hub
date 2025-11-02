@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { trackEvent } from '@/lib/analytics';
 import { BUSINESS_WHATSAPP_URL, WHATSAPP_MESSAGES } from '@/lib/constants';
+import logo from '@/assets/novo-logo-gsaprova-novembro-2.jpg';
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,7 @@ export const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 transition-opacity hover:opacity-80">
             <img
-              src="/src/assets/novo-logo-gsaprova-novembro.png"
+              src={logo}
               alt="GS Aprova - Preparação para ENEM e Vestibulares"
               className="h-12 w-auto"
               width="64"
