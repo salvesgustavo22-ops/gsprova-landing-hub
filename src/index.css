@@ -2,49 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Performance optimizations to prevent forced reflows */
-@layer base {
-  /* Optimize Radix UI components */
-  [data-radix-popper-content-wrapper] {
-    will-change: transform;
-    transform: translateZ(0);
-  }
-  
-  [data-radix-dialog-overlay],
-  [data-radix-alert-dialog-overlay] {
-    will-change: opacity;
-    transform: translateZ(0);
-  }
-  
-  [data-radix-dialog-content],
-  [data-radix-alert-dialog-content] {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-  }
-  
-  [data-radix-tooltip-content] {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-  }
-  
-  /* Global animation performance */
-  .animate-in,
-  .animate-out {
-    will-change: transform, opacity;
-  }
-  
-  /* Optimize hover effects */
-  [class*="hover:scale"],
-  [class*="hover:translate"] {
-    will-change: transform;
-  }
-}
-
-/* GS Aprova Design System - Educational Excellence */
-
+/* Global styles and custom properties for theme tokens */
 @layer base {
   :root {
-    /* Dark theme base */
+    /* Base (mantém tema escuro com foreground claro) */
     --background: 220 20% 8%;
     --foreground: 210 40% 95%;
 
@@ -54,35 +15,39 @@
     --popover: 220 18% 12%;
     --popover-foreground: 210 40% 95%;
 
-    /* Primary - Electric Blue (Modern/Tech) */
-    --primary: 217 91% 65%;
-    --primary-foreground: 220 20% 8%;
-    --primary-hover: 217 91% 70%;
+    /* PRIMÁRIO — Azul GS (hex → hsl):
+       #0F3763 => hsl(211 74% 22%)
+       #0B2B4E => hsl(211 75% 17%)  (hover/dark)
+       #154A86 => hsl(212 73% 30%)  (variação) */
+    --primary: 211 74% 22%;
+    --primary-foreground: 210 40% 95%;
+    --primary-hover: 211 75% 17%;
 
-    /* Primary Navy - Deep Navy */
-    --primary-navy: 220 80% 15%;
+    /* Azul "navy" para blocos cheios / cards selecionados */
+    --primary-navy: 211 75% 17%;
     --primary-navy-foreground: 210 40% 95%;
-    --primary-navy-light: 220 70% 25%;
+    --primary-navy-light: 212 73% 30%;
 
-    /* Secondary - Vibrant Orange (Action) */
-    --secondary: 24 100% 58%;
-    --secondary-foreground: 220 20% 8%;
+    /* SECUNDÁRIO — Amarelo GS vira ACCENT (CTA):
+       #F0C254 => hsl(42 84% 64%)   (principal)
+       #E4AF2A => hsl(43 78% 53%)   (hover)
+       #FFD15A => hsl(43 100% 68%)  (variação suave) */
+    --accent: 42 84% 64%;
+    --accent-foreground: 220 20% 8%;      /* texto escuro sobre amarelo */
+    --accent-hover: 43 78% 53%;
+    --accent-soft: 43 100% 68%;
+    /* Faltava esta var, mas seu CSS usa: */
+    --accent-dark-text: 220 20% 8%;
 
-    /* Success - Modern Green */
+    /* (Opcional) Dourado mantém para badges/premium */
+    --gold: 43 96% 60%;
+    --gold-foreground: 220 20% 8%;
+
+    /* Sucesso / Muted / etc (mantidos) */
     --success: 142 76% 45%;
     --success-foreground: 220 20% 8%;
     --success-light: 142 76% 15%;
 
-    /* Accent - Neon Cyan (Highlight) */
-    --accent: 189 100% 60%;
-    --accent-foreground: 220 20% 8%;
-    --accent-hover: 189 100% 65%;
-
-    /* Gold accent for premium elements */
-    --gold: 43 96% 60%;
-    --gold-foreground: 220 20% 8%;
-
-    /* Muted - Dark grays */
     --muted: 220 15% 16%;
     --muted-foreground: 210 30% 70%;
 
@@ -91,45 +56,32 @@
 
     --border: 220 14% 91%;
     --input: 220 14% 91%;
-    --ring: 217 81% 54%;
+    --ring: 212 73% 30%;
 
-    /* Dark theme gradients and effects */
-    --gradient-hero: linear-gradient(135deg, hsl(220 20% 6%) 0%, hsl(217 30% 10%) 50%, hsl(189 50% 15%) 100%);
-    --gradient-hero-overlay: linear-gradient(135deg, hsl(217 91% 65% / 0.1) 0%, hsl(189 100% 60% / 0.1) 100%);
+    /* Gradientes atualizados para o novo azul */
+    --gradient-hero: linear-gradient(135deg, hsl(220 20% 6%) 0%, hsl(211 74% 18%) 50%, hsl(211 75% 17%) 100%);
+    --gradient-hero-overlay: linear-gradient(135deg, hsl(211 74% 22% / 0.12) 0%, hsl(42 84% 64% / 0.10) 100%);
     --gradient-card: linear-gradient(145deg, hsl(220 18% 12%), hsl(220 15% 16%));
-    --gradient-modern: linear-gradient(135deg, hsl(217 91% 65%) 0%, hsl(189 100% 60%) 100%);
+    --gradient-modern: linear-gradient(135deg, hsl(211 74% 22%) 0%, hsl(42 84% 64%) 100%);
     --gradient-section: linear-gradient(180deg, hsl(220 20% 8%) 0%, hsl(220 18% 10%) 100%);
+
     --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.4);
-    --shadow-card-hover: 0 12px 40px -12px hsl(217 91% 65% / 0.3);
-    --shadow-cta: 0 8px 24px -8px hsl(24 100% 58% / 0.4);
+    --shadow-card-hover: 0 12px 40px -12px hsl(211 74% 22% / 0.3);
+    --shadow-cta: 0 8px 24px -8px hsl(42 84% 64% / 0.4);
     --shadow-hero: 0 25px 50px -15px hsl(0 0% 0% / 0.8);
-    
-    /* Wallpaper elements */
-    --pattern-shield: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M30 15l15 10v15l-15 10-15-10V25l15-10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    --pattern-check: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ff88' fill-opacity='0.05'%3E%3Cpath d='M8 12l-2-2-1.5 1.5L8 15l6-6-1.5-1.5L8 12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --radius: 0.5rem;
-
+    /* Sidebar (mantido) */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 212 73% 30%;
   }
 
+  /* Tema .dark: coerente com os novos tons */
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -140,20 +92,14 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 218 89% 51%;
+    --primary: 211 75% 17%;
     --primary-foreground: 0 0% 98%;
-    --primary-hover: 218 89% 45%;
+    --primary-hover: 211 74% 22%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 98%;
-    --success-light: 142 76% 15%;
-
-    --accent: 24 95% 53%;
-    --accent-foreground: 0 0% 98%;
-    --accent-hover: 24 95% 47%;
+    /* Amarelo (accent) no dark */
+    --accent: 42 84% 64%;
+    --accent-foreground: 220 20% 8%;
+    --accent-hover: 43 78% 53%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
@@ -163,215 +109,23 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 218 89% 51%;
-    
-    --gradient-hero: linear-gradient(135deg, hsl(218 89% 45%), hsl(142 76% 30%));
+    --ring: 211 74% 22%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(211 74% 20%), hsl(211 75% 17%));
     --gradient-card: linear-gradient(145deg, hsl(217.2 32.6% 17.5%), hsl(217.2 32.6% 15%));
     --shadow-card: 0 4px 12px -4px hsl(0 0% 0% / 0.3);
     --shadow-card-hover: 0 8px 24px -8px hsl(0 0% 0% / 0.4);
-    --shadow-cta: 0 4px 16px -4px hsl(24 95% 53% / 0.4);
+    --shadow-cta: 0 4px 16px -4px hsl(42 84% 64% / 0.4);
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary: 211 74% 22%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 211 74% 22%;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 400;
-    background-image: var(--pattern-shield), var(--pattern-check);
-    background-position: 0 0, 30px 30px;
-    background-size: 60px 60px, 40px 40px;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-  }
-
-  /* Global section background */
-  .section-modern {
-    background: var(--gradient-hero);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .section-modern::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 20%, hsl(220 70% 50% / 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, hsl(270 60% 40% / 0.2) 0%, transparent 50%);
-    z-index: 1;
-  }
-
-  .section-content {
-    position: relative;
-    z-index: 10;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-@layer components {
-  /* Modern Hero Components */
-  .hero-modern {
-    background: var(--gradient-hero);
-    position: relative;
-    overflow: hidden;
-    min-height: 100vh;
-  }
-
-  .hero-modern::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 20%, hsl(220 70% 50% / 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, hsl(270 60% 40% / 0.2) 0%, transparent 50%);
-    z-index: 1;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 10;
-  }
-
-  /* Hero Button Variants */
-  .btn-hero {
-    @apply text-white;
-    @apply px-8 py-4 rounded-xl text-lg;
-    @apply shadow-lg hover:shadow-xl;
-    @apply transform hover:scale-105 transition-all duration-300;
-    @apply hover:bg-white hover:text-gray-900;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700; /* Montserrat Bold */
-    background: transparent !important;
-    border: 3px solid white;
-  }
-
-  .btn-hero-secondary {
-    @apply text-white;
-    @apply px-8 py-4 rounded-xl text-lg;
-    @apply shadow-lg hover:shadow-xl transition-all duration-300;
-    @apply transform hover:scale-105;
-    @apply hover:bg-white hover:text-gray-900;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700; /* Montserrat Bold */
-    background: transparent !important;
-    border: 3px solid white;
-  }
-
-  .btn-hero-outline {
-    @apply text-white;
-    @apply px-8 py-4 rounded-xl text-lg;
-    @apply shadow-lg hover:shadow-xl transition-all duration-300;
-    @apply transform hover:scale-105;
-    @apply hover:bg-white hover:text-gray-900;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700; /* Montserrat Bold */
-    background: transparent !important;
-    border: 3px solid white;
-  }
-
-  /* Modern Button Variants for sections */
-  .btn-modern {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700; /* Montserrat Bold */
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    @apply text-white px-6 py-3 rounded-xl;
-    @apply shadow-lg hover:shadow-xl transition-all duration-300;
-    @apply transform hover:scale-105;
-  }
-
-  /* Yellow CTA Buttons */
-  .btn-yellow {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600; /* Montserrat Semibold */
-    background: hsl(var(--accent));
-    color: hsl(var(--accent-dark-text));
-    @apply px-6 py-3 rounded-xl border-0;
-    @apply shadow-lg hover:shadow-xl transition-all duration-300;
-    @apply transform hover:scale-105;
-  }
-
-  .btn-yellow:hover {
-    background: hsl(var(--accent-hover));
-    color: hsl(var(--accent-dark-text));
-  }
-
-  /* Navy cards - not selected */
-  .card-navy {
-    background: rgba(55, 65, 81, 0.15); /* Navy with 85% transparency */
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    @apply rounded-xl transition-all duration-300;
-  }
-
-  /* Navy cards - selected */
-  .card-navy-selected {
-    background: hsl(var(--primary-navy)); /* Opaque navy */
-    border: 2px solid hsl(var(--primary-navy-light));
-    @apply rounded-xl transition-all duration-300;
-  }
-
-  /* Hero convenience boxes - distinct from buttons */
-  .convenience-box {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
-    @apply rounded-lg p-4 transition-all duration-300;
-    @apply hover:bg-white/10 hover:border-white/20;
-  }
-
-  /* Floating Elements */
-  .floating-element {
-    @apply absolute animate-pulse;
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
-    50% { transform: translateY(-20px) rotate(5deg); opacity: 1; }
-  }
-
-  /* Card Enhancements */
-  .card-service {
-    @apply bg-[var(--gradient-card)] shadow-[var(--shadow-card)];
-    @apply hover:shadow-[var(--shadow-card-hover)] transition-[var(--transition-smooth)];
-    @apply border border-border/50 rounded-xl p-6;
-  }
-
-  /* Success Badge */
-  .badge-success {
-    @apply bg-success/10 text-success border border-success/20;
-    @apply px-3 py-1 rounded-full text-sm font-medium;
-  }
-
-  /* Sticky CTA */
-  .sticky-cta {
-    @apply fixed bottom-4 left-4 right-4 z-50;
-    @apply bg-accent text-accent-foreground rounded-lg px-6 py-4;
-    @apply shadow-[var(--shadow-cta)] backdrop-blur-sm;
-    @apply transform translate-y-0 transition-[var(--transition-smooth)];
-  }
-}
+/* You can add any additional global styles below if needed */
