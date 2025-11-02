@@ -14,6 +14,7 @@ import { NewsletterPopup } from '@/components/NewsletterPopup';
 import { SprintBox } from '@/components/SprintBox';
 import { NossosDiferenciais } from '@/components/NossosDiferenciais';
 import { BlogSection } from '@/components/BlogSection';
+import { BannerInicial } from '@/components/BannerInicial';
 import { useEffect, useState } from 'react';
 import { trackPageSection, trackEvent } from '@/lib/analytics';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -282,8 +283,8 @@ const Index = () => {
       <NewsletterPopup />
 
       <main>
-        {/* 1. Hero Section */}
-        <Hero />
+        {/* Banner Inicial */}
+        <BannerInicial />
 
         {/* Sprint Redação 900+ Box */}
         <Section variant="light" className="py-12">
@@ -292,7 +293,10 @@ const Index = () => {
           </div>
         </Section>
 
-        {/* 2. Matemática no ENEM 2025 */}
+        {/* Hero Section - Guia dos Temas */}
+        <Hero />
+
+        {/* Matemática no ENEM 2025 */}
         <MateriaisExclusivos />
 
         {/* 3. Nossos Diferenciais */}
