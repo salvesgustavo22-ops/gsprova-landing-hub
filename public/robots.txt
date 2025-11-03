@@ -1,16 +1,21 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
+# Robots SEO otimizado - GS Aprova 2025
+# Permite indexação de páginas públicas e bloqueia áreas restritas.
+# Gerado: 2025-11-03
 
 User-agent: *
 Allow: /
 
+# Bloquear áreas restritas / áreas com conteúdo dinâmico que não devem ser indexadas
+Disallow: /admin
+Disallow: /auth
+Disallow: /auth-aluno
+Disallow: /portal-aluno
+Disallow: /corretor-painel-gs-aprova
+Disallow: /minhas-redacoes
+Disallow: /enviar-redacao
+
+# Reduz a carga de rastreamento em servidores pequenos
+Crawl-delay: 10
+
+# Sitemap principal
 Sitemap: https://gsmatematicanegocios.com.br/sitemap.xml
