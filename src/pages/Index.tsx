@@ -30,13 +30,13 @@ import { Check, Shield, Flame } from 'lucide-react';
 const Index = () => {
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = 'GS Aprova — Descubra os Temas que Mais Caem no ENEM 2025';
+    document.title = 'Correção de Redação ENEM 2025 – GS Aprova';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        '35% das questões ENEM são matemática básica! Guia baseado na análise das provas oficiais 2022-2024 + apostas para 2025. Download gratuito.'
+        'Envie sua redação e receba correção em até 48h: aumente sua nota no ENEM com a GS Aprova!'
       );
     }
 

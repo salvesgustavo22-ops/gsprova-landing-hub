@@ -95,7 +95,7 @@ const RedefinirSenha = () => {
       <div className="flex min-h-screen items-center justify-center bg-background p-4">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
-            <img src={logoImage} alt="GS Aprova" className="mx-auto mb-4 h-16" />
+            <img src={logoImage} alt="GS Aprova - Correção de redação para ENEM e vestibulares" className="mx-auto mb-4 h-16" />
             <div className="flex items-center justify-center gap-2 text-green-600">
               <CheckCircle className="size-6" />
               <CardTitle>Senha Atualizada!</CardTitle>
@@ -118,7 +118,7 @@ const RedefinirSenha = () => {
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <img src={logoImage} alt="GS Aprova" className="mx-auto mb-4 h-16" />
+          <img src={logoImage} alt="GS Aprova - Correção de redação para ENEM e vestibulares" className="mx-auto mb-4 h-16" />
           <CardTitle>Redefinir Senha</CardTitle>
         </CardHeader>
         <CardContent>

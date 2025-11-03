@@ -10,13 +10,13 @@ import { trackPageSection } from '@/lib/analytics';
 export default function Enem2025() {
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = 'ENEM 2025: Tudo o que você precisa saber para gabaritar | GS Aprova';
+    document.title = 'Correção de Redação ENEM 2025 – Plataforma GS Aprova';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        'Prepare-se para o ENEM 2025 com dicas de matemática, estrutura de redação e estratégias aprovadas. Baixe nosso checklist gratuito com os tópicos que mais caem.'
+        'Plataforma online de correção de redação para o ENEM 2025. Comentários personalizados e guia de melhorias.'
       );
     }
 
@@ -66,9 +66,7 @@ export default function Enem2025() {
                 </Badge>
 
                 <h1 className="mb-6 text-3xl font-bold leading-tight text-white lg:text-5xl">
-                  Tudo sobre o ENEM 2025:
-                  <br />
-                  <span className="text-accent">Estratégias que funcionam</span>
+                  Plataforma de Correção de Redação – ENEM 2025
                 </h1>
 
                 <p className="mb-8 text-xl font-light leading-relaxed text-white/90">

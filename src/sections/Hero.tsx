@@ -14,7 +14,7 @@ export default function Hero() {
           <div className="order-2 space-y-6 md:order-1">
             <div>
               <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-[-0.02em] text-white md:text-6xl">
-                Descubra os Temas que Mais Caem no ENEM 2025
+                Correção de Redação para o ENEM 2025
               </h1>
 
               <h2 className="text-lg leading-relaxed text-white/90 md:text-xl">

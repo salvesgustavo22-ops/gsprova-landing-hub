@@ -154,7 +154,7 @@ const Admin = () => {
       <header className="border-b bg-white shadow-sm">
         <div className="container mx-auto flex items-center justify-between p-4">
           <div className="flex items-center space-x-3">
-            <img src={gsAprovaLogo} alt="GS Aprova Logo" className="size-10" />
+            <img src={gsAprovaLogo} alt="GS Aprova - Plataforma de correção de redação ENEM" className="size-10" />
             <div>
               <h1 className="text-lg font-bold text-primary">Painel Administrativo</h1>
               <p className="text-xs text-muted-foreground">GS Aprova - Contatos</p>

@@ -179,7 +179,7 @@ const Contato = () => {
 
           <div className="mb-8 text-center">
             <h1 className="mb-3 text-3xl font-bold text-[#1E3A8A] dark:text-white">
-              Vamos começar! 🚀
+              Contato
             </h1>
             <p className="text-base leading-relaxed text-gray-600 dark:text-white/80">
               Preenche aí que já preparamos sua trilha de estudos. Resposta em até 2 horas no

@@ -126,7 +126,7 @@ const Auth = () => {
         {/* Logo and Header */}
         <div className="space-y-2 text-center">
           <div className="flex justify-center">
-            <img src={gsAprovaLogo} alt="GS Aprova Logo" className="size-16" />
+            <img src={gsAprovaLogo} alt="GS Aprova - Plataforma de correção de redação ENEM" className="size-16" />
           </div>
           <h1 className="text-2xl font-bold text-primary">GS Aprova</h1>
           <p className="text-muted-foreground">Painel Administrativo</p>

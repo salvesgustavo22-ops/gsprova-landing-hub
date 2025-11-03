@@ -77,7 +77,7 @@ export const BlogSection = () => {
               <div className="relative overflow-hidden rounded-t-lg">
                 <img
                   src={post.image}
-                  alt={post.title}
+                  alt={`Artigo sobre ${post.title} - Dicas de redação para ENEM 2025`}
                   className={`w-full object-cover transition-transform duration-300 group-hover:scale-105 ${
                     post.featured ? 'h-48 md:h-64' : 'h-40'
                   }`}

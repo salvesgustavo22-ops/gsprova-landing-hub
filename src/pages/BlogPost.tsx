@@ -138,7 +138,7 @@ const BlogPost = () => {
       <main className="pt-20">
         {/* Hero Image */}
         <div className="relative h-[400px] bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6]">
-          <img src={post.image} alt={post.title} className="size-full object-cover opacity-30" />
+          <img src={post.image} alt={`Imagem ilustrativa do artigo: ${post.title}`} className="size-full object-cover opacity-30" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="container mx-auto px-4 text-center">
               <Link to="/blog">

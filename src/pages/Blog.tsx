@@ -33,13 +33,13 @@ const blogPosts = [
 
 const Blog = () => {
   useEffect(() => {
-    document.title = 'Blog - Dicas e Estratégias ENEM 2025 | GS Aprova';
+    document.title = 'Blog de Dicas para Redação ENEM – GS Aprova';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        'Artigos exclusivos sobre estratégias ENEM 2025, análise de dados oficiais INEP e dicas para a reta final. Conteúdo baseado em evidências.'
+        'Confira os melhores artigos, temas que mais caem e técnicas para melhorar sua redação no ENEM.'
       );
     }
   }, []);
@@ -52,7 +52,7 @@ const Blog = () => {
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-[#1E3A8A] via-[#3B82F6] to-[#1E3A8A] py-16">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">Blog GS Aprova</h1>
+            <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">Blog – Dicas de Redação ENEM</h1>
             <p className="mx-auto max-w-3xl text-xl text-white/90">
               Estratégias, análises e dicas baseadas em dados oficiais para sua aprovação no ENEM
               2025
@@ -72,7 +72,11 @@ const Blog = () => {
                   <div className="grid gap-6 md:grid-cols-3">
                     {/* Image */}
                     <div className="md:col-span-1">
-                      <img src={post.image} alt={post.title} className="size-full object-cover" />
+                      <img 
+                        src={post.image} 
+                        alt={`Artigo sobre ${post.title} - Dicas de redação ENEM 2025`} 
+                        className="size-full object-cover" 
+                      />
                     </div>
 
                     {/* Content */}

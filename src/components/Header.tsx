@@ -20,7 +20,7 @@ export const Header = () => {
       <header className="border-b border-primary/10 bg-white shadow-lg">
         <div className="container mx-auto flex items-center justify-between p-4">
           <div className="flex items-center space-x-3">
-            <img src={novoLogo} alt="GS Aprova Logo" className="h-16 w-auto" />
+            <img src={novoLogo} alt="GS Aprova - Correção de redação e preparação para ENEM 2025" className="h-16 w-auto" />
           </div>
 
           <div className="flex items-center space-x-3">

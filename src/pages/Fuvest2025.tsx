@@ -10,13 +10,13 @@ import { trackPageSection } from '@/lib/analytics';
 export default function Fuvest2025() {
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = 'Fuvest 2025: Estratégias e preparação completa | GS Aprova';
+    document.title = 'Correção de Redação para FUVEST 2025 – GS Aprova';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        'Prepare-se para a Fuvest 2025 com estratégias específicas de matemática, redação e leituras obrigatórias. Monte sua trilha personalizada de estudos.'
+        'Prepare-se para a FUVEST 2025 com correção de redações especializada. Aumente suas chances!'
       );
     }
 
@@ -94,9 +94,7 @@ export default function Fuvest2025() {
                 </Badge>
 
                 <h1 className="mb-6 text-3xl font-bold leading-tight text-white lg:text-5xl">
-                  Fuvest 2025:
-                  <br />
-                  <span className="text-accent">A preparação que aprova</span>
+                  Correção de Redação – FUVEST 2025
                 </h1>
 
                 <p className="mb-8 text-xl font-light leading-relaxed text-white/90">

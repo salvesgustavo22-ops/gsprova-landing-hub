@@ -13,7 +13,7 @@ export const Footer = () => {
           <div className="md:col-span-2">
             <img
               src={logo}
-              alt="GS Aprova Logo"
+              alt="GS Aprova - Plataforma de correção de redação e preparação para ENEM e vestibulares"
               className="mb-4 h-auto w-32 object-contain"
             />
             <p className="max-w-md text-sm leading-relaxed text-white/90">

@@ -107,13 +107,13 @@ const Planos = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    document.title = 'Planos e Serviços - GS Aprova | ENEM 2025';
+    document.title = 'Planos de Correção de Redação – GS Aprova';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        'Curso Intensivo Matemática R$ 39,90 | Aulas Particulares | Correção de Redação | Trilha Personalizada | Mentoria Individual para ENEM 2025'
+        'Escolha o plano ideal de correção de redação: envios ilimitados, feedback detalhado e suporte online.'
       );
     }
   }, []);
@@ -191,7 +191,7 @@ const Planos = () => {
         <section className="bg-gradient-to-br from-[#1E3A8A] via-[#3B82F6] to-[#1E3A8A] py-16">
           <div className="container mx-auto px-4 text-center">
             <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">
-              Nossos Planos e Serviços
+              Planos de Correção de Redação
             </h1>
             <p className="mx-auto max-w-3xl text-xl text-white/90">
               Soluções personalizadas baseadas em análise de dados oficiais INEP para sua aprovação

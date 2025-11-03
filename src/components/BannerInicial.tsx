@@ -10,7 +10,7 @@ export const BannerInicial = () => {
           <div className="shrink-0">
             <img 
               src={logo} 
-              alt="GS Aprova Logo" 
+              alt="GS Aprova - Plataforma de correção de redação e preparação para ENEM e vestibulares" 
               className="h-24 w-auto md:h-32"
             />
           </div>

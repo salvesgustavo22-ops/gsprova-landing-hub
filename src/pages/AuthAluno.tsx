@@ -239,7 +239,7 @@ const AuthAluno = () => {
       <div className="flex min-h-screen items-center justify-center bg-background p-4">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
-            <img src={logoImage} alt="GS Aprova" className="mx-auto mb-4 h-16" />
+            <img src={logoImage} alt="GS Aprova - Correção de redação para ENEM e vestibulares" className="mx-auto mb-4 h-16" />
             <CardTitle>Recuperar Senha</CardTitle>
           </CardHeader>
           <CardContent>
@@ -276,7 +276,7 @@ const AuthAluno = () => {
     <div className="flex min-h-screen items-center justify-center bg-background p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <img src={logoImage} alt="GS Aprova" className="mx-auto mb-4 h-16" />
+          <img src={logoImage} alt="GS Aprova - Correção de redação para ENEM e vestibulares" className="mx-auto mb-4 h-16" />
           <CardTitle className="text-foreground">Portal do Aluno</CardTitle>
         </CardHeader>
         <CardContent>
