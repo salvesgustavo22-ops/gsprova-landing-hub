@@ -14,9 +14,6 @@ export const SprintBox = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  // Hotmart payment link to show and redirect to
-  const hotmartLink = 'https://pay.hotmart.com/B102743419P?checkoutMode=10';
-
   const handleInitialClick = () => {
     setShowFormDialog(true);
   };
@@ -67,8 +64,8 @@ export const SprintBox = () => {
         description: 'Você será redirecionado para a loja da Hotmart.',
       });
 
-      // Redirect to Hotmart after successful submission
-      window.open(hotmartLink, '_blank');
+      // Redirect to Hotmart
+      window.open('https://hotmart.com/pt-br/marketplace/produtos/sprint-redacao-900-enem/B102743419P', '_blank');
 
       setShowFormDialog(false);
       setFormData({ name: '', email: '', phone: '' });
@@ -145,23 +142,6 @@ export const SprintBox = () => {
           <DialogHeader>
             <DialogTitle className="text-foreground">Seus Dados</DialogTitle>
           </DialogHeader>
-
-          {/* Show the Hotmart link before the fields */}
-          <div className="mb-4 rounded-md border border-white/10 bg-white/5 p-3 text-sm">
-            <div className="mb-1 font-semibold text-foreground">Link de pagamento</div>
-            <a
-              href={hotmartLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#3B82F6] underline"
-            >
-              {hotmartLink}
-            </a>
-            <div className="mt-2 text-xs text-foreground/70">
-              Você pode abrir o link diretamente ou preencher o formulário abaixo para que salvemos seu contato antes do redirecionamento.
-            </div>
-          </div>
-
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="sprint-name" className="text-foreground">Nome completo *</Label>
@@ -206,4 +186,3 @@ export const SprintBox = () => {
     </>
   );
 };
-```
