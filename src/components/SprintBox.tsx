@@ -9,18 +9,12 @@ import { supabase } from '@/integrations/supabase/client';
 import { BookOpen, Check } from 'lucide-react';
 
 export const SprintBox = () => {
-  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [showFormDialog, setShowFormDialog] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const handleInitialClick = () => {
-    setShowConfirmDialog(true);
-  };
-
-  const handleConfirm = () => {
-    setShowConfirmDialog(false);
     setShowFormDialog(true);
   };
 
@@ -142,52 +136,15 @@ export const SprintBox = () => {
         </CardContent>
       </Card>
 
-      {/* Confirmation Dialog */}
-      <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle>Aquisição via Hotmart</DialogTitle>
-          </DialogHeader>
-          <div className="space-y-4">
-            <p>
-              A compra do Sprint Redação 900+ será realizada em nossa loja segura na Hotmart.
-            </p>
-            <div className="space-y-2 rounded-lg bg-muted p-4 text-sm">
-              <p>
-                <strong>💰 Preço:</strong> R$ 17,90 (promoção)
-              </p>
-              <p>
-                <strong>💳 Pagamento:</strong> PIX, Cartão de Crédito ou Boleto
-              </p>
-              <p>
-                <strong>📧 Nota Fiscal:</strong> Emitida automaticamente pela Hotmart
-              </p>
-              <p>
-                <strong>📥 Entrega:</strong> Acesso imediato após aprovação do pagamento
-              </p>
-              <p>
-                <strong>🛡️ Garantia:</strong> 7 dias de garantia Hotmart
-              </p>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              Antes de prosseguir para a loja, preencha seus dados:
-            </p>
-            <Button onClick={handleConfirm} className="w-full" size="lg">
-              Continuar
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-
       {/* Form Dialog */}
       <Dialog open={showFormDialog} onOpenChange={setShowFormDialog}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Seus Dados</DialogTitle>
+            <DialogTitle className="text-foreground">Seus Dados</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="sprint-name">Nome completo *</Label>
+              <Label htmlFor="sprint-name" className="text-foreground">Nome completo *</Label>
               <Input
                 id="sprint-name"
                 value={formData.name}
@@ -198,7 +155,7 @@ export const SprintBox = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="sprint-email">E-mail *</Label>
+              <Label htmlFor="sprint-email" className="text-foreground">E-mail *</Label>
               <Input
                 id="sprint-email"
                 type="email"
@@ -210,7 +167,7 @@ export const SprintBox = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="sprint-phone">Celular *</Label>
+              <Label htmlFor="sprint-phone" className="text-foreground">Celular *</Label>
               <Input
                 id="sprint-phone"
                 value={formData.phone}
