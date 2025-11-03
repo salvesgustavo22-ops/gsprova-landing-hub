@@ -66,15 +66,12 @@ export const SprintBox = () => {
       if (error) throw error;
 
       toast({
-        title: 'Solicitação enviada!',
-        description: 'Você será redirecionado para o WhatsApp.',
+        title: 'Dados recebidos!',
+        description: 'Você será redirecionado para a loja da Hotmart.',
       });
 
-      // Redirect to WhatsApp
-      const message = encodeURIComponent(
-        `Olá! Tenho interesse no Sprint Redação 900+. Meu nome é ${formData.name}, email: ${formData.email}, telefone: ${formData.phone}.`
-      );
-      window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+      // Redirect to Hotmart
+      window.open('https://hotmart.com/pt-br/marketplace/produtos/sprint-redacao-900-enem/B102743419P', '_blank');
 
       setShowFormDialog(false);
       setFormData({ name: '', email: '', phone: '' });
@@ -105,6 +102,11 @@ export const SprintBox = () => {
           <p className="mt-2 text-lg text-white/90">
             Guia de estudos com 8 módulos para construir a redação nota 900 no ENEM
           </p>
+          <div className="mt-4 text-center">
+            <div className="mb-1 text-sm text-white/70 line-through">De R$ 35,90</div>
+            <div className="text-4xl font-bold text-[#FBBF24]">R$ 17,90</div>
+            <div className="mt-1 text-sm font-semibold text-white">🔥 Super Promoção!</div>
+          </div>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-3">
@@ -144,29 +146,31 @@ export const SprintBox = () => {
       <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Aquisição via WhatsApp</DialogTitle>
+            <DialogTitle>Aquisição via Hotmart</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <p>
-              Você será direcionado para o WhatsApp para concluir a aquisição do Sprint Redação
-              900+.
+              A compra do Sprint Redação 900+ será realizada em nossa loja segura na Hotmart.
             </p>
             <div className="space-y-2 rounded-lg bg-muted p-4 text-sm">
               <p>
-                <strong>✅ Atendimento:</strong> Em até 1 hora
+                <strong>💰 Preço:</strong> R$ 17,90 (promoção)
               </p>
               <p>
-                <strong>💳 Pagamento:</strong> PIX ou Cartão (via link seguro Banco C6)
+                <strong>💳 Pagamento:</strong> PIX, Cartão de Crédito ou Boleto
               </p>
               <p>
-                <strong>📧 Nota Fiscal:</strong> Emitida automaticamente
+                <strong>📧 Nota Fiscal:</strong> Emitida automaticamente pela Hotmart
               </p>
               <p>
-                <strong>🎧 Suporte:</strong> 7 dias de acompanhamento
+                <strong>📥 Entrega:</strong> Acesso imediato após aprovação do pagamento
+              </p>
+              <p>
+                <strong>🛡️ Garantia:</strong> 7 dias de garantia Hotmart
               </p>
             </div>
             <p className="text-sm text-muted-foreground">
-              Antes de prosseguir, preencha seus dados:
+              Antes de prosseguir para a loja, preencha seus dados:
             </p>
             <Button onClick={handleConfirm} className="w-full" size="lg">
               Continuar
@@ -217,7 +221,7 @@ export const SprintBox = () => {
             </div>
 
             <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-              {isSubmitting ? 'Enviando...' : 'Prosseguir para WhatsApp'}
+              {isSubmitting ? 'Enviando...' : 'Ir para a Loja Hotmart'}
             </Button>
           </form>
         </DialogContent>
