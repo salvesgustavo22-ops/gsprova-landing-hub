@@ -239,9 +239,9 @@ const EnviarRedacao = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <div className="mx-auto max-w-2xl">
+          <div className="mx-auto max-w-2xl">
           <div className="mb-8 flex items-center gap-4">
-            <Button variant="outline" size="sm" onClick={() => navigate('/portal-aluno')}>
+            <Button variant="outline" size="sm" onClick={() => navigate('/portal-aluno')} className="text-foreground">
               <ArrowLeft className="mr-2 size-4" />
               Voltar
             </Button>
@@ -286,7 +286,7 @@ const EnviarRedacao = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {type === 'gs_aprova' && (
                   <div>
-                    <Label htmlFor="theme">Tema da Redação *</Label>
+                    <Label htmlFor="theme" className="text-foreground">Tema da Redação *</Label>
                     <Select value={selectedTheme} onValueChange={setSelectedTheme}>
                       <SelectTrigger>
                         <SelectValue placeholder="Selecione o tema" />
@@ -303,7 +303,7 @@ const EnviarRedacao = () => {
                 )}
 
                 <div>
-                  <Label htmlFor="bank">Banca Corretora *</Label>
+                  <Label htmlFor="bank" className="text-foreground">Banca Corretora *</Label>
                   <Select value={bank} onValueChange={setBank}>
                     <SelectTrigger>
                       <SelectValue placeholder="Selecione a banca" />
@@ -319,7 +319,7 @@ const EnviarRedacao = () => {
 
                 {bank === 'other' && (
                   <div>
-                    <Label htmlFor="bankOther">Especifique a Banca *</Label>
+                    <Label htmlFor="bankOther" className="text-foreground">Especifique a Banca *</Label>
                     <Input
                       id="bankOther"
                       value={bankOther}
@@ -331,7 +331,7 @@ const EnviarRedacao = () => {
 
                 {type === 'external' && (
                   <div>
-                    <Label htmlFor="proposal">Proposta de Redação *</Label>
+                    <Label htmlFor="proposal" className="text-foreground">Proposta de Redação *</Label>
                     <Input
                       id="proposal"
                       type="file"
@@ -345,7 +345,7 @@ const EnviarRedacao = () => {
                 )}
 
                 <div>
-                  <Label htmlFor="essay">Redação *</Label>
+                  <Label htmlFor="essay" className="text-foreground">Redação *</Label>
                   <Input
                     id="essay"
                     type="file"
@@ -361,7 +361,7 @@ const EnviarRedacao = () => {
                     checked={dataProtectionAccepted}
                     onCheckedChange={checked => setDataProtectionAccepted(checked as boolean)}
                   />
-                  <Label htmlFor="data-protection" className="text-sm text-muted-foreground">
+                  <Label htmlFor="data-protection" className="text-sm text-foreground">
                     Estou ciente que a GS Aprova segue a legislação brasileira sobre proteção de
                     dados
                   </Label>

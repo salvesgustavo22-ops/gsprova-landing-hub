@@ -110,12 +110,16 @@ const PortalAluno = () => {
             <Button
               onClick={() => navigate('/minhas-redacoes')}
               variant="outline"
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 text-foreground"
             >
               <FileText className="size-4" />
               Minhas Redações
             </Button>
-            <Button onClick={handleLogout} variant="outline" className="flex items-center gap-2">
+            <Button onClick={() => navigate('/')} variant="outline" className="flex items-center gap-2 text-foreground">
+              <LogOut className="size-4" />
+              Voltar ao Site
+            </Button>
+            <Button onClick={handleLogout} variant="outline" className="flex items-center gap-2 text-foreground">
               <LogOut className="size-4" />
               Sair
             </Button>
@@ -231,10 +235,10 @@ const PortalAluno = () => {
                 <CollapsibleContent>
                   <CardContent className="pt-0">
                     <div className="space-y-3">
-                      <h4 className="mb-3 font-medium text-primary">Textos de Apoio:</h4>
+                      <h4 className="mb-3 font-medium text-foreground">Textos de Apoio:</h4>
                       {theme.supportTexts.map((text, index) => (
                         <div key={index} className="rounded-md bg-muted p-3">
-                          <p className="text-sm text-muted-foreground">{text}</p>
+                          <p className="text-sm text-foreground">{text}</p>
                         </div>
                       ))}
                     </div>

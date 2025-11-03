@@ -227,7 +227,7 @@ const MinhasRedacoes = () => {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8 flex items-center gap-4">
-          <Button variant="outline" size="sm" onClick={() => navigate('/portal-aluno')}>
+          <Button variant="outline" size="sm" onClick={() => navigate('/portal-aluno')} className="text-foreground">
             <ArrowLeft className="mr-2 size-4" />
             Voltar
           </Button>

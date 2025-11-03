@@ -94,7 +94,7 @@ export const BlogSection = () => {
 
               <CardHeader className="pb-2">
                 <h3
-                  className={`font-bold text-card-foreground transition-colors group-hover:text-primary ${
+                  className={`font-bold text-white transition-colors group-hover:text-accent ${
                     post.featured ? 'text-xl md:text-2xl' : 'text-lg'
                   }`}
                 >
@@ -123,10 +123,10 @@ export const BlogSection = () => {
                 </div>
 
                 <div className="flex items-center justify-between pt-2">
-                  <span className="text-sm font-medium text-primary group-hover:underline">
+                  <span className="text-sm font-medium text-white group-hover:underline group-hover:text-accent">
                     Ler artigo
                   </span>
-                  <ArrowRight className="size-4 text-primary transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="size-4 text-white transition-transform group-hover:translate-x-1 group-hover:text-accent" />
                 </div>
               </CardContent>
             </Card>
