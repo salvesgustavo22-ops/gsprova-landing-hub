@@ -245,7 +245,7 @@ const AuthAluno = () => {
           <CardContent>
             <form onSubmit={handleForgotPassword} className="space-y-4">
               <div>
-                <Label htmlFor="forgot-email">Email</Label>
+                <Label htmlFor="forgot-email" className="text-foreground">Email</Label>
                 <Input
                   id="forgot-email"
                   type="email"
@@ -277,7 +277,7 @@ const AuthAluno = () => {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <img src={logoImage} alt="GS Aprova" className="mx-auto mb-4 h-16" />
-          <CardTitle>Portal do Aluno</CardTitle>
+          <CardTitle className="text-foreground">Portal do Aluno</CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={setActiveTab}>
@@ -289,7 +289,7 @@ const AuthAluno = () => {
             <TabsContent value="signin">
               <form onSubmit={handleSignIn} className="space-y-4">
                 <div>
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email" className="text-foreground">Email</Label>
                   <Input
                     id="email"
                     type="email"
@@ -299,7 +299,7 @@ const AuthAluno = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="password">Senha</Label>
+                  <Label htmlFor="password" className="text-foreground">Senha</Label>
                   <div className="relative">
                     <Input
                       id="password"
@@ -337,7 +337,7 @@ const AuthAluno = () => {
               <form onSubmit={handleSignUp} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="firstName">Nome</Label>
+                    <Label htmlFor="firstName" className="text-foreground">Nome</Label>
                     <Input
                       id="firstName"
                       value={firstName}
@@ -346,7 +346,7 @@ const AuthAluno = () => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="lastName">Sobrenome</Label>
+                    <Label htmlFor="lastName" className="text-foreground">Sobrenome</Label>
                     <Input
                       id="lastName"
                       value={lastName}
@@ -356,7 +356,7 @@ const AuthAluno = () => {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="phone">Telefone</Label>
+                  <Label htmlFor="phone" className="text-foreground">Telefone</Label>
                   <Input
                     id="phone"
                     value={phone}
@@ -366,7 +366,7 @@ const AuthAluno = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="signup-email">Email</Label>
+                  <Label htmlFor="signup-email" className="text-foreground">Email</Label>
                   <Input
                     id="signup-email"
                     type="email"
@@ -376,7 +376,7 @@ const AuthAluno = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="signup-password">Senha</Label>
+                  <Label htmlFor="signup-password" className="text-foreground">Senha</Label>
                   <div className="relative">
                     <Input
                       id="signup-password"
@@ -400,7 +400,7 @@ const AuthAluno = () => {
                   </p>
                 </div>
                 <div>
-                  <Label htmlFor="confirm-password">Confirmar Senha</Label>
+                  <Label htmlFor="confirm-password" className="text-foreground">Confirmar Senha</Label>
                   <div className="relative">
                     <Input
                       id="confirm-password"
@@ -450,7 +450,7 @@ const AuthAluno = () => {
 
           <div className="mt-6 text-center">
             <Link to="/">
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="outline" className="flex items-center gap-2 text-foreground hover:text-foreground">
                 <ArrowLeft className="size-4" />
                 Voltar ao site
               </Button>

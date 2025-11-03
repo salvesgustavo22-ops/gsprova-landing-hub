@@ -134,7 +134,7 @@ export const BlogSection = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <Button onClick={handleVerTodosClick} variant="outline" size="lg" className="px-8">
+          <Button onClick={handleVerTodosClick} variant="outline" size="lg" className="px-8 text-foreground hover:text-foreground">
             Ver todos os artigos
             <ArrowRight className="ml-2 size-4" />
           </Button>

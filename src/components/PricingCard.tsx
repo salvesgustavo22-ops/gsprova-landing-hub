@@ -46,12 +46,12 @@ export const PricingCard = ({
       )}
     >
       {badge && (
-        <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#FBBF24] text-[#1E3A8A] hover:bg-[#FBBF24]/90">
+        <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#FBBF24] text-[#1E3A8A] hover:bg-[#FBBF24]/90 z-10">
           {badge}
         </Badge>
       )}
 
-      <CardHeader className="pb-4 text-center">
+      <CardHeader className={cn("pb-4 text-center", badge && "mt-2")}>
         <CardTitle className="mb-2 text-xl font-bold md:text-2xl">{title}</CardTitle>
         <div className="text-3xl font-bold text-[#1E3A8A] dark:text-white md:text-4xl">{price}</div>
       </CardHeader>
