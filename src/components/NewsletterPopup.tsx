@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { X } from 'lucide-react';
@@ -10,6 +11,11 @@ import { X } from 'lucide-react';
 export const NewsletterPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState('');
+  const [interests, setInterests] = useState({
+    vestibular: false,
+    concursos: false,
+    aulas_particulares: false,
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -48,32 +54,13 @@ export const NewsletterPopup = () => {
     setIsSubmitting(true);
 
     try {
-      // TODO: After creating newsletter_emails table in Supabase, uncomment this
-      // const { error } = await supabase.from('newsletter_emails').insert({
-      //   email: email.trim(),
-      // });
-
-      // if (error) {
-      //   if (error.message.includes('duplicate') || error.message.includes('unique')) {
-      //     toast({
-      //       title: 'Email já cadastrado',
-      //       description: 'Este email já está em nossa lista.',
-      //     });
-      //   } else {
-      //     throw error;
-      //   }
-      // } else {
-      //   toast({
-      //     title: 'Sucesso!',
-      //     description: 'Você receberá nossas atualizações em breve!',
-      //   });
-      // }
-
-      // Temporary: Store in guia_leads until newsletter table is created
       const { error } = await supabase.from('guia_leads').insert({
         name: 'Newsletter Signup',
         email: email.trim(),
         whatsapp: 'N/A',
+        interest_vestibular: interests.vestibular,
+        interest_concursos: interests.concursos,
+        interest_aulas_particulares: interests.aulas_particulares,
       });
 
       if (error) throw error;
@@ -86,6 +73,7 @@ export const NewsletterPopup = () => {
       localStorage.setItem('gs_aprova_newsletter_popup', Date.now().toString());
       setIsOpen(false);
       setEmail('');
+      setInterests({ vestibular: false, concursos: false, aulas_particulares: false });
     } catch (error) {
       console.error('Error submitting email:', error);
       toast({
@@ -109,16 +97,62 @@ export const NewsletterPopup = () => {
         </button>
         <DialogHeader>
           <DialogTitle className="text-center text-2xl text-white">
-            📚 Receba notícias de vestibulares
+            📚 Receba novidades sobre vestibulares
           </DialogTitle>
         </DialogHeader>
 
         <p className="text-center text-white/90">
-          Receba notícias de vestibulares, guia de estudos e materiais relevantes para seu
-          progresso. Deixe seu email:
+          Receba as novidades sobre vestibulares/concursos e conteúdos exclusivos para seus estudos
+          no seu email
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-3">
+            <Label className="text-white">Tenho interesse em:</Label>
+            
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="vestibular"
+                checked={interests.vestibular}
+                onCheckedChange={(checked) =>
+                  setInterests(prev => ({ ...prev, vestibular: checked as boolean }))
+                }
+                className="border-white data-[state=checked]:bg-white data-[state=checked]:text-gray-900"
+              />
+              <Label htmlFor="vestibular" className="cursor-pointer text-white">
+                Vestibular
+              </Label>
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="concursos"
+                checked={interests.concursos}
+                onCheckedChange={(checked) =>
+                  setInterests(prev => ({ ...prev, concursos: checked as boolean }))
+                }
+                className="border-white data-[state=checked]:bg-white data-[state=checked]:text-gray-900"
+              />
+              <Label htmlFor="concursos" className="cursor-pointer text-white">
+                Concursos
+              </Label>
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="aulas-particulares"
+                checked={interests.aulas_particulares}
+                onCheckedChange={(checked) =>
+                  setInterests(prev => ({ ...prev, aulas_particulares: checked as boolean }))
+                }
+                className="border-white data-[state=checked]:bg-white data-[state=checked]:text-gray-900"
+              />
+              <Label htmlFor="aulas-particulares" className="cursor-pointer text-white">
+                Aulas Particulares
+              </Label>
+            </div>
+          </div>
+
           <div className="space-y-2">
             <Label htmlFor="newsletter-email" className="text-white">
               Email

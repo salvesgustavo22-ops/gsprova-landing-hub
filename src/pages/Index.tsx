@@ -554,7 +554,6 @@ const Index = () => {
 
       <Footer />
       <StickyWhatsApp />
-      <QuickSurvey />
     </div>
   );
 };
