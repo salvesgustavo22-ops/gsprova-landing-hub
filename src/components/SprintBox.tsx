@@ -1,89 +1,14 @@
-import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
 import { BookOpen, Check } from 'lucide-react';
 
 export const SprintBox = () => {
-  const [showFormDialog, setShowFormDialog] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const handleInitialClick = () => {
-    setShowFormDialog(true);
-  };
-
-  const formatPhone = (value: string) => {
-    const numbers = value.replace(/\D/g, '');
-    if (numbers.length <= 11) {
-      return numbers.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-    }
-    return value;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
-      toast({
-        title: 'Campos obrigatórios',
-        description: 'Por favor, preencha todos os campos.',
-        variant: 'destructive',
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      // TODO: After creating sprint_leads table in Supabase, uncomment this
-      // const { error } = await supabase.from('sprint_leads').insert({
-      //   name: formData.name.trim(),
-      //   email: formData.email.trim(),
-      //   phone: formData.phone.replace(/\D/g, ''),
-      // });
-
-      // Temporary: Store in service_leads until sprint_leads table is created
-      const { error } = await supabase.from('service_leads').insert({
-        name: formData.name.trim(),
-        email: formData.email.trim(),
-        whatsapp: formData.phone.replace(/\D/g, ''),
-        service_type: 'sprint_redacao_900',
-        message: 'Sprint Redação 900+ - Lead',
-      });
-
-      if (error) throw error;
-
-      toast({
-        title: 'Dados recebidos!',
-        description: 'Você será redirecionado para a loja da Hotmart.',
-      });
-
-      // Redirect to Hotmart
-      window.open('https://hotmart.com/pt-br/marketplace/produtos/sprint-redacao-900-enem/B102743419P', '_blank');
-
-      setShowFormDialog(false);
-      setFormData({ name: '', email: '', phone: '' });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast({
-        title: 'Erro ao enviar',
-        description: 'Tente novamente ou entre em contato pelo WhatsApp.',
-        variant: 'destructive',
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+  const handleCtaClick = () => {
+    window.open('https://hotm.art/WJj5h41Y', '_blank');
   };
 
   return (
-    <>
-      <Card className="border-2 border-[#FBBF24] bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6] shadow-2xl">
+    <Card className="border-2 border-[#FBBF24] bg-gradient-to-br from-[#1E3A8A] to-[#3B82F6] shadow-2xl">
         <CardHeader className="text-center">
           <div className="mb-4 flex justify-center">
             <div className="rounded-full bg-[#FBBF24] p-4">
@@ -123,7 +48,7 @@ export const SprintBox = () => {
           </div>
 
           <Button
-            onClick={handleInitialClick}
+            onClick={handleCtaClick}
             className="w-full bg-[#FBBF24] py-6 text-lg font-bold text-[#1E3A8A] hover:brightness-95"
             size="lg"
           >
@@ -135,54 +60,5 @@ export const SprintBox = () => {
           </div>
         </CardContent>
       </Card>
-
-      {/* Form Dialog */}
-      <Dialog open={showFormDialog} onOpenChange={setShowFormDialog}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-foreground">Seus Dados</DialogTitle>
-          </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="sprint-name" className="text-foreground">Nome completo *</Label>
-              <Input
-                id="sprint-name"
-                value={formData.name}
-                onChange={e => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                placeholder="Seu nome"
-                required
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="sprint-email" className="text-foreground">E-mail *</Label>
-              <Input
-                id="sprint-email"
-                type="email"
-                value={formData.email}
-                onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                placeholder="seu@email.com"
-                required
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="sprint-phone" className="text-foreground">Celular *</Label>
-              <Input
-                id="sprint-phone"
-                value={formData.phone}
-                onChange={e => setFormData(prev => ({ ...prev, phone: formatPhone(e.target.value) }))}
-                placeholder="(11) 99999-9999"
-                required
-              />
-            </div>
-
-            <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-              {isSubmitting ? 'Enviando...' : 'Ir para a Loja Hotmart'}
-            </Button>
-          </form>
-        </DialogContent>
-      </Dialog>
-    </>
   );
 };
