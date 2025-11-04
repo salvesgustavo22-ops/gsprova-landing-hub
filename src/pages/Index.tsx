@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { FAQ } from '@/components/FAQ';
 import { Footer } from '@/components/Footer';
 import { StickyWhatsApp } from '@/components/StickyWhatsApp';
-import QuickSurvey from '@/components/QuickSurvey';
+
 import { ScrollTracker } from '@/components/ScrollTracker';
 import Hero from '@/sections/Hero';
 import { MateriaisExclusivos } from '@/components/MateriaisExclusivos';

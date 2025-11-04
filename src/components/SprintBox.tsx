@@ -4,7 +4,7 @@ import { BookOpen, Check } from 'lucide-react';
 
 export const SprintBox = () => {
   const handleCtaClick = () => {
-    window.open('https://hotm.art/WJj5h41Y', '_blank');
+    window.open('https://hotm.art/ms5Coa', '_blank');
   };
 
   return (
