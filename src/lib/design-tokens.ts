@@ -1,54 +1,55 @@
 /**
- * GS Aprova Design System - Design Tokens
- * Extracted from existing project colors and typography
+ * GS Aprova Design System - Design Tokens (Modern Light Theme)
+ * Updated to match the new clean, modern design with navy blue and golden accents
  */
 
 export const designTokens = {
   colors: {
-    // Primary - Blue (Confidence/Focus)
+    // Primary - Deep Navy Blue (Professional/Trust)
     primary: {
-      DEFAULT: 'hsl(217, 81%, 54%)',
+      DEFAULT: 'hsl(211, 54%, 25%)',
       foreground: 'hsl(0, 0%, 100%)',
-      hover: 'hsl(217, 81%, 48%)',
-      navy: 'hsl(220, 80%, 15%)',
+      hover: 'hsl(211, 54%, 20%)',
+      navy: 'hsl(211, 54%, 20%)',
       'navy-foreground': 'hsl(0, 0%, 100%)',
-      'navy-light': 'hsl(220, 70%, 50%)',
+      'navy-light': 'hsl(211, 54%, 35%)',
     },
 
-    // Secondary - Orange (Action/Conversion)
+    // Secondary - Light backgrounds
     secondary: {
-      DEFAULT: 'hsl(24, 95%, 53%)',
-      foreground: 'hsl(0, 0%, 100%)',
+      DEFAULT: 'hsl(210, 20%, 96%)',
+      foreground: 'hsl(211, 20%, 20%)',
     },
 
-    // Accent - Yellow (Urgency/Emphasis)
+    // Accent - Golden Yellow (Action/Emphasis)
     accent: {
-      DEFAULT: 'hsl(47, 96%, 54%)',
-      foreground: 'hsl(219, 27%, 20%)',
-      hover: 'hsl(47, 96%, 50%)',
+      DEFAULT: 'hsl(47, 100%, 65%)',
+      foreground: 'hsl(211, 54%, 20%)',
+      hover: 'hsl(43, 95%, 58%)',
+      soft: 'hsl(47, 100%, 75%)',
     },
 
     // Success - Achievement Green
     success: {
-      DEFAULT: 'hsl(142, 76%, 36%)',
-      foreground: 'hsl(0, 0%, 98%)',
+      DEFAULT: 'hsl(142, 76%, 45%)',
+      foreground: 'hsl(0, 0%, 100%)',
       light: 'hsl(142, 76%, 94%)',
     },
 
-    // Muted - Light Gray
+    // Muted - Soft Gray
     muted: {
-      DEFAULT: 'hsl(220, 14%, 96%)',
-      foreground: 'hsl(219, 27%, 15%)',
+      DEFAULT: 'hsl(210, 20%, 96%)',
+      foreground: 'hsl(211, 15%, 45%)',
     },
 
-    // Base colors
+    // Base colors - Clean white
     background: 'hsl(0, 0%, 100%)',
-    foreground: 'hsl(219, 27%, 15%)',
+    foreground: 'hsl(211, 20%, 20%)',
 
     // Destructive
     destructive: {
       DEFAULT: 'hsl(0, 84.2%, 60.2%)',
-      foreground: 'hsl(210, 40%, 98%)',
+      foreground: 'hsl(0, 0%, 100%)',
     },
   },
 
@@ -93,18 +94,21 @@ export const designTokens = {
 
   effects: {
     gradient: {
-      hero: 'bg-gradient-to-br from-primary-navy via-slate-800 to-purple-900',
-      card: 'bg-gradient-to-br from-white to-slate-50',
+      hero: 'bg-[linear-gradient(135deg,_hsl(211_54%_25%)_0%,_hsl(211_54%_20%)_50%,_hsl(220_60%_15%)_100%)]',
+      accent: 'bg-gradient-to-r from-accent to-accent-hover',
+      card: 'bg-gradient-to-br from-white to-secondary',
       overlay: 'bg-gradient-to-t from-black/60 via-black/20 to-transparent',
     },
     shadow: {
-      card: 'shadow-lg hover:shadow-xl',
-      cta: 'shadow-xl hover:shadow-2xl',
-      hero: 'shadow-2xl',
+      card: 'shadow-[0_4px_12px_-2px_hsl(211_54%_25%/0.08)]',
+      cardHover: 'shadow-[0_8px_24px_-4px_hsl(211_54%_25%/0.12)]',
+      cta: 'shadow-[0_4px_16px_-4px_hsl(47_100%_65%/0.3)]',
+      glow: 'shadow-[0_0_40px_hsl(47_100%_65%/0.4)]',
     },
     transition: {
       smooth: 'transition-all duration-300 ease-out',
       bounce: 'transition-all duration-300 ease-in-out hover:scale-105',
+      fast: 'transition-all duration-150 ease-out',
     },
   },
 } as const;

@@ -16,9 +16,9 @@ export const Section = ({
   'data-testid': testId,
 }: SectionProps) => {
   const variantClasses = {
-    light: 'bg-white text-[#111827]',
-    dark: 'bg-[#1E3A8A] text-white',
-    neutral: 'bg-[#F3F4F6] text-[#111827]',
+    light: 'bg-white text-foreground',
+    dark: 'section-modern text-white',
+    neutral: 'bg-muted text-foreground',
   };
 
   return (

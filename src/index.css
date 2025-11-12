@@ -2,129 +2,157 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global styles and custom properties for theme tokens */
+/* Modern light theme with navy blue accents and golden CTAs */
 @layer base {
   :root {
-    /* Base (mantém tema escuro com foreground claro) */
-    --background: 220 20% 8%;
-    --foreground: 210 40% 95%;
+    /* Base - Clean white background */
+    --background: 0 0% 100%;
+    --foreground: 211 20% 20%;
 
-    --card: 220 18% 12%;
-    --card-foreground: 210 40% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 211 20% 20%;
 
-    --popover: 220 18% 12%;
-    --popover-foreground: 210 40% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 211 20% 20%;
 
-    /* PRIMÁRIO — Azul GS (hex → hsl):
-       #0F3763 => hsl(211 74% 22%)
-       #0B2B4E => hsl(211 75% 17%)  (hover/dark)
-       #154A86 => hsl(212 73% 30%)  (variação) */
-    --primary: 211 74% 22%;
-    --primary-foreground: 210 40% 95%;
-    --primary-hover: 211 75% 17%;
+    /* PRIMARY - Deep Navy Blue (#1E3A5F ≈ hsl(211 54% 25%)) */
+    --primary: 211 54% 25%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 211 54% 20%;
 
-    /* Azul "navy" para blocos cheios / cards selecionados */
-    --primary-navy: 211 75% 17%;
-    --primary-navy-foreground: 210 40% 95%;
-    --primary-navy-light: 212 73% 30%;
+    /* Navy variants for hero sections */
+    --primary-navy: 211 54% 20%;
+    --primary-navy-foreground: 0 0% 100%;
+    --primary-navy-light: 211 54% 35%;
 
-    /* SECUNDÁRIO — Amarelo GS vira ACCENT (CTA):
-       #F0C254 => hsl(42 84% 64%)   (principal)
-       #E4AF2A => hsl(43 78% 53%)   (hover)
-       #FFD15A => hsl(43 100% 68%)  (variação suave) */
-    --accent: 42 84% 64%;
-    --accent-foreground: 220 20% 8%;      /* texto escuro sobre amarelo */
-    --accent-hover: 43 78% 53%;
-    --accent-soft: 43 100% 68%;
-    /* Faltava esta var, mas seu CSS usa: */
-    --accent-dark-text: 220 20% 8%;
+    /* SECONDARY - For subtle backgrounds */
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 211 20% 20%;
 
-    /* (Opcional) Dourado mantém para badges/premium */
-    --gold: 43 96% 60%;
-    --gold-foreground: 220 20% 8%;
+    /* ACCENT - Golden Yellow (#FFD54F ≈ hsl(47 100% 65%)) */
+    --accent: 47 100% 65%;
+    --accent-foreground: 211 54% 20%;
+    --accent-hover: 43 95% 58%;
+    --accent-soft: 47 100% 75%;
 
-    /* Sucesso / Muted / etc (mantidos) */
+    /* Muted - Soft gray */
+    --muted: 210 20% 96%;
+    --muted-foreground: 211 15% 45%;
+
+    /* Success */
     --success: 142 76% 45%;
-    --success-foreground: 220 20% 8%;
-    --success-light: 142 76% 15%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 76% 94%;
 
-    --muted: 220 15% 16%;
-    --muted-foreground: 210 30% 70%;
-
+    /* Destructive */
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 91%;
-    --input: 220 14% 91%;
-    --ring: 212 73% 30%;
+    /* Borders and inputs */
+    --border: 210 15% 88%;
+    --input: 210 15% 88%;
+    --ring: 211 54% 25%;
 
-    /* Gradientes atualizados para o novo azul */
-    --gradient-hero: linear-gradient(135deg, hsl(220 20% 6%) 0%, hsl(211 74% 18%) 50%, hsl(211 75% 17%) 100%);
-    --gradient-hero-overlay: linear-gradient(135deg, hsl(211 74% 22% / 0.12) 0%, hsl(42 84% 64% / 0.10) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(220 18% 12%), hsl(220 15% 16%));
-    --gradient-modern: linear-gradient(135deg, hsl(211 74% 22%) 0%, hsl(42 84% 64%) 100%);
-    --gradient-section: linear-gradient(180deg, hsl(220 20% 8%) 0%, hsl(220 18% 10%) 100%);
+    --radius: 0.5rem;
 
-    --shadow-card: 0 8px 32px -8px hsl(0 0% 0% / 0.4);
-    --shadow-card-hover: 0 12px 40px -12px hsl(211 74% 22% / 0.3);
-    --shadow-cta: 0 8px 24px -8px hsl(42 84% 64% / 0.4);
-    --shadow-hero: 0 25px 50px -15px hsl(0 0% 0% / 0.8);
+    /* Modern gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(211 54% 25%) 0%, hsl(211 54% 20%) 50%, hsl(220 60% 15%) 100%);
+    --gradient-hero-overlay: linear-gradient(135deg, hsl(211 54% 25% / 0.05) 0%, hsl(47 100% 65% / 0.08) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 20% 98%));
+    --gradient-accent: linear-gradient(135deg, hsl(47 100% 65%) 0%, hsl(43 95% 58%) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 100%);
 
-    /* Sidebar (mantido) */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 212 73% 30%;
+    /* Modern shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-card: 0 4px 12px -2px hsl(211 54% 25% / 0.08);
+    --shadow-card-hover: 0 8px 24px -4px hsl(211 54% 25% / 0.12);
+    --shadow-cta: 0 4px 16px -4px hsl(47 100% 65% / 0.3);
+    --shadow-glow: 0 0 40px hsl(47 100% 65% / 0.4);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 211 20% 20%;
+    --sidebar-primary: 211 54% 25%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 96%;
+    --sidebar-accent-foreground: 211 20% 20%;
+    --sidebar-border: 210 15% 88%;
+    --sidebar-ring: 211 54% 25%;
   }
 
-  /* Tema .dark: coerente com os novos tons */
+  /* Dark mode theme */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 211 54% 12%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 211 54% 15%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 211 54% 15%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 211 75% 17%;
-    --primary-foreground: 0 0% 98%;
-    --primary-hover: 211 74% 22%;
+    --primary: 211 54% 25%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 211 54% 20%;
 
-    /* Amarelo (accent) no dark */
-    --accent: 42 84% 64%;
-    --accent-foreground: 220 20% 8%;
-    --accent-hover: 43 78% 53%;
+    --accent: 47 100% 65%;
+    --accent-foreground: 211 54% 20%;
+    --accent-hover: 43 95% 58%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --secondary: 211 40% 18%;
+    --secondary-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --muted: 211 40% 20%;
+    --muted-foreground: 210 20% 70%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 211 74% 22%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 98%;
 
-    --gradient-hero: linear-gradient(135deg, hsl(211 74% 20%), hsl(211 75% 17%));
-    --gradient-card: linear-gradient(145deg, hsl(217.2 32.6% 17.5%), hsl(217.2 32.6% 15%));
-    --shadow-card: 0 4px 12px -4px hsl(0 0% 0% / 0.3);
-    --shadow-card-hover: 0 8px 24px -8px hsl(0 0% 0% / 0.4);
-    --shadow-cta: 0 4px 16px -4px hsl(42 84% 64% / 0.4);
+    --border: 211 40% 22%;
+    --input: 211 40% 22%;
+    --ring: 211 54% 35%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 211 74% 22%;
+    --gradient-hero: linear-gradient(135deg, hsl(211 54% 20%), hsl(220 60% 15%));
+    --gradient-card: linear-gradient(145deg, hsl(211 54% 15%), hsl(211 40% 18%));
+    --shadow-card: 0 4px 12px -2px hsl(0 0% 0% / 0.4);
+    --shadow-card-hover: 0 8px 24px -4px hsl(0 0% 0% / 0.5);
+    --shadow-cta: 0 4px 16px -4px hsl(47 100% 65% / 0.4);
+
+    --sidebar-background: 211 54% 12%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 211 54% 25%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 211 74% 22%;
+    --sidebar-accent: 211 40% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 211 40% 22%;
+    --sidebar-ring: 211 54% 35%;
+  }
+}
+
+/* Utility classes for the new design system */
+@layer utilities {
+  .section-modern {
+    @apply bg-gradient-to-b from-primary-navy to-primary-navy-light;
+  }
+  
+  .section-light {
+    @apply bg-white;
+  }
+  
+  .section-muted {
+    @apply bg-muted;
+  }
+  
+  .glow-accent {
+    text-shadow: 0 0 20px hsl(var(--accent) / 0.5);
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent-hover shadow-cta transition-all duration-300 hover:scale-105;
+  }
+  
+  .card-modern {
+    @apply bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300;
   }
 }
 
