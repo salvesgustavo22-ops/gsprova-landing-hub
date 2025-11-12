@@ -148,11 +148,25 @@
   }
   
   .btn-accent {
-    @apply bg-accent text-accent-foreground hover:bg-accent-hover shadow-cta transition-all duration-300 hover:scale-105;
+    @apply bg-accent text-accent-foreground hover:bg-accent-hover transition-all duration-300 hover:scale-105;
+    box-shadow: 0 4px 16px -4px hsl(var(--accent) / 0.3);
   }
   
   .card-modern {
-    @apply bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300;
+    @apply bg-white rounded-xl transition-all duration-300;
+    box-shadow: 0 4px 12px -2px hsl(211 54% 25% / 0.08);
+  }
+  
+  .card-modern:hover {
+    box-shadow: 0 8px 24px -4px hsl(211 54% 25% / 0.12);
+  }
+  
+  .shadow-cta {
+    box-shadow: 0 4px 16px -4px hsl(var(--accent) / 0.3);
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 40px hsl(var(--accent) / 0.4);
   }
 }
 
