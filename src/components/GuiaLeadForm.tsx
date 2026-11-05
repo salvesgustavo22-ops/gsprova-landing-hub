@@ -64,7 +64,7 @@ export const GuiaLeadForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4 rounded-xl bg-white p-6 shadow-lg">
       <h3 className="mb-2 text-xl font-bold text-[#1E3A8A]">
-        Baixe GRÁTIS o Guia dos Temas + Apostas 2025
+        Baixe GRÁTIS o Guia dos Temas + Apostas 2026
       </h3>
 
       <div className="space-y-2">

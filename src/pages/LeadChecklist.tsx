@@ -19,16 +19,16 @@ export default function LeadChecklist() {
   const { toast } = useToast();
 
   useEffect(() => {
-    document.title = 'Baixar Checklist ENEM 2025 Gratuito | GS Aprova';
+    document.title = 'Baixar Checklist ENEM 2026 Gratuito | GS Aprova';
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        'Baixe gratuitamente nosso checklist completo para o ENEM 2025 com cronograma, tópicos essenciais e estratégias de redação.'
+        'Baixe gratuitamente nosso checklist completo para o ENEM 2026 com cronograma, tópicos essenciais e estratégias de redação.'
       );
     }
 
-    trackFormStart('checklist_enem_2025');
+    trackFormStart('checklist_enem_2026');
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,8 +60,8 @@ export default function LeadChecklist() {
         email: formData.email.trim(),
         phone: formData.whatsapp.trim(),
         lead_type: 'checklist',
-        service_selected: 'checklist_enem_2025',
-        message: 'Solicitação de download do checklist ENEM 2025',
+        service_selected: 'checklist_enem_2026',
+        message: 'Solicitação de download do checklist ENEM 2026',
         source: 'checklist_page',
       });
 
@@ -69,7 +69,7 @@ export default function LeadChecklist() {
         throw error;
       }
 
-      trackFormSubmit('checklist_enem_2025', 'checklist_download');
+      trackFormSubmit('checklist_enem_2026', 'checklist_download');
 
       // Redirect to thank you page
       window.location.href = '/obrigado-checklist';
@@ -86,7 +86,7 @@ export default function LeadChecklist() {
   };
 
   const benefits = [
-    'Cronograma completo de estudos para o ENEM 2025',
+    'Cronograma completo de estudos para o ENEM 2026',
     'Lista dos tópicos de matemática que mais caem',
     'Estrutura detalhada da redação nota 1000',
     'Dicas de interpretação de texto',
@@ -116,12 +116,12 @@ export default function LeadChecklist() {
                     <h1 className="mb-4 text-3xl font-bold leading-tight text-white lg:text-4xl">
                       Checklist Completo
                       <br />
-                      <span className="text-accent">ENEM 2025</span>
+                      <span className="text-accent">ENEM 2026</span>
                     </h1>
 
                     <p className="mb-6 text-lg font-light text-white/85">
                       Tenha em suas mãos o guia definitivo para não perder nenhum detalhe importante
-                      na sua preparação para o ENEM 2025.
+                      na sua preparação para o ENEM 2026.
                     </p>
                   </div>
 

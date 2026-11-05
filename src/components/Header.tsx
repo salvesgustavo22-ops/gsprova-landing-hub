@@ -8,7 +8,7 @@ export const Header = () => {
       <div className="bg-primary py-2 text-center text-sm text-primary-foreground">
         <div className="flex items-center justify-center gap-4">
           <span className="font-medium">
-            🎯 Prepare-se para o ENEM 2025 com quem entende do assunto!
+            🎯 Prepare-se para o ENEM 2026 com quem entende do assunto!
           </span>
           <div className="hidden items-center gap-2 text-xs sm:flex">
             <span>🔒</span>
@@ -20,7 +20,7 @@ export const Header = () => {
       <header className="border-b border-border bg-white shadow-sm">
         <div className="container mx-auto flex items-center justify-between p-4">
           <div className="flex items-center space-x-3">
-            <img src={novoLogo} alt="GS Aprova - Correção de redação e preparação para ENEM 2025" className="h-16 w-auto" />
+            <img src={novoLogo} alt="GS Aprova - Correção de redação e preparação para ENEM 2026" className="h-16 w-auto" />
           </div>
 
           <div className="flex items-center space-x-3">

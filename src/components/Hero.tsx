@@ -35,7 +35,7 @@ export const Hero = ({
   const handleWhatsAppClick = () => {
     trackWhatsAppClick('hero_main_cta', 'whatsapp_direct');
     const message = encodeURIComponent(
-      'Oi, quero começar agora meus estudos para ENEM/Fuvest 2025. Vim pelo site GS Aprova.'
+      'Oi, quero começar agora meus estudos para ENEM/Fuvest 2026. Vim pelo site GS Aprova.'
     );
     window.open(`https://wa.me/5511985363890?text=${message}`, '_blank');
   };

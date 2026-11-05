@@ -15,8 +15,8 @@ import Privacy from './pages/Privacy';
 import Auth from './pages/Auth';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
-import Enem2025 from './pages/Enem2025';
-import Fuvest2025 from './pages/Fuvest2025';
+import Enem2026 from './pages/Enem2026';
+import Fuvest2026 from './pages/Fuvest2026';
 import LeadChecklist from './pages/LeadChecklist';
 import LeadServicos from './pages/LeadServicos';
 import ObrigadoChecklist from './pages/ObrigadoChecklist';
@@ -52,15 +52,18 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
-            <Route path="/enem-2025" element={<Enem2025 />} />
-            <Route path="/fuvest-2025" element={<Fuvest2025 />} />
+            <Route path="/enem-2026" element={<Enem2026 />} />
+            <Route path="/enem-2025" element={<Navigate to="/enem-2026" replace />} />
+            <Route path="/fuvest-2025" element={<Navigate to="/fuvest-2026" replace />} />
+            <Route path="/temas-redacao-portal-secreto-gs-aprova-2025" element={<Navigate to="/temas-redacao-portal-secreto-gs-aprova-2026" replace />} />
+            <Route path="/fuvest-2026" element={<Fuvest2026 />} />
             <Route path="/lead-checklist" element={<LeadChecklist />} />
             <Route path="/lead-servicos" element={<LeadServicos />} />
             <Route path="/obrigado-checklist" element={<ObrigadoChecklist />} />
             <Route path="/obrigado-servicos" element={<ObrigadoServicos />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<Admin />} />
-            <Route path="/temas-redacao-portal-secreto-gs-aprova-2025" element={<TemasRedacao />} />
+            <Route path="/temas-redacao-portal-secreto-gs-aprova-2026" element={<TemasRedacao />} />
             <Route path="/auth-aluno" element={<AuthAluno />} />
             <Route path="/portal-aluno" element={<PortalAluno />} />
             <Route path="/enviar-redacao" element={<EnviarRedacao />} />

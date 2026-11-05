@@ -29,7 +29,7 @@ import { Check, Shield, Flame } from 'lucide-react';
 const Index = () => {
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = 'Correção de Redação ENEM 2025 – GS Aprova';
+    document.title = 'Correção de Redação ENEM 2026 – GS Aprova';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -286,7 +286,7 @@ const Index = () => {
         {/* Hero Section - Guia dos Temas */}
         <Hero />
 
-        {/* Matemática no ENEM 2025 */}
+        {/* Matemática no ENEM 2026 */}
         <MateriaisExclusivos />
 
         {/* 3. Nossos Diferenciais */}
@@ -303,7 +303,7 @@ const Index = () => {
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-gray-600">
               Soluções personalizadas baseadas em análise de dados oficiais INEP para sua aprovação
-              no ENEM 2025
+              no ENEM 2026
             </p>
           </div>
 

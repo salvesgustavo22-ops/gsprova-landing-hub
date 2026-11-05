@@ -95,7 +95,7 @@ export const EmailPopup = () => {
             </div>
           </div>
           <DialogTitle className="text-center text-2xl text-white">
-            🎯 Dicas Exclusivas ENEM 2025
+            🎯 Dicas Exclusivas ENEM 2026
           </DialogTitle>
         </DialogHeader>
 

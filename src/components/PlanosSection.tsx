@@ -21,7 +21,7 @@ const planos = [
   {
     id: 'intensivo',
     titulo: 'Curso Intensivo ENEM — até a data da prova',
-    datas: 'Início: 03/10/2025 • ENEM: 09/11/2025',
+    datas: 'Início: 03/10/2026 • ENEM: 09/11/2026',
     preco: 'R$ 199,90 em até 6x',
     bullets: [
       'Aulas de revisão diárias (mín. 40h/semana)',

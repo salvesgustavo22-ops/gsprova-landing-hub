@@ -17,6 +17,6 @@ export const WHATSAPP_MESSAGES = {
   contact:
     'Oi, acabei de enviar uma solicitação pelo formulário do site. Gostaria de falar sobre minha necessidade.',
   checklistThankYou:
-    'Oi! Acabei de baixar o checklist ENEM 2025 e quero saber mais sobre os serviços do GS Aprova.',
-  heroEnem: 'Oi, quero começar agora meus estudos para ENEM/Fuvest 2025. Vim pelo site GS Aprova.',
+    'Oi! Acabei de baixar o checklist ENEM 2026 e quero saber mais sobre os serviços do GS Aprova.',
+  heroEnem: 'Oi, quero começar agora meus estudos para ENEM/Fuvest 2026. Vim pelo site GS Aprova.',
 } as const;
