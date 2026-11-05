@@ -32,6 +32,7 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import PlantaoEnem2026 from './pages/PlantaoEnem2026';
 import AnnouncementBar from './components/AnnouncementBar';
+import PlantaoFloatingBox from './components/PlantaoFloatingBox';
 
 const queryClient = new QueryClient();
 
@@ -76,6 +77,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <PlantaoFloatingBox />
         </BrowserRouter>
       </TooltipProvider>
     </AuthProvider>
