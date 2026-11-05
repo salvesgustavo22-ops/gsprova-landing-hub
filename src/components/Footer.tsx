@@ -54,11 +54,11 @@ export const Footer = () => {
             <h4 className="mb-4 font-semibold text-white">Contato</h4>
             <div className="space-y-3">
               <a
-                href="https://wa.me/5511974969036"
+                href="https://wa.me/5511985363890"
                 className="flex items-center gap-2 text-sm text-white/80 transition-colors hover:text-white"
               >
                 <MessageCircle className="size-4" />
-                (11) 97496-9036
+                (11) 98536-3890
               </a>
               <a
                 href="https://instagram.com/gsaprovamr"

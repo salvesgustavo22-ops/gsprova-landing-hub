@@ -144,7 +144,7 @@ const PortalAluno = () => {
                   PIX para celular: <strong>(11) 97496-9036</strong>
                 </li>
                 <li>
-                  WhatsApp <strong>(11) 97496-9036</strong> - Central de contato do GS Aprova
+                  WhatsApp <strong>(11) 98536-3890</strong> - Central de contato do GS Aprova
                 </li>
                 <li>Link de pagamento para cartão de débito/crédito via loja online do Banco C6</li>
               </ul>

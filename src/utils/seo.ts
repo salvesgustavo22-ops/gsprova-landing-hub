@@ -127,7 +127,7 @@ export const generateEducationalServiceStructuredData = (
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+55-11-97496-9036',
+      telephone: '+55-11-98536-3890',
       contactType: 'Customer Service',
       availableLanguage: 'Portuguese',
     },

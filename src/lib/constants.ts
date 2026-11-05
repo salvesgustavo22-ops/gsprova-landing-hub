@@ -1,5 +1,5 @@
 // Business contact constants
-export const BUSINESS_PHONE = '5511974969036';
+export const BUSINESS_PHONE = '5511985363890';
 export const BUSINESS_WHATSAPP_URL = `https://wa.me/${BUSINESS_PHONE}`;
 
 // Default WhatsApp messages

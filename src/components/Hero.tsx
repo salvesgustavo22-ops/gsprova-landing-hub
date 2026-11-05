@@ -37,7 +37,7 @@ export const Hero = ({
     const message = encodeURIComponent(
       'Oi, quero começar agora meus estudos para ENEM/Fuvest 2025. Vim pelo site GS Aprova.'
     );
-    window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511985363890?text=${message}`, '_blank');
   };
 
   const handleServicesClick = () => {

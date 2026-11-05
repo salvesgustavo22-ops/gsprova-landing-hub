@@ -39,7 +39,7 @@ export default function ObrigadoChecklist() {
     const message = encodeURIComponent(
       'Oi! Acabei de baixar o checklist ENEM 2025 e quero saber mais sobre os serviços do GS Aprova.'
     );
-    window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511985363890?text=${message}`, '_blank');
   };
 
   return (

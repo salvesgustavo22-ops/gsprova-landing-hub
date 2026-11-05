@@ -112,7 +112,7 @@ export const TrustAndSecurity = () => {
               const message = encodeURIComponent(
                 'Oi, quero agendar uma aula-pocket gratuita! Vim pelo site GS Aprova.'
               );
-              window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+              window.open(`https://wa.me/5511985363890?text=${message}`, '_blank');
             }}
             className="btn-hero bg-accent px-8 py-4 text-lg text-primary hover:bg-accent/90"
           >

@@ -94,7 +94,7 @@ const Terms = () => {
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Em caso de dúvidas sobre estes termos, entre em contato conosco através do
-                  WhatsApp (11) 97496-9036.
+                  WhatsApp (11) 98536-3890.
                 </p>
               </div>
             </CardContent>
