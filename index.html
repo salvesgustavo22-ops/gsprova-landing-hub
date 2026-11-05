@@ -10,8 +10,8 @@
   script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net;
   connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://region1.google-analytics.com https://klxkjwreoxvvqtphieah.supabase.co;
   img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com.br https://googleads.g.doubleclick.net;
-  style-src 'self' 'unsafe-inline';
-  font-src 'self' data:;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src 'self' data: https://fonts.gstatic.com;
   frame-src https://www.googletagmanager.com;
   frame-ancestors 'self';
   upgrade-insecure-requests;
@@ -50,8 +50,8 @@
     <link rel="preload" href="/lovable-uploads/7cea088c-1e84-4b15-86ab-6a6c2aa3d4ed.png" as="image" type="image/png" fetchpriority="high">
     
     <!-- Load fonts asynchronously to prevent render blocking -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"></noscript>
     
     <!-- Load main CSS bundle asynchronously after critical CSS -->
     <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
