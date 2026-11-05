@@ -25,6 +25,10 @@
     --primary-navy-foreground: 0 0% 100%;
     --primary-navy-light: 211 54% 35%;
 
+    /* Top navigation - near-black navy with golden links */
+    --nav-bg: 216 65% 8%;
+    --nav-fg: 47 100% 65%;
+
     /* SECONDARY - For subtle backgrounds */
     --secondary: 210 20% 96%;
     --secondary-foreground: 211 20% 20%;

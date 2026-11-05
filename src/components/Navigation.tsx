@@ -1,13 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { trackEvent } from '@/lib/analytics';
-import logo from '@/assets/novo-logo-gsaprova-novembro-2.jpg';
+import logo from '@/assets/novo-logo-gsaprova-novembro-2-fundo-transparente.png';
+
+const LINK_CLASS =
+  'text-sm font-medium text-nav-foreground transition-colors hover:text-accent-soft';
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { pathname } = useLocation();
+
+  // The golden announcement bar sticks above the menu on every page except the Plantão landing.
+  const hasAnnouncementBar = pathname !== '/plantao-enem-2026';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,14 +31,17 @@ export const Navigation = () => {
   return (
     <nav
       aria-label="Menu principal"
-      className={`sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur-md transition-all duration-200 dark:border-[#FBBF24]/20 dark:bg-[#0F172A]/90 ${
-        isScrolled ? 'shadow-lg' : ''
-      }`}
+      className={`sticky z-50 border-b border-accent/20 bg-nav/95 backdrop-blur-md transition-all duration-200 ${
+        hasAnnouncementBar ? 'top-9' : 'top-0'
+      } ${isScrolled ? 'shadow-lg shadow-black/40' : ''}`}
     >
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="mr-8 flex shrink-0 items-center transition-opacity hover:opacity-80">
+          <Link
+            to="/"
+            className="mr-8 flex shrink-0 items-center transition-opacity hover:opacity-80"
+          >
             <img
               src={logo}
               alt="GS Aprova - Preparação para ENEM e Vestibulares"
@@ -46,7 +55,7 @@ export const Navigation = () => {
           <div className="hidden items-center gap-6 md:flex">
             <Link
               to="/"
-              className="text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+              className={LINK_CLASS}
               onClick={() => handleNavClick('Início')}
               aria-label="Ir para página inicial"
             >
@@ -54,7 +63,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/planos"
-              className="text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+              className={LINK_CLASS}
               onClick={() => handleNavClick('Planos')}
               aria-label="Ir para Planos"
             >
@@ -62,7 +71,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/blog"
-              className="text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+              className={LINK_CLASS}
               onClick={() => handleNavClick('Blog')}
               aria-label="Ir para Blog"
             >
@@ -70,7 +79,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/contato"
-              className="text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+              className={LINK_CLASS}
               onClick={() => handleNavClick('Contato')}
               aria-label="Ir para Contato"
             >
@@ -78,44 +87,41 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/plantao-enem-2026"
-              className="text-sm font-medium text-accent-foreground underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-[#3B82F6] dark:text-[#FBBF24]"
+              className="text-sm font-bold text-accent-soft underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-accent"
               onClick={() => handleNavClick('Plantão ENEM 2026')}
             >
               Plantão ENEM 2026
             </Link>
             <Link
               to="/auth-aluno"
-              className="text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+              className={LINK_CLASS}
               onClick={() => handleNavClick('Portal do Aluno')}
               aria-label="Ir para Portal do Aluno"
             >
               Portal do Aluno
             </Link>
-
           </div>
 
           {/* Mobile Actions */}
           <div className="flex items-center gap-2 md:hidden">
-
-            <Button
-              variant="ghost"
-              size="icon"
+            <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="size-8 text-[#1E3A8A] dark:text-white"
+              className="text-nav-foreground transition-colors hover:text-accent-soft"
               aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
             >
-              {isOpen ? <X className="size-4" /> : <Menu className="size-4" />}
-            </Button>
+              {isOpen ? <X className="size-6" /> : <Menu className="size-6" />}
+            </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="mt-4 border-t border-gray-200 bg-white pb-4 backdrop-blur dark:border-[#FBBF24]/20 dark:bg-[#0F172A] md:hidden">
+          <div className="mt-4 border-t border-accent/20 bg-nav pb-4 md:hidden">
             <div className="flex flex-col space-y-3 pt-4">
               <Link
                 to="/"
-                className="py-2 text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+                className={`py-2 ${LINK_CLASS}`}
                 onClick={() => {
                   handleNavClick('Início');
                   setIsOpen(false);
@@ -125,7 +131,7 @@ export const Navigation = () => {
               </Link>
               <Link
                 to="/planos"
-                className="py-2 text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+                className={`py-2 ${LINK_CLASS}`}
                 onClick={() => {
                   handleNavClick('Planos');
                   setIsOpen(false);
@@ -135,7 +141,7 @@ export const Navigation = () => {
               </Link>
               <Link
                 to="/blog"
-                className="py-2 text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+                className={`py-2 ${LINK_CLASS}`}
                 onClick={() => {
                   handleNavClick('Blog');
                   setIsOpen(false);
@@ -145,7 +151,7 @@ export const Navigation = () => {
               </Link>
               <Link
                 to="/contato"
-                className="py-2 text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+                className={`py-2 ${LINK_CLASS}`}
                 onClick={() => {
                   handleNavClick('Contato');
                   setIsOpen(false);
@@ -155,7 +161,7 @@ export const Navigation = () => {
               </Link>
               <Link
                 to="/plantao-enem-2026"
-                className="py-2 text-sm font-bold text-accent"
+                className="py-2 text-sm font-bold text-accent-soft"
                 onClick={() => {
                   handleNavClick('Plantão ENEM 2026');
                   setIsOpen(false);
@@ -165,7 +171,7 @@ export const Navigation = () => {
               </Link>
               <Link
                 to="/auth-aluno"
-                className="py-2 text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
+                className={`py-2 ${LINK_CLASS}`}
                 onClick={() => {
                   handleNavClick('Portal do Aluno');
                   setIsOpen(false);

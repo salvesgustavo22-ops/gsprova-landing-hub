@@ -27,6 +27,11 @@ export default {
           foreground: "hsl(var(--secondary-foreground))",
         },
         
+        nav: {
+          DEFAULT: "hsl(var(--nav-bg))",
+          foreground: "hsl(var(--nav-fg))",
+        },
+
         plantao: {
           black: "hsl(var(--plantao-black))",
           bg: "hsl(var(--plantao-bg))",
