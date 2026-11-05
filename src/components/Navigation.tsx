@@ -5,7 +5,7 @@ import { trackEvent } from '@/lib/analytics';
 import logo from '@/assets/novo-logo-gsaprova-novembro-2-fundo-transparente.png';
 
 const LINK_CLASS =
-  'text-sm font-medium text-nav-fg transition-colors hover:text-accent-soft';
+  'text-sm font-medium text-nav-foreground transition-colors hover:text-accent-soft';
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -107,7 +107,7 @@ export const Navigation = () => {
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-nav-fg transition-colors hover:text-accent-soft"
+              className="text-nav-foreground transition-colors hover:text-accent-soft"
               aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
             >
               {isOpen ? <X className="size-6" /> : <Menu className="size-6" />}
