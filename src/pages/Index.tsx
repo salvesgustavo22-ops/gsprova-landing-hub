@@ -269,14 +269,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Black November Banner */}
-      <div className="bg-gradient-to-r from-orange-600 via-yellow-500 to-orange-600 py-2 text-center">
-        <div className="flex items-center justify-center gap-2 text-sm font-bold text-white">
-          <span className="text-xl">🔥</span>
-          <span>BLACK NOVEMBER: 40% OFF em todos os planos!</span>
-          <span className="text-xl">🔥</span>
-        </div>
-      </div>
       
       <Navigation />
       <ScrollTracker />

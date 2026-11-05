@@ -1,6 +1,11 @@
 // Business contact constants
 export const BUSINESS_PHONE = '5511985363890';
 export const BUSINESS_WHATSAPP_URL = `https://wa.me/${BUSINESS_PHONE}`;
+export const BUSINESS_PHONE_DISPLAY = '(11) 98536-3890';
+export const WHATSAPP_ATENDIMENTO_URL = `${BUSINESS_WHATSAPP_URL}?text=${encodeURIComponent('Olá! Vim pelo site GS Aprova e gostaria de atendimento.')}`;
+export const PLANTAO_WHATSAPP_URL = `${BUSINESS_WHATSAPP_URL}?text=${encodeURIComponent('Olá! Tenho uma dúvida sobre o Plantão de Véspera ENEM 2026.')}`;
+// TODO: substituir pelo link de checkout Hotmart do Plantão quando disponível
+export const PLANTAO_CHECKOUT_URL = PLANTAO_WHATSAPP_URL;
 
 // Default WhatsApp messages
 export const WHATSAPP_MESSAGES = {

@@ -30,6 +30,8 @@ import CorretorPanel from './pages/CorretorPanel';
 import RedefinirSenha from './pages/RedefinirSenha';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import PlantaoEnem2026 from './pages/PlantaoEnem2026';
+import AnnouncementBar from './components/AnnouncementBar';
 
 const queryClient = new QueryClient();
 
@@ -40,6 +42,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <AnnouncementBar />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/planos" element={<Planos />} />
@@ -65,6 +68,7 @@ const App = () => (
             <Route path="/corretor-painel-gs-aprova" element={<CorretorPanel />} />
             <Route path="/redefinir-senha" element={<RedefinirSenha />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/plantao-enem-2026" element={<PlantaoEnem2026 />} />
             <Route path="/blog/:id" element={<BlogPost />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
