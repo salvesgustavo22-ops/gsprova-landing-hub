@@ -23,6 +23,12 @@ export default {
           foreground: "hsl(var(--secondary-foreground))",
         },
         
+        plantao: {
+          bg: "hsl(var(--plantao-bg))",
+          surface: "hsl(var(--plantao-surface))",
+          gold: "hsl(var(--plantao-gold))",
+          text: "hsl(var(--plantao-text))",
+        },
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",

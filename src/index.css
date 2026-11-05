@@ -31,6 +31,10 @@
 
     /* ACCENT - Golden Yellow (#FFD54F ≈ hsl(47 100% 65%)) */
     --accent: 47 100% 65%;
+    --plantao-bg: 216 65% 11%;
+    --plantao-surface: 216 50% 16%;
+    --plantao-gold: 43 96% 56%;
+    --plantao-text: 210 40% 96%;
     --accent-foreground: 211 54% 20%;
     --accent-hover: 43 95% 58%;
     --accent-soft: 47 100% 75%;
@@ -96,6 +100,10 @@
     --primary-hover: 211 54% 20%;
 
     --accent: 47 100% 65%;
+    --plantao-bg: 216 65% 11%;
+    --plantao-surface: 216 50% 16%;
+    --plantao-gold: 43 96% 56%;
+    --plantao-text: 210 40% 96%;
     --accent-foreground: 211 54% 20%;
     --accent-hover: 43 95% 58%;
 
