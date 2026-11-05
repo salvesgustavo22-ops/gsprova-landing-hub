@@ -1,9 +1,9 @@
 import { Check } from 'lucide-react';
-import logo from '@/assets/novo-logo-gsaprova-novembro-2.jpg';
+import logo from '@/assets/novo-logo-gsaprova-novembro-2-fundo-transparente.png';
 
 export const BannerInicial = () => {
   return (
-    <section className="bg-gradient-to-br from-[#1E3A8A] to-[#1E3A8A]/80 py-12">
+    <section className="bg-[#264167] py-12">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:justify-center">
           {/* Logo */}
@@ -11,7 +11,7 @@ export const BannerInicial = () => {
             <img 
               src={logo} 
               alt="GS Aprova - Plataforma de correção de redação e preparação para ENEM e vestibulares" 
-              className="h-24 w-auto md:h-32"
+              className="h-24 w-auto md:h-32 md:translate-y-[26px]"
             />
           </div>
 
