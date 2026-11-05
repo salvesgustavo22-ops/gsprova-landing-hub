@@ -8,11 +8,6 @@ import { trackFAQInteraction, trackWhatsAppClick } from '@/lib/analytics';
 
 const faqs = [
   {
-    question: 'Como funciona o Curso Intensivo?',
-    answer:
-      'De 03/10 a 09/11, com aulas diárias (40h/semana), correções semanais e mentorias individuais.',
-  },
-  {
     question: 'O que está incluso no Material de Revisão?',
     answer: 'Resumos, mapas mentais, listas de exercícios e simulados organizados por tema.',
   },
