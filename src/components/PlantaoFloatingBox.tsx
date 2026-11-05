@@ -17,7 +17,7 @@ const PlantaoFloatingBox = () => {
   if (pathname === '/plantao-enem-2026' || closed || !visible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 z-[70] mx-auto max-w-md rounded-xl border border-plantao-gold bg-plantao-bg p-4 shadow-2xl animate-in fade-in slide-in-from-bottom-4 sm:left-auto sm:right-6 sm:mx-0">
+    <div className="fixed bottom-4 left-4 right-4 z-[70] mx-auto max-w-md rounded-xl border border-plantao-gold bg-plantao-black p-4 shadow-2xl animate-in fade-in slide-in-from-bottom-4 sm:left-auto sm:right-6 sm:mx-0">
       <button
         onClick={() => setClosed(true)}
         aria-label="Fechar"
@@ -33,7 +33,7 @@ const PlantaoFloatingBox = () => {
       </p>
       <Link
         to="/plantao-enem-2026"
-        className="mt-3 block rounded-lg bg-plantao-gold px-4 py-2 text-center text-sm font-extrabold text-plantao-bg hover:opacity-90"
+        className="mt-3 block rounded-lg bg-plantao-gold px-4 py-2 text-center text-sm font-extrabold text-plantao-black hover:opacity-90"
       >
         Quero garantir minha vaga →
       </Link>

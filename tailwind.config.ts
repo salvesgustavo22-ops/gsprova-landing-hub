@@ -28,6 +28,7 @@ export default {
         },
         
         plantao: {
+          black: "hsl(var(--plantao-black))",
           bg: "hsl(var(--plantao-bg))",
           surface: "hsl(var(--plantao-surface))",
           gold: "hsl(var(--plantao-gold))",
