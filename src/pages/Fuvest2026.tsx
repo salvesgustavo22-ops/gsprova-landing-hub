@@ -7,20 +7,20 @@ import { StickyWhatsApp } from '@/components/StickyWhatsApp';
 import { Calculator, BookOpen, Route, Star } from 'lucide-react';
 import { trackPageSection } from '@/lib/analytics';
 
-export default function Fuvest2025() {
+export default function Fuvest2026() {
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = 'Correção de Redação para FUVEST 2025 – GS Aprova';
+    document.title = 'Correção de Redação para FUVEST 2026 – GS Aprova';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        'Prepare-se para a FUVEST 2025 com correção de redações especializada. Aumente suas chances!'
+        'Prepare-se para a FUVEST 2026 com correção de redações especializada. Aumente suas chances!'
       );
     }
 
-    trackPageSection('fuvest_2025_page', 'view');
+    trackPageSection('fuvest_2026_page', 'view');
   }, []);
 
   const mathStrategies = [
@@ -72,7 +72,7 @@ export default function Fuvest2025() {
   ];
 
   const handleTrilhaCTA = () => {
-    trackPageSection('fuvest_2025_trilha', 'click');
+    trackPageSection('fuvest_2026_trilha', 'click');
     window.location.href = '/lead-servicos?service=trilha-personalizada';
   };
 
@@ -90,11 +90,11 @@ export default function Fuvest2025() {
                   className="mb-4 bg-accent font-semibold text-accent-dark-text"
                   variant="secondary"
                 >
-                  FUVEST 2025
+                  FUVEST 2026
                 </Badge>
 
                 <h1 className="mb-6 text-3xl font-bold leading-tight text-white lg:text-5xl">
-                  Correção de Redação – FUVEST 2025
+                  Correção de Redação – FUVEST 2026
                 </h1>
 
                 <p className="mb-8 text-xl font-light leading-relaxed text-white/90">
@@ -177,7 +177,7 @@ export default function Fuvest2025() {
               {/* Required Books */}
               <div className="mx-auto max-w-4xl">
                 <h3 className="mb-8 text-center text-2xl font-bold text-white">
-                  Leituras Obrigatórias Fuvest 2025
+                  Leituras Obrigatórias Fuvest 2026
                 </h3>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   {requiredBooks.map((book, index) => (

@@ -9,13 +9,13 @@ import { Link, useParams } from 'react-router-dom';
 
 const blogContent: Record<string, any> = {
   'mandar-bem-no-enem': {
-    title: 'Reta Final ENEM 2025: 7 Estratégias Que Funcionam',
+    title: 'Reta Final ENEM 2026: 7 Estratégias Que Funcionam',
     date: '2025-01-15',
     readTime: '8 min',
-    tags: ['Estratégia', 'ENEM 2025', 'Reta Final'],
+    tags: ['Estratégia', 'ENEM 2026', 'Reta Final'],
     image: '/lovable-uploads/18015f32-572d-4cad-9ba0-16d5315e7060.png',
     content: `
-Com o ENEM 2025 se aproximando (9 e 16 de novembro), a reta final exige estratégia inteligente. Baseado na análise das provas 2022-2024, aqui estão as 7 estratégias mais eficazes para o preparatório para o ENEM 2025:
+Com o ENEM 2026 se aproximando (9 e 16 de novembro), a reta final exige estratégia inteligente. Baseado na análise das provas 2022-2024, aqui estão as 7 estratégias mais eficazes para o preparatório para o ENEM 2026:
 
 ## 1. Foque nos 35% Que Mais Caem
 Nossa análise das provas oficiais mostrou que **35% das questões de matemática são básicas**: razão, proporção, porcentagem e transformações de unidades.
@@ -32,14 +32,14 @@ Representa **11,2% das questões**. Domine volumes de cilindros, prismas e pirâ
 ## 5. Matemática Financeira Contextualizada  
 **11% das questões** abordam juros e descontos em situações reais.
 
-## 6. Tendências 2025
+## 6. Tendências 2026
 Baseado nas lacunas identificadas, esperamos mais questões sobre:
 - Sustentabilidade e energia renovável
 - Big data e tecnologia  
 - Saúde mental pós-pandemia
 
-## 7. Cronograma ENEM 2025 Otimizado (30 dias)
-Um cronograma ENEM 2025 bem estruturado é essencial:
+## 7. Cronograma ENEM 2026 Otimizado (30 dias)
+Um cronograma ENEM 2026 bem estruturado é essencial:
 - **Semana 1-2**: Matemática básica (maior ROI)
 - **Semana 3**: Geometria + Estatística  
 - **Semana 4**: Funções + Financeira + Revisão
@@ -48,7 +48,7 @@ Um cronograma ENEM 2025 bem estruturado é essencial:
     `,
   },
   'matematica-conteudos-enem': {
-    title: 'matemática no enem 2025: os conteúdos que mais caem',
+    title: 'matemática no enem 2026: os conteúdos que mais caem',
     date: '2025-01-10',
     readTime: '10 min',
     tags: ['Matemática', 'Dados INEP', 'Análise'],
@@ -77,7 +77,7 @@ O ENEM testa **competências práticas**, não decoreba. Matemática básica apa
 ### Exemplo Real (ENEM 2024):
 "Um mapa na escala 1:50.000 mostra uma área de 6cm x 4cm. Qual a área real?"
 
-## Lacunas Identificadas para 2025
+## Lacunas Identificadas para 2026
 
 Nossa análise revelou contextos ainda não explorados:
 - Sustentabilidade (redução de emissões em %)
@@ -217,7 +217,7 @@ const BlogPost = () => {
               </p>
               <Link to="/#materiais-exclusivos">
                 <Button className="bg-[#FBBF24] px-8 py-6 text-lg font-semibold text-[#1E3A8A] hover:brightness-95">
-                  Ver Matemática ENEM 2025
+                  Ver Matemática ENEM 2026
                 </Button>
               </Link>
             </div>

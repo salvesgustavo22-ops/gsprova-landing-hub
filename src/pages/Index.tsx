@@ -10,8 +10,7 @@ import { StickyWhatsApp } from '@/components/StickyWhatsApp';
 import { ScrollTracker } from '@/components/ScrollTracker';
 import Hero from '@/sections/Hero';
 import { MateriaisExclusivos } from '@/components/MateriaisExclusivos';
-import { NewsletterPopup } from '@/components/NewsletterPopup';
-import { SprintBox } from '@/components/SprintBox';
+import { PlantaoHeroBox } from '@/components/PlantaoHeroBox';
 import { NossosDiferenciais } from '@/components/NossosDiferenciais';
 import { BlogSection } from '@/components/BlogSection';
 import { BannerInicial } from '@/components/BannerInicial';
@@ -30,7 +29,7 @@ import { Check, Shield, Flame } from 'lucide-react';
 const Index = () => {
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = 'Correção de Redação ENEM 2025 – GS Aprova';
+    document.title = 'Correção de Redação ENEM 2026 – GS Aprova';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -272,23 +271,22 @@ const Index = () => {
       
       <Navigation />
       <ScrollTracker />
-      <NewsletterPopup />
 
       <main>
         {/* Banner Inicial */}
         <BannerInicial />
 
-        {/* Sprint Redação 900+ Box */}
-        <Section variant="light" className="py-12">
-          <div className="mx-auto max-w-2xl">
-            <SprintBox />
+        {/* Plantão ENEM 2026 */}
+        <section className="bg-plantao-bg px-4 py-14 md:py-20">
+          <div className="mx-auto max-w-5xl">
+            <PlantaoHeroBox headingLevel="h2" />
           </div>
-        </Section>
+        </section>
 
         {/* Hero Section - Guia dos Temas */}
         <Hero />
 
-        {/* Matemática no ENEM 2025 */}
+        {/* Matemática no ENEM 2026 */}
         <MateriaisExclusivos />
 
         {/* 3. Nossos Diferenciais */}
@@ -305,7 +303,7 @@ const Index = () => {
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-gray-600">
               Soluções personalizadas baseadas em análise de dados oficiais INEP para sua aprovação
-              no ENEM 2025
+              no ENEM 2026
             </p>
           </div>
 

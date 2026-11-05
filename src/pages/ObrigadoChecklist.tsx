@@ -7,12 +7,12 @@ import { trackConversion, trackWhatsAppClick } from '@/lib/analytics';
 
 export default function ObrigadoChecklist() {
   useEffect(() => {
-    document.title = 'Download do Checklist ENEM 2025 | GS Aprova';
+    document.title = 'Download do Checklist ENEM 2026 | GS Aprova';
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        'Baixe seu checklist ENEM 2025 e comece a estudar de forma direcionada. Fale com nossa equipe para turbinar seus estudos.'
+        'Baixe seu checklist ENEM 2026 e comece a estudar de forma direcionada. Fale com nossa equipe para turbinar seus estudos.'
       );
     }
 
@@ -26,8 +26,8 @@ export default function ObrigadoChecklist() {
 
     // Create download link
     const link = document.createElement('a');
-    link.href = '/downloads/checklist-enem-2025.pdf';
-    link.download = 'Checklist-ENEM-2025-GS-Aprova.pdf';
+    link.href = '/downloads/checklist-enem-2026.pdf';
+    link.download = 'Checklist-ENEM-2026-GS-Aprova.pdf';
     link.target = '_blank';
     document.body.appendChild(link);
     link.click();
@@ -37,7 +37,7 @@ export default function ObrigadoChecklist() {
   const handleWhatsAppClick = () => {
     trackWhatsAppClick('thank_you_checklist', 'contact');
     const message = encodeURIComponent(
-      'Oi! Acabei de baixar o checklist ENEM 2025 e quero saber mais sobre os serviços do GS Aprova.'
+      'Oi! Acabei de baixar o checklist ENEM 2026 e quero saber mais sobre os serviços do GS Aprova.'
     );
     window.open(`https://wa.me/5511985363890?text=${message}`, '_blank');
   };
@@ -62,7 +62,7 @@ export default function ObrigadoChecklist() {
 
                 <p className="mb-8 text-lg font-light text-white/85">
                   Agora você tem em suas mãos tudo o que precisa para se preparar de forma
-                  direcionada para o ENEM 2025.
+                  direcionada para o ENEM 2026.
                 </p>
               </div>
 
@@ -71,7 +71,7 @@ export default function ObrigadoChecklist() {
                 <div className="mb-6 text-center">
                   <h2 className="mb-4 flex items-center justify-center gap-2 text-2xl text-white">
                     <Download className="text-accent" size={28} />
-                    Baixar Checklist ENEM 2025
+                    Baixar Checklist ENEM 2026
                   </h2>
                   <p className="font-light text-white/80">
                     PDF completo com cronograma, tópicos essenciais e estratégias

@@ -130,7 +130,7 @@ const Privacy = () => {
 
               <div className="mt-6 rounded-lg bg-primary/10 p-6">
                 <p className="text-sm text-muted-foreground">
-                  <strong>Última atualização:</strong> Janeiro de 2025
+                  <strong>Última atualização:</strong> Janeiro de 2026
                 </p>
               </div>
             </CardContent>

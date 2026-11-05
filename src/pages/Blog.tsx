@@ -10,13 +10,13 @@ import { Link } from 'react-router-dom';
 
 const blogPosts = [
   {
-    id: 'reta-final-enem-2025',
-    title: 'Reta Final ENEM 2025: 7 Estratégias Que Funcionam',
+    id: 'reta-final-enem-2026',
+    title: 'Reta Final ENEM 2026: 7 Estratégias Que Funcionam',
     excerpt:
-      'Com o ENEM 2025 se aproximando (9 e 16 de novembro), a reta final exige estratégia inteligente. Descubra as 7 táticas mais eficazes baseadas em dados oficiais.',
+      'Com o ENEM 2026 se aproximando (9 e 16 de novembro), a reta final exige estratégia inteligente. Descubra as 7 táticas mais eficazes baseadas em dados oficiais.',
     date: '2025-01-15',
     readTime: '8 min',
-    tags: ['Estratégia', 'ENEM 2025', 'Reta Final'],
+    tags: ['Estratégia', 'ENEM 2026', 'Reta Final'],
     image: '/lovable-uploads/18015f32-572d-4cad-9ba0-16d5315e7060.png',
   },
   {
@@ -55,7 +55,7 @@ const Blog = () => {
             <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">Blog – Dicas de Redação ENEM</h1>
             <p className="mx-auto max-w-3xl text-xl text-white/90">
               Estratégias, análises e dicas baseadas em dados oficiais para sua aprovação no ENEM
-              2025
+              2026
             </p>
           </div>
         </section>
@@ -74,7 +74,7 @@ const Blog = () => {
                     <div className="md:col-span-1">
                       <img 
                         src={post.image} 
-                        alt={`Artigo sobre ${post.title} - Dicas de redação ENEM 2025`} 
+                        alt={`Artigo sobre ${post.title} - Dicas de redação ENEM 2026`} 
                         className="size-full object-cover" 
                       />
                     </div>

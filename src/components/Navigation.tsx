@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { trackEvent } from '@/lib/analytics';
-import { BUSINESS_WHATSAPP_URL, WHATSAPP_MESSAGES } from '@/lib/constants';
 import logo from '@/assets/novo-logo-gsaprova-novembro-2.jpg';
 
 export const Navigation = () => {
@@ -19,18 +18,6 @@ export const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleCTAClick = () => {
-    trackEvent('cta_click', { label: 'Header - Começar agora' });
-    const redacaoSection = document.getElementById('redacao');
-    if (redacaoSection) {
-      redacaoSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // Fallback to WhatsApp if section doesn't exist
-      const message = encodeURIComponent(WHATSAPP_MESSAGES.heroEnem);
-      window.open(`${BUSINESS_WHATSAPP_URL}?text=${message}`, '_blank');
-    }
-  };
-
   const handleNavClick = (label: string) => {
     trackEvent('nav_click', { label });
   };
@@ -45,11 +32,11 @@ export const Navigation = () => {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 transition-opacity hover:opacity-80">
+          <Link to="/" className="mr-8 flex shrink-0 items-center transition-opacity hover:opacity-80">
             <img
               src={logo}
               alt="GS Aprova - Preparação para ENEM e Vestibulares"
-              className="h-12 w-auto"
+              className="h-12 w-auto object-contain"
               width="64"
               height="48"
             />
@@ -91,7 +78,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/plantao-enem-2026"
-              className="rounded-full bg-accent px-3 py-1 text-sm font-bold text-accent-foreground transition-opacity hover:opacity-90"
+              className="text-sm font-medium text-accent-foreground underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:text-[#3B82F6] dark:text-[#FBBF24]"
               onClick={() => handleNavClick('Plantão ENEM 2026')}
             >
               Plantão ENEM 2026
@@ -105,26 +92,10 @@ export const Navigation = () => {
               Portal do Aluno
             </Link>
 
-            {/* Primary CTA */}
-            <Button
-              onClick={handleCTAClick}
-              className="rounded-xl bg-[#FBBF24] px-6 py-2 font-semibold text-[#1E3A8A] shadow-lg hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FBBF24]"
-              aria-label="Matricular agora"
-            >
-              Matricular agora
-            </Button>
           </div>
 
           {/* Mobile Actions */}
           <div className="flex items-center gap-2 md:hidden">
-            <Button
-              onClick={handleCTAClick}
-              size="sm"
-              className="rounded-lg bg-[#FBBF24] px-3 py-1.5 text-sm font-semibold text-[#1E3A8A] hover:brightness-95"
-              aria-label="Matricular agora"
-            >
-              Matricular agora
-            </Button>
 
             <Button
               variant="ghost"

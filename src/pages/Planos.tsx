@@ -195,7 +195,7 @@ const Planos = () => {
             </h1>
             <p className="mx-auto max-w-3xl text-xl text-white/90">
               Soluções personalizadas baseadas em análise de dados oficiais INEP para sua aprovação
-              no ENEM 2025
+              no ENEM 2026
             </p>
           </div>
         </section>

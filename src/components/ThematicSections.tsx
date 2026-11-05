@@ -3,23 +3,23 @@ import { Link } from 'react-router-dom';
 
 const thematicSections = [
   {
-    id: 'enem-2025',
-    title: 'ENEM 2025',
+    id: 'enem-2026',
+    title: 'ENEM 2026',
     description:
-      'Estratégias completas para dominar o ENEM 2025. Matemática focada no que mais cai, estrutura de redação e dicas práticas.',
+      'Estratégias completas para dominar o ENEM 2026. Matemática focada no que mais cai, estrutura de redação e dicas práticas.',
     icon: Target,
-    link: '/enem-2025',
+    link: '/enem-2026',
     highlights: ['Funções e Estatística', 'Estrutura de Redação', 'Simulados Direcionados'],
     buttonText: 'Ver estratégias ENEM',
     gradient: 'from-blue-500 to-purple-600',
   },
   {
-    id: 'fuvest-2025',
-    title: 'Fuvest 2025',
+    id: 'fuvest-2026',
+    title: 'Fuvest 2026',
     description:
-      'Preparação específica para a Fuvest 2025. Matemática discursiva, redação com repertório literário e leituras obrigatórias.',
+      'Preparação específica para a Fuvest 2026. Matemática discursiva, redação com repertório literário e leituras obrigatórias.',
     icon: BookOpen,
-    link: '/fuvest-2025',
+    link: '/fuvest-2026',
     highlights: ['Questões Discursivas', 'Repertório Literário', 'Leituras Obrigatórias'],
     buttonText: 'Ver estratégias Fuvest',
     gradient: 'from-green-500 to-teal-600',
@@ -35,7 +35,7 @@ export const ThematicSections = () => {
             Preparação Específica para Cada Vestibular
           </h2>
           <p className="mx-auto max-w-3xl text-lg font-light text-white/90">
-            Estratégias personalizadas para ENEM 2025 e Fuvest 2025. Conteúdo focado no que
+            Estratégias personalizadas para ENEM 2026 e Fuvest 2026. Conteúdo focado no que
             realmente importa para sua aprovação.
           </p>
         </div>

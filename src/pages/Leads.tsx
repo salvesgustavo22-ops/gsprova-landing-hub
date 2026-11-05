@@ -183,7 +183,7 @@ const Leads = () => {
                   <h1 className="mb-4 text-3xl font-bold text-foreground">Cadastro recebido!</h1>
                   <div className="mb-8 space-y-4">
                     <p className="text-lg text-foreground">
-                      Obrigado! Seu curso começará em <strong>03/10/2025</strong>.
+                      Obrigado! Seu curso começará em <strong>03/10/2026</strong>.
                     </p>
                     <p className="text-muted-foreground">
                       Fique de olho no seu e-mail e WhatsApp para orientações de acesso.

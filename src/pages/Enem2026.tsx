@@ -7,20 +7,20 @@ import { StickyWhatsApp } from '@/components/StickyWhatsApp';
 import { Calculator, PenTool, Target, CheckCircle } from 'lucide-react';
 import { trackPageSection } from '@/lib/analytics';
 
-export default function Enem2025() {
+export default function Enem2026() {
   useEffect(() => {
     // Update page title and meta description for SEO
-    document.title = 'Correção de Redação ENEM 2025 – Plataforma GS Aprova';
+    document.title = 'Correção de Redação ENEM 2026 – Plataforma GS Aprova';
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute(
         'content',
-        'Plataforma online de correção de redação para o ENEM 2025. Comentários personalizados e guia de melhorias.'
+        'Plataforma online de correção de redação para o ENEM 2026. Comentários personalizados e guia de melhorias.'
       );
     }
 
-    trackPageSection('enem_2025_page', 'view');
+    trackPageSection('enem_2026_page', 'view');
   }, []);
 
   const mathTopics = [
@@ -44,7 +44,7 @@ export default function Enem2025() {
   ];
 
   const handleChecklistCTA = () => {
-    trackPageSection('enem_2025_checklist', 'click');
+    trackPageSection('enem_2026_checklist', 'click');
     window.location.href = '/lead-checklist';
   };
 
@@ -62,11 +62,11 @@ export default function Enem2025() {
                   className="mb-4 bg-accent font-semibold text-accent-dark-text"
                   variant="secondary"
                 >
-                  ENEM 2025
+                  ENEM 2026
                 </Badge>
 
                 <h1 className="mb-6 text-3xl font-bold leading-tight text-white lg:text-5xl">
-                  Plataforma de Correção de Redação – ENEM 2025
+                  Plataforma de Correção de Redação – ENEM 2026
                 </h1>
 
                 <p className="mb-8 text-xl font-light leading-relaxed text-white/90">
@@ -76,7 +76,7 @@ export default function Enem2025() {
                 </p>
 
                 <Button onClick={handleChecklistCTA} className="btn-yellow px-8 py-6 text-lg">
-                  Baixar Checklist ENEM 2025 Gratuito
+                  Baixar Checklist ENEM 2026 Gratuito
                 </Button>
               </div>
             </div>
@@ -88,7 +88,7 @@ export default function Enem2025() {
               <div className="mb-12 text-center">
                 <h2 className="mb-4 text-3xl font-bold text-white lg:text-4xl">
                   <Calculator className="mr-3 inline-block text-white" size={36} />
-                  Matemática no ENEM 2025
+                  Matemática no ENEM 2026
                 </h2>
                 <p className="mx-auto max-w-2xl text-lg font-light text-white/85">
                   Foque nos tópicos que realmente importam. Estes assuntos representam mais de 70%
@@ -157,7 +157,7 @@ export default function Enem2025() {
                 <Target className="mx-auto mb-6 text-accent" size={64} />
 
                 <h2 className="mb-6 text-3xl font-bold text-white lg:text-4xl">
-                  Não estude às cegas para o ENEM 2025
+                  Não estude às cegas para o ENEM 2026
                 </h2>
 
                 <p className="mb-8 text-xl font-light leading-relaxed text-white/90">

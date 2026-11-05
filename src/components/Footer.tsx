@@ -110,7 +110,7 @@ export const Footer = () => {
         <Separator className="my-8 bg-white/20" />
 
         <div className="text-center text-sm text-white/70">
-          © 2025 GS Aprova. Todos os direitos reservados.
+          © 2026 GS Aprova. Todos os direitos reservados.
         </div>
       </div>
     </footer>

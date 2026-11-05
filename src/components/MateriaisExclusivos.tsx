@@ -86,11 +86,11 @@ export const MateriaisExclusivos = () => {
       <div className="container mx-auto px-4">
         <div className="mb-10 text-center">
           <h2 className="mb-4 text-3xl font-bold text-white lg:text-4xl">
-            Matemática no enem 2025: os conteúdos que mais caem
+            Matemática no enem 2026: os conteúdos que mais caem
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-white/90">
             Análise completa das provas oficiais INEP 2022-2024 com foco nos temas mais recorrentes
-            para o ENEM 2025
+            para o ENEM 2026
           </p>
         </div>
 
@@ -140,7 +140,7 @@ export const MateriaisExclusivos = () => {
                 onClick={() => handleOpenForm('guia')}
                 className="w-full bg-white py-6 text-lg font-semibold text-[#1E3A8A] hover:bg-white/90"
               >
-                Garantir por R$ 9,90
+                Em 72h
               </Button>
             </CardContent>
           </Card>
@@ -194,7 +194,7 @@ export const MateriaisExclusivos = () => {
                 onClick={() => handleOpenForm('questoes')}
                 className="w-full bg-[#FBBF24] py-6 text-lg font-semibold text-[#1E3A8A] hover:bg-[#F59E0B]"
               >
-                Quero o Pacote Completo — R$ 15,90
+                Em 72h
               </Button>
             </CardContent>
           </Card>

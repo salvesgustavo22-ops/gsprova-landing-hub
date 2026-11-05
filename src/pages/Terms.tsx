@@ -90,7 +90,7 @@ const Terms = () => {
 
               <div className="mt-8 rounded-lg bg-accent/20 p-6">
                 <p className="text-sm text-muted-foreground">
-                  <strong>Última atualização:</strong> Janeiro de 2025
+                  <strong>Última atualização:</strong> Janeiro de 2026
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">
                   Em caso de dúvidas sobre estes termos, entre em contato conosco através do
