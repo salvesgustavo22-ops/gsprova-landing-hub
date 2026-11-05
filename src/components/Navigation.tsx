@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { trackEvent } from '@/lib/analytics';
-import { BUSINESS_WHATSAPP_URL, WHATSAPP_MESSAGES } from '@/lib/constants';
 import logo from '@/assets/novo-logo-gsaprova-novembro-2.jpg';
 
 export const Navigation = () => {
