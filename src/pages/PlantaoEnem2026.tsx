@@ -105,7 +105,7 @@ const PlantaoEnem2026 = () => {
             alt="Plantão de Véspera ENEM 2026 — material GS Aprova"
             className="w-full rounded-2xl border border-plantao-gold/30 shadow-2xl"
             width={1200}
-            height={1000}
+            height={1008}
           />
         </div>
       </Block>
