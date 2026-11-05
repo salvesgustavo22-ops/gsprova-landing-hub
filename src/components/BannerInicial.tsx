@@ -1,5 +1,5 @@
 import { Check } from 'lucide-react';
-import logo from '@/assets/novo-logo-gsaprova-novembro-2.jpg';
+import logo from '@/assets/novo-logo-gsaprova-novembro-2-fundo-transparente.png';
 
 export const BannerInicial = () => {
   return (
