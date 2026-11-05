@@ -19,18 +19,6 @@ export const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleCTAClick = () => {
-    trackEvent('cta_click', { label: 'Header - Começar agora' });
-    const redacaoSection = document.getElementById('redacao');
-    if (redacaoSection) {
-      redacaoSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      // Fallback to WhatsApp if section doesn't exist
-      const message = encodeURIComponent(WHATSAPP_MESSAGES.heroEnem);
-      window.open(`${BUSINESS_WHATSAPP_URL}?text=${message}`, '_blank');
-    }
-  };
-
   const handleNavClick = (label: string) => {
     trackEvent('nav_click', { label });
   };

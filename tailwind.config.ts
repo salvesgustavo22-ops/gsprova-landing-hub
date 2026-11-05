@@ -4,6 +4,10 @@ export default {
   content: ["./src/**/*.{ts,tsx,js,jsx,mdx,html}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        heading: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       colors: {
         /* mapeia CSS vars -> Tailwind tokens */
         background: "hsl(var(--background))",
