@@ -18,7 +18,7 @@ export const PlantaoHeroBox = ({ headingLevel = 'h1' }: { headingLevel?: 'h1' | 
     <div className="grid items-center gap-10 md:grid-cols-2">
       <div>
         <Heading className="text-2xl font-extrabold leading-tight text-plantao-text md:text-4xl">
-          Faltam 3 dias para a redação do ENEM. Em <span className="text-plantao-gold">40 minutos</span> você recebe a estrutura, os repertórios e a sua redação corrigida antes de domingo.
+          Faltam 3 dias para a redação do ENEM. São <span className="text-plantao-gold">10 aulas entre hoje e sábado</span>, com sua redação corrigida em até 1 dia — tudo antes de domingo.
         </Heading>
         <p className="mt-5 text-lg text-plantao-text/80">
           Sem aula de 4 horas e sem enrolação. Só o que cai, com alguém olhando o seu texto antes da prova.

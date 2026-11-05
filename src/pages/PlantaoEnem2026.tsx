@@ -44,9 +44,9 @@ const naoPraVoce = [
   'Não vai fazer a prova agora',
 ];
 const entregaveis = [
-  ['Plantão ao vivo de 40 min (estrutura + repertório coringa + erros que zeram)', 'R$ 120,00'],
+  ['10 aulas entre hoje e sábado (estrutura + repertório coringa + erros que zeram)', 'R$ 120,00'],
   ['PDF com 10 repertórios coringa e 3 modelos de introdução', 'R$ 47,00'],
-  ['1 correção da sua redação com nota estimada e devolutiva em 12h', 'R$ 30,00'],
+  ['1 correção da sua redação com nota estimada e devolutiva em até 1 dia', 'R$ 30,00'],
 ];
 const passos = [
   { icon: Users, t: 'Compra e entra no grupo VIP' },
@@ -62,8 +62,8 @@ const depoimentos = [
 
 const PlantaoEnem2026 = () => {
   useEffect(() => {
-    document.title = 'Plantão de Véspera ENEM 2026 · Redação com Correção em 12h | GS Aprova';
-    const desc = 'Plantão ao vivo de 40 min, 10 repertórios coringa e sua redação corrigida em 12h antes do ENEM 2026. De R$197 por R$97.';
+    document.title = 'Plantão de Véspera ENEM 2026 · Redação com Correção em até 1 dia | GS Aprova';
+    const desc = '10 aulas entre hoje e sábado, repertórios coringa e sua redação corrigida em até 1 dia antes do ENEM 2026. De R$197 por R$97.';
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement('meta');
@@ -194,7 +194,7 @@ const PlantaoEnem2026 = () => {
           <p className="my-2 text-5xl font-extrabold text-plantao-gold">R$ 97,00</p>
           <p className="mb-6 text-plantao-text/80">ou 3x de R$ 35,00</p>
           <p className="mb-6 rounded-lg bg-destructive/20 px-4 py-2 font-bold">
-            ⏳ Últimas vagas para as 10 correções expressas em 12h!
+            ⏳ Últimas vagas para as 10 correções expressas em até 1 dia!
           </p>
           <CtaButton>Quero entrar no plantão agora</CtaButton>
           <p className="mt-4 text-sm text-plantao-text/60">Pix, cartão ou boleto · Acesso imediato · Garantia de 7 dias</p>
