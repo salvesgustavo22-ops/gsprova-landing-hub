@@ -18,8 +18,8 @@ const planos = [
   {
     id: 'curso-intensivo',
     titulo: 'Curso Intensivo de Matemática ENEM',
-    preco: 'R$ 39,90',
-    preco_parcelado: 'ou 3x de R$ 13,30',
+    preco: 'Em 72h',
+    preco_parcelado: '',
     bullets: [
       'Foco nos 35% de matemática básica',
       '200+ questões resolvidas passo a passo',
@@ -34,8 +34,8 @@ const planos = [
   {
     id: 'aulas-particulares',
     titulo: 'Aulas Particulares',
-    preco: 'a partir de R$ 49,90',
-    preco_parcelado: 'por aula',
+    preco: 'Em 72h',
+    preco_parcelado: '',
     bullets: [
       'Aulas individuais personalizadas',
       'Horários flexíveis',
@@ -49,8 +49,8 @@ const planos = [
   {
     id: 'correcao-redacao',
     titulo: 'Correção de Redação',
-    preco: 'R$ 12,90',
-    preco_parcelado: 'por correção',
+    preco: 'Em 72h',
+    preco_parcelado: '',
     bullets: [
       'Correção pelos critérios do ENEM',
       'Devolutiva detalhada em 48h',
@@ -65,8 +65,8 @@ const planos = [
   {
     id: 'trilha-personalizada',
     titulo: 'Trilha Personalizada',
-    preco: 'a partir de R$ 69,90',
-    preco_parcelado: 'por mês',
+    preco: 'Em 72h',
+    preco_parcelado: '',
     bullets: [
       'Diagnóstico completo',
       'Cronograma adaptado',
@@ -80,8 +80,8 @@ const planos = [
   {
     id: 'mentoria-individual',
     titulo: 'Mentoria Individual',
-    preco: 'a partir de R$ 89,90',
-    preco_parcelado: 'por sessão',
+    preco: 'Em 72h',
+    preco_parcelado: '',
     bullets: [
       'Aula + Plantão de Dúvidas',
       'Acompanhamento de estudos',

@@ -263,11 +263,11 @@ const EnviarRedacao = () => {
               <div className="grid gap-4 text-center md:grid-cols-2">
                 <div>
                   <p className="font-semibold text-primary">Correção Avulsa</p>
-                  <p className="text-lg font-bold">R$ 70</p>
+                  <p className="text-lg font-bold">Em 72h</p>
                 </div>
                 <div>
                   <p className="font-semibold text-primary">Pacote 4 Correções</p>
-                  <p className="text-lg font-bold">R$ 250 (Economia de R$ 30)</p>
+                  <p className="text-lg font-bold">Em 72h</p>
                 </div>
               </div>
               <p className="mt-4 text-center text-sm text-muted-foreground">
