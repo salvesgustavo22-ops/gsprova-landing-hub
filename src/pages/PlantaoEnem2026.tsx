@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Check, X, Clock, MessageCircle, Users, PlayCircle, Send, Star } from 'lucide-react';
-import mockup from '@/assets/plantao-enem-2026-mockup.jpg';
+import { PlantaoHeroBox } from '@/components/PlantaoHeroBox';
 import { PLANTAO_CHECKOUT_URL, PLANTAO_WHATSAPP_URL } from '@/lib/constants';
 
 const COPYRIGHT = 'Material GS APROVA® · Proibido reproduzir sem a autorização do Autor GS Aprova 2026';
@@ -87,27 +87,7 @@ const PlantaoEnem2026 = () => {
 
       {/* B2 */}
       <Block className="relative overflow-hidden">
-        <div className="grid items-center gap-10 md:grid-cols-2">
-          <div>
-            <h1 className="text-2xl font-extrabold leading-tight md:text-4xl">
-              Faltam 3 dias para a redação do ENEM. Em <span className="text-plantao-gold">40 minutos</span> você recebe a estrutura, os repertórios e a sua redação corrigida antes de domingo.
-            </h1>
-            <p className="mt-5 text-lg text-plantao-text/80">
-              Sem aula de 4 horas e sem enrolação. Só o que cai, com alguém olhando o seu texto antes da prova.
-            </p>
-            <div className="mt-8 flex flex-col items-start gap-3">
-              <CtaButton>Quero entrar no plantão — R$ 97,00</CtaButton>
-              <p className="text-sm text-plantao-text/70">Pix, cartão ou boleto · Acesso imediato · Garantia de 7 dias</p>
-            </div>
-          </div>
-          <img
-            src={mockup}
-            alt="Plantão de Véspera ENEM 2026 — material GS Aprova"
-            className="w-full rounded-2xl border border-plantao-gold/30 shadow-2xl"
-            width={1200}
-            height={1008}
-          />
-        </div>
+        <PlantaoHeroBox />
       </Block>
 
       {/* B3 */}

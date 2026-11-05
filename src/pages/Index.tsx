@@ -10,8 +10,7 @@ import { StickyWhatsApp } from '@/components/StickyWhatsApp';
 import { ScrollTracker } from '@/components/ScrollTracker';
 import Hero from '@/sections/Hero';
 import { MateriaisExclusivos } from '@/components/MateriaisExclusivos';
-import { NewsletterPopup } from '@/components/NewsletterPopup';
-import { SprintBox } from '@/components/SprintBox';
+import { PlantaoHeroBox } from '@/components/PlantaoHeroBox';
 import { NossosDiferenciais } from '@/components/NossosDiferenciais';
 import { BlogSection } from '@/components/BlogSection';
 import { BannerInicial } from '@/components/BannerInicial';
@@ -272,18 +271,17 @@ const Index = () => {
       
       <Navigation />
       <ScrollTracker />
-      <NewsletterPopup />
 
       <main>
         {/* Banner Inicial */}
         <BannerInicial />
 
-        {/* Sprint Redação 900+ Box */}
-        <Section variant="light" className="py-12">
-          <div className="mx-auto max-w-2xl">
-            <SprintBox />
+        {/* Plantão ENEM 2026 */}
+        <section className="bg-plantao-bg px-4 py-14 md:py-20">
+          <div className="mx-auto max-w-5xl">
+            <PlantaoHeroBox headingLevel="h2" />
           </div>
-        </Section>
+        </section>
 
         {/* Hero Section - Guia dos Temas */}
         <Hero />
