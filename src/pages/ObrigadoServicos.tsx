@@ -30,7 +30,7 @@ export default function ObrigadoServicos() {
           'Plano de evolução semanal',
           'Suporte direto via WhatsApp',
         ],
-        price: 'A partir de R$ 70/aula',
+        price: 'Em 72h',
         nextStep: 'Ver detalhes das aulas de matemática',
       },
       'correcao-redacao': {
@@ -45,7 +45,7 @@ export default function ObrigadoServicos() {
           'Avaliação pelos critérios oficiais',
           'Feedback via WhatsApp',
         ],
-        price: 'A partir de R$ 45/redação',
+        price: 'Em 72h',
         nextStep: 'Ver detalhes da correção de redação',
       },
       'trilha-personalizada': {
@@ -60,7 +60,7 @@ export default function ObrigadoServicos() {
           'Acompanhamento contínuo',
           'Orientação via WhatsApp',
         ],
-        price: 'A partir de R$ 120/mês',
+        price: 'Em 72h',
         nextStep: 'Montar minha trilha personalizada',
       },
       'plano-completo': {
@@ -75,7 +75,7 @@ export default function ObrigadoServicos() {
           'Ajustes em tempo real',
           'Suporte premium no WhatsApp',
         ],
-        price: 'A partir de R$ 200/mês',
+        price: 'Em 72h',
         nextStep: 'Conhecer o plano completo',
       },
     }),

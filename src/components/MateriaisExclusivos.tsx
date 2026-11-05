@@ -106,8 +106,8 @@ export const MateriaisExclusivos = () => {
               <div className="mb-4 flex items-center justify-between">
                 <BookOpen className="size-12 text-white" />
                 <div className="text-right">
-                  <div className="text-lg text-white/60 line-through">R$ 29,90</div>
-                  <span className="text-3xl font-bold text-white">R$ 9,90</span>
+                  
+                  <span className="text-3xl font-bold text-white">Em 72h</span>
                 </div>
               </div>
               <CardTitle className="text-2xl text-white">
@@ -156,8 +156,8 @@ export const MateriaisExclusivos = () => {
               <div className="mb-4 flex items-center justify-between">
                 <FileText className="size-12 text-[#FBBF24]" />
                 <div className="text-right">
-                  <div className="text-lg text-[#FBBF24]/60 line-through">R$ 49,90</div>
-                  <span className="text-3xl font-bold text-[#FBBF24]">R$ 15,90</span>
+                  
+                  <span className="text-3xl font-bold text-[#FBBF24]">Em 72h</span>
                 </div>
               </div>
               <CardTitle className="text-2xl text-[#FBBF24]">
@@ -206,7 +206,7 @@ export const MateriaisExclusivos = () => {
         <DialogContent className="bg-white">
           <DialogHeader>
             <DialogTitle className="text-2xl text-[#1E3A8A]">
-              {selectedMaterial === 'guia' ? 'Guia Completo - R$ 9,90' : '45 Questões - R$ 15,90'}
+              {selectedMaterial === 'guia' ? 'Guia Completo' : '45 Questões'}
             </DialogTitle>
           </DialogHeader>
 
