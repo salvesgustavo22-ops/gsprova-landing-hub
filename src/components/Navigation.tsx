@@ -117,7 +117,7 @@ export const Navigation = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="mt-4 border-t border-accent/20 pb-4 md:hidden">
+          <div className="mt-4 border-t border-accent/20 bg-nav pb-4 md:hidden">
             <div className="flex flex-col space-y-3 pt-4">
               <Link
                 to="/"
