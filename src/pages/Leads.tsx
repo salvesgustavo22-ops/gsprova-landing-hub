@@ -162,7 +162,7 @@ const Leads = () => {
     const message = encodeURIComponent(
       'Oi! Acabei de preencher o formulário no site. Quero mais informações sobre os cursos.'
     );
-    window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511985363890?text=${message}`, '_blank');
   };
 
   const handleVerPlanos = () => {

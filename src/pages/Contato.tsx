@@ -117,7 +117,7 @@ const Contato = () => {
     const message = encodeURIComponent(
       'Oi, acabei de enviar uma solicitação pelo formulário do site. Gostaria de falar sobre minha necessidade.'
     );
-    window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511985363890?text=${message}`, '_blank');
   };
 
   if (isSubmitted) {

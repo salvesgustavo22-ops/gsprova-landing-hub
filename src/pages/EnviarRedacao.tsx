@@ -231,7 +231,7 @@ const EnviarRedacao = () => {
   };
 
   const handleWhatsAppContact = () => {
-    window.open('https://wa.me/5511974969036', '_blank');
+    window.open('https://wa.me/5511985363890', '_blank');
   };
 
   if (!user) return null;

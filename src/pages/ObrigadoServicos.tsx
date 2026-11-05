@@ -110,7 +110,7 @@ export default function ObrigadoServicos() {
     const message = encodeURIComponent(
       `Oi! Acabei de me interessar pelo serviço "${service?.name}" e quero saber mais detalhes sobre preços e como começar.`
     );
-    window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511985363890?text=${message}`, '_blank');
   };
 
   if (!selectedService || !serviceDetails[selectedService as keyof typeof serviceDetails]) {

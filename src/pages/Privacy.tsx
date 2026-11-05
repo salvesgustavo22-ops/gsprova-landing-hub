@@ -124,7 +124,7 @@ const Privacy = () => {
                 </ul>
                 <p className="mt-3 text-sm text-muted-foreground">
                   <strong>Para exercer seus direitos:</strong> Entre em contato via WhatsApp (11)
-                  97496-9036
+                  98536-3890
                 </p>
               </div>
 

@@ -83,7 +83,7 @@ export const HowItWorks = () => {
                 const message = encodeURIComponent(
                   'Oi, quero começar agora meus estudos. Vim pelo site GS Aprova.'
                 );
-                window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+                window.open(`https://wa.me/5511985363890?text=${message}`, '_blank');
               }}
               className="btn-modern px-8 py-6 text-lg"
             >

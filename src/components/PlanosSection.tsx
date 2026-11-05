@@ -136,7 +136,7 @@ export const PlanosSection = () => {
               const message = encodeURIComponent(
                 'Oi! Quero saber mais sobre aulas particulares ou planos customizados. Vim pelo site GS Aprova.'
               );
-              window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+              window.open(`https://wa.me/5511985363890?text=${message}`, '_blank');
             }}
             variant="outline"
             size="lg"

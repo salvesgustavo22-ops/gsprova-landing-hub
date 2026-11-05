@@ -3,7 +3,7 @@ export const FinalCTA = () => {
     const message = encodeURIComponent(
       'Oi, não quero perder tempo! Quero começar hoje mesmo. Vim pelo site GS Aprova.'
     );
-    window.open(`https://wa.me/5511974969036?text=${message}`, '_blank');
+    window.open(`https://wa.me/5511985363890?text=${message}`, '_blank');
   };
 
   return (

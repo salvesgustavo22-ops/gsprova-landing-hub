@@ -90,6 +90,13 @@ export const Navigation = () => {
               Contato
             </Link>
             <Link
+              to="/plantao-enem-2026"
+              className="rounded-full bg-accent px-3 py-1 text-sm font-bold text-accent-foreground transition-opacity hover:opacity-90"
+              onClick={() => handleNavClick('Plantão ENEM 2026')}
+            >
+              Plantão ENEM 2026
+            </Link>
+            <Link
               to="/auth-aluno"
               className="text-sm font-medium text-[#1E3A8A] transition-colors hover:text-[#3B82F6] dark:text-white dark:hover:text-[#FBBF24]"
               onClick={() => handleNavClick('Portal do Aluno')}
@@ -174,6 +181,16 @@ export const Navigation = () => {
                 }}
               >
                 Contato
+              </Link>
+              <Link
+                to="/plantao-enem-2026"
+                className="py-2 text-sm font-bold text-accent"
+                onClick={() => {
+                  handleNavClick('Plantão ENEM 2026');
+                  setIsOpen(false);
+                }}
+              >
+                Plantão ENEM 2026
               </Link>
               <Link
                 to="/auth-aluno"

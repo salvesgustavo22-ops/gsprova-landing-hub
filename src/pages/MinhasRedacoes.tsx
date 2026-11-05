@@ -130,7 +130,7 @@ const MinhasRedacoes = () => {
       ? `Olá! Tenho dúvidas sobre a correção ID: ${correctionId}`
       : 'Olá! Tenho dúvidas sobre minha redação.';
 
-    const url = `https://wa.me/5511974969036?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/5511985363890?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 

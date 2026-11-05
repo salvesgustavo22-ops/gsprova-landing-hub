@@ -131,7 +131,7 @@ export const Services = () => {
     const message = encodeURIComponent(
       `Oi, tenho interesse no plano "${category} - ${service.title}" por ${service.price}. Vim pelo site GS Aprova.`
     );
-    window.open(`https://wa.me/+5511974969036?text=${message}`, '_blank');
+    window.open(`https://wa.me/+5511985363890?text=${message}`, '_blank');
   };
 
   const handleServiceClick = (service: 'math' | 'essay' | 'study-path' | 'complete') => {
